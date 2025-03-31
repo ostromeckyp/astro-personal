@@ -14,14 +14,17 @@ const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'
     <h1 class="text-4xl font-bold text-gray-900 mb-8">Blog</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {sortedPosts.map((post: CollectionEntry<'blog'>, index: number) => (
+         <div class="opacity-0 animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>
+          {post.id}
         <BlogCard
           title={post.data.title}
           image={post.data.image}
           category={post.data.category}
           date={new Date(post.data.date)}
-          slug={post.slug}
+          slug={post.data.slug}
           index={index}
         />
+        </div>
       ))}
     </div>
   </div>
