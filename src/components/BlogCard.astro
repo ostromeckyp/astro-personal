@@ -14,11 +14,7 @@ const { title, image, category, date, slug, index } = Astro.props;
 ---
 
 <article 
-  class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-  data-aos="fade-up"
-  data-aos-delay={index * 100}
-  data-aos-duration="1000"
->
+  class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
   <a href={`/blog/${slug}`} class="group">
     <img 
       src={image} 

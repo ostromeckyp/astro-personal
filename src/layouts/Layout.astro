@@ -14,18 +14,15 @@ const pathname = new URL(Astro.request.url).pathname;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700;900&display=swap" rel="stylesheet">
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="bg-gray-50">
-    <nav class="bg-white shadow-sm flex-shrink-0">
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <nav class="bg-white dark:bg-gray-800 shadow-sm flex-shrink-0">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex">
@@ -80,25 +77,13 @@ const pathname = new URL(Astro.request.url).pathname;
         <slot />
       </div>
     </main>
-    <footer class="bg-white mt-auto flex-shrink-0">
+    <footer class="bg-white dark:bg-gray-800 mt-auto flex-shrink-0">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <p class="text-center text-gray-500">© 2024 Portfolio. All rights reserved.</p>
       </div>
     </footer>
-    <script is:inline src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script is:inline>
       document.addEventListener('astro:page-load', function() {
-        AOS.init({
-          duration: 600,
-          once: true,
-          offset: 100,
-          easing: 'ease-in-out',
-          delay: 100,
-          rootMargin: '0px 0px -50% 0px',
-          disableMutationObserver: true,
-          throttleDelay: 99
-        });
-
         // Mobile Menu
         const burgerMenu = document.getElementById('burger-menu');
         const closeMenu = document.getElementById('close-menu');
@@ -141,3 +126,63 @@ const pathname = new URL(Astro.request.url).pathname;
     </script>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background: transparent;
+  }
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+</style>

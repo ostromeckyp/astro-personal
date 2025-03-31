@@ -11,7 +11,7 @@ interface Props {
 const { title, company, year, description, skills, index } = Astro.props;
 ---
 
-<div class="relative pl-12 pb-12 last:pb-0" data-aos="fade-up" data-aos-delay={300 + index * 100}>
+<div class="relative pl-12 pb-12 last:pb-0 opacity-0 animate-fade-in" style={`animation-delay: ${300 + index * 100}ms`}>
   <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
     <div class="w-4 h-4 rounded-full bg-primary"></div>
   </div>
