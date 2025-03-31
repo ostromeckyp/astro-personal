@@ -85,8 +85,8 @@ export default function Contact() {
           {message && (
             
             <p className="mt-4 text-sm text-green-600 dark:text-green-400">
-                <div>{message}</div>
-                <div>Thank you for a contact</div>
+                <span className="block">{message}</span>
+                <span className="block">Thank you for a contact</span>
                 </p>
             
           )}

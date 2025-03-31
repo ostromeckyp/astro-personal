@@ -1,17 +1,31 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+// import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+// import { render } from 'astro:content';
+import { getEntry, render } from "astro:content";
 
-export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { slug: post.data.slug},
-    props: { post },
-  }));
+const { slug } = Astro.params;
+if(!slug) {
+  //TODO - redirect to 404
+   Astro.redirect('/blog');
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const post = await getEntry('blog', slug!.toString());
+if(!post) {
+  //TODO - redirect to 404
+  Astro.redirect('/blog');
+}
+
+// export async function getStaticPaths() {
+//   const posts = await getCollection('blog');
+//   return posts.map(post => ({
+//     params: { slug: post.data.slug},
+//     props: { post },
+//   }));
+// }
+
+// const { post } = Astro.props;
+const { Content } = await render(post!);
 ---
 
 <Layout title={`${post.data.title} | Portfolio`}>

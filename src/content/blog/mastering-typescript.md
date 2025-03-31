@@ -4,6 +4,7 @@ excerpt: "Deep dive into TypeScript features and advanced concepts."
 date: "2024-01-05"
 image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=800"
 category: "Programming"
+slug: mastering-typescript
 ---
 
 # Mastering TypeScript

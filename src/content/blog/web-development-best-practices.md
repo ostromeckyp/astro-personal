@@ -4,6 +4,7 @@ excerpt: "Essential practices every web developer should follow for better code 
 date: "2024-01-10"
 image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800"
 category: "Development"
+slug: web-development-best-practices
 ---
 
 # Web Development Best Practices
