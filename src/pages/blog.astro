@@ -11,7 +11,7 @@ const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'
 
 <Layout title="Blog | Portfolio">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h1 class="text-4xl font-bold text-gray-900 mb-8">Blog</h1>
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">Blog</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {sortedPosts.map((post: CollectionEntry<'blog'>, index: number) => (
          <div class="opacity-0 animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>

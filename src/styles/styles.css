@@ -24,11 +24,27 @@
   p {
     @apply text-justify;
   }
+
+  /* Form inputs dark mode */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  textarea {
+    @apply bg-white dark:bg-dark-input text-gray-900 dark:text-white border-gray-300 dark:border-dark-border focus:border-primary dark:focus:border-primary focus:ring-primary dark:focus:ring-primary;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-dark-card shadow-md dark:shadow-gray-900/10 rounded-lg p-6 transition-all duration-300;
+  }
 }
 
 @layer components {
   .nav-link {
-    @apply relative inline-flex items-center px-1 pt-1 text-gray-600 hover:text-primary;
+    @apply relative inline-flex items-center px-1 pt-1 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300;
   }
 
   .nav-link::after {
@@ -46,7 +62,7 @@
 
   /* Mobile Menu */
   .mobile-menu {
-    @apply fixed inset-0 bg-white z-50 md:hidden transform translate-x-full transition-transform duration-300 ease-in-out;
+    @apply fixed inset-0 bg-white dark:bg-gray-800 z-50 md:hidden transform translate-x-full transition-transform duration-300 ease-in-out;
   }
 
   .mobile-menu.open {
@@ -67,5 +83,31 @@
 
   .burger-open .burger-line:nth-child(3) {
     @apply transform -translate-y-2 -rotate-45;
+  }
+
+  /* Form group */
+  .form-group {
+    @apply mb-4;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+  }
+
+  .form-input {
+    @apply block w-full rounded-md shadow-sm focus:ring-2 focus:ring-opacity-50;
+  }
+
+  .form-error {
+    @apply mt-1 text-sm text-red-600 dark:text-red-400;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-gray-900 transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-600 text-white;
   }
 } 

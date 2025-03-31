@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import '../styles/styles.css';
+import DarkModeToggle from '../components/DarkModeToggle.astro';
 
 interface Props {
   title: string;
@@ -23,27 +24,47 @@ const pathname = new URL(Astro.request.url).pathname;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ClientRouter />
+    <script is:inline>
+      // Initialize dark mode on page load
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+    
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <nav class="bg-white dark:bg-gray-800 shadow-sm flex-shrink-0">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex">
-            <a href="/" class="flex items-center text-xl font-bold text-gray-800 hover:text-primary">Portfolio</a>
+            <a href="/" class="flex items-center text-xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors duration-300">Portfolio</a>
           </div>
           
           {/* Desktop Navigation */}
-          <div class="hidden md:flex space-x-8">
+          <div class="hidden md:flex items-center space-x-8">
             <a href="/" class={`nav-link ${pathname === "/" ? "active" : ""}`}>Home</a>
             <a href="/about" class={`nav-link ${pathname === "/about" ? "active" : ""}`}>About</a>
             <a href="/blog" class={`nav-link ${pathname === "/blog" ? "active" : ""}`}>Blog</a>
             <a href="/resume" class={`nav-link ${pathname === "/resume" ? "active" : ""}`}>Resume</a>
             <a href="/contact" class={`nav-link ${pathname === "/contact" ? "active" : ""}`}>Contact</a>
+            <DarkModeToggle client:load />
           </div>
 
           {/* Mobile Menu Button */}
-          <div class="md:hidden flex items-center">
-            <button id="burger-menu" class="p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none">
+          <div class="md:hidden flex items-center space-x-4">
+            <DarkModeToggle client:load />
+            <button id="burger-menu" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none">
               <div class="w-6 h-6 flex flex-col justify-between">
                 <span class="burger-line w-full h-0.5 bg-current"></span>
                 <span class="burger-line w-full h-0.5 bg-current"></span>
@@ -55,22 +76,22 @@ const pathname = new URL(Astro.request.url).pathname;
       </div>
 
       {/* Mobile Menu */}
-      <div id="mobile-menu" class="mobile-menu">
+      <div id="mobile-menu" class="mobile-menu dark:bg-gray-800">
         <div class="flex flex-col h-full">
-          <div class="flex justify-between items-center p-4 border-b">
-            <a href="/" class="text-xl font-bold text-gray-800">Portfolio</a>
-            <button id="close-menu" class="p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none">
+          <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+            <a href="/" class="text-xl font-bold text-gray-800 dark:text-white">Portfolio</a>
+            <button id="close-menu" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
           <div class="flex flex-col p-4 space-y-4">
-            <a href="/" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/" ? "text-primary" : ""}`}>Home</a>
-            <a href="/about" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</a>
-            <a href="/blog" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/blog" ? "text-primary" : ""}`}>Blog</a>
-            <a href="/resume" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/resume" ? "text-primary" : ""}`}>Resume</a>
-            <a href="/contact" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/contact" ? "text-primary" : ""}`}>Contact</a>
+            <a href="/" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/" ? "text-primary" : ""}`}>Home</a>
+            <a href="/about" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</a>
+            <a href="/blog" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/blog" ? "text-primary" : ""}`}>Blog</a>
+            <a href="/resume" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/resume" ? "text-primary" : ""}`}>Resume</a>
+            <a href="/contact" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/contact" ? "text-primary" : ""}`}>Contact</a>
           </div>
         </div>
       </div>
