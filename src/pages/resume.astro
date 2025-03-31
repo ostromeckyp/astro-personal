@@ -48,7 +48,7 @@ const education = [
       <div class="relative">
         <div class="absolute left-4 top-0 h-full w-0.5 bg-primary/20"></div>
         {experiences.map((exp, index) => (
-          <div class="opacity-0 animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>
+          <div class="mb-4 last:mb-0 opacity-0 animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>
             <TimelineCard
               title={exp.title}
               subtitle={exp.company}
@@ -66,7 +66,7 @@ const education = [
         <div class="relative">
           <div class="absolute left-4 top-0 h-full w-0.5 bg-primary/20"></div>
           {education.map((edu, index) => (
-            <div class="opacity-0 animate-fade-in" style={`animation-delay: ${600 + (index * 100)}ms`}>
+            <div class="mb-4 last:mb-0 opacity-0 animate-fade-in" style={`animation-delay: ${600 + (index * 100)}ms`}>
               <TimelineCard
                 title={edu.degree}
                 subtitle={edu.institution}
