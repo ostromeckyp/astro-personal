@@ -3,6 +3,7 @@ title: "Getting Started with Angular"
 excerpt: "Learn the basics of Angular and how to create your first application."
 date: "2024-01-15"
 image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800"
+category: "Programming"
 slug: getting-started-with-angular
 ---
 
