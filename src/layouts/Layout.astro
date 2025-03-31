@@ -58,12 +58,12 @@ const pathname = new URL(Astro.request.url).pathname;
             <a href="/blog" class={`nav-link ${pathname === "/blog" ? "active" : ""}`}>Blog</a>
             <a href="/resume" class={`nav-link ${pathname === "/resume" ? "active" : ""}`}>Resume</a>
             <a href="/contact" class={`nav-link ${pathname === "/contact" ? "active" : ""}`}>Contact</a>
-            <DarkModeToggle client:load />
+            <DarkModeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div class="md:hidden flex items-center space-x-4">
-            <DarkModeToggle client:load />
+            <DarkModeToggle />
             <button id="burger-menu" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none">
               <div class="w-6 h-6 flex flex-col justify-between">
                 <span class="burger-line w-full h-0.5 bg-current"></span>
