@@ -1,0 +1,41 @@
+---
+import Card from './Card.astro';
+
+interface Props {
+  title: string;
+  image: string;
+  category: string;
+  date: Date;
+  slug: string;
+  index: number;
+}
+
+const { title, image, category, date, slug, index } = Astro.props;
+---
+
+<article 
+  class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+  data-aos="fade-up"
+  data-aos-delay={index * 100}
+  data-aos-duration="1000"
+>
+  <a href={`/blog/${slug}`} class="group">
+    <img 
+      src={image} 
+      alt={title}
+      class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+    <div class="p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">{title}</h2>
+      <div class="flex items-center text-gray-500 text-sm">
+        <span class="bg-primary/10 text-primary px-3 py-1 rounded-full">
+          {category}
+        </span>
+        <span class="mx-2">•</span>
+        <time datetime={date.toISOString()}>
+          {date.toLocaleDateString()}
+        </time>
+      </div>
+    </div>
+  </a>
+</article> 

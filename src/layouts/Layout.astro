@@ -1,0 +1,143 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/styles.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body class="bg-gray-50">
+    <nav class="bg-white shadow-sm flex-shrink-0">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <a href="/" class="flex items-center text-xl font-bold text-gray-800 hover:text-primary">Portfolio</a>
+          </div>
+          
+          {/* Desktop Navigation */}
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class={`nav-link ${pathname === "/" ? "active" : ""}`}>Home</a>
+            <a href="/about" class={`nav-link ${pathname === "/about" ? "active" : ""}`}>About</a>
+            <a href="/blog" class={`nav-link ${pathname === "/blog" ? "active" : ""}`}>Blog</a>
+            <a href="/resume" class={`nav-link ${pathname === "/resume" ? "active" : ""}`}>Resume</a>
+            <a href="/contact" class={`nav-link ${pathname === "/contact" ? "active" : ""}`}>Contact</a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div class="md:hidden flex items-center">
+            <button id="burger-menu" class="p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none">
+              <div class="w-6 h-6 flex flex-col justify-between">
+                <span class="burger-line w-full h-0.5 bg-current"></span>
+                <span class="burger-line w-full h-0.5 bg-current"></span>
+                <span class="burger-line w-full h-0.5 bg-current"></span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div id="mobile-menu" class="mobile-menu">
+        <div class="flex flex-col h-full">
+          <div class="flex justify-between items-center p-4 border-b">
+            <a href="/" class="text-xl font-bold text-gray-800">Portfolio</a>
+            <button id="close-menu" class="p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-col p-4 space-y-4">
+            <a href="/" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/" ? "text-primary" : ""}`}>Home</a>
+            <a href="/about" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</a>
+            <a href="/blog" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/blog" ? "text-primary" : ""}`}>Blog</a>
+            <a href="/resume" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/resume" ? "text-primary" : ""}`}>Resume</a>
+            <a href="/contact" class={`text-lg text-gray-600 hover:text-primary ${pathname === "/contact" ? "text-primary" : ""}`}>Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="flex-grow overflow-auto">
+      <div class="min-h-full">
+        <slot />
+      </div>
+    </main>
+    <footer class="bg-white mt-auto flex-shrink-0">
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <p class="text-center text-gray-500">© 2024 Portfolio. All rights reserved.</p>
+      </div>
+    </footer>
+    <script is:inline src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script is:inline>
+      document.addEventListener('astro:page-load', function() {
+        AOS.init({
+          duration: 600,
+          once: true,
+          offset: 100,
+          easing: 'ease-in-out',
+          delay: 100,
+          rootMargin: '0px 0px -50% 0px',
+          disableMutationObserver: true,
+          throttleDelay: 99
+        });
+
+        // Mobile Menu
+        const burgerMenu = document.getElementById('burger-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        function toggleMenu() {
+          mobileMenu.classList.toggle('open');
+          burgerMenu.classList.toggle('burger-open');
+          body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        burgerMenu.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+          link.addEventListener('click', () => {
+            // Remove transitions before closing
+            mobileMenu.style.transition = 'none';
+            document.querySelectorAll('.burger-line').forEach(line => {
+              line.style.transition = 'none';
+            });
+            
+            // Close menu and reset burger
+            mobileMenu.classList.remove('open');
+            burgerMenu.classList.remove('burger-open');
+            body.style.overflow = '';
+            
+            // Re-add transitions after a frame
+            requestAnimationFrame(() => {
+              mobileMenu.style.transition = '';
+              document.querySelectorAll('.burger-line').forEach(line => {
+                line.style.transition = '';
+              });
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

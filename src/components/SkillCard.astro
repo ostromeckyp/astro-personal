@@ -1,0 +1,27 @@
+import Card from './Card.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  icon?: string;
+  iconColor?: string;
+  delay?: number;
+}
+
+const { title, description, icon, iconColor = "text-primary", delay = 0 } = Astro.props;
+
+<div data-aos="fade-up" data-aos-duration="400" data-aos-delay={delay}>
+  <Card scale={true}>
+    <div class="flex items-center space-x-4">
+      {icon ? (
+        <svg viewBox="0 0 448 448" class={`w-8 h-8 ${iconColor}`} fill="currentColor">
+          <Fragment set:html={icon} />
+        </svg>
+      ) : (
+        <div class="w-2 h-2 bg-primary rounded-full"></div>
+      )}
+      <span class="text-lg font-semibold text-gray-900">{title}</span>
+    </div>
+    {description && <p class="mt-2 text-sm text-gray-600">{description}</p>}
+  </Card>
+</div> 
