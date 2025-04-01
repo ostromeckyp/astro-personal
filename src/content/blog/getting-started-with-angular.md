@@ -7,7 +7,6 @@ category: "Programming"
 slug: getting-started-with-angular
 ---
 
-# Getting Started with Angular
 
 Angular is a powerful framework for building web applications. In this guide, we'll walk through the basics of setting up your first Angular project.
 

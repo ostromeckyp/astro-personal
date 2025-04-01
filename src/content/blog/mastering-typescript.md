@@ -7,7 +7,6 @@ category: "Programming"
 slug: mastering-typescript
 ---
 
-# Mastering TypeScript
 
 TypeScript adds static typing to JavaScript, making it more powerful and maintainable.
 
