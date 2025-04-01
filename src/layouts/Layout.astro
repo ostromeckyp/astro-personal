@@ -26,7 +26,7 @@ const pathname = new URL(Astro.request.url).pathname;
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 max-h-full">
     <nav class="bg-white dark:bg-gray-800 shadow-sm flex-shrink-0 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -79,10 +79,8 @@ const pathname = new URL(Astro.request.url).pathname;
         </div>
       </div>
     </nav>
-    <main class="flex-grow flex flex-col">
-      <div>
+    <main>
         <slot/>
-      </div>
     </main>
     <footer class="bg-white dark:bg-gray-800 mt-auto">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
