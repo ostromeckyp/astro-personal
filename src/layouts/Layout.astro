@@ -16,7 +16,7 @@ const pathname = new URL(Astro.request.url).pathname;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,12 +82,13 @@ const pathname = new URL(Astro.request.url).pathname;
       <div class="min-h-full">
         <slot />
       </div>
+      <footer class="bg-white dark:bg-gray-800 mt-auto flex-shrink-0">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <p class="text-center text-gray-500">© 2025 Ostromecki Development. All rights reserved.</p>
+        </div>
+      </footer>
     </main>
-    <footer class="bg-white dark:bg-gray-800 mt-auto flex-shrink-0">
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <p class="text-center text-gray-500">© 2025 Ostromecki Development. All rights reserved.</p>
-      </div>
-    </footer>
+    
     <script is:inline>
       document.addEventListener('astro:page-load', function() {
         // Mobile Menu
