@@ -2,6 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import '../styles/styles.css';
 import DarkModeToggle from '../components/DarkModeToggle.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
 
 interface Props {
   title: string;
@@ -25,7 +26,7 @@ const pathname = new URL(Astro.request.url).pathname;
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 h-max">
     <nav class="bg-white dark:bg-gray-800 shadow-sm flex-shrink-0 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -88,6 +89,7 @@ const pathname = new URL(Astro.request.url).pathname;
         </div>
       </footer>
     </main>
+    <ScrollToTop />
     
     <script is:inline>
       document.addEventListener('astro:page-load', function() {
