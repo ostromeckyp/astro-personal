@@ -80,7 +80,7 @@ const pathname = new URL(Astro.request.url).pathname;
         </div>
       </div>
     </nav>
-    <main>
+    <main class="flex-grow">
         <slot/>
     </main>
     <footer class="bg-white dark:bg-gray-800">
@@ -162,6 +162,8 @@ const pathname = new URL(Astro.request.url).pathname;
   .wrapper {
     height: 100vh; /* Ensures it takes full viewport height */
   overflow: auto; /* Allows scrolling inside */
+  display: flex;
+  flex-direction: column;
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */ 
   }
   code {
