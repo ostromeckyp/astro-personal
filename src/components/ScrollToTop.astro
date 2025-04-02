@@ -21,11 +21,12 @@
 
 <script>
   function initScrollToTop() {
+    const scrollContainer = document.getElementsByClassName('scroll-wrapper')[0];
     const scrollButton = document.getElementById('scroll-to-top');
     const SCROLL_THRESHOLD = 300; // Show button after scrolling 300px
 
     function toggleScrollButton() {
-      if (window.scrollY > SCROLL_THRESHOLD) {
+      if (scrollContainer.scrollTop > SCROLL_THRESHOLD) {
         scrollButton?.classList.remove('opacity-0', 'invisible');
       } else {
         scrollButton?.classList.add('opacity-0', 'invisible');
@@ -33,14 +34,14 @@
     }
 
     function scrollToTop() {
-      window.scrollTo({
+      scrollContainer.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     }
 
     // Show/hide button based on scroll position
-    window.addEventListener('scroll', toggleScrollButton);
+    scrollContainer.addEventListener('scroll', toggleScrollButton);
     
     // Scroll to top when button is clicked
     scrollButton?.addEventListener('click', scrollToTop);
