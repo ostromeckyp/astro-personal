@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SocialsFloat from '../components/SocialsFloat.astro';
 ---
 
 <Layout title="Home | Portfolio">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8 py-12 relative h-full w-full">
     <div class="text-center">
       <h1 class="text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl opacity-0 animate-fade-in">
         Welcome to My Portfolio
@@ -19,5 +20,6 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
     </div>
+    <SocialsFloat />
   </div>
 </Layout>
