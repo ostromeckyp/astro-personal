@@ -1,27 +1,30 @@
+---
 import Card from './Card.astro';
 
 interface Props {
   title: string;
-  description?: string;
-  icon?: string;
-  iconColor?: string;
+  description?: string; // Re-added description prop
   delay?: number;
+  class?: string; // Allow class prop to be passed down
 }
 
-const { title, description, icon, iconColor = "text-primary", delay = 0 } = Astro.props;
+const { title, description, delay = 0, class: className } = Astro.props; // Re-added description
+---
 
 <div class="opacity-0 animate-fade-in" style={`animation-delay: ${delay}ms`}>
-  <Card scale={true}>
+  <Card scale={true} class={className}>
     <div class="flex items-center space-x-4">
-      {icon ? (
-        <svg viewBox="0 0 448 448" class={`w-8 h-8 ${iconColor}`} fill="currentColor">
-          <Fragment set:html={icon} />
-        </svg>
-      ) : (
-        <div class="w-2 h-2 bg-primary rounded-full"></div>
-      )}
-      <span class="text-lg font-semibold text-gray-900">{title}</span>
+      {/* Added fixed-size wrapper for the icon */}
+      <div class="w-[30px] h-[30px] flex-shrink-0 flex items-center justify-center">
+        <slot name="icon">
+          <!-- Default icon if none provided -->
+          <div class="w-2 h-2 bg-primary rounded-full"></div>
+        </slot>
+      </div>
+      {/* Removed stray </slot> tag */}
+      <span class="text-lg font-semibold text-gray-900 dark:text-white">{title}</span>
     </div>
-    {description && <p class="mt-2 text-sm text-gray-600">{description}</p>}
+    {/* Re-added description rendering */}
+    {description && <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{description}</p>}
   </Card>
-</div> 
+</div>
