@@ -1,0 +1,30 @@
+---
+const {date, formatOptions = {}} = Astro.props;
+---
+
+<astro-time data-date={date}>
+    <time datetime={date}>
+    </time>
+</astro-time>
+
+<script>
+    class AstroTime extends HTMLElement {
+        connectedCallback() {
+            const dateString = this.dataset.date;
+            const timeElement = this.querySelector('time');
+
+            if (dateString && timeElement) {
+                // TODO - it's possible to use navigator.language to set locale dynamically
+                const formattedDate = new Intl.DateTimeFormat('en-UK', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }).format(new Date(dateString));
+
+                timeElement.textContent = formattedDate;
+            }
+        }
+    }
+
+    customElements.define('astro-time', AstroTime);
+</script>

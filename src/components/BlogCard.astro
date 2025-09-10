@@ -1,5 +1,5 @@
 ---
-import Card from './Card.astro';
+import AstroTime from './AstroTime.astro';
 
 interface Props {
   title: string;
@@ -28,9 +28,7 @@ const { title, image, category, date, slug, index } = Astro.props;
           {category}
         </span>
         <span class="mx-2">•</span>
-        <time datetime={date.toISOString()}>
-          {date.toLocaleDateString()}
-        </time>
+        <AstroTime date={date}/>
       </div>
     </div>
   </a>
