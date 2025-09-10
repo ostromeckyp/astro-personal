@@ -63,7 +63,7 @@ const pathname = new URL(Astro.request.url).pathname;
       <div id="mobile-menu" class="mobile-menu dark:bg-gray-800">
         <div class="flex flex-col h-full">
           <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
-            <a href="/" class="text-xl font-bold text-gray-800 dark:text-white">Portfolio</a>
+            <a href="/" class="text-xl font-bold text-gray-800 dark:text-white">ostromecki.dev</a>
             <button id="close-menu" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -85,7 +85,7 @@ const pathname = new URL(Astro.request.url).pathname;
     </main>
     <footer class="bg-white dark:bg-gray-800">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <p class="text-center text-gray-500">© 2025 Ostromecki Development. All rights reserved.</p>
+        <p class="text-center text-gray-500">© 2025 Paweł Ostromecki Enterprise Solutions. All rights reserved.</p>
       </div>
     </footer>
     <ScrollToTop />
@@ -105,31 +105,36 @@ const pathname = new URL(Astro.request.url).pathname;
         }
 
         burgerMenu.addEventListener('click', toggleMenu);
-        closeMenu.addEventListener('click', toggleMenu);
+        // closeMenu.addEventListener('click', toggleMenu);
+
+        document.addEventListener('astro:after-swap', (event) => {
+          closeMenu.addEventListener('click', toggleMenu);
+
+        });
 
         // Close menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-          link.addEventListener('click', () => {
-            // Remove transitions before closing
-            mobileMenu.style.transition = 'none';
-            document.querySelectorAll('.burger-line').forEach(line => {
-              line.style.transition = 'none';
-            });
-            
-            // Close menu and reset burger
-            mobileMenu.classList.remove('open');
-            burgerMenu.classList.remove('burger-open');
-            body.style.overflow = '';
-            
-            // Re-add transitions after a frame
-            requestAnimationFrame(() => {
-              mobileMenu.style.transition = '';
-              document.querySelectorAll('.burger-line').forEach(line => {
-                line.style.transition = '';
-              });
-            });
-          });
-        });
+        // document.querySelectorAll('#mobile-menu a').forEach(link => {
+        //   link.addEventListener('click', () => {
+        //     // Remove transitions before closing
+        //     mobileMenu.style.transition = 'none';
+        //     document.querySelectorAll('.burger-line').forEach(line => {
+        //       line.style.transition = 'none';
+        //     });
+        //
+        //     // Close menu and reset burger
+        //     mobileMenu.classList.remove('open');
+        //     burgerMenu.classList.remove('burger-open');
+        //     body.style.overflow = '';
+        //
+        //     // Re-add transitions after a frame
+        //     requestAnimationFrame(() => {
+        //       mobileMenu.style.transition = '';
+        //       document.querySelectorAll('.burger-line').forEach(line => {
+        //         line.style.transition = '';
+        //       });
+        //     });
+        //   });
+        // });
       });
     </script>
     </div>

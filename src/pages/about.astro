@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import myImage from '../assets/me.png'
+import myImage from '../assets/me2.jpg'
 import Angular from '../assets/angular.svg';
 import Typescript from '../assets/typescript.svg';
 import Node from '../assets/node.svg';
@@ -31,13 +31,9 @@ const skills = [
 <Layout title="About | Portfolio">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-      <div class="relative opacity-0 animate-fade-in">
+      <div class="rounded-lg relative opacity-0 animate-fade-in overflow-hidden h-full max-md:h-[400px] max-sm:h-[300px]">
         <Image src={myImage} alt="A description of my image." alt="Profile picture"
-        class="rounded-lg shadow-xl" />
-        
-        <div class="absolute -bottom-4 -right-4 bg-primary/10 p-4 rounded-lg">
-          <h2 class="text-xl font-semibold text-primary">Developer</h2>
-        </div>
+        class="shadow-xl absolute max-md:bottom-0 rounded-lg" />
       </div>
       <div class="prose prose-primary dark:prose-invert opacity-0 animate-fade-in animation-delay-200">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">About Me</h1>
