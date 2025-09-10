@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import myImage from '../assets/me2.jpg'
+import cvPdf from '../assets/cv.pdf';
 import Angular from '../assets/angular.svg';
 import Typescript from '../assets/typescript.svg';
 import Node from '../assets/node.svg';
@@ -15,48 +16,67 @@ import Nest from '../assets/nest.svg';
 import SkillCard from '../components/SkillCard.astro';
 
 const skills = [
-  { title: "Angular", description: "Frontend Framework", Icon: Angular, delay: 200 },
-  { title: "TypeScript", description: "Programming Language", Icon: Typescript, delay: 200},
-  { title: "Node.js", description: "Backend Runtime", Icon: Node, delay: 400 },
-  { title: "React", description: "Frontend Framework", Icon: React, delay: 400 }, // Corrected description
-  { title: "Vue", description: "Frontend Framework", Icon: Vue, delay: 400 }, // Corrected description
-  { title: "Firebase", description: "Backend Platform", Icon: Firebase, delay: 400 }, // Corrected description
-  { title: "Flutter", description: "Mobile Platform", Icon: Flutter, delay: 400 }, // Corrected description
-  { title: "Java", description: "Programming Language", Icon: Java, delay: 400 }, // Corrected description
-  { title: "Spring", description: "Backend Framework", Icon: Spring, delay: 400 }, // Corrected description
-  { title: "Nest.js", description: "Backend Framework", Icon: Nest, delay: 400 }, // Corrected description
+    {title: "Angular", description: "Frontend Framework", Icon: Angular, delay: 200},
+    {title: "TypeScript", description: "Programming Language", Icon: Typescript, delay: 200},
+    {title: "Node.js", description: "Backend Runtime", Icon: Node, delay: 400},
+    {title: "React", description: "Frontend Framework", Icon: React, delay: 400}, // Corrected description
+    {title: "Vue", description: "Frontend Framework", Icon: Vue, delay: 400}, // Corrected description
+    {title: "Firebase", description: "Backend Platform", Icon: Firebase, delay: 400}, // Corrected description
+    {title: "Flutter", description: "Mobile Platform", Icon: Flutter, delay: 400}, // Corrected description
+    {title: "Java", description: "Programming Language", Icon: Java, delay: 400}, // Corrected description
+    {title: "Spring", description: "Backend Framework", Icon: Spring, delay: 400}, // Corrected description
+    {title: "Nest.js", description: "Backend Framework", Icon: Nest, delay: 400}, // Corrected description
 ];
 ---
 
 <Layout title="About | Portfolio">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-      <div class="rounded-lg relative opacity-0 animate-fade-in overflow-hidden h-full max-md:h-[400px] max-sm:h-[300px]">
-        <Image src={myImage} alt="A description of my image." alt="Profile picture"
-        class="shadow-xl absolute max-md:bottom-0 rounded-lg" />
-      </div>
-      <div class="prose prose-primary dark:prose-invert opacity-0 animate-fade-in animation-delay-200">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">About Me</h1>
-        <div class="mt-6 text-gray-600 dark:text-gray-300">
-          <p>
-            Hello! I'm a passionate web developer with experience in modern web technologies.
-            I specialize in building responsive, user-friendly applications using frameworks
-            like Angular, React, and Vue.js. I also provide an expertise in backend development with Node.js, Firebase and Java.
-          </p>
-          <p>
-            With a strong foundation in both front-end and back-end development, I strive
-            to create seamless user experiences while maintaining clean, efficient code.
-          </p>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-8">Skills</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {skills.map(skill => (
-              <SkillCard title={skill.title} delay={skill.delay}>
-                <skill.Icon slot="icon" width={30} height={30} fill="currentColor" {...skill.iconProps} />
-              </SkillCard>
-            ))}
-          </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div class="rounded-lg relative opacity-0 animate-fade-in overflow-hidden h-full max-md:h-[400px] max-sm:h-[300px]">
+                <Image
+                        src={myImage} alt="A description of my image." alt="Profile picture"
+                        loading="lazy"
+                        decoding="async"
+                        class="shadow-xl absolute max-md:bottom-0 rounded-lg"
+                />
+            </div>
+            <div class="prose prose-primary dark:prose-invert opacity-0 animate-fade-in animation-delay-200">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">About Me</h1>
+                <div class="mt-6 text-gray-600 dark:text-gray-300">
+                    <p>
+                        Hello! I'm a passionate web developer with experience in modern web technologies.
+                        I specialize in building responsive, user-friendly applications using frameworks
+                        like Angular, React, and Vue.js. I also provide an expertise in backend development with
+                        Node.js, Firebase and Java.
+                    </p>
+                    <p>
+                        With a strong foundation in both front-end and back-end development, I strive
+                        to create seamless user experiences while maintaining clean, efficient code.
+                    </p>
+                    <div class="mt-8 mb-8">
+                        <a 
+                            href={cvPdf} 
+                            download="CV.pdf"
+                            class="no-underline inline-flex items-center px-6 py-3 bg-primary hover:bg-primary-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform"
+                        >
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Download CV
+                        </a>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-8">Skills</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                        {skills.map(skill => (
+                                <SkillCard title={skill.title} delay={skill.delay}>
+                                    <skill.Icon
+                                            slot="icon" width={30} height={30} fill="currentColor" {...skill.iconProps}
+                                    />
+                                </SkillCard>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </Layout>
