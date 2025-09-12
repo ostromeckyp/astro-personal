@@ -140,32 +140,40 @@ const pathname = new URL(Astro.request.url).pathname;
     <ScrollToTop/>
 
     <script is:inline>
-        document.addEventListener('astro:page-load', function () {
-            const handleIosChrome = () => {
-                const isChromeIOS = /CriOS/i.test(navigator.userAgent);
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const handleIosChrome = () => {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-                if (isIOS) {
-                    let navigationEntries = 1;
+            if (isIOS) {
+                let canGoBack = false;
 
-                    document.addEventListener('astro:after-swap', () => {
-                        navigationEntries++;
-                    });
+                document.addEventListener('astro:after-swap', () => {
+                    canGoBack = true;
+                    console.log('after-swap event on iOS detected', window.location.href);
+                });
 
-                    window.addEventListener('popstate', (event) => {
-                        if (navigationEntries <= 1) {
-                            // Jeśli to pierwsza strona, zastąp historię
-                            history.pushState(null, '', window.location.href);
-                        }
-                    });
-
-                    if (window.history.length <= 1) {
+                window.addEventListener('popstate', (event) => {
+                    if (!canGoBack) {
+                        // Pierwsza strona - zapobiegaj wyjściu
+                        event.preventDefault();
                         history.pushState(null, '', window.location.href);
+                        console.log('prevented exit from app - first page');
+                    } else {
+                        // Pozwól na cofnięcie się w ramach aplikacji
+                        console.log('allowing back navigation within app');
                     }
-                }
-            }
+                });
 
-            handleIosChrome();
+                // Reset flag przy wyjściu z aplikacji
+                window.addEventListener('beforeunload', () => {
+                    canGoBack = false;
+                });
+            }
+        }
+
+        handleIosChrome();
+
+
+        document.addEventListener('astro:page-load', function () {
 
             // Mobile Menu
             const burgerMenu = document.getElementById('burger-menu');
