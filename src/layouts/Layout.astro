@@ -144,28 +144,15 @@ const pathname = new URL(Astro.request.url).pathname;
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
             if (isIOS) {
-                let canGoBack = false;
-
-                document.addEventListener('astro:after-swap', () => {
-                    canGoBack = true;
-                    console.log('after-swap event on iOS detected', window.location.href);
-                });
-
-                window.addEventListener('popstate', (event) => {
-                    if (!canGoBack) {
-                        // Pierwsza strona - zapobiegaj wyjściu
-                        event.preventDefault();
-                        history.pushState(null, '', window.location.href);
-                        console.log('prevented exit from app - first page');
-                    } else {
-                        // Pozwól na cofnięcie się w ramach aplikacji
-                        console.log('allowing back navigation within app');
+                document.addEventListener('click', () => {
+                    const target = e.target;
+                    const link = target?.closest( 'a' );
+                    const shouldPushState = link && link.href && link.href.startsWith( window.location.origin ) && !link.href.includes( '#' );
+                    if ( !shouldPushState ) {
+                        return;
                     }
-                });
-
-                // Reset flag przy wyjściu z aplikacji
-                window.addEventListener('beforeunload', () => {
-                    canGoBack = false;
+                    history.pushState( null, '', link.href );
+                    window.dispatchEvent( new PopStateEvent( 'popstate' ) );
                 });
             }
         }
