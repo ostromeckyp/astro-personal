@@ -141,6 +141,32 @@ const pathname = new URL(Astro.request.url).pathname;
 
     <script is:inline>
         document.addEventListener('astro:page-load', function () {
+            const handleIosChrome = () => {
+                const isChromeIOS = /CriOS/i.test(navigator.userAgent);
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+                if (!isChromeIOS && !isIOS) {
+                    let navigationEntries = 1;
+
+                    document.addEventListener('astro:after-swap', () => {
+                        navigationEntries++;
+                    });
+
+                    window.addEventListener('popstate', (event) => {
+                        if (navigationEntries <= 1) {
+                            // Jeśli to pierwsza strona, zastąp historię
+                            history.pushState(null, '', window.location.href);
+                        }
+                    });
+
+                    if (window.history.length <= 1) {
+                        history.pushState(null, '', window.location.href);
+                    }
+                }
+            }
+
+            handleIosChrome();
+
             // Mobile Menu
             const burgerMenu = document.getElementById('burger-menu');
             const closeMenu = document.getElementById('close-menu');
