@@ -5,214 +5,240 @@ import DarkModeToggle from '../components/DarkModeToggle.astro';
 import ScrollToTop from '../components/ScrollToTop.astro';
 
 interface Props {
-  title: string;
+    title: string;
 }
 
-const { title } = Astro.props;
+const {title} = Astro.props;
 const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Astro description"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <meta name="generator" content={Astro.generator} />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
+            rel="stylesheet"
+    >
+    <meta name="generator" content={Astro.generator}/>
     <title>{title}</title>
-    <ClientRouter />
-  </head>
-  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    <div class="scroll-wrapper relative">
+    <ClientRouter/>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<div class="scroll-wrapper relative">
     <nav class="bg-white dark:bg-gray-800 shadow-sm flex-shrink-0 sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex">
-            <a href="/" class="flex items-center text-xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors duration-300">ostromecki.dev</a>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="/" class={`nav-link ${pathname === "/" ? "active" : ""}`}>Home</a>
-            <a href="/about" class={`nav-link ${pathname === "/about" ? "active" : ""}`}>About</a>
-            <a href="/blog" class={`nav-link ${pathname === "/blog" ? "active" : ""}`}>Blog</a>
-            <a href="/resume" class={`nav-link ${pathname === "/resume" ? "active" : ""}`}>Resume</a>
-            <a href="/contact" class={`nav-link ${pathname === "/contact" ? "active" : ""}`}>Contact</a>
-            <DarkModeToggle />
-          </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a
+                            href="/"
+                            class="flex items-center text-xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors duration-300"
+                    >ostromecki.dev</a>
+                </div>
 
-          {/* Mobile Menu Button */}
-          <div class="md:hidden flex items-center space-x-4">
-            <DarkModeToggle />
-            <button id="burger-menu" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none">
-              <div class="w-6 h-6 flex flex-col justify-between">
-                <span class="burger-line w-full h-0.5 bg-current"></span>
-                <span class="burger-line w-full h-0.5 bg-current"></span>
-                <span class="burger-line w-full h-0.5 bg-current"></span>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
+                {/* Desktop Navigation */}
+                <div class="hidden md:flex items-center space-x-8">
+                    <a
+                            data-astro-history="auto" href="/" class={`nav-link ${pathname === "/" ? "active" : ""}`}
+                    >Home</a>
+                    <a
+                            data-astro-history="auto" href="/about"
+                            class={`nav-link ${pathname === "/about" ? "active" : ""}`}
+                    >About</a>
+                    <a
+                            data-astro-history="auto" href="/blog"
+                            class={`nav-link ${pathname === "/blog" ? "active" : ""}`}
+                    >Blog</a>
+                    <a
+                            data-astro-history="auto" href="/resume"
+                            class={`nav-link ${pathname === "/resume" ? "active" : ""}`}
+                    >Resume</a>
+                    <a
+                            data-astro-history="auto" href="/contact"
+                            class={`nav-link ${pathname === "/contact" ? "active" : ""}`}
+                    >Contact</a>
+                    <DarkModeToggle/>
+                </div>
 
-      {/* Mobile Menu */}
-      <div id="mobile-menu" class="mobile-menu dark:bg-gray-800">
-        <div class="flex flex-col h-full">
-          <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
-            <a href="/" class="text-xl font-bold text-gray-800 dark:text-white">ostromecki.dev</a>
-            <button id="close-menu" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div class="flex flex-col p-4 space-y-4">
-            <a href="/" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/" ? "text-primary" : ""}`}>Home</a>
-            <a href="/about" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</a>
-            <a href="/blog" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/blog" ? "text-primary" : ""}`}>Blog</a>
-            <a href="/resume" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/resume" ? "text-primary" : ""}`}>Resume</a>
-            <a href="/contact" class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/contact" ? "text-primary" : ""}`}>Contact</a>
-          </div>
+                {/* Mobile Menu Button */}
+                <div class="md:hidden flex items-center space-x-4">
+                    <DarkModeToggle/>
+                    <button
+                            id="burger-menu"
+                            class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none"
+                    >
+                        <div class="w-6 h-6 flex flex-col justify-between">
+                            <span class="burger-line w-full h-0.5 bg-current"></span>
+                            <span class="burger-line w-full h-0.5 bg-current"></span>
+                            <span class="burger-line w-full h-0.5 bg-current"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
+
+        {/* Mobile Menu */}
+        <div id="mobile-menu" class="mobile-menu dark:bg-gray-800">
+            <div class="flex flex-col h-full">
+                <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+                    <a href="/" class="text-xl font-bold text-gray-800 dark:text-white">ostromecki.dev</a>
+                    <button
+                            id="close-menu"
+                            class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none"
+                    >
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col p-4 space-y-4">
+                    <a
+                            data-astro-history="auto"
+                            href="/"
+                            class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/" ? "text-primary" : ""}`}
+                    >Home</a>
+                    <a
+                            data-astro-history="auto"
+                            href="/about"
+                            class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}
+                    >About</a>
+                    <a
+                            data-astro-history="auto"
+                            href="/blog"
+                            class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/blog" ? "text-primary" : ""}`}
+                    >Blog</a>
+                    <a
+                            data-astro-history="auto"
+                            href="/resume"
+                            class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/resume" ? "text-primary" : ""}`}
+                    >Resume</a>
+                    <a
+                            data-astro-history="auto"
+                            href="/contact"
+                            class={`text-lg text-gray-600 dark:text-gray-300 hover:text-primary ${pathname === "/contact" ? "text-primary" : ""}`}
+                    >Contact</a>
+                </div>
+            </div>
+        </div>
     </nav>
     <main class="flex-grow">
         <slot/>
     </main>
     <footer class="bg-white dark:bg-gray-800">
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <p class="text-center text-gray-500">© 2025 Paweł Ostromecki Enterprise Solutions. All rights reserved.</p>
-      </div>
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500">© 2025 Paweł Ostromecki Enterprise Solutions. All rights reserved.</p>
+        </div>
     </footer>
-    <ScrollToTop />
-    
+    <ScrollToTop/>
+
     <script is:inline>
-      document.addEventListener('astro:page-load', function() {
-        // Mobile Menu
-        const burgerMenu = document.getElementById('burger-menu');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const body = document.body;
+        document.addEventListener('astro:page-load', function () {
+            // Mobile Menu
+            const burgerMenu = document.getElementById('burger-menu');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const body = document.body;
 
-        function toggleMenu() {
-          mobileMenu.classList.toggle('open');
-          burgerMenu.classList.toggle('burger-open');
-          body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-        }
+            function toggleMenu() {
+                mobileMenu.classList.toggle('open');
+                burgerMenu.classList.toggle('burger-open');
+                body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            }
 
-        burgerMenu.addEventListener('click', toggleMenu);
-        // closeMenu.addEventListener('click', toggleMenu);
+            burgerMenu.addEventListener('click', toggleMenu);
+            closeMenu.addEventListener('click', toggleMenu);
 
-        document.addEventListener('astro:after-swap', (event) => {
-          closeMenu.addEventListener('click', toggleMenu);
+            document.addEventListener('astro:after-swap', (event) => {
+                closeMenu.addEventListener('click', toggleMenu);
 
+            });
         });
-
-        // Close menu when clicking a link
-        // document.querySelectorAll('#mobile-menu a').forEach(link => {
-        //   link.addEventListener('click', () => {
-        //     // Remove transitions before closing
-        //     mobileMenu.style.transition = 'none';
-        //     document.querySelectorAll('.burger-line').forEach(line => {
-        //       line.style.transition = 'none';
-        //     });
-        //
-        //     // Close menu and reset burger
-        //     mobileMenu.classList.remove('open');
-        //     burgerMenu.classList.remove('burger-open');
-        //     body.style.overflow = '';
-        //
-        //     // Re-add transitions after a frame
-        //     requestAnimationFrame(() => {
-        //       mobileMenu.style.transition = '';
-        //       document.querySelectorAll('.burger-line').forEach(line => {
-        //         line.style.transition = '';
-        //       });
-        //     });
-        //   });
-        // });
-      });
     </script>
-    </div>
-  </body>
+</div>
+</body>
 </html>
 
 <style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background: transparent;
-    height: 100%;
-  }
-
-  body {
-    height: 100%;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-  }
-
-  .scroll-wrapper {
-    height: 100dvh; /* Ensures it takes full viewport height */
-    overflow: auto; /* Allows scrolling inside */
-    display: flex;
-    flex-direction: column;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */ 
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+    :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+                45deg,
+                rgb(var(--accent)),
+                rgb(var(--accent-light)) 30%,
+                white 60%
+        );
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+    html {
+        font-family: system-ui, sans-serif;
+        background: transparent;
+        height: 100%;
     }
-  }
 
-  .animate-fade-in {
-    animation: fadeIn 0.4s ease-out forwards;
-  }
+    body {
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
 
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
+    .scroll-wrapper {
+        height: 100dvh; /* Ensures it takes full viewport height */
+        overflow: auto; /* Allows scrolling inside */
+        display: flex;
+        flex-direction: column;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
 
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
+    code {
+        font-family: Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+    }
 
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
+    .animate-fade-in {
+        animation: fadeIn 0.4s ease-out forwards;
+    }
+
+    .animation-delay-100 {
+        animation-delay: 100ms;
+    }
+
+    .animation-delay-200 {
+        animation-delay: 200ms;
+    }
+
+    .animation-delay-300 {
+        animation-delay: 300ms;
+    }
+
+    .animation-delay-400 {
+        animation-delay: 400ms;
+    }
 </style>

@@ -15,7 +15,7 @@ const { title, image, category, date, slug, index } = Astro.props;
 
 <article 
   class="overflow-hidden rounded-xl shadow-lg dark:shadow-gray-900/10 hover:shadow-xl dark:hover:shadow-gray-900/20 transition-all duration-300 hover:-translate-y-1">
-  <a href={`/blog/${slug}`} class="group">
+  <a href={`/blog/${slug}`} data-astro-history="auto" class="group">
     <img 
       src={image} 
       alt={title}
