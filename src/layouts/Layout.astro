@@ -145,7 +145,7 @@ const pathname = new URL(Astro.request.url).pathname;
                 const isChromeIOS = /CriOS/i.test(navigator.userAgent);
                 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-                if (!isChromeIOS && !isIOS) {
+                if (isChromeIOS && isIOS) {
                     let navigationEntries = 1;
 
                     document.addEventListener('astro:after-swap', () => {
