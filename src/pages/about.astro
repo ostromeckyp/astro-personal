@@ -14,28 +14,41 @@ import Spring from '../assets/spring.svg';
 import Nest from '../assets/nest.svg';
 import SkillCard from '../components/SkillCard.astro';
 
-const skills = [
+// Hard skills split into Development and Tools
+const developmentSkills = [
     {title: "Angular", description: "Frontend Framework", Icon: Angular, delay: 200},
-    {title: "TypeScript", description: "Programming Language", Icon: Typescript, delay: 200},
-    {title: "Node.js", description: "Backend Runtime", Icon: Node, delay: 400},
-    {title: "React", description: "Frontend Framework", Icon: React, delay: 400}, // Corrected description
-    {title: "Vue", description: "Frontend Framework", Icon: Vue, delay: 400}, // Corrected description
-    {title: "Firebase", description: "Backend Platform", Icon: Firebase, delay: 400}, // Corrected description
-    {title: "Java", description: "Programming Language", Icon: Java, delay: 400}, // Corrected description
-    {title: "Spring", description: "Backend Framework", Icon: Spring, delay: 400}, // Corrected description
-    {title: "Nest.js", description: "Backend Framework", Icon: Nest, delay: 400}, // Corrected description
+    {title: "React", description: "Frontend Framework", Icon: React, delay: 300},
+    {title: "Vue", description: "Frontend Framework", Icon: Vue, delay: 400},
+    {title: "TypeScript", description: "Programming Language", Icon: Typescript, delay: 500},
+    {title: "Java", description: "Programming Language", Icon: Java, delay: 600},
+    {title: "Spring", description: "Backend Framework", Icon: Spring, delay: 700},
+    {title: "Nest.js", description: "Backend Framework", Icon: Nest, delay: 800},
+];
+
+const toolsSkills = [
+    {title: "Node.js", description: "Backend Runtime", Icon: Node, delay: 200},
+    {title: "Firebase", description: "Backend Platform", Icon: Firebase, delay: 300},
+];
+
+// Soft skills (CliftonStrengths)
+const cliftonStrengths = [
+    'Activator',
+    'Restorative',
+    'Command',
+    'Woo',
+    'Ideation'
 ];
 ---
 
 <Layout title="About | Portfolio">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div class="rounded-lg relative opacity-0 animate-fade-in overflow-hidden h-full max-md:h-[400px] max-sm:h-[300px]">
+            <div class="rounded-lg md:sticky md:top-24 md:self-start opacity-0 animate-fade-in overflow-hidden md:h-[70vh] max-md:h-[400px] max-sm:h-[300px]">
                 <Image
-                        src={myImage} alt="A description of my image." alt="Profile picture"
+                        src={myImage} alt="Profile picture"
                         loading="lazy"
                         decoding="async"
-                        class="shadow-xl absolute max-md:bottom-0 rounded-lg"
+                        class="shadow-xl w-full h-full object-cover rounded-lg"
                 />
             </div>
             <div class="prose prose-primary dark:prose-invert opacity-0 animate-fade-in animation-delay-200">
@@ -60,17 +73,34 @@ const skills = [
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
-                            Download CV
+                            Resume
                         </a>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-8">Skills</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-                        {skills.map(skill => (
-                                <SkillCard title={skill.title} delay={skill.delay}>
-                                    <skill.Icon
-                                            slot="icon" width={30} height={30} fill="currentColor" {...skill.iconProps}
-                                    />
-                                </SkillCard>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-8">Hard Skills</h2>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6">Development</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                        {developmentSkills.map(skill => (
+                            <SkillCard title={skill.title} delay={skill.delay}>
+                                <skill.Icon slot="icon" width={30} height={30} fill="currentColor" />
+                            </SkillCard>
+                        ))}
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-10">Tools</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                        {toolsSkills.map(skill => (
+                            <SkillCard title={skill.title} delay={skill.delay}>
+                                <skill.Icon slot="icon" width={30} height={30} fill="currentColor" />
+                            </SkillCard>
+                        ))}
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12">Soft Skills (CliftonStrengths)</h2>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        {cliftonStrengths.map((s, i) => (
+                            <span class="px-4 py-2 rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-200 text-sm font-medium opacity-0 animate-fade-in" style={`animation-delay: ${150 + i * 100}ms`}>
+                                {s}
+                            </span>
                         ))}
                     </div>
                 </div>

@@ -21,7 +21,8 @@ const socials = [
 ];
 ---
 
-<div class="fixed bottom-32 sm:bottom-24 left-5 z-10 flex flex-col space-y-2">
+<!-- Desktop / Tablet: static vertical socials -->
+<div class="hidden sm:flex fixed bottom-24 left-5 z-10 flex-col space-y-2">
   {socials.map(social => (
     <a
       href={social.url}
@@ -30,8 +31,79 @@ const socials = [
       aria-label={`Visit my ${social.name} profile`}
       class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary hover:bg-gray-300 dark:hover:bg-gray-600 p-3 rounded-full shadow-lg transition-colors duration-300 flex items-center justify-center w-12 h-12"
     >
-      <!-- SVG Icon -->
       <div set:html={social.icon}></div>
     </a>
   ))}
 </div>
+
+<!-- Mobile: FAB with expandable menu -->
+<div id="fab-socials" class="sm:hidden fixed bottom-5 right-5 z-20">
+  <div class="relative">
+    <!-- Menu items -->
+    <div class="absolute bottom-16 right-0 flex flex-col items-end gap-3 pointer-events-none opacity-0 transition-opacity duration-200" data-slot="items">
+      {socials.map((social, idx) => (
+        <a
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Visit my ${social.name} profile`}
+          class="translate-y-4 scale-95 opacity-0 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white p-3 rounded-full shadow-lg w-12 h-12 flex items-center justify-center transition-all duration-200"
+          style={`transition-delay: ${50 + idx * 40}ms`}
+          data-item
+        >
+          <div set:html={social.icon}></div>
+        </a>
+      ))}
+    </div>
+
+    <!-- FAB button -->
+    <button type="button" aria-expanded="false" aria-label="Open social links" class="bg-primary text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary-300">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7" data-icon-open>
+        <path fill-rule="evenodd" d="M12 4.5a1 1 0 011 1V11h5.5a1 1 0 110 2H13v5.5a1 1 0 11-2 0V13H5.5a1 1 0 110-2H11V5.5a1 1 0 011-1z" clip-rule="evenodd" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 hidden" data-icon-close>
+        <path fill-rule="evenodd" d="M5.286 6.7a1 1 0 011.414-1.414L12 10.586l5.3-5.3a1 1 0 111.414 1.414l-5.3 5.3 5.3 5.3a1 1 0 11-1.414 1.414L12 13.414l-5.3 5.3A1 1 0 115.286 17.3l5.3-5.3-5.3-5.3z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  const root = document.getElementById('fab-socials') as HTMLElement | null;
+  const btn = root?.querySelector('button') as HTMLButtonElement | null;
+  const itemsWrap = root?.querySelector('[data-slot="items"]') as HTMLElement | null;
+  const items = (root?.querySelectorAll('[data-item]') as NodeListOf<HTMLElement>) || ([] as unknown as NodeListOf<HTMLElement>);
+  const iconOpen = root?.querySelector('[data-icon-open]') as SVGElement | null;
+  const iconClose = root?.querySelector('[data-icon-close]') as SVGElement | null;
+
+  function setOpen(open: boolean) {
+    if (!root || !itemsWrap || !btn) return;
+    btn.setAttribute('aria-expanded', String(open));
+    itemsWrap.style.pointerEvents = open ? 'auto' : 'none';
+    itemsWrap.style.opacity = open ? '1' : '0';
+    items.forEach((el: HTMLElement) => {
+      el.style.transform = open ? 'translateY(0) scale(1)' : 'translateY(1rem) scale(0.95)';
+      el.style.opacity = open ? '1' : '0';
+    });
+    if (iconOpen && iconClose) {
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+    }
+  }
+
+  let isOpen = false;
+  btn?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    setOpen(isOpen);
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (e: MouseEvent) => {
+    if (!root) return;
+    const target = e.target as Node | null;
+    if (target && !root.contains(target)) {
+      isOpen = false;
+      setOpen(false);
+    }
+  });
+</script>
