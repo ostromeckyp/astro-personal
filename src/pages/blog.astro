@@ -28,3 +28,15 @@ const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'
     </div>
   </div>
 </Layout>
+<script>
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      document.querySelectorAll<HTMLElement>('.animate-fade-in').forEach((el) => {
+        el.style.animation = 'none';
+        el.style.opacity = '0';
+        void el.offsetHeight; // force reflow
+        el.style.animation = '';
+      });
+    }
+  });
+</script>
