@@ -9,7 +9,7 @@ interface Props {
 }
 
 const {title} = Astro.props;
-const pathname = Astro.url.pathname;
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <!doctype html>
@@ -40,7 +40,6 @@ const pathname = Astro.url.pathname;
                             class="flex items-center text-xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors duration-300"
                     >ostromecki.dev</a>
                 </div>
-                { pathname }
                 {/* Desktop Navigation */}
                 <div class="hidden md:flex items-center space-x-8">
                     <a
