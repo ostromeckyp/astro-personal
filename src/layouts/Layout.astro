@@ -158,6 +158,16 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
         handleIosChrome();
 
+        // Close mobile menu before page swap to prevent flash/blink during view transitions
+        document.addEventListener('astro:before-swap', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const burgerMenu = document.getElementById('burger-menu');
+            if (mobileMenu && mobileMenu.classList.contains('open')) {
+                mobileMenu.classList.remove('open');
+                if (burgerMenu) burgerMenu.classList.remove('burger-open');
+                document.body.style.overflow = '';
+            }
+        });
 
         document.addEventListener('astro:page-load', function () {
 
@@ -167,19 +177,28 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
             const mobileMenu = document.getElementById('mobile-menu');
             const body = document.body;
 
+            // Ensure menu starts closed after navigation
+            if (mobileMenu) {
+                mobileMenu.classList.remove('open');
+                // Disable transition temporarily to prevent animation on load
+                mobileMenu.style.transition = 'none';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        mobileMenu.style.transition = '';
+                    });
+                });
+            }
+            if (burgerMenu) burgerMenu.classList.remove('burger-open');
+            body.style.overflow = '';
+
             function toggleMenu() {
                 mobileMenu.classList.toggle('open');
                 burgerMenu.classList.toggle('burger-open');
                 body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
             }
 
-            burgerMenu.addEventListener('click', toggleMenu);
-            closeMenu.addEventListener('click', toggleMenu);
-
-            document.addEventListener('astro:after-swap', (event) => {
-                closeMenu.addEventListener('click', toggleMenu);
-
-            });
+            if (burgerMenu) burgerMenu.addEventListener('click', toggleMenu);
+            if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
         });
     </script>
 </div>
