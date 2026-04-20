@@ -1,9 +1,12 @@
 {
-  "mcpServers": {
-    "Astro docs": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.docs.astro.build/mcp"]
+    "mcpServers": {
+        "Astro docs": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "mcp-remote",
+                "https://mcp.docs.astro.build/mcp"
+            ]
+        }
     }
-  }
 }

@@ -14,6 +14,11 @@ export default function Contact() {
         setMessage('');
         setIsLoading(true);
 
+        // Honeypot check — if filled, a bot submitted the form
+        if (formEntries.website) {
+            return;
+        }
+
         await fetch(`/api/contact?data=${encodeURIComponent(JSON.stringify(formEntries))}`, {
             method: 'POST',
             body: JSON.stringify(formEntries)
@@ -71,6 +76,17 @@ export default function Contact() {
               required
               rows={4}
               className="mt-1 block w-full rounded-md border-gray-300 dark:border-dark-border dark:bg-dark-card dark:text-dark-text shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+            />
+          </div>
+          {/* Honeypot field — hidden from real users, bots will fill it */}
+          <div className="absolute opacity-0 top-0 left-0 h-0 w-0 -z-10" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
             />
           </div>
           <div>

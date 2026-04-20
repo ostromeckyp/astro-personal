@@ -1,11 +1,16 @@
 import type { APIRoute } from "astro";
 import { Resend } from 'resend';
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
+  const apiKey = import.meta.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return new Response(JSON.stringify({ message: 'Server configuration error: missing API key' }), { status: 500 });
+  }
+
+  const resend = new Resend(apiKey);
+
   const { data } = Object.fromEntries(new URL(request.url).searchParams);
 
   const { name, email, message } = JSON.parse(data);

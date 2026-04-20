@@ -144,7 +144,7 @@ const pathname = new URL(Astro.request.url).pathname;
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
             if (isIOS) {
-                document.addEventListener('click', () => {
+                document.addEventListener('click', (e) => {
                     const target = e.target;
                     const link = target?.closest( 'a' );
                     const shouldPushState = link && link.href && link.href.startsWith( window.location.origin ) && !link.href.includes( '#' );

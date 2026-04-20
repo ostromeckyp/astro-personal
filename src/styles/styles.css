@@ -1,18 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #39b982;
+  --color-primary-600: #2ea16f;
+  --color-primary-300: #6fcca0;
+  --color-primary-shadowed: #009e66;
+  --color-dark-card: #1f2937;
+  --color-dark-input: #374151;
+  --color-dark-border: #374151;
+
+  --font-poppins: 'Poppins', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+
+  --font-weight-light: 200;
+  --font-weight-normal: 400;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 700;
+  --font-weight-bold: 900;
+
+  --leading-none: 1em;
+  --leading-normal: 1.95em;
+  --leading-tight: 1.5em;
+  --leading-relaxed: 2.5em;
+  --leading-loose: 3.5em;
+
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
 @layer base {
-
-  html, body {
+  html,
+  body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    @apply font-poppins;
-    @apply text-base;
-    @apply font-normal;
-    @apply leading-normal;
-
+    @apply font-poppins text-base font-normal leading-normal;
   }
 
   body {
@@ -25,7 +55,6 @@
     @apply text-justify;
   }
 
-  /* Form inputs dark mode */
   input[type="text"],
   input[type="email"],
   input[type="password"],
@@ -36,7 +65,6 @@
     @apply bg-white dark:bg-dark-input text-gray-900 dark:text-white border-gray-300 dark:border-dark-border focus:border-primary dark:focus:border-primary focus:ring-primary dark:focus:ring-primary;
   }
 
-  /* Card styles */
   .card {
     @apply bg-white dark:bg-dark-card shadow-md dark:shadow-gray-900/10 rounded-lg p-6 transition-all duration-300;
   }
@@ -60,7 +88,6 @@
     @apply text-primary;
   }
 
-  /* Mobile Menu */
   .mobile-menu {
     @apply fixed inset-0 bg-white dark:bg-gray-800 z-50 md:hidden transform translate-x-full transition-transform duration-300 ease-in-out;
   }
@@ -85,7 +112,6 @@
     @apply transform -translate-y-2 -rotate-45;
   }
 
-  /* Form group */
   .form-group {
     @apply mb-4;
   }
@@ -95,14 +121,13 @@
   }
 
   .form-input {
-    @apply block w-full rounded-md shadow-sm focus:ring-2 focus:ring-opacity-50;
+    @apply block w-full rounded-md shadow-sm focus:ring-2 focus:ring-primary/50;
   }
 
   .form-error {
     @apply mt-1 text-sm text-red-600 dark:text-red-400;
   }
 
-  /* Button styles */
   .btn {
     @apply inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-gray-900 transition-all duration-300;
   }
@@ -110,4 +135,4 @@
   .btn-primary {
     @apply bg-primary hover:bg-primary-600 text-white;
   }
-} 
+}
