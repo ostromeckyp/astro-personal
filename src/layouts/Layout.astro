@@ -9,7 +9,7 @@ interface Props {
 }
 
 const {title} = Astro.props;
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = Astro.url.pathname;
 ---
 
 <!doctype html>
