@@ -1,7 +1,7 @@
 ---
 title: "Mastering Angular’s Host Property"
 excerpt: "Learn the basics of Angular and how to create your first application."
-date: "2024-01-15"
+date: "2025-01-15"
 image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qys5-VddlGTPF47smc7PYA.png"
 category: "Programming"
 slug: mastering-angular-host-property

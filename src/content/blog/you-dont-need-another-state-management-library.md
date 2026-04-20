@@ -1,7 +1,7 @@
 ---
 title: "You (don’t) need another State Management Library"
 excerpt: "Minimalistic and efficient state management approach."
-date: "2024-07-17"
+date: "2025-07-17"
 image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*lUjlKD4atLAnAl1dreZ5vw.jpeg"
 category: "Programming"
 slug: you-dont-need-another-state-management-library

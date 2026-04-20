@@ -23,12 +23,10 @@ const developmentSkills = [
     {title: "Java", description: "Programming Language", Icon: Java, delay: 600},
     {title: "Spring", description: "Backend Framework", Icon: Spring, delay: 700},
     {title: "Nest.js", description: "Backend Framework", Icon: Nest, delay: 800},
-];
-
-const toolsSkills = [
     {title: "Node.js", description: "Backend Runtime", Icon: Node, delay: 200},
     {title: "Firebase", description: "Backend Platform", Icon: Firebase, delay: 300},
 ];
+
 
 // Soft skills (CliftonStrengths)
 const cliftonStrengths = [
@@ -55,14 +53,16 @@ const cliftonStrengths = [
                 <h1 class="text-3xl font-bold text-gray-900 dark:text-white">About Me</h1>
                 <div class="mt-6 text-gray-600 dark:text-gray-300">
                     <p>
-                        Hello! I'm a passionate web developer with experience in modern web technologies.
-                        I specialize in building responsive, user-friendly applications using frameworks
-                        like Angular, React, and Vue.js. I also provide an expertise in backend development with
-                        Node.js, Firebase and Java.
+                        I'm a senior frontend engineer who's spent years deep in Angular, TypeScript, and the broader JavaScript ecosystem — building complex, production-grade applications and caring way too much about clean architecture, performance, and developer experience. I'm equally comfortable wiring up a Node.js or Spring backend, but the frontend is where I do my best thinking.
                     </p>
                     <p>
-                        With a strong foundation in both front-end and back-end development, I strive
-                        to create seamless user experiences while maintaining clean, efficient code.
+                        Beyond shipping code, I lead the Angular Wrocław community — organizing meetups, giving talks, running hands-on workshops, and mentoring developers who are leveling up their skills. I don't just participate in the local Angular ecosystem; I actively shape it. Open source is another outlet for that energy, and you can find my contributions on GitHub at <a href="https://github.com/ostromeckyp" class="text-primary hover:underline">@ostromeckyp</a>.
+                    </p>
+                    <p>
+                        Teaching and mentoring have become as important to me as engineering itself. There's something deeply rewarding about helping another developer have that "aha" moment — whether it's on stage at a meetup, in a workshop, or during a code review. It keeps me sharp and honest about what I actually know.
+                    </p>
+                    <p>
+                        Lately, I've been increasingly drawn to the intersection of frontend engineering and AI-powered intelligent systems — and I'm excited about where that convergence is heading next.
                     </p>
                     <div class="mt-8 mb-8">
                         <a 
@@ -85,16 +85,6 @@ const cliftonStrengths = [
                             </SkillCard>
                         ))}
                     </div>
-
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-10">Tools</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                        {toolsSkills.map(skill => (
-                            <SkillCard title={skill.title} delay={skill.delay}>
-                                <skill.Icon slot="icon" width={30} height={30} fill="currentColor" />
-                            </SkillCard>
-                        ))}
-                    </div>
-
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12">Soft Skills (CliftonStrengths)</h2>
                     <div class="flex flex-wrap gap-3 mt-6">
                         {cliftonStrengths.map((s, i) => (
