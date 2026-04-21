@@ -42,3 +42,6 @@ next-env.d.ts
 
 # astro legacy
 .astro/
+
+# Jetbrains IDEs
+.idea
