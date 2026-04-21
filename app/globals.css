@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #39b982;
+  --color-primary-600: #2ea16f;
+  --color-primary-300: #6fcca0;
+  --color-primary-200: #a5dfc3;
+  --color-primary-shadowed: #009e66;
+  --color-dark-card: #1f2937;
+  --color-dark-input: #374151;
+  --color-dark-border: #374151;
+  --color-dark-text: #e5e7eb;
+
+  --font-poppins: var(--font-poppins), sans-serif;
+  --font-heading: var(--font-poppins), sans-serif;
+
+  --font-weight-light: 200;
+  --font-weight-normal: 400;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 700;
+  --font-weight-bold: 900;
+
+  --leading-none: 1em;
+  --leading-normal: 1.95em;
+  --leading-tight: 1.5em;
+  --leading-relaxed: 2.5em;
+  --leading-loose: 3.5em;
+
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    @apply font-poppins text-base font-normal leading-normal;
+  }
+
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    min-height: 100vh;
+  }
+
+  p {
+    @apply text-justify;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  textarea {
+    @apply bg-white dark:bg-dark-input text-gray-900 dark:text-white border-gray-300 dark:border-dark-border focus:border-primary dark:focus:border-primary focus:ring-primary dark:focus:ring-primary;
+  }
+
+  .card {
+    @apply bg-white dark:bg-dark-card shadow-md dark:shadow-gray-900/10 rounded-lg p-6 transition-all duration-300;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative inline-flex items-center px-1 pt-1 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute w-0 h-0.5 bottom-0 left-0 bg-primary transition-all duration-300;
+  }
+
+  .nav-link[data-active="true"]::after {
+    @apply w-full;
+  }
+
+  .nav-link[data-active="true"] {
+    @apply text-primary;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* View Transitions API — smooth morph between blog list and post detail. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-group(*) {
+  animation-duration: 320ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 200ms !important;
+  }
+}
