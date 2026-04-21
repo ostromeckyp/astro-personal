@@ -110,7 +110,6 @@ export default function AboutPage() {
                 <SkillCard
                   key={skill.title}
                   title={skill.title}
-                  description={skill.description}
                   delay={skill.delay}
                   icon={
                     <Image

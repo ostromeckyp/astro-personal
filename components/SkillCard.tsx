@@ -18,9 +18,6 @@ export function SkillCard({ title, description, delay = 0, icon }: SkillCardProp
           </div>
           <span className="text-lg font-semibold text-gray-900 dark:text-white">{title}</span>
         </div>
-        {description && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{description}</p>
-        )}
       </Card>
     </div>
   );
