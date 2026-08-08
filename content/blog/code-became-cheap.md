@@ -3,7 +3,7 @@ title: "Code Became Cheap. Did Developer Knowledge Become Cheap Too?"
 excerpt: "When implementation becomes abundant, selection becomes the work."
 date: "20256-08-08"
 image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Kavg6Y1VzvfpQ9QgyiCJ5g.png"
-category: "Programming"
+category: "Artificial Intelligence"
 slug: code-became-cheap
 ---
 
