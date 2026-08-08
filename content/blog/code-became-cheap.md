@@ -7,8 +7,6 @@ category: "Programming"
 slug: code-became-cheap
 ---
 
-![A developer stands between a flood of generated code and a small set of deliberately chosen architectural blocks.](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Kavg6Y1VzvfpQ9QgyiCJ5g.png)
-
 [Reference](https://medium.com/@pawel.ostromecky/code-became-cheap-did-developer-knowledge-become-cheap-too-3e641aa9a63b)
 
 For roughly eight years, I had a simple model of becoming a better developer.
