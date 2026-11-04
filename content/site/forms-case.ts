@@ -1,0 +1,85 @@
+import type { Shot } from "@/components/case-study/ShotFigure";
+import type { StoryItem } from "@/components/case-study/StoryList";
+
+const img = (name: string) => `/images/use-cases/${name}`;
+
+export const FORMS_CASE = {
+  label: "Use case · regtech · client work",
+  title: "No-code forms for a regulated industry.",
+  lede: "A drag-and-drop platform where analysts build compliance forms — registrations, filings, multi-step applications — and wire them to real APIs without writing code. I work on it as an external contract engineer, contributing to its product design and architecture, and I'm now helping the client's team bring an AI agent into the same workflow.",
+  stack: ["Angular", "Drag & drop", "OpenAPI bindings", "Rules engine", "MCP", "AI agent"],
+  story: [
+    { k: "problem", t: "Every form was a dev ticket", d: "Regulatory forms change often and run to dozens of fields with conditional logic. Hand-coding each one doesn't scale." },
+    { k: "product", t: "A designer, not a code editor", d: "Drag components onto a canvas, configure them in one settings dialog, preview, save and publish." },
+    { k: "wiring", t: "Bound to real APIs", d: "Fields bind to OpenAPI contracts registered in the project, so every form submits to and loads from a real endpoint." },
+    { k: "my part", t: "Contributor, as a contractor", d: "Contributed to the designer UX, the element-settings model, conditions and bindings, step forms, host integration and the in-app guide, working within the client's team." },
+  ] satisfies StoryItem[],
+  disclosure: {
+    ariaLabel: "Ownership disclosure",
+    label: "Disclosure",
+    title: "Client-owned product",
+    lead: "This platform is not mine.",
+    first: "It is owned and operated by a client. I work on it as an external contractor, and the product, its source code, designs, documentation and all related IP belong to the client.",
+    second: "It appears here only to describe my contribution as part of a larger team. The client name, product branding and real data have been removed, and the screenshots come from a development environment with sample data.",
+  },
+  hero: {
+    kicker: "01 · no-code forms · client work",
+    heading: "Compliance forms, drag and drop.",
+    url: "form designer · step form · registration",
+    src: img("forms-designer.jpg"),
+    alt: "Form designer: component palette on the left, a multi-step registration form on the canvas with per-step problem counters",
+    crop: { backgroundSize: "134.58% auto", backgroundPosition: "76.22% 14.12%", aspectRatio: "1070/72" },
+    pill: "59 problems caught before publish",
+    n: "fig. 01",
+    captionLead: "Drag, drop, configure.",
+    caption: "30 components from text fields to repeaters and charts. Step forms get one tab per step, and a live problems counter flags every misconfigured element before anything is published.",
+  },
+  shots: [
+    {
+      n: "fig. 02",
+      src: img("forms-settings.jpg"),
+      url: "element settings · conditional",
+      tilt: "left",
+      crop: { backgroundSize: "169.41% auto", backgroundPosition: "60.17% 65.93%", aspectRatio: "850/200" },
+      cropPosition: { left: "4%", bottom: "6%", width: "66%" },
+      alt: "Element settings dialog on the Conditional tab: show this field when all conditions are met",
+      t: "Logic without code",
+      d: "Every element has the same settings dialog: display, data, validation, conditional rules, actions, API bindings and triggers. Show, hide, relabel or require a field based on other answers.",
+    },
+    {
+      n: "fig. 03",
+      src: img("forms-preview.jpg"),
+      url: "form preview · step 1 of 5",
+      tilt: "right",
+      crop: { backgroundSize: "346.99% auto", backgroundPosition: "95.61% 38.70%", aspectRatio: "415/390" },
+      cropPosition: { right: "4%", bottom: "6%", width: "40%" },
+      alt: "Preview of a multi-step registration form with a helpful-tips panel",
+      t: "What the filer sees",
+      d: "Step-by-step flow with contextual tips next to each step, exactly as it will run when embedded in the host application.",
+    },
+  ] satisfies Shot[],
+  docs: {
+    n: "fig. 04",
+    heading: "A product people can learn alone.",
+    body: "The guide lives inside the app: plain-language explanations for form builders, “Technical” boxes for whoever wires up APIs, recipes for common needs, and a host-integration section for embedding forms in other applications.",
+    url: "form designer · how to use · getting started",
+    src: img("forms-guide.jpg"),
+    alt: "In-app getting-started guide with a table of the guide's sections",
+    crop: { backgroundSize: "160.00% auto", backgroundPosition: "49.63% 87.89%", aspectRatio: "900/325" },
+  },
+  mcp: {
+    label: "current engagement · MCP server",
+    heading: "Hiring AI into the form workflow.",
+    body: "With the client's team, I'm building an MCP server that exposes the platform to an AI agent as tools. The agent drafts a form from a JSON Schema or a regulation's requirements, the designer validates it like any human-built form, and a person reviews and publishes. The agent speeds up the first 80% and never skips the checks.",
+    notes: ["same validation, same review, same publish step", "the agent proposes, people approve"],
+    flow: [
+      { n: "01", who: "input", t: "Schema or regulation", d: "A JSON Schema, an API contract or the requirements text." },
+      { n: "02", who: "agent", t: "Drafts via MCP", d: "Calls platform tools to add steps, elements, rules and bindings.", accent: true },
+      { n: "03", who: "platform", t: "Validates", d: "The same problems counter as for human-built forms." },
+      { n: "04", who: "person", t: "Reviews in the designer", d: "Edits anything by hand: it's an ordinary form now." },
+      { n: "05", who: "person", t: "Publishes", d: "Only a person can push a form live." },
+    ],
+  },
+  footnote: "client-owned product · shown to describe my contribution as a contractor · names, branding and data removed",
+  cta: "Talk about your workflow",
+};
