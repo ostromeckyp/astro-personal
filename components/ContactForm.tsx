@@ -1,148 +1,166 @@
 "use client";
 
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { type ContactInput, contactSchema } from "@/lib/contact-schema";
+import { useForm, useWatch } from "react-hook-form";
+import { useContactMutation } from "@/app/hooks/use-contact-mutation";
+import { Button } from "@/components/ui/Button";
+import { TextLink } from "@/components/ui/TextLink";
+import { CONTACT } from "@/content/site/contact";
 import { cn } from "@/lib/cn";
-import { useContactMutation } from '@/app/hooks/use-contact-mutation';
+import { CONTACT_TOPICS, type ContactInput, contactSchema } from "@/lib/contact-schema";
+
+const { form: copy, success } = CONTACT;
+
+const FIELD =
+  "rounded-input border border-ink-600 bg-ink-950 text-base text-ink-0 outline-none placeholder:text-ink-500 focus:border-sakura-500 focus:shadow-[0_0_0_4px_rgba(250,9,128,0.18)] aria-invalid:border-sakura-300";
+
+function FieldError({ id, message }: { id: string; message?: string }) {
+  if (!message) return null;
+  return (
+    <p id={id} role="alert" className="text-[13px] text-sakura-300">
+      {message}
+    </p>
+  );
+}
 
 export function ContactForm() {
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: {errors},
-    } = useForm<ContactInput>({
-        resolver: zodResolver(contactSchema),
-        defaultValues: {name: "", email: "", message: "", website: ""},
-    });
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    control,
+    formState: { errors },
+  } = useForm<ContactInput>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: { topic: "workflow", name: "", email: "", company: "", message: "", website: "" },
+  });
+  const topic = useWatch({ control, name: "topic" });
+  const mutation = useContactMutation();
 
-    const mutation = useContactMutation(reset)
-
-    const onSubmit = handleSubmit((values) => {
-        if (values.website) return; // honeypot tripped
-        mutation.mutate(values);
-    });
-
-    const inputClass =
-        "mt-1 block w-full rounded-md border-gray-300 dark:border-dark-border dark:bg-dark-card dark:text-dark-text shadow-sm focus:border-primary focus:ring-primary sm:text-sm";
-
+  if (mutation.isSuccess) {
     return (
-        <form onSubmit={onSubmit} className="space-y-6" noValidate>
-            <div>
-                <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-dark-text"
-                >
-                    Name
-                </label>
-                <input
-                    id="name"
-                    type="text"
-                    autoComplete="name"
-                    aria-invalid={!!errors.name || undefined}
-                    aria-describedby={errors.name ? "name-error" : undefined}
-                    className={inputClass}
-                    {...register("name")}
-                />
-                {errors.name && (
-                    <p id="name-error" role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
-                        {errors.name.message}
-                    </p>
-                )}
-            </div>
-
-            <div>
-                <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-dark-text"
-                >
-                    Email
-                </label>
-                <input
-                    id="email"
-                    type="email"
-                    autoComplete="email"
-                    aria-invalid={!!errors.email || undefined}
-                    aria-describedby={errors.email ? "email-error" : undefined}
-                    className={inputClass}
-                    {...register("email")}
-                />
-                {errors.email && (
-                    <p id="email-error" role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
-                        {errors.email.message}
-                    </p>
-                )}
-            </div>
-
-            <div>
-                <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 dark:text-dark-text"
-                >
-                    Message
-                </label>
-                <textarea
-                    id="message"
-                    rows={4}
-                    autoComplete="off"
-                    aria-invalid={!!errors.message || undefined}
-                    aria-describedby={errors.message ? "message-error" : undefined}
-                    className={inputClass}
-                    {...register("message")}
-                />
-                {errors.message && (
-                    <p
-                        id="message-error"
-                        role="alert"
-                        className="mt-1 text-sm text-red-600 dark:text-red-400"
-                    >
-                        {errors.message.message}
-                    </p>
-                )}
-            </div>
-
-            {/* Honeypot — hidden from real users */}
-            <div className="absolute opacity-0 top-0 left-0 h-0 w-0 -z-10" aria-hidden="true">
-                <label htmlFor="website">Website</label>
-                <input
-                    id="website"
-                    type="text"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    {...register("website")}
-                />
-            </div>
-
-            <div>
-                <button
-                    type="submit"
-                    disabled={mutation.isPending}
-                    aria-busy={mutation.isPending}
-                    className={cn(
-                        "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-shadowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200",
-                        mutation.isPending && "opacity-50 cursor-not-allowed",
-                    )}
-                >
-                    {mutation.isPending ? "Sending…" : "Send Message"}
-                </button>
-            </div>
-
-            {mutation.isSuccess && (
-                <p
-                    role="status"
-                    aria-live="polite"
-                    className="mt-4 text-sm text-green-600 dark:text-green-400"
-                >
-                    <span className="block">Your message has been sent!</span>
-                    <span className="block">Thank you for reaching out.</span>
-                </p>
-            )}
-            {mutation.isError && (
-                <p role="alert" className="mt-4 text-sm text-red-600 dark:text-red-400">
-                    {mutation.error instanceof Error ? mutation.error.message : "Something went wrong"}
-                </p>
-            )}
-        </form>
+      <div role="status" className="flex min-h-[480px] flex-col justify-center gap-4">
+        <span aria-hidden="true" className="h-0.5 w-10 bg-sakura-500" />
+        <span className="text-[32px] leading-[1.1] font-semibold tracking-[-0.03em]">{success.title}</span>
+        <span className="text-base leading-[1.6] text-ink-400">{success.body}</span>
+        <TextLink href="/use-cases" className="self-start">
+          {success.link}
+        </TextLink>
+      </div>
     );
+  }
+
+  return (
+    <form onSubmit={handleSubmit((values) => mutation.mutate(values))} noValidate className="relative flex flex-col gap-[22px]">
+      <fieldset className="flex flex-col gap-2.5">
+        <legend className="mb-2.5 text-[13px] text-ink-400">{copy.need}</legend>
+        <div className="flex flex-wrap gap-2">
+          {CONTACT_TOPICS.map((t) => {
+            const pressed = t.value === topic;
+            return (
+              <button
+                key={t.value}
+                type="button"
+                aria-pressed={pressed}
+                onClick={() => setValue("topic", t.value)}
+                className={cn(
+                  "h-10 rounded-full border px-4 text-sm transition-colors",
+                  pressed ? "border-ink-0 bg-ink-0 text-ink-950" : "border-ink-600 text-ink-200 hover:border-ink-500",
+                )}
+              >
+                {t.label}
+              </button>
+            );
+          })}
+        </div>
+      </fieldset>
+
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="name" className="text-[13px] text-ink-400">
+            {copy.name}
+          </label>
+          <input
+            id="name"
+            type="text"
+            autoComplete="name"
+            placeholder={copy.namePlaceholder}
+            aria-invalid={!!errors.name || undefined}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            className={cn(FIELD, "h-[52px] px-4")}
+            {...register("name")}
+          />
+          <FieldError id="name-error" message={errors.name?.message} />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="text-[13px] text-ink-400">
+            {copy.email}
+          </label>
+          <input
+            id="email"
+            type="email"
+            autoComplete="email"
+            placeholder="name@company.com"
+            aria-invalid={!!errors.email || undefined}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className={cn(FIELD, "h-[52px] px-4")}
+            {...register("email")}
+          />
+          <FieldError id="email-error" message={errors.email?.message} />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="company" className="text-[13px] text-ink-400">
+          {copy.company} <span className="text-ink-500">{copy.optional}</span>
+        </label>
+        <input
+          id="company"
+          type="text"
+          autoComplete="organization"
+          placeholder={copy.companyPlaceholder}
+          aria-invalid={!!errors.company || undefined}
+          aria-describedby={errors.company ? "company-error" : undefined}
+          className={cn(FIELD, "h-[52px] px-4")}
+          {...register("company")}
+        />
+        <FieldError id="company-error" message={errors.company?.message} />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="message" className="text-[13px] text-ink-400">
+          {copy.message}
+        </label>
+        <textarea
+          id="message"
+          rows={6}
+          placeholder={copy.messagePlaceholder}
+          aria-invalid={!!errors.message || undefined}
+          aria-describedby={errors.message ? "message-error" : undefined}
+          className={cn(FIELD, "resize-y px-4 py-3.5 leading-normal")}
+          {...register("message")}
+        />
+        <FieldError id="message-error" message={errors.message?.message} />
+      </div>
+
+      {/* Honeypot, hidden from real users */}
+      <div className="absolute top-0 left-0 -z-10 h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
+      </div>
+
+      {mutation.isError && (
+        <p role="alert" className="text-sm text-sakura-300">
+          {mutation.error instanceof Error ? mutation.error.message : copy.errorFallback}
+        </p>
+      )}
+
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <span className="text-[13px] text-ink-400">{copy.privacy}</span>
+        <Button type="submit" size="lg" disabled={mutation.isPending} aria-busy={mutation.isPending}>
+          {mutation.isPending ? copy.sending : copy.send}
+        </Button>
+      </div>
+    </form>
+  );
 }

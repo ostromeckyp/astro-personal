@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { contactSchema } from "@/lib/contact-schema";
+import { CONTACT_TOPICS, contactSchema } from "@/lib/contact-schema";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: first }, { status: 400 });
   }
 
-  const { name, email, message, website } = parsed.data;
+  const { name, email, message, topic, company, website } = parsed.data;
   // Honeypot: silently succeed without sending
   if (website) {
     return NextResponse.json({ message: "Your message has been sent!" }, { status: 200 });
@@ -42,13 +42,16 @@ export async function POST(request: Request) {
     );
   }
 
+  const topicLabel = CONTACT_TOPICS.find((t) => t.value === topic)?.label ?? topic;
+  const companyLine = company ? `<p>Company: ${escape(company)}</p>` : "";
+
   const resend = new Resend(apiKey);
   const result = await resend.emails.send({
     from: "delivered@ostromecki.dev",
     to: ["contact@ostromecki.dev"],
     replyTo: email,
     subject: `Contact from ${name}`,
-    html: `<h2>From: ${escape(name)} &lt;${escape(email)}&gt;</h2><p>${escape(message).replace(/\n/g, "<br/>")}</p>`,
+    html: `<h2>From: ${escape(name)} &lt;${escape(email)}&gt;</h2><p>Topic: ${escape(topicLabel)}</p>${companyLine}<p>${escape(message).replace(/\n/g, "<br/>")}</p>`,
   });
 
   if (result.error) {
