@@ -1,9 +1,12 @@
 ---
 title: "Mastering Angular’s Host Property"
-excerpt: "Learn the basics of Angular and how to create your first application."
+excerpt: "How the revamped host property replaces @HostListener and @HostBinding, works with signals, and how to migrate with the ngxtension script."
 date: "2025-03-13"
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qys5-VddlGTPF47smc7PYA.png"
-category: "Programming"
+image: "/images/blog/angular-host-property.jpg"
+imageAlt: "Illustration: a fox in glasses working at a computer"
+imagePosition: "50% 40%"
+category: "Angular"
+label: "angular"
 slug: mastering-angular-host-property
 ---
 

@@ -1,9 +1,12 @@
 ---
 title: "You don't need another state management library - vol.2"
-excerpt: "Minimalistic and efficient state management approach."
+excerpt: "The same Flux-like pattern as part one, now with connect from ngxtension: no manual subscriptions, and one error handler instead of hundreds of failure actions."
 date: "2026-03-12"
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ymtR70kLdmu-k-lnbGEiqg.png"
-category: "Programming"
+image: "/images/blog/state-management-vol-2.jpg"
+imageAlt: "Illustration: the Angular logo at the centre of a state flow cycle"
+imagePosition: "50% 50%"
+category: "Angular"
+label: "angular · state"
 slug: you-dont-need-another-state-management-library2
 ---
 

@@ -1,9 +1,12 @@
 ---
 title: "Code Became Cheap. Did Developer Knowledge Become Cheap Too?"
-excerpt: "When implementation becomes abundant, selection becomes the work."
-date: "20256-08-08"
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Kavg6Y1VzvfpQ9QgyiCJ5g.png"
+excerpt: "AI made a large part of what I spent eight years learning surprisingly cheap. Cheaper code is still not the same as a cheaper good decision."
+date: "2026-08-08"
+image: "/images/blog/code-became-cheap.jpg"
+imageAlt: "A figure standing between a wall of code fragments and a few simple blocks"
+imagePosition: "50% 45%"
 category: "Artificial Intelligence"
+label: "artificial intelligence"
 slug: code-became-cheap
 ---
 
