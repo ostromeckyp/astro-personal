@@ -1,92 +1,156 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
-import { FormattedDate } from "@/components/FormattedDate";
-import { getAllSlugs, getPostBySlug } from "@/lib/posts";
+import { notFound } from "next/navigation";
+import { PostCard } from "@/components/blog/PostCard";
+import { ShareLinks } from "@/components/blog/ShareLinks";
+import { TableOfContents } from "@/components/blog/TableOfContents";
+import { Button } from "@/components/ui/Button";
+import { Tag } from "@/components/ui/Tag";
+import { TextLink } from "@/components/ui/TextLink";
+import { ARTICLE } from "@/content/site/blog";
+import { formatPostDate } from "@/lib/format-date";
+import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/posts";
 
 interface Params {
-    slug: string;
+  slug: string;
 }
 
 export function generateStaticParams(): Params[] {
-    return getAllSlugs().map((slug) => ({slug}));
+  return getAllSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
-                                           params,
-                                       }: {
-    params: Promise<Params>;
-}): Promise<Metadata> {
-    const {slug} = await params;
-    const post = await getPostBySlug(slug);
-    if (!post) return {title: "Post not found"};
-    return {
-        title: post.title,
-        description: post.excerpt,
-        openGraph: {
-            title: post.title,
-            description: post.excerpt,
-            images: [post.image],
-            type: "article",
-            publishedTime: post.date,
-        },
-    };
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) return { title: "Post not found" };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+      type: "article",
+      publishedTime: post.date,
+    },
+  };
 }
 
-export default async function BlogPostPage({params}: { params: Promise<Params> }) {
-    const {slug} = await params;
-    const post = await getPostBySlug(slug);
-    if (!post) notFound();
+export default async function BlogPostPage({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) notFound();
 
-    return (
-        <article className="prose prose-primary dark:prose-invert max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="mb-8 not-prose">
-                <Link
-                    href="/blog"
-                    className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary mb-6 no-underline"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 mr-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                        />
-                    </svg>
-                    Back to Blog
-                </Link>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-[400px] object-cover rounded-xl shadow-lg dark:shadow-gray-900/10"
-                    />
+  const morePosts = getAllPosts()
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3);
+
+  return (
+    <>
+      <header className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute top-[-30%] right-[-10%] h-[160%] w-[70%] bg-[radial-gradient(closest-side,rgba(250,9,128,0.22),rgba(250,9,128,0)_100%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute top-[30%] left-[-5%] h-px w-[130%] origin-top-left -rotate-6 bg-ink-0/8"
+        />
+        <div className="site-container relative flex flex-col gap-7 pt-[72px] pb-14">
+          <Link href="/blog" className="inline-flex items-center gap-2 self-start text-sm text-ink-400 hover:text-ink-0">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M11 18l-6-6 6-6" />
+            </svg>
+            {ARTICLE.back}
+          </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            <Tag className="border-sakura-500 text-sakura-500">{post.category}</Tag>
+            <span className="font-mono text-xs text-ink-400">
+              {formatPostDate(post.date, "long")} · about {post.readingMinutes} min read
+            </span>
+          </div>
+          <h1 className="max-w-[980px] text-[clamp(40px,5.4vw,80px)] leading-[0.98] font-semibold tracking-[-0.045em]">
+            {post.title}
+          </h1>
+          <p className="max-w-[720px] text-xl leading-[1.55] text-ink-400">{post.excerpt}</p>
+          <div className="flex items-center gap-3.5 pt-2">
+            <Image
+              src="/images/portrait.jpg"
+              alt=""
+              width={44}
+              height={44}
+              className="size-11 rounded-full object-cover object-[50%_25%]"
+            />
+            <div className="flex flex-col gap-0.5">
+              <span className="text-[15px] font-medium">{ARTICLE.author}</span>
+              <span className="text-[13px] text-ink-400">{ARTICLE.role}</span>
             </div>
-            <div className="mx-auto">
-                <div className="mb-8 not-prose">
-                        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                            {post.title}
-                        </h1>
-                    <div className="flex items-center text-gray-500 dark:text-gray-400">
-                        <span className="bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">
-                            {post.category}
-                        </span>
-                        <span className="mx-2" aria-hidden="true">•</span>
-                        <FormattedDate date={post.date}/>
-                    </div>
-                </div>
-                <div
-                    className="dark:text-gray-300"
-                    dangerouslySetInnerHTML={{__html: post.contentHtml}}
-                />
+          </div>
+        </div>
+      </header>
+
+      <figure className="site-container pt-12">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-ink-600 bg-ink-900 md:aspect-[21/9]">
+          <Image
+            src={post.image}
+            alt={post.imageAlt}
+            fill
+            priority
+            sizes="(min-width: 1248px) 1200px, 100vw"
+            style={{ objectPosition: post.imagePosition }}
+            className="object-cover"
+          />
+        </div>
+      </figure>
+
+      <div className="site-container flex flex-col items-start gap-14 pt-16 pb-24 lg:flex-row">
+        <aside className="flex w-full shrink-0 flex-col gap-4 lg:sticky lg:top-28 lg:w-[260px]">
+          {post.toc.length >= 2 && <TableOfContents items={post.toc} />}
+          <div className="border-t border-ink-700 pt-4">
+            <ShareLinks url={`https://ostromecki.dev/blog/${post.slug}`} title={post.title} />
+          </div>
+        </aside>
+        <article
+          className="article-prose w-full max-w-[720px] min-w-0"
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
+      </div>
+
+      <div className="site-container pb-24">
+        <div className="flex flex-wrap items-center justify-between gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 md:p-10">
+          <div className="flex flex-[1_1_420px] flex-wrap items-center gap-5">
+            <Image
+              src="/images/portrait.jpg"
+              alt={ARTICLE.authorAlt}
+              width={88}
+              height={88}
+              className="size-[88px] shrink-0 rounded-full object-cover object-[50%_25%]"
+            />
+            <div className="flex min-w-0 flex-[1_1_240px] flex-col gap-1.5">
+              <span className="text-xl font-semibold tracking-[-0.015em]">{ARTICLE.author}</span>
+              <span className="text-[15px] leading-[1.55] text-ink-400">{ARTICLE.bio}</span>
             </div>
-        </article>
-    );
+          </div>
+          <Button href="/contact" size="lg">
+            {ARTICLE.cta}
+          </Button>
+        </div>
+      </div>
+
+      {morePosts.length > 0 && (
+        <section className="site-container flex flex-col gap-8 pb-32">
+          <div className="flex flex-wrap items-baseline justify-between gap-4">
+            <h2 className="text-[32px] font-semibold tracking-[-0.03em]">{ARTICLE.more}</h2>
+            <TextLink href="/blog">{ARTICLE.all}</TextLink>
+          </div>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
+            {morePosts.map((p) => (
+              <PostCard key={p.slug} post={p} showExcerpt={false} />
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  );
 }

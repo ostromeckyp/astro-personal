@@ -41,20 +41,23 @@ export interface Post extends PostSummary {
 }
 
 /** Colors from the Article board's code figure. */
+const CODE_TOKENS = [
+  { settings: { foreground: "#E4E4E8" } },
+  { scope: ["comment", "punctuation.definition.comment"], settings: { foreground: "#5B5B66" } },
+  {
+    scope: ["keyword", "storage", "storage.type", "storage.modifier", "constant.language", "variable.language"],
+    settings: { foreground: "#FF6AB0" },
+  },
+  { scope: ["entity.name.function", "support.function", "meta.function-call"], settings: { foreground: "#9AD1FF" } },
+];
+
+// Shiki reads `settings`; rehype-pretty-code only recognises a custom theme by `tokenColors`.
 const CODE_THEME: ThemeRegistrationRaw = {
   name: "spotlight",
   type: "dark",
-  settings: [],
   colors: { "editor.foreground": "#E4E4E8", "editor.background": "#00000000" },
-  tokenColors: [
-    { settings: { foreground: "#E4E4E8" } },
-    { scope: ["comment", "punctuation.definition.comment"], settings: { foreground: "#5B5B66" } },
-    {
-      scope: ["keyword", "storage", "storage.type", "storage.modifier", "constant.language", "variable.language"],
-      settings: { foreground: "#FF6AB0" },
-    },
-    { scope: ["entity.name.function", "support.function", "meta.function-call"], settings: { foreground: "#9AD1FF" } },
-  ],
+  settings: CODE_TOKENS,
+  tokenColors: CODE_TOKENS,
 };
 
 /** Parses a `YYYY-MM-DD` date to a timestamp. Throws so a typo fails the build instead of sorting wrongly. */

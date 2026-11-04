@@ -16,8 +16,8 @@ export function PageHeader({
   return (
     <header
       className={cn(
-        "relative grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-end gap-12 pt-20 pb-20 md:pt-28",
-        className,
+        "relative grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-end gap-12 pt-20 md:pt-28",
+        className ?? "pb-20",
       )}
     >
       <div className="flex flex-col gap-6">

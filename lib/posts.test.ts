@@ -55,6 +55,10 @@ describe("renderMarkdown", () => {
     expect((await renderMarkdown("```ts\nconst a = 1;\n```\n")).html).toContain('data-language="ts"');
   });
 
+  it("highlights keywords with the design's colors", async () => {
+    expect((await renderMarkdown("```ts\nconst a = 1;\n```\n")).html.toLowerCase()).toContain("#ff6ab0");
+  });
+
   it("does not fail on an unknown language", async () => {
     await expect(renderMarkdown("```not-a-language\nx\n```\n")).resolves.toBeDefined();
   });
