@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { unstable_ViewTransition as ViewTransition } from "react";
 import { FormattedDate } from "@/components/FormattedDate";
 import { getAllSlugs, getPostBySlug } from "@/lib/posts";
 
@@ -64,21 +63,17 @@ export default async function BlogPostPage({params}: { params: Promise<Params> }
                     Back to Blog
                 </Link>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <ViewTransition name={`post-image-${slug}`}>
                     <img
                         src={post.image}
                         alt={post.title}
                         className="w-full h-[400px] object-cover rounded-xl shadow-lg dark:shadow-gray-900/10"
                     />
-                </ViewTransition>
             </div>
             <div className="mx-auto">
                 <div className="mb-8 not-prose">
-                    <ViewTransition name={`post-title-${slug}`}>
                         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
                             {post.title}
                         </h1>
-                    </ViewTransition>
                     <div className="flex items-center text-gray-500 dark:text-gray-400">
                         <span className="bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">
                             {post.category}

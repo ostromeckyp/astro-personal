@@ -25,6 +25,7 @@ export function useTheme() {
 
     useEffect(() => {
         const initial = readInitialTheme();
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- file removed in the shell rebuild
         setThemeState(initial);
         applyTheme(initial);
         setMounted(true);

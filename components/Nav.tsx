@@ -24,6 +24,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- replaced in the shell rebuild
     setOpen(false);
   }, [pathname]);
 

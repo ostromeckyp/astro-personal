@@ -1,10 +1,10 @@
 # ostromecki.dev
 
-Personal portfolio + blog — Next.js 15 (App Router) · TypeScript · Tailwind CSS 4 · React Query · react-hook-form + zod · Resend.
+Personal portfolio + blog — Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · React Query · react-hook-form + zod · Resend.
 
 ## Stack
 
-- **Next.js 15** (App Router, SSR by default; blog pages statically generated)
+- **Next.js 16** (App Router, SSR by default; blog pages statically generated)
 - **TypeScript** (strict)
 - **Tailwind CSS v4** (`@theme` CSS-first config, `@tailwindcss/forms` + `@tailwindcss/typography`)
 - **@tanstack/react-query** for server-state / HTTP mutations
