@@ -1,27 +1,31 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import Script from "next/script";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { ScrollToTop } from "@/components/ScrollToTop";
-import { themeBootstrapScript } from "@/lib/theme";
 
-const poppins = Poppins({
-    subsets: ["latin"],
-    weight: ["400", "500", "600", "700", "900"],
+const geist = Geist({
+    subsets: ["latin", "latin-ext"],
+    weight: ["300", "400", "500", "600"],
     display: "swap",
-    variable: "--font-poppins",
+    variable: "--font-geist",
+});
+
+const geistMono = Geist_Mono({
+    subsets: ["latin", "latin-ext"],
+    weight: ["400", "500", "600"],
+    display: "swap",
+    variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
     title: {
-        default: "Paweł Ostromecki | Portfolio",
+        default: "Paweł Ostromecki | AI workflows and production-ready software",
         template: "%s | ostromecki.dev",
     },
     description:
-        "Senior frontend engineer — Angular, TypeScript, full-stack architecture. Community lead at Angular Wrocław.",
+        "Senior software engineer and consultant. I bring AI into real business processes and build it to run safely in production.",
     metadataBase: new URL("https://ostromecki.dev"),
     openGraph: {
         siteName: "ostromecki.dev",
@@ -34,20 +38,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={poppins.variable} suppressHydrationWarning>
-        <head>
-            <Script id="theme-bootstrap" strategy="beforeInteractive">
-                {themeBootstrapScript}
-            </Script>
-        </head>
-        <body className="flex flex-col min-h-screen">
+        <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+        <body className="flex min-h-screen flex-col">
         <Providers>
             <Nav/>
-            <main id="main-content" className="flex-grow">
+            <main id="main-content" className="grow">
                 {children}
             </main>
             <Footer/>
-            <ScrollToTop/>
         </Providers>
         </body>
         </html>

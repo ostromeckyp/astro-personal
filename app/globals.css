@@ -1,110 +1,68 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/forms";
-@plugin "@tailwindcss/typography";
-
-@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #39b982;
-  --color-primary-600: #2ea16f;
-  --color-primary-300: #6fcca0;
-  --color-primary-200: #a5dfc3;
-  --color-primary-shadowed: #009e66;
-  --color-dark-card: #1f2937;
-  --color-dark-input: #374151;
-  --color-dark-border: #374151;
-  --color-dark-text: #e5e7eb;
+  --color-ink-950: #000002;
+  --color-ink-900: #0a0a0f;
+  --color-ink-800: #131318;
+  --color-ink-700: #1d1d24;
+  --color-ink-600: #2b2b34;
+  --color-ink-500: #5b5b66;
+  --color-ink-400: #9a9aa6;
+  --color-ink-200: #e4e4e8;
+  --color-ink-100: #f4f4f6;
+  --color-ink-0: #fefefe;
 
-  --font-poppins: var(--font-poppins), sans-serif;
-  --font-heading: var(--font-poppins), sans-serif;
+  --color-sakura-700: #a8004f;
+  --color-sakura-600: #d6006e;
+  --color-sakura-500: #fa0980;
+  --color-sakura-300: #ff6ab0;
+  --color-sakura-100: #ffe3f0;
 
-  --font-weight-light: 200;
-  --font-weight-normal: 400;
-  --font-weight-medium: 400;
-  --font-weight-semibold: 700;
-  --font-weight-bold: 900;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  --leading-none: 1em;
-  --leading-normal: 1.95em;
-  --leading-tight: 1.5em;
-  --leading-relaxed: 2.5em;
-  --leading-loose: 3.5em;
+  --radius-tag: 4px;
+  --radius-input: 10px;
+  --radius-card: 16px;
 
-  --animate-fade-in: fadeIn 0.6s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  --container-site: 1248px;
 }
 
 @layer base {
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    @apply font-poppins text-base font-normal leading-normal;
+  html {
+    color-scheme: dark;
+    background-color: var(--color-ink-950);
   }
 
   body {
-    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
     min-height: 100vh;
+    background-color: var(--color-ink-950);
+    color: var(--color-ink-0);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
 
-  p {
-    @apply text-justify;
+  button,
+  summary {
+    cursor: pointer;
   }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="number"],
-  input[type="tel"],
-  input[type="url"],
-  textarea {
-    @apply bg-white dark:bg-dark-input text-gray-900 dark:text-white border-gray-300 dark:border-dark-border focus:border-primary dark:focus:border-primary focus:ring-primary dark:focus:ring-primary;
-  }
-
-  .card {
-    @apply bg-white dark:bg-dark-card shadow-md dark:shadow-gray-900/10 rounded-lg p-6 transition-all duration-300;
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--color-sakura-300);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
 @layer components {
-  .nav-link {
-    @apply relative inline-flex items-center px-1 pt-1 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300;
-  }
-
-  .nav-link::after {
-    content: '';
-    @apply absolute w-0 h-0.5 bottom-0 left-0 bg-primary transition-all duration-300;
-  }
-
-  .nav-link[data-active="true"]::after {
-    @apply w-full;
-  }
-
-  .nav-link[data-active="true"] {
-    @apply text-primary;
-  }
-
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-  .animation-delay-400 {
-    animation-delay: 400ms;
+  /* Site container: 1248 max width, 24 gutter. */
+  .site-container {
+    width: 100%;
+    max-width: var(--container-site);
+    margin-inline: auto;
+    padding-inline: 24px;
   }
 }
 
