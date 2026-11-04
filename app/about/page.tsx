@@ -104,7 +104,7 @@ export default function AboutPage() {
           <div className="flex flex-col gap-2.5">
             {strengths.items.map((s) => (
               <div key={s.n} className="flex items-baseline gap-3.5">
-                <span className="font-mono text-xs text-ink-500">{s.n}</span>
+                <span className="font-mono text-xs text-ink-400">{s.n}</span>
                 <span className="text-lg font-medium">{s.t}</span>
               </div>
             ))}

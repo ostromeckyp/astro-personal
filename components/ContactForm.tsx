@@ -12,7 +12,7 @@ import { CONTACT_TOPICS, type ContactInput, contactSchema } from "@/lib/contact-
 const { form: copy, success } = CONTACT;
 
 const FIELD =
-  "rounded-input border border-ink-600 bg-ink-950 text-base text-ink-0 outline-none placeholder:text-ink-500 focus:border-sakura-500 focus:shadow-[0_0_0_4px_rgba(250,9,128,0.18)] aria-invalid:border-sakura-300";
+  "rounded-input border border-ink-600 bg-ink-950 text-base text-ink-0 outline-none placeholder:text-ink-400 focus:border-sakura-500 focus:shadow-[0_0_0_4px_rgba(250,9,128,0.18)] aria-invalid:border-sakura-300";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
@@ -112,7 +112,7 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="company" className="text-[13px] text-ink-400">
-          {copy.company} <span className="text-ink-500">{copy.optional}</span>
+          {copy.company} <span className="text-ink-400">{copy.optional}</span>
         </label>
         <input
           id="company"

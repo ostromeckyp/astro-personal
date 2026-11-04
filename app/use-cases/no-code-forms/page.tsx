@@ -103,7 +103,7 @@ export default function FormsCasePage() {
                   <span className={cn("font-mono text-[11px] tracking-[0.04em] uppercase", s.accent ? "text-sakura-500" : "text-ink-400")}>
                     {s.who}
                   </span>
-                  <span className="font-mono text-[11px] text-ink-500">{s.n}</span>
+                  <span className="font-mono text-[11px] text-ink-400">{s.n}</span>
                 </div>
                 <span className="text-lg font-medium tracking-[-0.01em]">{s.t}</span>
                 <span className="text-sm leading-[1.5] text-ink-400">{s.d}</span>

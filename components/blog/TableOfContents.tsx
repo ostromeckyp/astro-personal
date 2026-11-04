@@ -27,7 +27,7 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
 
   return (
     <nav aria-label={ARTICLE.tocLabel} className="flex flex-col gap-3.5">
-      <span className="font-mono text-[11px] tracking-[0.04em] text-ink-500 uppercase">{ARTICLE.toc}</span>
+      <span className="font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase">{ARTICLE.toc}</span>
       <ol className="flex flex-col gap-2.5 border-l border-ink-600">
         {items.map((item) => {
           const active = item.id === activeId;
