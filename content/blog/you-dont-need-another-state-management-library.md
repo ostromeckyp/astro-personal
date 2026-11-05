@@ -1,9 +1,12 @@
 ---
 title: "You (don’t) need another State Management Library"
-excerpt: "Minimalistic and efficient state management approach."
+excerpt: "My first post. Signals and a few RxJS operators give you the Redux benefits without another dependency, shown with a small weather app."
 date: "2024-07-17"
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*lUjlKD4atLAnAl1dreZ5vw.jpeg"
-category: "Programming"
+image: "/images/blog/state-management.jpg"
+imageAlt: "A stack of waffles on a colourful plate"
+imagePosition: "50% 50%"
+category: "Angular"
+label: "angular · state"
 slug: you-dont-need-another-state-management-library
 ---
 

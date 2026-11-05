@@ -3,151 +3,116 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/Button";
+import { NAV_CTA, NAV_LINKS } from "@/content/site/nav";
 import { cn } from "@/lib/cn";
-import { ThemeToggle } from "./ThemeToggle";
+import { isActive } from "@/lib/nav";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/resume", label: "Resume" },
-  { href: "/contact", label: "Contact" },
-] as const;
-
-function normalizePath(path: string) {
-  return path.replace(/\/$/, "") || "/";
+function Logo() {
+  return (
+    <Link href="/" className="text-lg font-semibold tracking-[-0.02em] text-ink-0">
+      ostromecki<span className="text-sakura-500">.</span>dev
+    </Link>
+  );
 }
 
 export function Nav() {
-  const pathname = usePathname();
-  const current = normalizePath(pathname ?? "/");
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+  const pathname = usePathname() ?? "/";
+  // The menu belongs to the page it was opened on, so navigating closes it.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
+  const close = () => setOpenOn(null);
 
   useEffect(() => {
     if (!open) return;
+    document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") setOpenOn(null);
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
 
   return (
-    <nav className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50" aria-label="Primary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <Link
-              href="/"
-              className="flex items-center text-xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors duration-300"
-            >
-              ostromecki.dev
-            </Link>
-          </div>
-          {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {links.map((l) => {
-              const active = normalizePath(l.href) === current;
-              return (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  data-active={active}
-                  aria-current={active ? "page" : undefined}
-                  className="nav-link"
-                >
-                  {l.label}
-                </Link>
-              );
-            })}
-            <ThemeToggle />
-          </div>
-          {/* Mobile controls */}
-          <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
-            <button
-              type="button"
-              aria-controls="mobile-menu"
-              aria-expanded={open}
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen((o) => !o)}
-              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              <div className="w-6 h-6 flex flex-col justify-between">
-                <span
-                  className={cn(
-                    "w-full h-0.5 bg-current transition-transform duration-300",
-                    open && "translate-y-[0.625rem] rotate-45",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "w-full h-0.5 bg-current transition-opacity duration-300",
-                    open && "opacity-0",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "w-full h-0.5 bg-current transition-transform duration-300",
-                    open && "-translate-y-[0.625rem] -rotate-45",
-                  )}
-                />
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
+    <header className="sticky top-0 z-50 border-b border-ink-700 bg-ink-950/92">
+      <nav aria-label="Primary" className="site-container flex items-center justify-between gap-8 py-[18px]">
+        <Logo />
 
-      {/* Mobile menu */}
+        <div className="hidden gap-7 text-[15px] lg:flex">
+          {NAV_LINKS.map((l) => {
+            const active = isActive(pathname, l.href);
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "border-b-2 py-1.5 transition-colors",
+                  active ? "border-sakura-500 text-ink-0" : "border-transparent text-ink-400 hover:text-ink-0",
+                )}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:block">
+            <Button href={NAV_CTA.href}>{NAV_CTA.label}</Button>
+          </div>
+          <button
+            type="button"
+            aria-controls="mobile-menu"
+            aria-expanded={open}
+            aria-label="Open menu"
+            onClick={() => setOpenOn(pathname)}
+            className="flex size-12 items-center justify-center rounded-full border border-ink-600 text-ink-0 lg:hidden"
+          >
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
       <div
         id="mobile-menu"
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
         hidden={!open}
-        className={cn(
-          "fixed inset-0 bg-white dark:bg-gray-800 z-50 md:hidden transform transition-transform duration-300 ease-in-out",
-          open ? "translate-x-0" : "translate-x-full",
-        )}
+        className="fixed inset-0 z-50 overflow-y-auto bg-ink-950 lg:hidden"
       >
-        <div className="flex flex-col h-full">
-          <div className="flex justify-between items-center p-4 border-b dark:border-gray-700">
-            <Link href="/" className="text-xl font-bold text-gray-800 dark:text-white">
-              ostromecki.dev
-            </Link>
+        <div className="site-container flex min-h-full flex-col py-[18px]">
+          <div className="flex items-center justify-between">
+            <Logo />
             <button
               type="button"
               aria-label="Close menu"
-              onClick={() => setOpen(false)}
-              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              onClick={close}
+              className="flex size-12 items-center justify-center rounded-full border border-ink-600 text-ink-0"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <div className="flex flex-col p-4 space-y-4">
-            {links.map((l) => {
-              const active = normalizePath(l.href) === current;
+          <div className="mt-10 flex flex-col">
+            {NAV_LINKS.map((l) => {
+              const active = isActive(pathname, l.href);
               return (
                 <Link
                   key={l.href}
                   href={l.href}
+                  onClick={close}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "text-lg text-gray-600 dark:text-gray-300 hover:text-primary",
-                    active && "text-primary",
+                    "border-b border-ink-700 py-4 text-[28px] leading-tight font-semibold tracking-[-0.025em]",
+                    active ? "text-sakura-500" : "text-ink-0",
                   )}
                 >
                   {l.label}
@@ -155,8 +120,11 @@ export function Nav() {
               );
             })}
           </div>
+          <Button href={NAV_CTA.href} size="lg" className="mt-10 w-full">
+            {NAV_CTA.label}
+          </Button>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

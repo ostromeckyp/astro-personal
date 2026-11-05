@@ -1,145 +1,116 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { SkillCard } from "@/components/SkillCard";
+import { Button } from "@/components/ui/Button";
+import { Tag } from "@/components/ui/Tag";
+import { ABOUT } from "@/content/site/about";
 
 export const metadata: Metadata = {
   title: "About",
+  description: ABOUT.p1,
 };
 
-interface Skill {
-  title: string;
-  description: string;
-  icon: string;
-  delay: number;
-}
-
-const developmentSkills: Skill[] = [
-  { title: "Angular", description: "Frontend Framework", icon: "/icons/angular.svg", delay: 200 },
-  { title: "React", description: "Frontend Framework", icon: "/icons/react.svg", delay: 300 },
-  { title: "Vue", description: "Frontend Framework", icon: "/icons/vue.svg", delay: 400 },
-  { title: "TypeScript", description: "Programming Language", icon: "/icons/typescript.svg", delay: 500 },
-  { title: "Java", description: "Programming Language", icon: "/icons/java.svg", delay: 600 },
-  { title: "Spring", description: "Backend Framework", icon: "/icons/spring.svg", delay: 700 },
-  { title: "Nest.js", description: "Backend Framework", icon: "/icons/nest.svg", delay: 800 },
-  { title: "Node.js", description: "Backend Runtime", icon: "/icons/node.svg", delay: 200 },
-  { title: "Firebase", description: "Backend Platform", icon: "/icons/firebase.svg", delay: 300 },
-];
-
-const cliftonStrengths = ["Activator", "Restorative", "Command", "Woo", "Ideation"];
+const CARD = "flex flex-col gap-[18px] rounded-card border border-ink-700 bg-ink-900 p-8";
+const KICKER = "font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase";
 
 export default function AboutPage() {
+  const { experience, education, stack, strengths } = ABOUT;
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        <div className="rounded-lg md:sticky md:top-24 md:self-start opacity-0 animate-fade-in overflow-hidden md:h-[70vh] max-md:h-[400px] max-sm:h-[300px] relative">
+    <div className="site-container">
+      <section className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-start gap-14 pt-20 pb-28 md:pt-28">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-card bg-ink-900">
           <Image
-            src="/me2.webp"
-            alt="Portrait of Paweł Ostromecki"
+            src="/images/portrait.jpg"
+            alt={ABOUT.portraitAlt}
             fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="shadow-xl object-cover rounded-lg"
+            priority
+            sizes="(min-width: 768px) 600px, 100vw"
+            className="object-cover object-[50%_30%]"
           />
         </div>
-        <div className="prose prose-primary dark:prose-invert opacity-0 animate-fade-in animation-delay-200 max-w-none">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">About Me</h1>
-          <div className="mt-6 text-gray-600 dark:text-gray-300">
-            <p>
-              I&apos;m a senior frontend engineer who&apos;s spent years deep in Angular, TypeScript, and the
-              broader JavaScript ecosystem — building complex, production-grade applications and
-              caring way too much about clean architecture, performance, and developer experience.
-              I&apos;m equally comfortable wiring up a Node.js or Spring backend, but the frontend is
-              where I do my best thinking.
-            </p>
-            <p>
-              Beyond shipping code, I lead the Angular Wrocław community — organizing meetups,
-              giving talks, running hands-on workshops, and mentoring developers who are leveling
-              up their skills. I don&apos;t just participate in the local Angular ecosystem; I actively
-              shape it. Open source is another outlet for that energy, and you can find my
-              contributions on GitHub at{" "}
-              <a
-                href="https://github.com/ostromeckyp"
-                className="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                @ostromeckyp
-              </a>
-              .
-            </p>
-            <p>
-              Teaching and mentoring have become as important to me as engineering itself. There&apos;s
-              something deeply rewarding about helping another developer have that &ldquo;aha&rdquo;
-              moment — whether it&apos;s on stage at a meetup, in a workshop, or during a code review.
-              It keeps me sharp and honest about what I actually know.
-            </p>
-            <p>
-              Lately, I&apos;ve been increasingly drawn to the intersection of frontend engineering and
-              AI-powered intelligent systems — and I&apos;m excited about where that convergence is
-              heading next.
-            </p>
-            <div className="mt-8 mb-8">
-              <a
-                href="/cv.pdf"
-                download="Pawel Ostromecki CV.pdf"
-                className="no-underline inline-flex items-center px-6 py-3 bg-primary hover:bg-primary-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-              >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                Resume
-              </a>
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8">Hard Skills</h2>
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6">
-              Development
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-              {developmentSkills.map((skill) => (
-                <SkillCard
-                  key={skill.title}
-                  title={skill.title}
-                  delay={skill.delay}
-                  icon={
-                    <Image
-                      src={skill.icon}
-                      alt=""
-                      width={30}
-                      height={30}
-                      className="dark:invert"
-                    />
-                  }
-                />
-              ))}
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-12">
-              Soft Skills (CliftonStrengths)
-            </h2>
-            <div className="flex flex-wrap gap-3 mt-6">
-              {cliftonStrengths.map((s, i) => (
-                <span
-                  key={s}
-                  className="px-4 py-2 rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-200 text-sm font-medium opacity-0 animate-fade-in"
-                  style={{ animationDelay: `${150 + i * 100}ms` }}
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
+        <div className="flex flex-col gap-7">
+          <span className="font-mono text-[13px] text-sakura-500">{ABOUT.label}</span>
+          <h1 className="text-[clamp(44px,5vw,72px)] leading-[0.98] font-semibold tracking-[-0.045em]">{ABOUT.h1}</h1>
+          <p className="text-xl leading-[1.55] text-ink-200">{ABOUT.p1}</p>
+          <p className="text-base leading-[1.65] text-ink-400">{ABOUT.p2}</p>
+          <p className="text-base leading-[1.65] text-ink-400">
+            {ABOUT.p3}{" "}
+            <a href={ABOUT.github.href} className="text-ink-0 underline decoration-sakura-500 underline-offset-[3px] hover:text-sakura-300">
+              {ABOUT.github.label}
+            </a>
+            .
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <Button href="/contact" size="lg">
+              {ABOUT.cta}
+            </Button>
+            <a href="/cv.pdf" className="border-b border-ink-0/60 pb-[3px] text-[15px] hover:border-ink-0">
+              {ABOUT.cv}
+            </a>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="grid grid-cols-1 gap-x-14 gap-y-8 pb-28 lg:grid-cols-3">
+        <div className="flex flex-col gap-4">
+          <span className="font-mono text-[13px] text-sakura-500">{experience.label}</span>
+          <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{experience.heading}</h2>
+          <p className="text-[15px] leading-[1.6] text-ink-400">{experience.sub}</p>
+        </div>
+        <ol className="flex min-w-0 flex-col border-t border-ink-600 lg:col-span-2">
+          {experience.jobs.map((j) => (
+            <li key={j.org} className="grid grid-cols-1 gap-x-6 gap-y-2 border-b border-ink-700 py-6 sm:grid-cols-[150px_minmax(0,1fr)]">
+              <span className="pt-1 font-mono text-xs text-ink-400">{j.when}</span>
+              <div className="flex flex-col gap-1.5">
+                <span className="text-lg font-medium tracking-[-0.01em]">
+                  {j.role} <span className="font-normal text-ink-400">· {j.org}</span>
+                </span>
+                <span className="text-[15px] leading-[1.55] text-ink-400">{j.d}</span>
+                <div className="mt-1 flex flex-wrap gap-1.5">
+                  {j.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-tag border border-ink-600 px-2 py-1 font-mono text-[10px] font-medium tracking-[0.04em] text-ink-200 uppercase"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6 pb-32">
+        <div className={CARD}>
+          <span className={KICKER}>{education.label}</span>
+          {education.items.map((e) => (
+            <div key={e.t} className="flex flex-col gap-1">
+              <span className="text-[17px] font-medium">{e.t}</span>
+              <span className="text-sm text-ink-400">{e.d}</span>
+            </div>
+          ))}
+        </div>
+        <div className={CARD}>
+          <span className={KICKER}>{stack.label}</span>
+          <div className="flex flex-wrap gap-2">
+            {stack.items.map((s) => (
+              <Tag key={s}>{s}</Tag>
+            ))}
+          </div>
+        </div>
+        <div className={CARD}>
+          <span className={KICKER}>{strengths.label}</span>
+          <div className="flex flex-col gap-2.5">
+            {strengths.items.map((s) => (
+              <div key={s.n} className="flex items-baseline gap-3.5">
+                <span className="font-mono text-xs text-ink-400">{s.n}</span>
+                <span className="text-lg font-medium">{s.t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

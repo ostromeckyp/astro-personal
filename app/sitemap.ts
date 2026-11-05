@@ -6,10 +6,15 @@ const BASE_URL = "https://ostromecki.dev";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${BASE_URL}/`, changeFrequency: "monthly", priority: 1 },
-    { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/resume`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/services`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/use-cases`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/use-cases/salon-replenishment`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/use-cases/no-code-forms`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/approach`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE_URL}/contact`, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${BASE_URL}/talks`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/contact`, changeFrequency: "yearly", priority: 0.7 },
   ];
 
   const posts = getAllPosts().map((p) => ({
