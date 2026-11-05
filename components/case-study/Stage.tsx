@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 /** The dark frame behind a screenshot. `aspect` applies from `md` up; below that, height follows content. */
 export function Stage({ aspect, className, children }: { aspect: string; className?: string; children: ReactNode }) {
   return (
-    <div className={cn("stage", className)} style={{ "--stage-aspect": aspect } as CSSProperties}>
+    <div className={cn("stage reveal", className)} style={{ "--stage-aspect": aspect } as CSSProperties}>
       <div aria-hidden="true" className="stage-glow glow-burn" />
       {children}
     </div>

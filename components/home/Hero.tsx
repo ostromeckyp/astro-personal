@@ -39,7 +39,7 @@ export function Hero() {
         01
       </span>
 
-      <div className="absolute bottom-[8%] left-[5.5%] flex max-w-[560px] flex-col gap-6 pr-6">
+      <div className="rise-in absolute bottom-[8%] left-[5.5%] flex max-w-[560px] flex-col gap-6 pr-6">
         <h1 className="text-[clamp(44px,5vw,76px)] leading-[0.96] font-medium tracking-[-0.04em] whitespace-pre-line">{hero.h1}</h1>
         <div className="flex flex-wrap items-center gap-4">
           <Button href="/contact" size="lg">

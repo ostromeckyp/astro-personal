@@ -28,7 +28,7 @@ export default function ServicesPage() {
           <article
             key={s.n}
             id={`service-${s.n}`}
-            className="grid scroll-mt-24 grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-x-12 gap-y-8 border-b border-ink-600 py-14"
+            className="reveal grid scroll-mt-24 grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-x-12 gap-y-8 border-b border-ink-600 py-14"
           >
             <div className="flex flex-col gap-4">
               <div className="flex items-baseline gap-4">
@@ -72,7 +72,7 @@ export default function ServicesPage() {
             <div
               key={m.t}
               className={cn(
-                "flex flex-col gap-4 rounded-card border bg-ink-900 p-8",
+                "reveal flex flex-col gap-4 rounded-card border bg-ink-900 p-8",
                 m.featured ? "border-sakura-500" : "border-ink-700",
               )}
             >

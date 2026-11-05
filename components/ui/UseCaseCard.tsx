@@ -14,7 +14,7 @@ function Cover({ useCase }: { useCase: UseCase }) {
           fill
           sizes="(min-width: 768px) 600px, 100vw"
           style={{ objectPosition: useCase.imagePosition }}
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)] motion-safe:group-hover:scale-[1.03]"
         />
       </div>
     </ViewTransition>
@@ -26,7 +26,7 @@ export function UseCaseCard({ useCase, variant = "home" }: { useCase: UseCase; v
     return (
       <Link
         href={useCase.href}
-        className="group grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-center gap-x-12 gap-y-10 text-ink-0"
+        className="reveal group grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-center gap-x-12 gap-y-10 text-ink-0"
       >
         <Cover useCase={useCase} />
         <div className="flex flex-col gap-5">
@@ -50,7 +50,7 @@ export function UseCaseCard({ useCase, variant = "home" }: { useCase: UseCase; v
   }
 
   return (
-    <Link href={useCase.href} className="group flex flex-col gap-5 text-ink-0">
+    <Link href={useCase.href} className="reveal group flex flex-col gap-5 text-ink-0">
       <Cover useCase={useCase} />
       <div className="flex flex-col gap-2">
         <span className="font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase">{useCase.homeTag}</span>

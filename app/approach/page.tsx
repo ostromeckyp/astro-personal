@@ -19,7 +19,7 @@ export default function ApproachPage() {
         {APPROACH.stages.map((s) => (
           <div
             key={s.n}
-            className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-x-12 gap-y-6 border-b border-ink-600 py-12"
+            className="reveal grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-x-12 gap-y-6 border-b border-ink-600 py-12"
           >
             <div className="flex items-baseline gap-5">
               <span className="text-[88px] leading-[0.8] font-light tracking-[-0.06em]">{s.n}</span>
@@ -41,7 +41,7 @@ export default function ApproachPage() {
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-6">
           {APPROACH.principles.items.map((p) => (
-            <div key={p.t} className="flex flex-col gap-3.5 rounded-card border border-ink-700 bg-ink-900 p-8">
+            <div key={p.t} className="reveal flex flex-col gap-3.5 rounded-card border border-ink-700 bg-ink-900 p-8">
               <span aria-hidden="true" className="h-0.5 w-8 bg-sakura-500" />
               <span className="text-[22px] leading-[1.2] font-semibold tracking-[-0.02em]">{p.t}</span>
               <span className="text-[15px] leading-[1.6] text-ink-400">{p.d}</span>
