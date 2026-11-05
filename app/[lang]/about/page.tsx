@@ -57,7 +57,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: Lo
       </section>
 
       <section className="grid grid-cols-1 gap-x-14 gap-y-8 pb-28 lg:grid-cols-3">
-        <div className="flex flex-col gap-4">
+        <div className="reveal flex flex-col gap-4">
           <span className="font-mono text-[13px] text-sakura-500">{experience.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{experience.heading}</h2>
           <p className="text-[15px] leading-[1.6] text-ink-400">{experience.sub}</p>

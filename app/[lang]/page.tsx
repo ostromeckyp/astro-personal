@@ -31,8 +31,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
       <Hero hero={HOME.hero} />
       <div className="site-container">
         <section className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-end gap-12 pt-20 pb-24 md:pt-32">
-          <h2 className="text-[clamp(36px,4vw,56px)] leading-[1.02] font-semibold tracking-[-0.04em]">{HOME.intro}</h2>
-          <div className="flex flex-col gap-5">
+          <h2 className="reveal text-[clamp(36px,4vw,56px)] leading-[1.02] font-semibold tracking-[-0.04em]">{HOME.intro}</h2>
+          <div className="reveal flex flex-col gap-5">
             <p className="text-lg leading-[1.6] text-ink-400">{HOME.introBody}</p>
             <div className="flex flex-wrap gap-2">
               {HOME.stack.map((s) => (
@@ -83,7 +83,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
               className="object-cover object-[50%_30%]"
             />
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="reveal flex flex-col gap-6">
             <span className="font-mono text-[13px] text-sakura-500">05 · {HOME.about.label}</span>
             <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{HOME.about.heading}</h2>
             <p className="text-[17px] leading-[1.65] text-ink-400">{HOME.about.body}</p>

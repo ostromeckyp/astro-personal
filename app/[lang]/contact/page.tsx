@@ -38,7 +38,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           <ContactForm copy={CONTACT.form} success={CONTACT.success} />
         </Providers>
       </div>
-      <dl className="flex flex-col border-t border-ink-600">
+      <dl className="reveal flex flex-col border-t border-ink-600">
         <Detail term={details.email}>
           <a href={`mailto:${CONTACT.email}`} className="break-words hover:text-sakura-300">
             {CONTACT.email}

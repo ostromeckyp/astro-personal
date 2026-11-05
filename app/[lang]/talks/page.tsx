@@ -24,12 +24,12 @@ export default async function TalksPage({ params }: { params: Promise<{ lang: Lo
       <PageHeader label={TALKS.label} title={TALKS.h1} intro={TALKS.intro} />
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-stretch gap-6 pb-28">
-        <div className="flex flex-col gap-5 rounded-card border border-ink-700 bg-ink-900 p-6 md:p-10">
+        <div className="reveal flex flex-col gap-5 rounded-card border border-ink-700 bg-ink-900 p-6 md:p-10">
           <span className={`${KICKER} text-sakura-500`}>{community.label}</span>
           <span className="text-[36px] leading-[1.05] font-semibold tracking-[-0.03em]">{community.name}</span>
           <p className="text-base leading-[1.6] text-ink-400">{community.body}</p>
         </div>
-        <figure className="flex flex-col gap-3">
+        <figure className="reveal flex flex-col gap-3">
           <div className="relative aspect-[4/3] overflow-hidden rounded-card border border-ink-600 bg-ink-900">
             <Image src={community.image} alt={community.alt} fill sizes="(min-width: 768px) 600px, 100vw" className="object-cover" />
           </div>

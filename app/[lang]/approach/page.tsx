@@ -38,7 +38,7 @@ export default async function ApproachPage({ params }: { params: Promise<{ lang:
       </section>
 
       <section className="flex flex-col gap-10 pt-32 pb-20">
-        <div className="flex max-w-[640px] flex-col gap-4">
+        <div className="reveal flex max-w-[640px] flex-col gap-4">
           <span className="font-mono text-[13px] text-sakura-500">{APPROACH.principles.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{APPROACH.principles.heading}</h2>
         </div>

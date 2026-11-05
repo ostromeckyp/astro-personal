@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
         </div>
       </header>
 
-      <figure className="site-container pt-12">
+      <figure className="reveal site-container pt-12">
         <ViewTransition name={`post-image-${post.slug}`}>
           <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-ink-600 bg-ink-900 md:aspect-[21/9]">
             <Image
@@ -141,7 +141,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
       </div>
 
       <div className="site-container pb-24">
-        <div className="flex flex-wrap items-center justify-between gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 md:p-10">
+        <div className="reveal flex flex-wrap items-center justify-between gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 md:p-10">
           <div className="flex flex-[1_1_420px] flex-wrap items-center gap-5">
             <Image
               src="/images/portrait.jpg"
@@ -163,7 +163,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
 
       {morePosts.length > 0 && (
         <section className="site-container flex flex-col gap-8 pb-32">
-          <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <div className="reveal flex flex-wrap items-baseline justify-between gap-4">
             <h2 className="text-[32px] font-semibold tracking-[-0.03em]">{ARTICLE.more}</h2>
             <TextLink href="/blog">{ARTICLE.all}</TextLink>
           </div>

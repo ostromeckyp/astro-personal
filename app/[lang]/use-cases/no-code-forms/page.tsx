@@ -44,7 +44,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
 
         <aside
           aria-label={disclosure.ariaLabel}
-          className="relative grid grid-cols-1 gap-x-8 gap-y-4 rounded-xl border border-ink-600 bg-ink-900 px-6 py-7 md:grid-cols-[200px_minmax(0,1fr)] md:px-8"
+          className="reveal relative grid grid-cols-1 gap-x-8 gap-y-4 rounded-xl border border-ink-600 bg-ink-900 px-6 py-7 md:grid-cols-[200px_minmax(0,1fr)] md:px-8"
         >
           <div className="flex flex-col gap-2">
             <span className="font-mono text-[11px] font-medium tracking-[0.04em] text-sakura-500 uppercase">{disclosure.label}</span>
@@ -67,7 +67,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
               <StagePill style={{ right: "4%", bottom: "3%" }}>{hero.pill}</StagePill>
             </Stage>
           </ViewTransition>
-          <figcaption className="grid max-w-[900px] grid-cols-[64px_minmax(0,1fr)] gap-4 sm:grid-cols-[96px_minmax(0,1fr)]">
+          <figcaption className="reveal grid max-w-[900px] grid-cols-[64px_minmax(0,1fr)] gap-4 sm:grid-cols-[96px_minmax(0,1fr)]">
             <span className="font-mono text-xs text-sakura-500">{hero.n}</span>
             <span className="text-[15px] leading-[1.55] text-ink-400">
               <span className="text-ink-0">{hero.captionLead}</span> {hero.caption}
@@ -82,7 +82,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
         </section>
 
         <figure className="grid grid-cols-1 items-start gap-x-6 gap-y-8 lg:grid-cols-12">
-          <figcaption className="flex flex-col gap-5 pt-2 lg:col-span-4">
+          <figcaption className="reveal flex flex-col gap-5 pt-2 lg:col-span-4">
             <span className="font-mono text-xs text-sakura-500">{docs.n}</span>
             <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{docs.heading}</h2>
             <p className="text-base leading-[1.6] text-ink-400">{docs.body}</p>
@@ -95,7 +95,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
 
         <section className="flex flex-col gap-10 border-t border-ink-600 pt-12">
           <div className="grid grid-cols-1 items-start gap-x-6 gap-y-6 lg:grid-cols-12">
-            <div className="flex flex-col gap-5 lg:col-span-7">
+            <div className="reveal flex flex-col gap-5 lg:col-span-7">
               <span className="font-mono text-xs text-sakura-500">{mcp.label}</span>
               <h2 className="text-[clamp(36px,3.4vw,48px)] leading-[1.02] font-semibold tracking-[-0.04em]">{mcp.heading}</h2>
               <p className="max-w-[620px] text-base leading-[1.6] text-ink-400">{mcp.body}</p>
@@ -116,7 +116,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
               <div
                 key={s.n}
                 className={cn(
-                  "flex min-h-40 flex-col gap-2.5 rounded-xl border bg-ink-900 p-5",
+                  "reveal flex min-h-40 flex-col gap-2.5 rounded-xl border bg-ink-900 p-5",
                   s.accent ? "border-sakura-500" : "border-ink-700",
                 )}
               >
@@ -133,7 +133,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
           </div>
         </section>
 
-        <div className="flex flex-wrap items-center justify-between gap-6 border-t border-ink-600 pt-12">
+        <div className="reveal flex flex-wrap items-center justify-between gap-6 border-t border-ink-600 pt-12">
           <span className="text-[13px] text-ink-400">{C.footnote}</span>
           <Button href="/contact" size="lg">
             {C.cta}

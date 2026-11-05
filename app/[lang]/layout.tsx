@@ -8,6 +8,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n";
 import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_NAME, SITE_URL } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { personSchema, websiteSchema } from "@/lib/structured-data";
 
 const geist = Geist({
@@ -70,6 +71,7 @@ export default async function RootLayout({ children, params }: { children: React
             {children}
         </main>
         <Footer copy={FOOTER}/>
+        <ScrollReveal/>
         </body>
         </html>
     );
