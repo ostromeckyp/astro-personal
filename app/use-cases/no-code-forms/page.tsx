@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { FORMS_CASE as C } from "@/content/site/forms-case";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = pageMetadata({
   title: "No-code forms for a regulated industry",
@@ -20,6 +22,12 @@ export default function FormsCasePage() {
   const { disclosure, hero, docs, mcp } = C;
   return (
     <div className="relative overflow-x-clip">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Use cases", path: "/use-cases" },
+          { name: C.title.replace(/\.$/, ""), path: "/use-cases/no-code-forms" },
+        ])}
+      />
       <div aria-hidden="true" className="absolute top-16 left-[-40px] h-px w-[1700px] origin-top-left rotate-15 bg-ink-0/8" />
       <div aria-hidden="true" className="absolute top-40 left-[-40px] h-px w-[1700px] origin-top-left rotate-15 bg-ink-0/6" />
       <div className="site-container flex flex-col gap-24 pt-20 pb-24 md:pt-24">

@@ -4,6 +4,8 @@ import { Tag } from "@/components/ui/Tag";
 import { SERVICES } from "@/content/site/services";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/JsonLd";
+import { faqSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = pageMetadata({
   title: "AI consultant and engineer for business workflows",
@@ -16,6 +18,7 @@ const META = "font-mono text-[11px] tracking-[0.04em] uppercase";
 export default function ServicesPage() {
   return (
     <div className="site-container relative overflow-x-clip">
+      <JsonLd data={faqSchema(SERVICES.faq.items)} />
       <div aria-hidden="true" className="absolute top-10 left-[-10%] h-px w-[130%] origin-top-left rotate-15 bg-ink-0/8" />
       <PageHeader label={SERVICES.label} title={SERVICES.h1} intro={SERVICES.intro} className="pb-24" />
 

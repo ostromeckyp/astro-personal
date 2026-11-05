@@ -14,6 +14,8 @@ import { formatPostDate } from "@/lib/format-date";
 import { pageMetadata } from "@/lib/metadata";
 import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/posts";
 import { SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 interface Params {
   slug: string;
@@ -48,6 +50,13 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
 
   return (
     <>
+      <JsonLd data={blogPostingSchema(post)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ])}
+      />
       <header className="relative overflow-hidden">
         <div
           aria-hidden="true"

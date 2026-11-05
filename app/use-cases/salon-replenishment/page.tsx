@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/Button";
 import { SALON_CASE as C } from "@/content/site/salon-case";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = pageMetadata({
   title: "AI agent for salon stock ordering",
@@ -22,6 +24,12 @@ export default function SalonCasePage() {
   const { hero, procedures, pwa } = C;
   return (
     <div className="relative overflow-x-clip">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Use cases", path: "/use-cases" },
+          { name: C.title.replace(/\.$/, ""), path: "/use-cases/salon-replenishment" },
+        ])}
+      />
       <div aria-hidden="true" className="absolute top-20 left-[-200px] h-px w-[2000px] origin-top-left rotate-9 bg-ink-0/8" />
       <div className="site-container flex flex-col gap-24 pt-20 pb-24 md:pt-24">
         <CaseIntro slug="salon-replenishment" index="01" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />

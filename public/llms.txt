@@ -1,0 +1,33 @@
+# Paweł Ostromecki
+
+> Senior software engineer and consultant from Wrocław, Poland, working remotely worldwide. He brings AI into real business processes and builds it to run safely in production. He leads the Angular Wrocław community.
+
+## Services
+
+- [AI workflows](https://www.ostromecki.dev/services): take a manual, repetitive process such as ordering, ticket triage, document checks or data entry, design an LLM or agent workflow around it, and plug it into the tools a team already uses.
+- [AI in real business cases](https://www.ostromecki.dev/services): separate the use cases that pay off from the ones that only demo well, test on real data, and turn the winner into a product people use.
+- [Safe, production-ready software](https://www.ostromecki.dev/services): AI features and the software around them, secure, observable, tested and maintainable by the team. Frontend architecture with Angular, Nx and microfrontends is a core strength.
+
+Ways to work together: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks), Fractional engineering (ongoing).
+
+## Use cases
+
+- [Agentic replenishment for a salon network](https://www.ostromecki.dev/use-cases/salon-replenishment): salons order stock from HQ in plain language, and an AI agent turns the request into a checked proposal.
+- [No-code forms for a regulated industry](https://www.ostromecki.dev/use-cases/no-code-forms): a client-owned drag-and-drop platform for compliance forms, worked on as an external contractor.
+
+## Pages
+
+- [Home](https://www.ostromecki.dev/)
+- [Approach](https://www.ostromecki.dev/approach): from business case to production, in four stages.
+- [About](https://www.ostromecki.dev/about): experience, education and stack.
+- [Talks](https://www.ostromecki.dev/talks): talks and community work.
+- [Blog](https://www.ostromecki.dev/blog): notes on AI in real engineering, Angular and state management.
+- [Contact](https://www.ostromecki.dev/contact)
+
+## Contact and profiles
+
+- Email: contact@ostromecki.dev
+- Phone: +48 661 546 446
+- LinkedIn: https://www.linkedin.com/in/ostromeckyp/
+- GitHub: https://github.com/ostromeckyp
+- X: https://x.com/ostromeckyp

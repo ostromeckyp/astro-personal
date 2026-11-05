@@ -5,6 +5,8 @@ import { Providers } from "./providers";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_DEFAULT_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { personSchema, websiteSchema } from "@/lib/structured-data";
 
 const geist = Geist({
     subsets: ["latin", "latin-ext"],
@@ -41,6 +43,8 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
         <body className="flex min-h-screen flex-col">
+        <JsonLd data={personSchema()}/>
+        <JsonLd data={websiteSchema()}/>
         <Providers>
             <Nav/>
             <main id="main-content" className="grow">
