@@ -86,6 +86,15 @@ function checkSeo() {
     const canonical = html.match(/<link rel="canonical" href="([^"]*)"/)?.[1];
     if (canonical !== expected) fail(`canonical is ${canonical}, expected ${expected}`);
 
+    // The internal /en route must never leak into a link.
+    for (const [, href] of html.matchAll(/<a[^>]* href="([^"]*)"/g)) {
+      if (/^\/(pl\/)?en(\/|$)/.test(href)) fail(`link to internal route ${href}`);
+    }
+    const expectedSwitch = route === "/pl" ? "/pl" : route.startsWith("/pl/") ? route : route === "/" ? "/pl" : `/pl${route}`;
+    if (!html.includes(`href="${expectedSwitch}" hrefLang="pl"`)) fail(`PL switch doesn't link to ${expectedSwitch}`);
+    const navLink = route.match(/^(?:\/pl)?(\/(?:services|use-cases|approach|blog|talks|about))/)?.[1];
+    if (navLink && !/aria-current="page"/.test(html)) fail(`no active nav item for ${navLink}`);
+
     const title = decode(html.match(/<title>([^<]*)/)?.[1] ?? "");
     if (!title) fail("no title");
     if (!route.includes("/blog/") && title.length > TITLE_LIMIT) fail(`title is ${title.length} characters`);
