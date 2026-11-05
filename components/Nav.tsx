@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { NAV_CTA, NAV_LINKS } from "@/content/site/nav";
 import { cn } from "@/lib/cn";
@@ -10,7 +10,7 @@ import { isActive } from "@/lib/nav";
 
 function Logo() {
   return (
-    <Link href="/" className="text-lg font-semibold tracking-[-0.02em] text-ink-0">
+    <Link href="/" className="tap text-lg font-semibold tracking-[-0.02em] text-ink-0">
       ostromecki<span className="text-sakura-500">.</span>dev
     </Link>
   );
@@ -22,23 +22,45 @@ export function Nav() {
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
   const close = () => setOpenOn(null);
+  const barRef = useRef<HTMLElement>(null);
+  const openRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
+    // Everything behind the menu leaves the tab order, and focus moves into it.
+    const behind = [
+      document.querySelector('a[href="#main-content"]'),
+      barRef.current,
+      document.querySelector("main"),
+      document.querySelector("footer"),
+    ];
+    const opener = openRef.current;
+    behind.forEach((el) => el?.toggleAttribute("inert", true));
     document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpenOn(null);
     };
     window.addEventListener("keydown", onKey);
+    // The menu is hidden from lg up, for example after rotating a tablet, so it must not stay open unseen.
+    const wide = window.matchMedia("(min-width: 1024px)");
+    const onResize = () => {
+      if (wide.matches) setOpenOn(null);
+    };
+    wide.addEventListener("change", onResize);
     return () => {
+      wide.removeEventListener("change", onResize);
+      behind.forEach((el) => el?.removeAttribute("inert"));
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
+      opener?.focus();
     };
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink-700 bg-ink-950/92">
-      <nav aria-label="Primary" className="site-container flex items-center justify-between gap-8 py-[18px]">
+    <header className="sticky top-0 z-50 border-b border-ink-700 bg-ink-950">
+      <nav ref={barRef} aria-label="Primary" className="site-container flex items-center justify-between gap-8 py-[18px]">
         <Logo />
 
         <div className="hidden gap-7 text-[15px] lg:flex">
@@ -65,6 +87,7 @@ export function Nav() {
             <Button href={NAV_CTA.href}>{NAV_CTA.label}</Button>
           </div>
           <button
+            ref={openRef}
             type="button"
             aria-controls="mobile-menu"
             aria-expanded={open}
@@ -91,6 +114,7 @@ export function Nav() {
           <div className="flex items-center justify-between">
             <Logo />
             <button
+              ref={closeRef}
               type="button"
               aria-label="Close menu"
               onClick={close}

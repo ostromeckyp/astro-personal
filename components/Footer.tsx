@@ -16,12 +16,12 @@ export function Footer() {
           </Button>
         </div>
         <div className="flex flex-wrap justify-between gap-6 border-t border-ink-700 pt-6 text-sm text-ink-400">
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <a href={`mailto:${FOOTER.email}`} className="text-ink-200 hover:text-ink-0">
+          <div className="flex flex-wrap gap-x-6 gap-y-5">
+            <a href={`mailto:${FOOTER.email}`} className="tap text-ink-200 hover:text-ink-0">
               {FOOTER.email}
             </a>
             {FOOTER.socials.map((s) => (
-              <a key={s.href} href={s.href} {...NEW_TAB} className="hover:text-ink-0">
+              <a key={s.href} href={s.href} {...NEW_TAB} className="tap hover:text-ink-0">
                 {s.label}
               </a>
             ))}

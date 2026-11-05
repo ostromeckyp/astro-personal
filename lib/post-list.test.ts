@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterPosts } from "./post-list";
+import { blogSearch, filterPosts, parseBlogState } from "./post-list";
 import type { PostSummary } from "./posts";
 
 const post = (slug: string, category: PostSummary["category"]) => ({ slug, category }) as PostSummary;
@@ -27,5 +27,24 @@ describe("filterPosts", () => {
 
   it("handles no posts", () => {
     expect(filterPosts([], "all")).toEqual([]);
+  });
+});
+
+describe("blog state in the URL", () => {
+  it("defaults to all posts in a grid", () => {
+    expect(parseBlogState("")).toEqual({ topic: "all", view: "grid" });
+  });
+
+  it("round-trips a chosen topic and view", () => {
+    const state = { topic: "Artificial Intelligence", view: "list" } as const;
+    expect(parseBlogState(blogSearch(state))).toEqual(state);
+  });
+
+  it("keeps default URLs clean", () => {
+    expect(blogSearch({ topic: "all", view: "grid" })).toBe("");
+  });
+
+  it("ignores unknown values", () => {
+    expect(parseBlogState("?topic=nope&view=table")).toEqual({ topic: "all", view: "grid" });
   });
 });

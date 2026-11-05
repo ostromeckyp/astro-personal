@@ -9,18 +9,28 @@ import { ShotFigure } from "@/components/case-study/ShotFigure";
 import { Stage, StageHeading, StagePill } from "@/components/case-study/Stage";
 import { Button } from "@/components/ui/Button";
 import { SALON_CASE as C } from "@/content/site/salon-case";
+import { USE_CASES } from "@/content/site/use-cases";
 import { cn } from "@/lib/cn";
+import { pageMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: "Agentic replenishment for a salon network",
-  description: C.lede,
-  openGraph: { images: ["/images/use-cases/salon-cover.jpg"] },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "AI agent for salon stock ordering",
+  description: "Salons order stock from HQ in plain language. An AI agent turns the request into a checked proposal, and people approve every unit.",
+  path: "/use-cases/salon-replenishment", image: "/images/use-cases/salon-cover.jpg", imageAlt: USE_CASES.find((c) => c.slug === "salon-replenishment")?.alt,
+});
 
 export default function SalonCasePage() {
   const { hero, procedures, pwa } = C;
   return (
     <div className="relative overflow-x-clip">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Use cases", path: "/use-cases" },
+          { name: C.title.replace(/\.$/, ""), path: "/use-cases/salon-replenishment" },
+        ])}
+      />
       <div aria-hidden="true" className="absolute top-20 left-[-200px] h-px w-[2000px] origin-top-left rotate-9 bg-ink-0/8" />
       <div className="site-container flex flex-col gap-24 pt-20 pb-24 md:pt-24">
         <CaseIntro slug="salon-replenishment" index="01" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />

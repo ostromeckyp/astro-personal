@@ -4,11 +4,13 @@ import { Button } from "@/components/ui/Button";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TALKS } from "@/content/site/talks";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Talks",
-  description: TALKS.intro,
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Talks and the Angular Wrocław community",
+  description: "I lead the Angular Wrocław community and speak at meetups and conferences. The same format works as a workshop for your team.",
+  path: "/talks",
+});
 
 const KICKER = "font-mono text-[11px] tracking-[0.04em] uppercase";
 

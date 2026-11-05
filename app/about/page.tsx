@@ -4,11 +4,13 @@ import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { ABOUT } from "@/content/site/about";
 import { NEW_TAB } from "@/lib/external-link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: ABOUT.p1,
-};
+export const metadata: Metadata = pageMetadata({
+  title: "About: senior software engineer and consultant",
+  description: "Senior software engineer from Wrocław working where software engineering meets AI: agents, LLM workflows and MCP. Leads Angular Wrocław.",
+  path: "/about",
+});
 
 const CARD = "flex flex-col gap-[18px] rounded-card border border-ink-700 bg-ink-900 p-8";
 const KICKER = "font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase";
@@ -44,7 +46,7 @@ export default function AboutPage() {
             <Button href="/contact" size="lg">
               {ABOUT.cta}
             </Button>
-            <a href="/cv.pdf" className="border-b border-ink-0/60 pb-[3px] text-[15px] hover:border-ink-0">
+            <a href="/cv.pdf" {...NEW_TAB} className="tap border-b border-ink-0/60 pb-[3px] text-[15px] hover:border-ink-0">
               {ABOUT.cv}
             </a>
           </div>

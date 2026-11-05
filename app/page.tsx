@@ -10,7 +10,15 @@ import { UseCaseCard } from "@/components/ui/UseCaseCard";
 import { HOME } from "@/content/site/home";
 import { USE_CASES } from "@/content/site/use-cases";
 import { formatPostDate } from "@/lib/format-date";
+import { pageMetadata } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/posts";
+import { SITE_DEFAULT_TITLE, SITE_DESCRIPTION } from "@/lib/site";
+
+export const metadata = pageMetadata({
+  title: { absolute: SITE_DEFAULT_TITLE },
+  description: SITE_DESCRIPTION,
+  path: "/",
+});
 
 export default function HomePage() {
   const latest = getAllPosts()[0];
@@ -33,9 +41,9 @@ export default function HomePage() {
 
         <section className="flex flex-col gap-10 pt-8 pb-32">
           <SectionHeading index="02" title={HOME.services.heading} action={<TextLink href="/services">{HOME.services.all}</TextLink>} />
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {HOME.services.items.map((s) => (
-              <ServiceCard key={s.n} {...s} href="/services" />
+              <ServiceCard key={s.n} {...s} href={`/services#service-${s.n}`} />
             ))}
           </div>
         </section>
@@ -89,7 +97,7 @@ export default function HomePage() {
           <section className="pb-32">
             <Link
               href={`/blog/${latest.slug}`}
-              className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-end gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 text-ink-0 md:p-12"
+              className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-end gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 text-ink-0 transition-colors hover:border-sakura-500 md:p-12"
             >
               <div className="flex flex-col gap-4">
                 <span className="font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase">

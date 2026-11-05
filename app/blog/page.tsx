@@ -4,11 +4,13 @@ import { FeaturedPost } from "@/components/blog/FeaturedPost";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { BLOG } from "@/content/site/blog";
 import { getAllPosts } from "@/lib/posts";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Blog",
+export const metadata: Metadata = pageMetadata({
+  title: "Blog on AI engineering and Angular",
   description: BLOG.intro,
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   const posts = getAllPosts();

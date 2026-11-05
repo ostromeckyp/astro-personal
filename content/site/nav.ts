@@ -7,6 +7,12 @@ export const NAV_LINKS = [
   { href: "/about", label: "About" },
 ] as const;
 
+export const NEXT_STEP = {
+  label: "the next one could be yours",
+  heading: "Have a process in mind?",
+  cta: "Talk about your workflow",
+};
+
 export const NAV_CTA = { href: "/contact", label: "Book a call" } as const;
 
 export const FOOTER = {

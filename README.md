@@ -24,7 +24,9 @@ npm start           # serve production build
 npm run lint        # eslint
 npm run type-check  # tsc --noEmit
 npm test            # vitest
-node scripts/verify-site.mjs --bodies main --html  # post bodies unchanged, no design placeholders in the build
+node scripts/verify-site.mjs --bodies main --html --seo  # post bodies unchanged, no placeholders, sound SEO tags in the build
+node scripts/generate-icons.mjs        # rebuild the favicon set
+node scripts/localize-post-images.mjs  # copy remote post images locally, updates lib/post-images.ts
 ```
 
 ## Env
@@ -61,8 +63,6 @@ The filename slug should match the `slug` field. Page copy lives in `content/sit
 app/            # App Router pages + API routes + layouts
 components/     # Shared React components (server + client)
 content/blog/   # Markdown posts
-lib/            # posts pipeline, theme hook, zod schemas
+lib/            # posts pipeline, metadata and structured data, zod schemas
 public/         # Static assets (images, icons, CV)
 ```
-
-The legacy Astro source is preserved under `src/deprecated/` during migration and can be removed once parity is verified.

@@ -30,6 +30,7 @@
 
 @layer base {
   html {
+    scroll-behavior: smooth;
     color-scheme: dark;
     background-color: var(--color-ink-950);
   }
@@ -57,6 +58,16 @@
 }
 
 @layer components {
+  /* Grows the tap area of a text link without changing how it looks. */
+  .tap {
+    position: relative;
+  }
+  .tap::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+  }
+
   /* Site container: 1248 max width, 24 gutter. */
   .site-container {
     width: 100%;
@@ -183,10 +194,12 @@
     width: 100%;
     height: auto;
   }
+  /* Below md a callout sits under its window, since the window's own text is too small to read. */
   .callout {
-    position: absolute;
+    position: relative;
     z-index: 2;
-    display: none;
+    display: block;
+    margin-top: 12px;
     padding: 14px;
     border: 1.5px solid var(--color-sakura-500);
     border-radius: 16px;
@@ -194,9 +207,15 @@
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(250, 9, 128, 0.35);
   }
   .callout .crop {
+    position: relative;
     width: 100%;
+    overflow: hidden;
     border-radius: 6px;
-    background-repeat: no-repeat;
+  }
+  .callout .crop img {
+    position: absolute;
+    max-width: none;
+    height: auto;
   }
   .spill {
     position: absolute;
@@ -288,12 +307,18 @@
     transform: translateX(-50%);
   }
   @media (max-width: 767.98px) {
-    /* Overrides the window's inline desktop placement. */
-    .swin {
+    /* Overrides the inline desktop placement of windows and callouts. */
+    .swin,
+    .callout {
       top: auto !important;
+      right: auto !important;
+      bottom: auto !important;
       left: auto !important;
       width: 100% !important;
       transform: none !important;
+    }
+    .callout {
+      box-shadow: none;
     }
   }
   @media (min-width: 768px) {
@@ -301,11 +326,12 @@
       aspect-ratio: var(--stage-aspect);
       padding: 0;
     }
-    .swin {
+    .swin,
+    .callout {
       position: absolute;
     }
     .callout {
-      display: block;
+      margin-top: 0;
     }
     .spill {
       display: inline-flex;

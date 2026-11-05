@@ -15,6 +15,7 @@ export function BrowserWindow({
   style,
   className,
   priority,
+  sizes = "(min-width: 768px) 900px, 100vw",
 }: {
   title: string;
   src: string;
@@ -23,6 +24,7 @@ export function BrowserWindow({
   style?: CSSProperties;
   className?: string;
   priority?: boolean;
+  sizes?: string;
 }) {
   return (
     <div className={cn("swin", className)} style={{ ...style, transform: tilt ? TILT[tilt] : undefined }}>
@@ -32,7 +34,7 @@ export function BrowserWindow({
         <i />
         <span>{title}</span>
       </div>
-      <Image src={src} alt={alt} width={1440} height={837} priority={priority} sizes="(min-width: 768px) 900px, 100vw" />
+      <Image src={src} alt={alt} width={1440} height={837} priority={priority} sizes={sizes} />
     </div>
   );
 }

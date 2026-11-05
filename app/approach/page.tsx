@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import { NextStepCta } from "@/components/ui/NextStepCta";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { APPROACH } from "@/content/site/approach";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Approach",
+export const metadata: Metadata = pageMetadata({
+  title: "From AI business case to production",
   description: APPROACH.intro,
-};
+  path: "/approach",
+});
 
 export default function ApproachPage() {
   return (
@@ -31,7 +34,7 @@ export default function ApproachPage() {
         ))}
       </section>
 
-      <section className="flex flex-col gap-10 py-32">
+      <section className="flex flex-col gap-10 pt-32 pb-20">
         <div className="flex max-w-[640px] flex-col gap-4">
           <span className="font-mono text-[13px] text-sakura-500">{APPROACH.principles.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{APPROACH.principles.heading}</h2>
@@ -46,6 +49,10 @@ export default function ApproachPage() {
           ))}
         </div>
       </section>
+
+      <div className="pb-32">
+        <NextStepCta />
+      </div>
     </div>
   );
 }

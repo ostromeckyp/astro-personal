@@ -28,6 +28,7 @@ export const ARTICLE = {
   shareX: "Share on X",
   copy: "Copy link",
   copied: "Copied",
+  copyFailed: "Couldn't copy",
   authorAlt: "Portrait of Paweł Ostromecki",
   bio: "Senior software engineer and consultant. I bring AI into real business processes and build it to run safely in production. I lead Angular Wrocław.",
   cta: "Let's talk",

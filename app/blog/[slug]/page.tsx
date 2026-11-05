@@ -11,8 +11,11 @@ import { Tag } from "@/components/ui/Tag";
 import { TextLink } from "@/components/ui/TextLink";
 import { ARTICLE } from "@/content/site/blog";
 import { formatPostDate } from "@/lib/format-date";
+import { pageMetadata } from "@/lib/metadata";
 import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/posts";
 import { SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 interface Params {
   slug: string;
@@ -26,17 +29,14 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: "Post not found" };
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-      type: "article",
-      publishedTime: post.date,
-    },
-  };
+    path: `/blog/${post.slug}`,
+    image: post.image,
+    imageAlt: post.imageAlt,
+    article: { publishedTime: post.date },
+  });
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<Params> }) {
@@ -50,6 +50,13 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
 
   return (
     <>
+      <JsonLd data={blogPostingSchema(post)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ])}
+      />
       <header className="relative overflow-hidden">
         <div
           aria-hidden="true"

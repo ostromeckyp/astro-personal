@@ -7,7 +7,7 @@ import type { UseCase } from "@/content/site/use-cases";
 function Cover({ useCase }: { useCase: UseCase }) {
   return (
     <ViewTransition name={`use-case-image-${useCase.slug}`}>
-      <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-ink-600 bg-ink-900">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-ink-600 bg-ink-900 transition-colors group-hover:border-sakura-500">
         <Image
           src={useCase.image}
           alt={useCase.alt}
@@ -26,7 +26,7 @@ export function UseCaseCard({ useCase, variant = "home" }: { useCase: UseCase; v
     return (
       <Link
         href={useCase.href}
-        className="grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-center gap-x-12 gap-y-10 text-ink-0"
+        className="group grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-center gap-x-12 gap-y-10 text-ink-0"
       >
         <Cover useCase={useCase} />
         <div className="flex flex-col gap-5">

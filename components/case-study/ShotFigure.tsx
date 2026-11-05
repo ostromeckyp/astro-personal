@@ -19,7 +19,7 @@ export function ShotFigure({ shot }: { shot: Shot }) {
   return (
     <figure className="flex min-w-0 flex-col gap-4">
       <Stage aspect="4 / 3">
-        <BrowserWindow title={shot.url} src={shot.src} alt={shot.alt} tilt={shot.tilt} style={{ left: "7%", top: "9%", width: "86%" }} />
+        <BrowserWindow title={shot.url} src={shot.src} alt={shot.alt} tilt={shot.tilt} style={{ left: "7%", top: "9%", width: "86%" }} sizes="(min-width: 1248px) 520px, (min-width: 768px) 43vw, 100vw" />
         <Callout src={shot.src} {...shot.crop} style={shot.cropPosition} />
       </Stage>
       <figcaption className="flex flex-col gap-1.5">
