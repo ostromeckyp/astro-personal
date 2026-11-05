@@ -7,13 +7,15 @@ const { hero } = HOME;
 
 export function Hero() {
   return (
-    <section className="relative aspect-video max-h-[920px] min-h-[640px] w-full overflow-hidden bg-[#080309]">
+    <section className="relative h-[calc(100svh-85px)] min-h-[480px] w-full overflow-hidden bg-[#080309] md:aspect-video md:h-auto md:max-h-[920px] md:min-h-[640px]">
       <Image
         src="/images/hero-key-visual.jpg"
         alt={hero.alt}
         fill
         priority
-        sizes="100vw"
+        // The image covers a box taller than 16:9 on phones and tablets, so it renders wider than
+        // the screen. With a plain 100vw the browser picks a file far too small and stretches it.
+        sizes="(max-width: 767px) 180vh, max(100vw, 1138px)"
         className="hero-plate object-cover object-[50%_40%]"
       />
       <div aria-hidden="true" className="hero-glow glow-burn absolute top-[52%] left-1/2 h-[110%] w-[70%]" />
