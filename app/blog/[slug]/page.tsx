@@ -11,6 +11,7 @@ import { TextLink } from "@/components/ui/TextLink";
 import { ARTICLE } from "@/content/site/blog";
 import { formatPostDate } from "@/lib/format-date";
 import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/posts";
+import { SITE_URL } from "@/lib/site";
 
 interface Params {
   slug: string;
@@ -108,7 +109,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
         <aside className="flex w-full shrink-0 flex-col gap-4 lg:sticky lg:top-28 lg:w-[260px]">
           {post.toc.length >= 2 && <TableOfContents items={post.toc} />}
           <div className="border-t border-ink-700 pt-4">
-            <ShareLinks url={`https://ostromecki.dev/blog/${post.slug}`} title={post.title} />
+            <ShareLinks url={`${SITE_URL}/blog/${post.slug}`} title={post.title} />
           </div>
         </aside>
         <article

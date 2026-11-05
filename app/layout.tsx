@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { SITE_URL } from "@/lib/site";
 
 const geist = Geist({
     subsets: ["latin", "latin-ext"],
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     },
     description:
         "Senior software engineer and consultant. I bring AI into real business processes and build it to run safely in production.",
-    metadataBase: new URL("https://ostromecki.dev"),
+    metadataBase: new URL(SITE_URL),
     openGraph: {
         siteName: "ostromecki.dev",
         type: "website",
