@@ -40,12 +40,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+        <html lang="en" data-scroll-behavior="smooth" className={`${geist.variable} ${geistMono.variable}`}>
         <body className="flex min-h-screen flex-col">
         <JsonLd data={personSchema()}/>
         <JsonLd data={websiteSchema()}/>
+        <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-ink-0 focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-ink-950"
+        >
+            Skip to content
+        </a>
         <Nav/>
-        <main id="main-content" className="grow">
+        <main id="main-content" tabIndex={-1} className="grow outline-none">
             {children}
         </main>
         <Footer/>

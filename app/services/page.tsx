@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NextStepCta } from "@/components/ui/NextStepCta";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Tag } from "@/components/ui/Tag";
 import { SERVICES } from "@/content/site/services";
@@ -26,7 +27,8 @@ export default function ServicesPage() {
         {SERVICES.items.map((s) => (
           <article
             key={s.n}
-            className="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-x-12 gap-y-8 border-b border-ink-600 py-14"
+            id={`service-${s.n}`}
+            className="grid scroll-mt-24 grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-x-12 gap-y-8 border-b border-ink-600 py-14"
           >
             <div className="flex flex-col gap-4">
               <div className="flex items-baseline gap-4">
@@ -65,7 +67,7 @@ export default function ServicesPage() {
           <span className="font-mono text-[13px] text-sakura-500">{SERVICES.models.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{SERVICES.models.heading}</h2>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {SERVICES.models.items.map((m) => (
             <div
               key={m.t}
@@ -82,24 +84,28 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-12 pb-32">
+      <section className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-12 pb-20">
         <div className="flex flex-col gap-4">
           <span className="font-mono text-[13px] text-sakura-500">{SERVICES.faq.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{SERVICES.faq.heading}</h2>
         </div>
         <div className="flex flex-col border-t border-ink-600">
           {SERVICES.faq.items.map((f) => (
-            <details key={f.q} className="group border-b border-ink-600 py-[22px]">
-              <summary className="flex list-none items-center justify-between gap-4 text-lg font-medium tracking-[-0.01em] [&::-webkit-details-marker]:hidden">
+            <details key={f.q} className="group border-b border-ink-600">
+              <summary className="flex list-none items-center justify-between gap-4 py-[22px] text-lg font-medium tracking-[-0.01em] [&::-webkit-details-marker]:hidden">
                 {f.q}
                 <span aria-hidden="true" className="shrink-0 font-mono text-sakura-500 group-open:hidden">+</span>
                 <span aria-hidden="true" className="hidden shrink-0 font-mono text-sakura-500 group-open:inline">−</span>
               </summary>
-              <p className="mt-3 text-[15px] leading-[1.6] text-ink-400">{f.a}</p>
+              <p className="pb-[22px] text-[15px] leading-[1.6] text-ink-400">{f.a}</p>
             </details>
           ))}
         </div>
       </section>
+
+      <div className="pb-32">
+        <NextStepCta />
+      </div>
     </div>
   );
 }

@@ -3,24 +3,24 @@
 import { useEffect, useState } from "react";
 import { ARTICLE } from "@/content/site/blog";
 
-const ROUND = "inline-flex size-10 items-center justify-center rounded-full border border-ink-600 text-ink-200 hover:border-ink-500";
+const ROUND = "inline-flex size-11 items-center justify-center rounded-full border border-ink-600 text-ink-200 hover:border-ink-500";
 
 export function ShareLinks({ url, title }: { url: string; title: string }) {
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
   const encoded = encodeURIComponent(url);
 
   useEffect(() => {
-    if (!copied) return;
-    const timer = setTimeout(() => setCopied(false), 1600);
+    if (status === "idle") return;
+    const timer = setTimeout(() => setStatus("idle"), 1600);
     return () => clearTimeout(timer);
-  }, [copied]);
+  }, [status]);
 
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(url);
-      setCopied(true);
+      setStatus("copied");
     } catch {
-      // Clipboard can be blocked; the address bar still has the link.
+      setStatus("failed");
     }
   };
 
@@ -51,9 +51,9 @@ export function ShareLinks({ url, title }: { url: string; title: string }) {
       <button
         type="button"
         onClick={copy}
-        className="h-10 rounded-full border border-ink-600 px-3.5 text-[13px] text-ink-200 hover:border-ink-500"
+        className="h-11 rounded-full border border-ink-600 px-3.5 text-[13px] text-ink-200 hover:border-ink-500"
       >
-        <span aria-live="polite">{copied ? ARTICLE.copied : ARTICLE.copy}</span>
+        <span aria-live="polite">{{ idle: ARTICLE.copy, copied: ARTICLE.copied, failed: ARTICLE.copyFailed }[status]}</span>
       </button>
     </div>
   );

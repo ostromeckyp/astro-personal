@@ -46,7 +46,7 @@ export default function AboutPage() {
             <Button href="/contact" size="lg">
               {ABOUT.cta}
             </Button>
-            <a href="/cv.pdf" className="border-b border-ink-0/60 pb-[3px] text-[15px] hover:border-ink-0">
+            <a href="/cv.pdf" {...NEW_TAB} className="tap border-b border-ink-0/60 pb-[3px] text-[15px] hover:border-ink-0">
               {ABOUT.cv}
             </a>
           </div>

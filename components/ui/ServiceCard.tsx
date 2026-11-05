@@ -20,7 +20,7 @@ export function ServiceCard({
     <Link
       href={href}
       className={cn(
-        "flex min-h-[340px] flex-col gap-[22px] rounded-card border bg-ink-900 p-7 text-ink-0 transition-colors hover:border-sakura-500 md:p-9",
+        "flex flex-col lg:min-h-[340px] gap-[22px] rounded-card border bg-ink-900 p-7 text-ink-0 transition-colors hover:border-sakura-500 md:p-9",
         featured ? "border-sakura-500" : "border-ink-700",
       )}
     >

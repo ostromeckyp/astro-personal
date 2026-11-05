@@ -30,6 +30,7 @@
 
 @layer base {
   html {
+    scroll-behavior: smooth;
     color-scheme: dark;
     background-color: var(--color-ink-950);
   }
@@ -57,6 +58,16 @@
 }
 
 @layer components {
+  /* Grows the tap area of a text link without changing how it looks. */
+  .tap {
+    position: relative;
+  }
+  .tap::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+  }
+
   /* Site container: 1248 max width, 24 gutter. */
   .site-container {
     width: 100%;

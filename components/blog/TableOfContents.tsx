@@ -1,12 +1,38 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ARTICLE } from "@/content/site/blog";
 import { cn } from "@/lib/cn";
 import type { TocItem } from "@/lib/posts";
 
+function Links({ items, activeId, onNavigate }: { items: TocItem[]; activeId?: string; onNavigate?: () => void }) {
+  return (
+    <ol className="flex flex-col gap-2.5 border-l border-ink-600">
+      {items.map((item) => {
+        const active = item.id === activeId;
+        return (
+          <li
+            key={item.id}
+            className={cn("-ml-px border-l-2 pl-4 text-sm leading-[1.4]", active ? "border-sakura-500" : "border-transparent")}
+          >
+            <a
+              href={`#${item.id}`}
+              onClick={onNavigate}
+              aria-current={active ? "location" : undefined}
+              className={cn("block py-1 lg:py-0", active ? "text-ink-0" : "text-ink-400 hover:text-ink-0")}
+            >
+              {item.text}
+            </a>
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
 export function TableOfContents({ items }: { items: TocItem[] }) {
   const [activeId, setActiveId] = useState(items[0]?.id);
+  const collapsed = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
     const headings = items.flatMap((item) => {
@@ -26,27 +52,23 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
   }, [items]);
 
   return (
-    <nav aria-label={ARTICLE.tocLabel} className="flex flex-col gap-3.5">
-      <span className="font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase">{ARTICLE.toc}</span>
-      <ol className="flex flex-col gap-2.5 border-l border-ink-600">
-        {items.map((item) => {
-          const active = item.id === activeId;
-          return (
-            <li
-              key={item.id}
-              className={cn("-ml-px border-l-2 pl-4 text-sm leading-[1.4]", active ? "border-sakura-500" : "border-transparent")}
-            >
-              <a
-                href={`#${item.id}`}
-                aria-current={active ? "location" : undefined}
-                className={active ? "text-ink-0" : "text-ink-400 hover:text-ink-0"}
-              >
-                {item.text}
-              </a>
-            </li>
-          );
-        })}
-      </ol>
+    <nav aria-label={ARTICLE.tocLabel}>
+      {/* Phones: collapsed, so the post starts near the top. */}
+      <details ref={collapsed} className="group rounded-input border border-ink-600 lg:hidden">
+        <summary className="flex min-h-11 list-none items-center justify-between gap-4 px-4 font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase [&::-webkit-details-marker]:hidden">
+          {ARTICLE.toc}
+          <span aria-hidden="true" className="text-sm text-sakura-500 group-open:hidden">+</span>
+          <span aria-hidden="true" className="hidden text-sm text-sakura-500 group-open:inline">−</span>
+        </summary>
+        <div className="px-4 pb-4">
+          <Links items={items} activeId={activeId} onNavigate={() => collapsed.current?.removeAttribute("open")} />
+        </div>
+      </details>
+
+      <div className="hidden flex-col gap-3.5 lg:flex">
+        <span className="font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase">{ARTICLE.toc}</span>
+        <Links items={items} activeId={activeId} />
+      </div>
     </nav>
   );
 }

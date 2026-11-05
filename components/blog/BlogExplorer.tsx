@@ -1,11 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import { PostCard } from "@/components/blog/PostCard";
 import { BLOG } from "@/content/site/blog";
 import { cn } from "@/lib/cn";
-import { filterPosts, type Topic } from "@/lib/post-list";
+import { blogSearch, filterPosts, parseBlogState, type BlogState } from "@/lib/post-list";
 import type { PostSummary } from "@/lib/posts";
+
+const SEARCH_CHANGED = "blog-search-changed";
+
+// The filter and view live in the URL, so returning from a post restores them.
+// Read outside React state because useSearchParams would drop the post list from the prerendered HTML.
+function subscribeToSearch(onChange: () => void) {
+  window.addEventListener(SEARCH_CHANGED, onChange);
+  window.addEventListener("popstate", onChange);
+  return () => {
+    window.removeEventListener(SEARCH_CHANGED, onChange);
+    window.removeEventListener("popstate", onChange);
+  };
+}
 
 function ViewButton({
   label,
@@ -35,8 +48,12 @@ function ViewButton({
 }
 
 export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
-  const [topic, setTopic] = useState<Topic>("all");
-  const [view, setView] = useState<"grid" | "list">("grid");
+  const { topic, view } = parseBlogState(useSyncExternalStore(subscribeToSearch, () => window.location.search, () => ""));
+  const update = (change: Partial<BlogState>) => {
+    const query = blogSearch({ topic, view, ...change });
+    window.history.replaceState(null, "", `${window.location.pathname}${query}`);
+    window.dispatchEvent(new Event(SEARCH_CHANGED));
+  };
   const visible = filterPosts(posts, topic);
   // A topic view can repeat the featured post, whose transition names are already taken.
   const featuredSlug = posts[0]?.slug;
@@ -52,9 +69,9 @@ export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
                 key={t.value}
                 type="button"
                 aria-pressed={pressed}
-                onClick={() => setTopic(t.value)}
+                onClick={() => update({ topic: t.value })}
                 className={cn(
-                  "h-10 rounded-full border px-[18px] text-sm transition-colors",
+                  "h-11 rounded-full border px-[18px] text-sm transition-colors",
                   pressed ? "border-ink-0 bg-ink-0 text-ink-950" : "border-ink-600 text-ink-200 hover:border-ink-500",
                 )}
               >
@@ -63,8 +80,8 @@ export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
             );
           })}
         </div>
-        <div role="group" aria-label={BLOG.viewLabel} className="flex gap-1 rounded-full border border-ink-600 p-1">
-          <ViewButton label={BLOG.grid} pressed={view === "grid"} onClick={() => setView("grid")}>
+        <div role="group" aria-label={BLOG.viewLabel} className="hidden gap-1 rounded-full border border-ink-600 p-1 md:flex">
+          <ViewButton label={BLOG.grid} pressed={view === "grid"} onClick={() => update({ view: "grid" })}>
             <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="3" y="3" width="7" height="7" rx="1" />
               <rect x="14" y="3" width="7" height="7" rx="1" />
@@ -72,7 +89,7 @@ export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
               <rect x="14" y="14" width="7" height="7" rx="1" />
             </svg>
           </ViewButton>
-          <ViewButton label={BLOG.list} pressed={view === "list"} onClick={() => setView("list")}>
+          <ViewButton label={BLOG.list} pressed={view === "list"} onClick={() => update({ view: "list" })}>
             <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <path d="M9 6h12M9 12h12M9 18h12" />
               <rect x="3" y="4" width="3" height="4" rx="1" />

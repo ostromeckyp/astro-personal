@@ -64,7 +64,7 @@ export function ContactForm() {
                 aria-pressed={pressed}
                 onClick={() => setValue("topic", t.value)}
                 className={cn(
-                  "h-10 rounded-full border px-4 text-sm transition-colors",
+                  "h-11 rounded-full border px-4 text-sm transition-colors",
                   pressed ? "border-ink-0 bg-ink-0 text-ink-950" : "border-ink-600 text-ink-200 hover:border-ink-500",
                 )}
               >

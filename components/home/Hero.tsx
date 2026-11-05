@@ -43,7 +43,7 @@ export function Hero() {
           <Button href="/contact" size="lg">
             {hero.cta}
           </Button>
-          <Link href="/use-cases" className="border-b border-[rgba(244,242,244,0.6)] pb-[3px] text-base text-ink-100 hover:border-ink-0">
+          <Link href="/use-cases" className="tap border-b border-[rgba(244,242,244,0.6)] pb-[3px] text-base text-ink-100 hover:border-ink-0">
             {hero.cta2}
           </Link>
         </div>
