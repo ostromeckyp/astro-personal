@@ -27,6 +27,7 @@ npm test            # vitest
 node scripts/verify-site.mjs --bodies main --html --seo  # post bodies unchanged, no placeholders, sound SEO tags in the build
 node scripts/generate-icons.mjs        # rebuild the favicon set
 node scripts/localize-post-images.mjs  # copy remote post images locally, updates lib/post-images.ts
+node scripts/blend-hero.mjs <original> <upscaled>  # rebuild the sharper hero image
 ```
 
 ## Env
