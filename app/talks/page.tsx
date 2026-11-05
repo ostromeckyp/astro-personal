@@ -40,7 +40,7 @@ export default function TalksPage() {
           {list.items.map((k) => (
             <article
               key={k.title}
-              className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] items-center gap-x-10 gap-y-6 border-b border-ink-700 py-8"
+              className="reveal grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] items-center gap-x-10 gap-y-6 border-b border-ink-700 py-8"
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-ink-600 bg-ink-900">
                 <Image
@@ -70,7 +70,7 @@ export default function TalksPage() {
         <SectionHeading index={gallery.label} title={gallery.heading} />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-4">
           {gallery.items.map((g) => (
-            <figure key={g.image} className="flex flex-col gap-2.5">
+            <figure key={g.image} className="reveal flex flex-col gap-2.5">
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-ink-600 bg-ink-900">
                 <Image
                   src={g.image}
@@ -88,7 +88,7 @@ export default function TalksPage() {
       </section>
 
       <section className="pb-32">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-center gap-8 rounded-card border border-sakura-500 bg-ink-900 p-6 md:p-12">
+        <div className="reveal grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-center gap-8 rounded-card border border-sakura-500 bg-ink-900 p-6 md:p-12">
           <div className="flex flex-col gap-4">
             <span className={`${KICKER} text-sakura-500`}>{team.label}</span>
             <span className="text-[32px] leading-[1.08] font-semibold tracking-[-0.03em]">{team.heading}</span>

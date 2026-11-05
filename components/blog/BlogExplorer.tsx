@@ -120,15 +120,16 @@ export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
         <p className="pt-10 pb-32 text-[15px] text-ink-400">{BLOG.empty}</p>
       ) : view === "grid" ? (
         <section
+          key={topic}
           aria-label={BLOG.postsLabel}
-          className="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-x-6 gap-y-8 pt-10 pb-32"
+          className="fade-in grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-x-6 gap-y-8 pt-10 pb-32"
         >
           {visible.map((p) => (
             <PostCard key={p.slug} post={p} morph={p.slug !== featuredSlug} />
           ))}
         </section>
       ) : (
-        <section aria-label={BLOG.postsLabel} className="flex flex-col pb-32">
+        <section key={topic} aria-label={BLOG.postsLabel} className="fade-in flex flex-col pb-32">
           {visible.map((p) => (
             <PostCard key={p.slug} post={p} variant="list" morph={p.slug !== featuredSlug} />
           ))}

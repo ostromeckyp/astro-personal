@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/about",
 });
 
-const CARD = "flex flex-col gap-[18px] rounded-card border border-ink-700 bg-ink-900 p-8";
+const CARD = "reveal flex flex-col gap-[18px] rounded-card border border-ink-700 bg-ink-900 p-8";
 const KICKER = "font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase";
 
 export default function AboutPage() {
@@ -61,7 +61,7 @@ export default function AboutPage() {
         </div>
         <ol className="flex min-w-0 flex-col border-t border-ink-600 lg:col-span-2">
           {experience.jobs.map((j) => (
-            <li key={j.org} className="grid grid-cols-1 gap-x-6 gap-y-2 border-b border-ink-700 py-6 sm:grid-cols-[150px_minmax(0,1fr)]">
+            <li key={j.org} className="reveal grid grid-cols-1 gap-x-6 gap-y-2 border-b border-ink-700 py-6 sm:grid-cols-[150px_minmax(0,1fr)]">
               <span className="pt-1 font-mono text-xs text-ink-400">{j.when}</span>
               <div className="flex flex-col gap-1.5">
                 <span className="text-lg font-medium tracking-[-0.01em]">

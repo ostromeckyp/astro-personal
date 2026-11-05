@@ -47,7 +47,7 @@ export function PostCard({
     return (
       <Link
         href={href}
-        className="group grid grid-cols-1 items-center gap-5 border-b border-ink-700 py-7 text-ink-0 md:grid-cols-[240px_minmax(0,1fr)_auto] md:gap-8"
+        className="reveal group grid grid-cols-1 items-center gap-5 border-b border-ink-700 py-7 text-ink-0 md:grid-cols-[240px_minmax(0,1fr)_auto] md:gap-8"
       >
         <Morph name={`post-image-${post.slug}`} enabled={morph}>
           <Cover post={post} className="rounded-[10px]" sizes="(min-width: 768px) 240px, 100vw" />
@@ -58,7 +58,7 @@ export function PostCard({
             <span>{date}</span>
           </div>
           <Morph name={`post-title-${post.slug}`} enabled={morph}>
-            <span className="text-2xl leading-[1.2] font-medium tracking-[-0.02em] text-ink-200 group-hover:text-white">
+            <span className="text-2xl leading-[1.2] font-medium tracking-[-0.02em] text-ink-200 transition-colors group-hover:text-white">
               {post.title}
             </span>
           </Morph>
@@ -70,7 +70,7 @@ export function PostCard({
   }
 
   return (
-    <Link href={href} className="group flex flex-col gap-[18px] text-ink-0">
+    <Link href={href} className="reveal group flex flex-col gap-[18px] text-ink-0">
       <Morph name={`post-image-${post.slug}`} enabled={morph}>
         <Cover post={post} className="rounded-xl" sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw" />
       </Morph>
@@ -81,7 +81,7 @@ export function PostCard({
           <span>{read}</span>
         </div>
         <Morph name={`post-title-${post.slug}`} enabled={morph}>
-          <span className="text-[22px] leading-[1.2] font-semibold tracking-[-0.02em] text-ink-200 group-hover:text-white">
+          <span className="text-[22px] leading-[1.2] font-semibold tracking-[-0.02em] text-ink-200 transition-colors group-hover:text-white">
             {post.title}
           </span>
         </Morph>

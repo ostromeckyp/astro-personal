@@ -39,7 +39,7 @@ export function ContactForm() {
 
   if (mutation.isSuccess) {
     return (
-      <div role="status" className="flex min-h-[480px] flex-col justify-center gap-4">
+      <div role="status" className="fade-in flex min-h-[480px] flex-col justify-center gap-4">
         <span aria-hidden="true" className="h-0.5 w-10 bg-sakura-500" />
         <span className="text-[32px] leading-[1.1] font-semibold tracking-[-0.03em]">{success.title}</span>
         <span className="text-base leading-[1.6] text-ink-400">{success.body}</span>

@@ -61,7 +61,7 @@ export default function HomePage() {
           <SectionHeading index="04" title={HOME.how.heading} action={<TextLink href="/approach">{HOME.how.all}</TextLink>} />
           <ol className="grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] border-t border-ink-600">
             {HOME.how.steps.map((s) => (
-              <li key={s.n} className="flex flex-col gap-2.5 pt-7 pr-6 pb-2">
+              <li key={s.n} className="reveal flex flex-col gap-2.5 pt-7 pr-6 pb-2">
                 <span className="font-mono text-xs text-sakura-500">{s.n}</span>
                 <span className="text-xl font-medium tracking-[-0.015em]">{s.t}</span>
                 <span className="text-[15px] leading-[1.55] text-ink-400">{s.d}</span>
@@ -71,7 +71,7 @@ export default function HomePage() {
         </section>
 
         <section className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-center gap-12 pb-32">
-          <div className="relative aspect-[4/5] max-h-[560px] overflow-hidden rounded-card bg-ink-900">
+          <div className="reveal relative aspect-[4/5] max-h-[560px] overflow-hidden rounded-card bg-ink-900">
             <Image
               src="/images/portrait.jpg"
               alt={HOME.about.portraitAlt}
@@ -97,7 +97,7 @@ export default function HomePage() {
           <section className="pb-32">
             <Link
               href={`/blog/${latest.slug}`}
-              className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-end gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 text-ink-0 transition-colors hover:border-sakura-500 md:p-12"
+              className="reveal grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-end gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 text-ink-0 transition-colors hover:border-sakura-500 md:p-12"
             >
               <div className="flex flex-col gap-4">
                 <span className="font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase">
