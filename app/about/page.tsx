@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { ABOUT } from "@/content/site/about";
+import { NEW_TAB } from "@/lib/external-link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -34,7 +35,7 @@ export default function AboutPage() {
           <p className="text-base leading-[1.65] text-ink-400">{ABOUT.p2}</p>
           <p className="text-base leading-[1.65] text-ink-400">
             {ABOUT.p3}{" "}
-            <a href={ABOUT.github.href} className="text-ink-0 underline decoration-sakura-500 underline-offset-[3px] hover:text-sakura-300">
+            <a href={ABOUT.github.href} {...NEW_TAB} className="text-ink-0 underline decoration-sakura-500 underline-offset-[3px] hover:text-sakura-300">
               {ABOUT.github.label}
             </a>
             .

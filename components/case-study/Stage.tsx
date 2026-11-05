@@ -5,6 +5,7 @@ import { cn } from "@/lib/cn";
 export function Stage({ aspect, className, children }: { aspect: string; className?: string; children: ReactNode }) {
   return (
     <div className={cn("stage", className)} style={{ "--stage-aspect": aspect } as CSSProperties}>
+      <div aria-hidden="true" className="stage-glow glow-burn" />
       {children}
     </div>
   );

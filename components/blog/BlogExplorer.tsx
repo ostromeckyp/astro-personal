@@ -38,6 +38,8 @@ export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
   const [topic, setTopic] = useState<Topic>("all");
   const [view, setView] = useState<"grid" | "list">("grid");
   const visible = filterPosts(posts, topic);
+  // A topic view can repeat the featured post, whose transition names are already taken.
+  const featuredSlug = posts[0]?.slug;
 
   return (
     <>
@@ -89,13 +91,13 @@ export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
           className="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-x-6 gap-y-8 pt-10 pb-32"
         >
           {visible.map((p) => (
-            <PostCard key={p.slug} post={p} />
+            <PostCard key={p.slug} post={p} morph={p.slug !== featuredSlug} />
           ))}
         </section>
       ) : (
         <section aria-label={BLOG.postsLabel} className="flex flex-col pb-32">
           {visible.map((p) => (
-            <PostCard key={p.slug} post={p} variant="list" />
+            <PostCard key={p.slug} post={p} variant="list" morph={p.slug !== featuredSlug} />
           ))}
         </section>
       )}

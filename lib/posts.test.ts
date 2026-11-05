@@ -59,6 +59,17 @@ describe("renderMarkdown", () => {
     expect((await renderMarkdown("```ts\nconst a = 1;\n```\n")).html.toLowerCase()).toContain("#ff6ab0");
   });
 
+  it("opens external links in a new tab", async () => {
+    const { html } = await renderMarkdown("[out](https://medium.com/x)\n");
+    expect(html).toContain('target="_blank"');
+    expect(html).toContain('rel="noreferrer"');
+  });
+
+  it("keeps same-site and anchor links in the same tab", async () => {
+    const { html } = await renderMarkdown("[a](https://ostromecki.dev/blog) [b](/about) [c](#top) [d](mailto:a@b.co)\n");
+    expect(html).not.toContain("target=");
+  });
+
   it("does not fail on an unknown language", async () => {
     await expect(renderMarkdown("```not-a-language\nx\n```\n")).resolves.toBeDefined();
   });

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import { BrowserWindow } from "@/components/case-study/BrowserWindow";
 import { Callout } from "@/components/case-study/Callout";
 import { CaseIntro } from "@/components/case-study/CaseIntro";
@@ -21,7 +22,7 @@ export default function FormsCasePage() {
       <div aria-hidden="true" className="absolute top-16 left-[-40px] h-px w-[1700px] origin-top-left rotate-15 bg-ink-0/8" />
       <div aria-hidden="true" className="absolute top-40 left-[-40px] h-px w-[1700px] origin-top-left rotate-15 bg-ink-0/6" />
       <div className="site-container flex flex-col gap-24 pt-20 pb-24 md:pt-24">
-        <CaseIntro index="02" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />
+        <CaseIntro slug="no-code-forms" index="02" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />
 
         <aside
           aria-label={disclosure.ariaLabel}
@@ -40,12 +41,14 @@ export default function FormsCasePage() {
         </aside>
 
         <figure className="relative flex flex-col gap-5">
-          <Stage aspect="16 / 9">
-            <StageHeading kicker={hero.kicker} title={hero.heading} style={{ left: "5%", top: "14%", width: "30%" }} />
-            <BrowserWindow title={hero.url} src={hero.src} alt={hero.alt} tilt="left" priority style={{ left: "37%", top: "12%", width: "59%" }} />
-            <Callout src={hero.src} {...hero.crop} style={{ left: "30%", bottom: "9%", width: "58%" }} />
-            <StagePill style={{ right: "4%", bottom: "3%" }}>{hero.pill}</StagePill>
-          </Stage>
+          <ViewTransition name="use-case-image-no-code-forms">
+            <Stage aspect="16 / 9">
+              <StageHeading kicker={hero.kicker} title={hero.heading} style={{ left: "5%", top: "14%", width: "30%" }} />
+              <BrowserWindow title={hero.url} src={hero.src} alt={hero.alt} tilt="left" priority style={{ left: "37%", top: "12%", width: "59%" }} />
+              <Callout src={hero.src} {...hero.crop} style={{ left: "30%", bottom: "9%", width: "58%" }} />
+              <StagePill style={{ right: "4%", bottom: "3%" }}>{hero.pill}</StagePill>
+            </Stage>
+          </ViewTransition>
           <figcaption className="grid max-w-[900px] grid-cols-[64px_minmax(0,1fr)] gap-4 sm:grid-cols-[96px_minmax(0,1fr)]">
             <span className="font-mono text-xs text-sakura-500">{hero.n}</span>
             <span className="text-[15px] leading-[1.55] text-ink-400">
