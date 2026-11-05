@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Providers } from "@/app/providers";
 import { ContactForm } from "@/components/ContactForm";
 import { CONTACT } from "@/content/site/contact";
 import { NEW_TAB } from "@/lib/external-link";
@@ -54,7 +55,9 @@ export default function ContactPage() {
         </dl>
       </div>
       <div className="rounded-card border border-ink-700 bg-ink-900 p-6 md:p-10">
-        <ContactForm />
+        <Providers>
+          <ContactForm />
+        </Providers>
       </div>
     </div>
   );

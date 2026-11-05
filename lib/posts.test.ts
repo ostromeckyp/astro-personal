@@ -1,4 +1,6 @@
+import fs from "node:fs";
 import { describe, expect, it } from "vitest";
+import { POST_IMAGES } from "./post-images";
 import { getAllPosts, getPostBySlug, parsePostDate, renderMarkdown } from "./posts";
 
 describe("getAllPosts", () => {
@@ -68,6 +70,30 @@ describe("renderMarkdown", () => {
   it("keeps same-site and anchor links in the same tab", async () => {
     const { html } = await renderMarkdown("[a](https://ostromecki.dev/blog) [b](/about) [c](#top) [d](mailto:a@b.co)\n");
     expect(html).not.toContain("target=");
+  });
+
+  it("serves known remote images locally, with dimensions", async () => {
+    const known = Object.keys(POST_IMAGES)[0];
+    const { html } = await renderMarkdown(`![a](${known})\n`);
+    expect(html).toContain(`src="${POST_IMAGES[known].src}"`);
+    expect(html).toContain(`width="${POST_IMAGES[known].width}"`);
+    expect(html).toContain(`height="${POST_IMAGES[known].height}"`);
+    expect(html).not.toContain("miro.medium.com");
+  });
+
+  it("lazy loads images, and leaves unknown ones where they are", async () => {
+    const { html } = await renderMarkdown("![a](https://example.com/x.png)\n");
+    expect(html).toContain('src="https://example.com/x.png"');
+    expect(html).toContain('loading="lazy"');
+    expect(html).toContain('decoding="async"');
+  });
+
+  it("has a local copy of every remote image in the posts", () => {
+    const remote = fs
+      .readdirSync("content/blog")
+      .flatMap((f) => [...fs.readFileSync(`content/blog/${f}`, "utf8").matchAll(/!\[[^\]]*\]\((https:\/\/miro\.medium\.com[^)\s]+)/g)].map((m) => m[1]));
+    expect(remote.length).toBe(8);
+    expect(remote.filter((u) => !POST_IMAGES[u])).toEqual([]);
   });
 
   it("does not fail on an unknown language", async () => {

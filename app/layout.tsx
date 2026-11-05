@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./providers";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_DEFAULT_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -45,13 +44,11 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <body className="flex min-h-screen flex-col">
         <JsonLd data={personSchema()}/>
         <JsonLd data={websiteSchema()}/>
-        <Providers>
-            <Nav/>
-            <main id="main-content" className="grow">
-                {children}
-            </main>
-            <Footer/>
-        </Providers>
+        <Nav/>
+        <main id="main-content" className="grow">
+            {children}
+        </main>
+        <Footer/>
         </body>
         </html>
     );

@@ -12,6 +12,7 @@ import remarkRehype from "remark-rehype";
 import type { ThemeRegistrationRaw } from "shiki";
 import { unified } from "unified";
 import { isExternalUrl } from "./external-link";
+import { POST_IMAGES } from "./post-images";
 
 const POSTS_DIR = path.join(process.cwd(), "content", "blog");
 const WORDS_PER_MINUTE = 200;
@@ -93,6 +94,27 @@ function openExternalLinksInNewTab() {
   return visit;
 }
 
+/** Serves known remote images from this site, and lets every image load lazily without shifting layout. */
+function prepareImages() {
+  const visit = (node: Root | Element) => {
+    for (const child of node.children) {
+      if (child.type !== "element") continue;
+      if (child.tagName === "img") {
+        const local = POST_IMAGES[String(child.properties.src)];
+        if (local) {
+          child.properties.src = local.src;
+          child.properties.width = local.width;
+          child.properties.height = local.height;
+        }
+        child.properties.loading = "lazy";
+        child.properties.decoding = "async";
+      }
+      visit(child);
+    }
+  };
+  return visit;
+}
+
 export async function renderMarkdown(md: string): Promise<{ html: string; toc: TocItem[] }> {
   const toc: TocItem[] = [];
   const file = await unified()
@@ -100,6 +122,7 @@ export async function renderMarkdown(md: string): Promise<{ html: string; toc: T
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(openExternalLinksInNewTab)
+    .use(prepareImages)
     .use(rehypeSlug)
     .use(() => collectToc(toc))
     .use(rehypePrettyCode, { theme: CODE_THEME, keepBackground: false })
