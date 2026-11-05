@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { BrowserWindow } from "@/components/case-study/BrowserWindow";
@@ -22,15 +23,17 @@ export default function SalonCasePage() {
     <div className="relative overflow-x-clip">
       <div aria-hidden="true" className="absolute top-20 left-[-200px] h-px w-[2000px] origin-top-left rotate-9 bg-ink-0/8" />
       <div className="site-container flex flex-col gap-24 pt-20 pb-24 md:pt-24">
-        <CaseIntro index="01" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />
+        <CaseIntro slug="salon-replenishment" index="01" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />
 
         <figure className="relative flex flex-col gap-5">
-          <Stage aspect="16 / 9">
-            <StageHeading kicker={hero.kicker} title={hero.heading} style={{ left: "5%", bottom: "10%", width: "30%" }} />
-            <BrowserWindow title={hero.url} src={hero.src} alt={hero.alt} tilt="left" priority style={{ left: "37%", top: "12%", width: "59%" }} />
-            <Callout src={hero.src} {...hero.crop} style={{ right: "3%", top: "40%", width: "27%" }} />
-            <StagePill style={{ left: "38%", top: "4%" }}>{hero.pill}</StagePill>
-          </Stage>
+          <ViewTransition name="use-case-image-salon-replenishment">
+            <Stage aspect="16 / 9">
+              <StageHeading kicker={hero.kicker} title={hero.heading} style={{ left: "5%", bottom: "10%", width: "30%" }} />
+              <BrowserWindow title={hero.url} src={hero.src} alt={hero.alt} tilt="left" priority style={{ left: "37%", top: "12%", width: "59%" }} />
+              <Callout src={hero.src} {...hero.crop} style={{ right: "3%", top: "40%", width: "27%" }} />
+              <StagePill style={{ left: "38%", top: "4%" }}>{hero.pill}</StagePill>
+            </Stage>
+          </ViewTransition>
           <figcaption className="grid max-w-[900px] grid-cols-[64px_minmax(0,1fr)] gap-4 sm:grid-cols-[96px_minmax(0,1fr)]">
             <span className="font-mono text-xs text-sakura-500">{hero.n}</span>
             <span className="text-[15px] leading-[1.55] text-ink-400">

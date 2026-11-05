@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { FOOTER } from "@/content/site/nav";
+import { NEW_TAB } from "@/lib/external-link";
 
 export function Footer() {
   return (
@@ -20,7 +21,7 @@ export function Footer() {
               {FOOTER.email}
             </a>
             {FOOTER.socials.map((s) => (
-              <a key={s.href} href={s.href} className="hover:text-ink-0">
+              <a key={s.href} href={s.href} {...NEW_TAB} className="hover:text-ink-0">
                 {s.label}
               </a>
             ))}

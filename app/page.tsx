@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import { Hero } from "@/components/home/Hero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
@@ -94,7 +95,9 @@ export default function HomePage() {
                 <span className="font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase">
                   {HOME.post.label} · {latest.label}
                 </span>
-                <span className="text-[clamp(28px,3vw,40px)] leading-[1.08] font-semibold tracking-[-0.03em]">{latest.title}</span>
+                <ViewTransition name={`post-title-${latest.slug}`}>
+                  <span className="text-[clamp(28px,3vw,40px)] leading-[1.08] font-semibold tracking-[-0.03em]">{latest.title}</span>
+                </ViewTransition>
               </div>
               <div className="flex items-center justify-between gap-4 text-[15px] text-ink-400">
                 <span>{formatPostDate(latest.date, "long")}</span>

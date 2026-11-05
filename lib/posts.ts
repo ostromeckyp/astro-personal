@@ -11,6 +11,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import type { ThemeRegistrationRaw } from "shiki";
 import { unified } from "unified";
+import { isExternalUrl } from "./external-link";
 
 const POSTS_DIR = path.join(process.cwd(), "content", "blog");
 const WORDS_PER_MINUTE = 200;
@@ -77,12 +78,28 @@ function collectToc(toc: TocItem[]) {
   };
 }
 
+function openExternalLinksInNewTab() {
+  const visit = (node: Root | Element) => {
+    for (const child of node.children) {
+      if (child.type !== "element") continue;
+      const href = child.properties.href;
+      if (child.tagName === "a" && typeof href === "string" && isExternalUrl(href)) {
+        child.properties.target = "_blank";
+        child.properties.rel = ["noreferrer"];
+      }
+      visit(child);
+    }
+  };
+  return visit;
+}
+
 export async function renderMarkdown(md: string): Promise<{ html: string; toc: TocItem[] }> {
   const toc: TocItem[] = [];
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(openExternalLinksInNewTab)
     .use(rehypeSlug)
     .use(() => collectToc(toc))
     .use(rehypePrettyCode, { theme: CODE_THEME, keepBackground: false })

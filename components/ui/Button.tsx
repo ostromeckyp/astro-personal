@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { isExternalUrl, NEW_TAB } from "@/lib/external-link";
 
 type ButtonProps = {
   href?: string;
@@ -51,7 +52,7 @@ export function Button({
   }
   if (isPlainAnchor(href)) {
     return (
-      <a href={href} className={classes}>
+      <a href={href} className={classes} {...(isExternalUrl(href) ? NEW_TAB : {})}>
         {content}
       </a>
     );

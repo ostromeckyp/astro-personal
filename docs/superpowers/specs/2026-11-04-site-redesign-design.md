@@ -69,7 +69,7 @@ Foundations are defined in `Main.dc.html` and components in `Components.dc.html`
 - Color: ink scale (950 `#000002`, 900 `#0A0A0F`, 800 `#131318`, 700 `#1D1D24`, 600 `#2B2B34`, 500 `#5B5B66`, 400 `#9A9AA6`, 200 `#E4E4E8`, 100 `#F4F4F6`, 0 `#FEFEFE`) and sakura scale (700 `#A8004F`, 600 `#D6006E`, 500 `#FA0980`, 300 `#FF6AB0`, 100 `#FFE3F0`). Text on pink is always ink 950.
 - Type: Geist (300–600) and Geist Mono via `next/font/google`. Mono is only for labels, indices, tags and code.
 - Radius: 4 tags, 10 inputs, 16 cards, pill buttons. Container: 1248 max width, 24 gutter.
-- Light effect: the pink glow appears at most once per page and is never a background wash. Hero animations stop under `prefers-reduced-motion`.
+- Light effect: the pink glow appears at most once per page and is never a background wash. Pink glows burn (decided by the owner): slow swell plus flicker. All animation stops under `prefers-reduced-motion`.
 - The global `p { text-justify }` and the old leading overrides in `globals.css` go.
 
 Repeated patterns become shared components (button, tag, section heading, card, page header, post card). Their exact shape is left to the builder.
@@ -93,6 +93,7 @@ Rendering:
 - Topic filter and view toggle are client state. The grid is the default. Remembering the choice is not required.
 - The article page has a header, cover, sticky table of contents with active section, share links (LinkedIn, X, copy link), author card with CTA, and "more from the blog".
 - Table of contents is generated from `h2`s (add heading ids in the markdown pipeline). If a post has fewer than 2 `h2`s, the table of contents is hidden and share links remain.
+- External links in post bodies open in a new tab, as do the site's other external links.
 - Standard markdown gets the design's article styles: headings, lists with pink dash markers, links, inline code, blockquote, tables if present. Code blocks get the design's framed look with a language label and syntax highlighting at build time; these are the design's colors, approximated by a Shiki theme.
 - The design's stat callout, captioned code figure and second blockquote style are design-only examples. They are **not** added to posts, and no MDX is introduced.
 - Remote images in post bodies stay as they are.
@@ -134,7 +135,7 @@ The page describes a client's product as part of the owner's contribution, using
 
 Do the upgrade first, on the current site, as its own commit so that any breakage is separable from the redesign. Check the official Next 16 upgrade guide rather than relying on memory; `next lint` no longer being available is a known item, so the `lint` script needs replacing.
 
-**Builder's call, owner may veto:** remove the blog-morph view transitions, `experimental.viewTransition`, `react-canary.d.ts` and the `unstable_ViewTransition` usage. The design doesn't include them, and they exist only to work around the canary build.
+Remove `react-canary.d.ts` and the `unstable_ViewTransition` alias. **Decided by the owner:** blog posts and use cases keep name-based morph transitions, using `ViewTransition` from `react`, which needs no Next config flag.
 
 ## Removed
 

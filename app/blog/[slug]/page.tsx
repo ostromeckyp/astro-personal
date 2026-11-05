@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { PostCard } from "@/components/blog/PostCard";
 import { ShareLinks } from "@/components/blog/ShareLinks";
 import { TableOfContents } from "@/components/blog/TableOfContents";
@@ -52,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
       <header className="relative overflow-hidden">
         <div
           aria-hidden="true"
-          className="absolute top-[-30%] right-[-10%] h-[160%] w-[70%] bg-[radial-gradient(closest-side,rgba(250,9,128,0.22),rgba(250,9,128,0)_100%)]"
+          className="article-glow glow-burn absolute top-[-30%] right-[-10%] h-[160%] w-[70%]"
         />
         <div
           aria-hidden="true"
@@ -71,9 +72,11 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
               {formatPostDate(post.date, "long")} · about {post.readingMinutes} min read
             </span>
           </div>
-          <h1 className="max-w-[980px] text-[clamp(40px,5.4vw,80px)] leading-[0.98] font-semibold tracking-[-0.045em]">
-            {post.title}
-          </h1>
+          <ViewTransition name={`post-title-${post.slug}`}>
+            <h1 className="max-w-[980px] text-[clamp(40px,5.4vw,80px)] leading-[0.98] font-semibold tracking-[-0.045em]">
+              {post.title}
+            </h1>
+          </ViewTransition>
           <p className="max-w-[720px] text-xl leading-[1.55] text-ink-400">{post.excerpt}</p>
           <div className="flex items-center gap-3.5 pt-2">
             <Image
@@ -92,17 +95,19 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
       </header>
 
       <figure className="site-container pt-12">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-ink-600 bg-ink-900 md:aspect-[21/9]">
-          <Image
-            src={post.image}
-            alt={post.imageAlt}
-            fill
-            priority
-            sizes="(min-width: 1248px) 1200px, 100vw"
-            style={{ objectPosition: post.imagePosition }}
-            className="object-cover"
-          />
-        </div>
+        <ViewTransition name={`post-image-${post.slug}`}>
+          <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-ink-600 bg-ink-900 md:aspect-[21/9]">
+            <Image
+              src={post.image}
+              alt={post.imageAlt}
+              fill
+              priority
+              sizes="(min-width: 1248px) 1200px, 100vw"
+              style={{ objectPosition: post.imagePosition }}
+              className="object-cover"
+            />
+          </div>
+        </ViewTransition>
       </figure>
 
       <div className="site-container flex flex-col items-start gap-14 pt-16 pb-24 lg:flex-row">
