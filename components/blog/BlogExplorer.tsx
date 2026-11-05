@@ -3,8 +3,9 @@
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useSyncExternalStore } from "react";
 import { PostCard } from "@/components/blog/PostCard";
-import { BLOG } from "@/content/site/blog";
+import type { BLOG as Copy } from "@/content/site/blog";
 import { cn } from "@/lib/cn";
+import type { Locale } from "@/lib/i18n";
 import { blogSearch, filterPosts, parseBlogState, type BlogState } from "@/lib/post-list";
 import type { PostSummary } from "@/lib/posts";
 
@@ -60,7 +61,7 @@ function ViewButton({
   );
 }
 
-export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
+export function BlogExplorer({ posts, copy: BLOG, lang }: { posts: PostSummary[]; copy: typeof Copy; lang: Locale }) {
   const { topic, view } = parseBlogState(useSyncExternalStore(subscribeToSearch, () => window.location.search, () => ""));
   const update = (change: Partial<BlogState>) => {
     const query = blogSearch({ topic, view, ...change });
@@ -125,13 +126,13 @@ export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
           className="fade-in grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-x-6 gap-y-8 pt-10 pb-32"
         >
           {visible.map((p) => (
-            <PostCard key={p.slug} post={p} morph={p.slug !== featuredSlug} />
+            <PostCard key={p.slug} post={p} morph={p.slug !== featuredSlug} lang={lang} readingTime={BLOG.readingTime} />
           ))}
         </section>
       ) : (
         <section key={topic} aria-label={BLOG.postsLabel} className="fade-in flex flex-col pb-32">
           {visible.map((p) => (
-            <PostCard key={p.slug} post={p} variant="list" morph={p.slug !== featuredSlug} />
+            <PostCard key={p.slug} post={p} variant="list" morph={p.slug !== featuredSlug} lang={lang} readingTime={BLOG.readingTime} />
           ))}
         </section>
       )}

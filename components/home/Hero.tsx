@@ -1,11 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+import { LocaleLink as Link } from "@/components/ui/LocaleLink";
 import { Button } from "@/components/ui/Button";
-import { HOME } from "@/content/site/home";
+import type { HOME } from "@/content/site/home";
 
-const { hero } = HOME;
-
-export function Hero() {
+export function Hero({ hero }: { hero: typeof HOME.hero }) {
   return (
     <section className="relative h-[calc(100svh-85px)] min-h-[480px] w-full overflow-hidden bg-[#080309] md:aspect-video md:h-auto md:max-h-[920px] md:min-h-[640px]">
       <Image

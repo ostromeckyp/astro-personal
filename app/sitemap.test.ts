@@ -19,4 +19,7 @@ it("lists every route and no removed ones", () => {
     expect(urls).toContain(route);
   }
   expect(urls).not.toContain("/resume");
+  expect(urls).toContain("/pl");
+  expect(urls).toContain("/pl/services");
+  expect(urls).not.toContain("/pl/blog/code-became-cheap");
 });

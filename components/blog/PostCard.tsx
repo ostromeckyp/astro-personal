@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+import { LocaleLink as Link } from "@/components/ui/LocaleLink";
 import { ViewTransition, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { formatPostDate } from "@/lib/format-date";
+import type { Locale } from "@/lib/i18n";
 import type { PostSummary } from "@/lib/posts";
 
 const META = "flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase";
@@ -32,16 +33,20 @@ export function PostCard({
   variant = "grid",
   showExcerpt = true,
   morph = true,
+  lang = "en",
+  readingTime = "about {n} min",
 }: {
   post: PostSummary;
   variant?: "grid" | "list";
   showExcerpt?: boolean;
   /** Turn off when this post is on the page twice: transition names must be unique. */
   morph?: boolean;
+  lang?: Locale;
+  readingTime?: string;
 }) {
   const href = `/blog/${post.slug}`;
-  const date = formatPostDate(post.date, "short");
-  const read = `about ${post.readingMinutes} min`;
+  const date = formatPostDate(post.date, "short", lang);
+  const read = readingTime.replace("{n}", String(post.readingMinutes));
 
   if (variant === "list") {
     return (

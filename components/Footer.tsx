@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/Button";
-import { FOOTER } from "@/content/site/nav";
+import type { FOOTER as Copy } from "@/content/site/nav";
 import { NEW_TAB } from "@/lib/external-link";
 
-export function Footer() {
+export function Footer({ copy: FOOTER }: { copy: typeof Copy }) {
   return (
     <footer className="border-t border-ink-700 bg-ink-950 text-ink-0">
       <div className="site-container flex flex-col gap-14 pt-[72px] pb-10">

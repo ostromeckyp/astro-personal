@@ -23,6 +23,7 @@ Ways to work together: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks), Fractiona
 - [Talks](https://www.ostromecki.dev/talks): talks and community work.
 - [Blog](https://www.ostromecki.dev/blog): notes on AI in real engineering, Angular and state management.
 - [Contact](https://www.ostromecki.dev/contact)
+- [Polish version of the site](https://www.ostromecki.dev/pl)
 
 ## Contact and profiles
 

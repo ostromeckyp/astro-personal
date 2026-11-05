@@ -14,6 +14,13 @@ export type UseCase = {
   tags: string[];
 };
 
+export const USE_CASES_PAGE = {
+  label: "use cases",
+  h1: "AI at work, not in a demo.",
+  intro: "Real systems with real users. Each one shows the business problem, where the AI sits in the workflow, and what keeps it in check.",
+  read: "Read the use case",
+};
+
 export const USE_CASES: UseCase[] = [
   {
     n: "01",

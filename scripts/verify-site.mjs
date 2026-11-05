@@ -12,6 +12,7 @@ const PLACEHOLDERS = [
   "[from", "[day rate", "[ — ]", "[meetups", "[members", "[since", "[year", "[venue", "[Podcast",
   "[two working", "[Privacy", "[Shown with", "[estimated", "[time ", "[duplicate", "[salons", "[forms",
   "[share of", "[Client testimonial", "[Name, role", "/_blob/",
+  "[od —", "[stawka", "[rok", "[miejsce", "[meetupów", "[członków", "[od roku", "[dwóch", "[Informacja", "[szacowany", "[Pokazano",
 ];
 
 function checkBodies(ref) {
@@ -58,8 +59,10 @@ function* builtPages(dir, base = dir) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) yield* builtPages(full, base);
     else if (entry.name.endsWith(".html") && !entry.name.startsWith("_")) {
-      const route = `/${path.relative(base, full).replace(/\.html$/, "")}`;
-      yield { file: full, route: route === "/index" ? "/" : route };
+      const internal = `/${path.relative(base, full).replace(/\.html$/, "")}`;
+      // English pages are built under /en and served at plain URLs.
+      const route = internal === "/en" ? "/" : internal.replace(/^\/en\//, "/");
+      yield { file: full, route };
     }
   }
 }
@@ -72,13 +75,20 @@ function checkSeo() {
     const fail = (message) => failures.push(`${route}: ${message}`);
 
     // Next drops the trailing slash of the root URL.
-    const expected = route === "/" ? SITE_URL : `${SITE_URL}${route}`;
+    // Polish post pages hold English text, so they point at the English URL.
+    const canonicalRoute = route.replace(/^\/pl\/blog\/(.+)/, "/blog/$1");
+    const expected = route === "/" ? SITE_URL : `${SITE_URL}${canonicalRoute}`;
+    const expectedLang = route === "/pl" || route.startsWith("/pl/") ? "pl" : "en";
+    if (!html.includes(`<html lang="${expectedLang}"`)) fail(`html lang is not ${expectedLang}`);
+    const isPost = canonicalRoute.startsWith("/blog/");
+    if (!isPost && !/<link rel="alternate" hrefLang="pl"/.test(html)) fail("no hreflang");
+    if (isPost && /<link rel="alternate" hrefLang="pl"/.test(html)) fail("English-only post declares a Polish version");
     const canonical = html.match(/<link rel="canonical" href="([^"]*)"/)?.[1];
     if (canonical !== expected) fail(`canonical is ${canonical}, expected ${expected}`);
 
     const title = decode(html.match(/<title>([^<]*)/)?.[1] ?? "");
     if (!title) fail("no title");
-    if (!route.startsWith("/blog/") && title.length > TITLE_LIMIT) fail(`title is ${title.length} characters`);
+    if (!route.includes("/blog/") && title.length > TITLE_LIMIT) fail(`title is ${title.length} characters`);
 
     const description = decode(meta("name", "description") ?? "");
     if (!description) fail("no description");

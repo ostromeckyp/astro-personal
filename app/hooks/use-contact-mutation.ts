@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
-import { submitContact } from '@/lib/contact';
+import { submitContact } from "@/lib/contact";
+import type { ContactInput } from "@/lib/contact-schema";
 
-export function useContactMutation(onSuccess?: () => void) {
-    return useMutation({
-        mutationFn: submitContact,
-        onSuccess,
-    });
+export function useContactMutation(sendFailed?: string) {
+  return useMutation({
+    mutationFn: (input: ContactInput) => submitContact(input, sendFailed),
+  });
 }

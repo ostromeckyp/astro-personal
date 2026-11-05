@@ -30,6 +30,12 @@ node scripts/localize-post-images.mjs  # copy remote post images locally, update
 node scripts/blend-hero.mjs <original> <upscaled>  # rebuild the sharper hero image
 ```
 
+## Languages
+
+English is served at plain URLs and Polish under `/pl`. `proxy.ts` sends visitors whose browser's top language is Polish to `/pl`; a saved choice from the PL/EN switch wins. Pages live in `app/[lang]`, and English is built under an internal `/en` route.
+
+Page copy is in `content/site/*.ts` and `content/site/pl/*.ts`, loaded through `lib/dictionary.ts`. A test fails if the two languages differ in shape. Post text stays English: `/pl/blog/<slug>` shows Polish page chrome and points its canonical at the English URL.
+
 ## Env
 
 Copy `.env.example` to `.env.local` and set:

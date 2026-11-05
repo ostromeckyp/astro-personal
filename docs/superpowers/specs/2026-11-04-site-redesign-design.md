@@ -19,7 +19,7 @@ This is a full rework of what visitors see. What must survive is the blog: the m
 
 ## Non-goals
 
-- Polish at launch. English only, decided by the owner. The design's PL/EN switch is not built and no i18n library is added. A later project can add Polish; its copy stays in the design artifact.
+- Polish at launch. English only, decided by the owner. Polish was added after launch, at the owner's request, under `/pl`, with no i18n library.
 - A light theme. The theme toggle and bootstrap script are removed.
 - New blog content, CMS, comments, analytics or newsletter.
 - Migrating the Medium images inside post bodies.

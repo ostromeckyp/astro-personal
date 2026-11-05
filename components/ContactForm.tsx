@@ -5,11 +5,9 @@ import { useForm, useWatch } from "react-hook-form";
 import { useContactMutation } from "@/app/hooks/use-contact-mutation";
 import { Button } from "@/components/ui/Button";
 import { TextLink } from "@/components/ui/TextLink";
-import { CONTACT } from "@/content/site/contact";
+import type { CONTACT } from "@/content/site/contact";
 import { cn } from "@/lib/cn";
-import { CONTACT_TOPICS, type ContactInput, contactSchema } from "@/lib/contact-schema";
-
-const { form: copy, success } = CONTACT;
+import { CONTACT_TOPICS, type ContactInput, createContactSchema } from "@/lib/contact-schema";
 
 const FIELD =
   "rounded-input border border-ink-600 bg-ink-950 text-base text-ink-0 outline-none placeholder:text-ink-400 focus:border-sakura-500 focus:shadow-[0_0_0_4px_rgba(250,9,128,0.18)] aria-invalid:border-sakura-300";
@@ -23,7 +21,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
-export function ContactForm() {
+export function ContactForm({ copy, success }: { copy: typeof CONTACT.form; success: typeof CONTACT.success }) {
   const {
     register,
     handleSubmit,
@@ -31,11 +29,11 @@ export function ContactForm() {
     control,
     formState: { errors },
   } = useForm<ContactInput>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(createContactSchema(copy.errors)),
     defaultValues: { topic: "workflow", name: "", email: "", company: "", message: "", website: "" },
   });
   const topic = useWatch({ control, name: "topic" });
-  const mutation = useContactMutation();
+  const mutation = useContactMutation(copy.sendFailed);
 
   if (mutation.isSuccess) {
     return (
@@ -68,7 +66,7 @@ export function ContactForm() {
                   pressed ? "border-ink-0 bg-ink-0 text-ink-950" : "border-ink-600 text-ink-200 hover:border-ink-500",
                 )}
               >
-                {t.label}
+                {copy.topics[t.value]}
               </button>
             );
           })}
