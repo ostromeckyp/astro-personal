@@ -9,15 +9,15 @@ import { personSchema, websiteSchema } from "@/lib/structured-data";
 
 const geist = Geist({
     subsets: ["latin", "latin-ext"],
-    weight: ["300", "400", "500", "600"],
     display: "swap",
     variable: "--font-geist",
 });
 
+// Only small labels use this, so it shouldn't compete with the page's main text.
 const geistMono = Geist_Mono({
     subsets: ["latin", "latin-ext"],
-    weight: ["400", "500", "600"],
     display: "swap",
+    preload: false,
     variable: "--font-geist-mono",
 });
 
