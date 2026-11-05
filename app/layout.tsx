@@ -32,9 +32,6 @@ export const metadata: Metadata = {
         siteName: "ostromecki.dev",
         type: "website",
     },
-    icons: {
-        icon: "/favicon.svg",
-    },
 };
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
