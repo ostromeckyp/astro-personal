@@ -6,7 +6,7 @@ export function Footer({ copy: FOOTER }: { copy: typeof Copy }) {
   return (
     <footer className="border-t border-ink-700 bg-ink-950 text-ink-0">
       <div className="site-container flex flex-col gap-14 pt-[72px] pb-10">
-        <div className="flex flex-wrap items-end justify-between gap-8">
+        <div className="reveal flex flex-wrap items-end justify-between gap-8">
           <div className="flex max-w-[560px] flex-col gap-5">
             <span className="text-[13px] text-ink-400">{FOOTER.tag}</span>
             <p className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{FOOTER.head}</p>
@@ -15,7 +15,7 @@ export function Footer({ copy: FOOTER }: { copy: typeof Copy }) {
             {FOOTER.cta}
           </Button>
         </div>
-        <div className="flex flex-wrap justify-between gap-6 border-t border-ink-700 pt-6 text-sm text-ink-400">
+        <div className="reveal flex flex-wrap justify-between gap-6 border-t border-ink-700 pt-6 text-sm text-ink-400">
           <div className="flex flex-wrap gap-x-6 gap-y-5">
             <a href={`mailto:${FOOTER.email}`} className="tap text-ink-200 hover:text-ink-0">
               {FOOTER.email}

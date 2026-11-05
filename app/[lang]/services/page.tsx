@@ -66,7 +66,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
       </section>
 
       <section className="flex flex-col gap-10 py-32">
-        <div className="flex max-w-[640px] flex-col gap-4">
+        <div className="reveal flex max-w-[640px] flex-col gap-4">
           <span className="font-mono text-[13px] text-sakura-500">{SERVICES.models.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{SERVICES.models.heading}</h2>
         </div>
@@ -88,13 +88,13 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
       </section>
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-12 pb-20">
-        <div className="flex flex-col gap-4">
+        <div className="reveal flex flex-col gap-4">
           <span className="font-mono text-[13px] text-sakura-500">{SERVICES.faq.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{SERVICES.faq.heading}</h2>
         </div>
         <div className="flex flex-col border-t border-ink-600">
           {SERVICES.faq.items.map((f) => (
-            <details key={f.q} className="group border-b border-ink-600">
+            <details key={f.q} className="reveal group border-b border-ink-600">
               <summary className="flex list-none items-center justify-between gap-4 py-[22px] text-lg font-medium tracking-[-0.01em] [&::-webkit-details-marker]:hidden">
                 {f.q}
                 <span aria-hidden="true" className="shrink-0 font-mono text-sakura-500 group-open:hidden">+</span>

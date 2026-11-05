@@ -10,7 +10,7 @@ export function FeaturedPost({ post, copy, lang }: { post: PostSummary; copy: ty
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group mb-14 grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] overflow-hidden rounded-card border border-ink-600 bg-ink-900 text-ink-0"
+      className="reveal group mb-14 grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] overflow-hidden rounded-card border border-ink-600 bg-ink-900 text-ink-0"
     >
       <ViewTransition name={`post-image-${post.slug}`}>
         <div className="relative aspect-[16/10] overflow-hidden bg-ink-950">
