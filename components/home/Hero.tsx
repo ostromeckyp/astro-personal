@@ -17,10 +17,13 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
         className="hero-plate object-cover object-[50%_40%]"
       />
       <div aria-hidden="true" className="hero-glow glow-burn absolute top-[52%] left-1/2 h-[110%] w-[70%]" />
-      <div aria-hidden="true" className="hero-line absolute top-[38.8%] left-0 h-px w-full bg-[rgba(244,242,244,0.30)] [animation-delay:.2s]" />
-      <div aria-hidden="true" className="hero-line absolute top-[48.7%] left-0 h-px w-full bg-[rgba(244,242,244,0.22)] [animation-delay:.35s]" />
-      <div aria-hidden="true" className="hero-diag absolute top-[9.7%] left-[-3%] h-px w-[130%] bg-[rgba(244,242,244,0.22)] [animation-delay:.5s]" />
-      <div aria-hidden="true" className="hero-diag absolute top-[24%] left-[-3%] h-px w-[130%] bg-[rgba(244,242,244,0.16)] [animation-delay:.65s]" />
+      {/* Same box as the cropped image, so the lines stay on the same point of the face at any width. */}
+      <div aria-hidden="true" className="absolute top-0 left-1/2 aspect-video h-full min-w-full -translate-x-1/2">
+        <div className="hero-line absolute top-[38.8%] left-0 h-px w-full bg-[rgba(244,242,244,0.30)] [animation-delay:.2s]" />
+        <div className="hero-line absolute top-[48.7%] left-0 h-px w-full bg-[rgba(244,242,244,0.22)] [animation-delay:.35s]" />
+        <div className="hero-diag absolute top-[9.7%] left-[-3%] h-px w-[130%] bg-[rgba(244,242,244,0.22)] [animation-delay:.5s]" />
+        <div className="hero-diag absolute top-[24%] left-[-3%] h-px w-[130%] bg-[rgba(244,242,244,0.16)] [animation-delay:.65s]" />
+      </div>
 
       <div className="absolute top-[11%] left-[9%] hidden flex-col gap-3.5 text-[13px] leading-[1.22] text-[#e9e6ea] lg:flex">
         {hero.groups.map((g) => (
