@@ -65,6 +65,7 @@ export const TALKS = {
         image: "/images/talks/gallery-studio.jpg",
         position: "40% 50%",
         alt: "Three people in a recording studio with microphones and laptops",
+        caption: "Angular Space Podcast",
       },
       {
         image: "/images/talks/gallery-ng-rome.jpg",
