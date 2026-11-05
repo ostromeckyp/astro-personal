@@ -29,7 +29,12 @@ export function Nav() {
   useEffect(() => {
     if (!open) return;
     // Everything behind the menu leaves the tab order, and focus moves into it.
-    const behind = [barRef.current, document.querySelector("main"), document.querySelector("footer")];
+    const behind = [
+      document.querySelector('a[href="#main-content"]'),
+      barRef.current,
+      document.querySelector("main"),
+      document.querySelector("footer"),
+    ];
     const opener = openRef.current;
     behind.forEach((el) => el?.toggleAttribute("inert", true));
     document.body.style.overflow = "hidden";
@@ -38,7 +43,14 @@ export function Nav() {
       if (e.key === "Escape") setOpenOn(null);
     };
     window.addEventListener("keydown", onKey);
+    // The menu is hidden from lg up, for example after rotating a tablet, so it must not stay open unseen.
+    const wide = window.matchMedia("(min-width: 1024px)");
+    const onResize = () => {
+      if (wide.matches) setOpenOn(null);
+    };
+    wide.addEventListener("change", onResize);
     return () => {
+      wide.removeEventListener("change", onResize);
       behind.forEach((el) => el?.removeAttribute("inert"));
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);

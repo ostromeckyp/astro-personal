@@ -1,6 +1,7 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useSyncExternalStore } from "react";
 import { PostCard } from "@/components/blog/PostCard";
 import { BLOG } from "@/content/site/blog";
 import { cn } from "@/lib/cn";
@@ -18,6 +19,18 @@ function subscribeToSearch(onChange: () => void) {
     window.removeEventListener(SEARCH_CHANGED, onChange);
     window.removeEventListener("popstate", onChange);
   };
+}
+
+/**
+ * Next's own navigation, such as the nav's Blog link, changes the URL without an event to listen to.
+ * This renders nothing, so its Suspense boundary keeps the post list in the prerendered HTML.
+ */
+function SearchSync() {
+  const search = useSearchParams().toString();
+  useEffect(() => {
+    window.dispatchEvent(new Event(SEARCH_CHANGED));
+  }, [search]);
+  return null;
 }
 
 function ViewButton({
@@ -60,6 +73,9 @@ export function BlogExplorer({ posts }: { posts: PostSummary[] }) {
 
   return (
     <>
+      <Suspense fallback={null}>
+        <SearchSync />
+      </Suspense>
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-ink-600 pb-8">
         <div role="group" aria-label={BLOG.filterLabel} className="flex flex-wrap gap-2">
           {BLOG.topics.map((t) => {

@@ -9,6 +9,7 @@ import { ShotFigure } from "@/components/case-study/ShotFigure";
 import { Stage, StageHeading, StagePill } from "@/components/case-study/Stage";
 import { Button } from "@/components/ui/Button";
 import { SALON_CASE as C } from "@/content/site/salon-case";
+import { USE_CASES } from "@/content/site/use-cases";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/JsonLd";
@@ -17,7 +18,7 @@ import { breadcrumbSchema } from "@/lib/structured-data";
 export const metadata: Metadata = pageMetadata({
   title: "AI agent for salon stock ordering",
   description: "Salons order stock from HQ in plain language. An AI agent turns the request into a checked proposal, and people approve every unit.",
-  path: "/use-cases/salon-replenishment", image: "/images/use-cases/salon-cover.jpg",
+  path: "/use-cases/salon-replenishment", image: "/images/use-cases/salon-cover.jpg", imageAlt: USE_CASES.find((c) => c.slug === "salon-replenishment")?.alt,
 });
 
 export default function SalonCasePage() {

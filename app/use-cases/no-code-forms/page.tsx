@@ -7,6 +7,7 @@ import { ShotFigure } from "@/components/case-study/ShotFigure";
 import { Stage, StageHeading, StagePill } from "@/components/case-study/Stage";
 import { Button } from "@/components/ui/Button";
 import { FORMS_CASE as C } from "@/content/site/forms-case";
+import { USE_CASES } from "@/content/site/use-cases";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/JsonLd";
@@ -15,7 +16,7 @@ import { breadcrumbSchema } from "@/lib/structured-data";
 export const metadata: Metadata = pageMetadata({
   title: "No-code forms for a regulated industry",
   description: "A client-owned drag-and-drop platform for compliance forms. My part as a contractor, and an MCP server that lets an AI agent draft forms.",
-  path: "/use-cases/no-code-forms", image: "/images/use-cases/forms-cover.jpg",
+  path: "/use-cases/no-code-forms", image: "/images/use-cases/forms-cover.jpg", imageAlt: USE_CASES.find((c) => c.slug === "no-code-forms")?.alt,
 });
 
 export default function FormsCasePage() {
