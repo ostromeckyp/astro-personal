@@ -8,25 +8,25 @@ export const APPROACH: typeof EN = {
   stages: [
     {
       n: "01",
-      t: "Znajdź prawdziwy przypadek",
+      t: "Znajdujemy prawdziwy przypadek",
       d: "Zaczynamy od procesu, który Twój zespół wykonuje dziś, i od liczby, która ma znaczenie: godzin, błędów, czasu realizacji. Jeśli AI nie ruszy tej liczby, mówię to wcześnie.",
       out: "Krótka lista przypadków uszeregowana według wartości i ryzyka, z rekomendacją.",
     },
     {
       n: "02",
-      t: "Sprawdź na swoich danych",
+      t: "Sprawdzamy na Twoich danych",
       d: "Jeden przypadek, zbudowany jako cienki działający wycinek na Twoich prawdziwych danych i oddany ludziom, którzy będą z niego korzystać.",
       out: "Działający pilotaż i porównanie przed i po, które pokażesz zarządowi.",
     },
     {
       n: "03",
-      t: "Przygotuj na produkcję",
+      t: "Przygotowujemy na produkcję",
       d: "Reguły w kodzie, człowiek zatwierdzający tam, gdzie błędy są drogie, monitoring, testy i przegląd bezpieczeństwa, zanim rozwiązanie trafi do wszystkich.",
       out: "System, który działa bezpiecznie z prawdziwymi użytkownikami i daje znać, gdy coś idzie nie tak.",
     },
     {
       n: "04",
-      t: "Przekaż zespołowi",
+      t: "Przekazujemy zespołowi",
       d: "Dokumentacja, przejście przez kod i wspólna praca, żeby zespół przejął rozwiązanie. Pozostaję dostępny, ale nie jestem potrzebny, żeby to działało.",
       out: "Kod, dokumentacja i wiedza w Twoich rękach.",
     },

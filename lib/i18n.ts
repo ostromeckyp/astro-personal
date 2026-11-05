@@ -26,7 +26,7 @@ export function localePath(lang: Locale, href: string): string {
   return href === "/" ? "/pl" : `/pl${href}`;
 }
 
+/** The path without a language prefix. English pages are prerendered under an internal /en route. */
 export function stripLocale(pathname: string): string {
-  if (pathname === "/pl") return "/";
-  return pathname.startsWith("/pl/") ? pathname.slice(3) : pathname;
+  return pathname.replace(/^\/(pl|en)(\/|$)/, "/");
 }

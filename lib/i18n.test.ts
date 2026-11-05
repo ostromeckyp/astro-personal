@@ -45,10 +45,16 @@ describe("localePath", () => {
 });
 
 describe("stripLocale", () => {
-  it("removes the Polish prefix only", () => {
+  it("removes the Polish prefix", () => {
     expect(stripLocale("/pl/services")).toBe("/services");
     expect(stripLocale("/pl")).toBe("/");
     expect(stripLocale("/services")).toBe("/services");
     expect(stripLocale("/platform")).toBe("/platform");
+  });
+
+  it("removes the internal English prefix, which pages see while prerendering", () => {
+    expect(stripLocale("/en/services")).toBe("/services");
+    expect(stripLocale("/en")).toBe("/");
+    expect(stripLocale("/engineering")).toBe("/engineering");
   });
 });
