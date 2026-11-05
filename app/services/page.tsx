@@ -3,11 +3,13 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Tag } from "@/components/ui/Tag";
 import { SERVICES } from "@/content/site/services";
 import { cn } from "@/lib/cn";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: SERVICES.intro,
-};
+export const metadata: Metadata = pageMetadata({
+  title: "AI consultant and engineer for business workflows",
+  description: "Where AI would actually save your team time or money, and what it takes to run safely. I design, build and hand over.",
+  path: "/services",
+});
 
 const META = "font-mono text-[11px] tracking-[0.04em] uppercase";
 

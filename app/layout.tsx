@@ -4,7 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { SITE_URL } from "@/lib/site";
+import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_DEFAULT_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const geist = Geist({
     subsets: ["latin", "latin-ext"],
@@ -22,15 +22,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     title: {
-        default: "Paweł Ostromecki | AI workflows and production-ready software",
-        template: "%s | ostromecki.dev",
+        default: SITE_DEFAULT_TITLE,
+        template: `%s | ${SITE_NAME}`,
     },
-    description:
-        "Senior software engineer and consultant. I bring AI into real business processes and build it to run safely in production.",
+    description: SITE_DESCRIPTION,
     metadataBase: new URL(SITE_URL),
     openGraph: {
-        siteName: "ostromecki.dev",
+        siteName: SITE_NAME,
         type: "website",
+        images: [{ url: OG_DEFAULT, alt: OG_DEFAULT_ALT }],
+    },
+    twitter: {
+        card: "summary_large_image",
     },
 };
 

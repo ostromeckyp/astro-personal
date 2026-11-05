@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { APPROACH } from "@/content/site/approach";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Approach",
+export const metadata: Metadata = pageMetadata({
+  title: "From AI business case to production",
   description: APPROACH.intro,
-};
+  path: "/approach",
+});
 
 export default function ApproachPage() {
   return (

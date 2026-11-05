@@ -3,11 +3,13 @@ import type { ReactNode } from "react";
 import { ContactForm } from "@/components/ContactForm";
 import { CONTACT } from "@/content/site/contact";
 import { NEW_TAB } from "@/lib/external-link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageMetadata({
+  title: "Book an AI workflow consultation",
   description: CONTACT.intro,
-};
+  path: "/contact",
+});
 
 function Detail({ term, children }: { term: string; children: ReactNode }) {
   return (

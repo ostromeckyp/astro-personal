@@ -8,12 +8,13 @@ import { Stage, StageHeading, StagePill } from "@/components/case-study/Stage";
 import { Button } from "@/components/ui/Button";
 import { FORMS_CASE as C } from "@/content/site/forms-case";
 import { cn } from "@/lib/cn";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "No-code forms for a regulated industry",
-  description: C.lede,
-  openGraph: { images: ["/images/use-cases/forms-cover.jpg"] },
-};
+  description: "A client-owned drag-and-drop platform for compliance forms. My part as a contractor, and an MCP server that lets an AI agent draft forms.",
+  path: "/use-cases/no-code-forms", image: "/images/use-cases/forms-cover.jpg",
+});
 
 export default function FormsCasePage() {
   const { disclosure, hero, docs, mcp } = C;

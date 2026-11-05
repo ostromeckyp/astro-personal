@@ -10,7 +10,15 @@ import { UseCaseCard } from "@/components/ui/UseCaseCard";
 import { HOME } from "@/content/site/home";
 import { USE_CASES } from "@/content/site/use-cases";
 import { formatPostDate } from "@/lib/format-date";
+import { pageMetadata } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/posts";
+import { SITE_DEFAULT_TITLE, SITE_DESCRIPTION } from "@/lib/site";
+
+export const metadata = pageMetadata({
+  title: { absolute: SITE_DEFAULT_TITLE },
+  description: SITE_DESCRIPTION,
+  path: "/",
+});
 
 export default function HomePage() {
   const latest = getAllPosts()[0];

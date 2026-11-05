@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { UseCaseCard } from "@/components/ui/UseCaseCard";
 import { USE_CASES } from "@/content/site/use-cases";
+import { pageMetadata } from "@/lib/metadata";
 
 const COPY = {
   label: "use cases",
@@ -13,10 +14,11 @@ const COPY = {
   cta: "Talk about your workflow",
 };
 
-export const metadata: Metadata = {
-  title: "Use cases",
+export const metadata: Metadata = pageMetadata({
+  title: "AI use cases running in production",
   description: COPY.intro,
-};
+  path: "/use-cases",
+});
 
 export default function UseCasesPage() {
   return (

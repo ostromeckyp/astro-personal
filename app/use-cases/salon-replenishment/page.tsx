@@ -10,12 +10,13 @@ import { Stage, StageHeading, StagePill } from "@/components/case-study/Stage";
 import { Button } from "@/components/ui/Button";
 import { SALON_CASE as C } from "@/content/site/salon-case";
 import { cn } from "@/lib/cn";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Agentic replenishment for a salon network",
-  description: C.lede,
-  openGraph: { images: ["/images/use-cases/salon-cover.jpg"] },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "AI agent for salon stock ordering",
+  description: "Salons order stock from HQ in plain language. An AI agent turns the request into a checked proposal, and people approve every unit.",
+  path: "/use-cases/salon-replenishment", image: "/images/use-cases/salon-cover.jpg",
+});
 
 export default function SalonCasePage() {
   const { hero, procedures, pwa } = C;
