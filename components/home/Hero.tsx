@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section className="relative h-[calc(100svh-85px)] min-h-[480px] w-full overflow-hidden bg-[#080309] md:aspect-video md:h-auto md:max-h-[920px] md:min-h-[640px]">
       <Image
-        src="/images/hero-key-visual.jpg"
+        src="/images/hero-key-visual-4k.jpg"
         alt={hero.alt}
         fill
         priority
