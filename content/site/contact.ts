@@ -26,6 +26,16 @@ export const CONTACT = {
     send: "Send message",
     sending: "Sending…",
     errorFallback: "Something went wrong",
+    sendFailed: "The message couldn't be sent. Please try again, or email contact@ostromecki.dev.",
+    topics: { workflow: "AI workflow", case: "AI business case", eng: "Engineering", talk: "Talk / workshop" },
+    errors: {
+      name: "Name is required",
+      nameLong: "Name is too long",
+      email: "Please provide a valid email address",
+      company: "Company name is too long",
+      message: "Message cannot be empty",
+      messageLong: "Message is too long (max 5000 characters)",
+    },
   },
   success: {
     title: "Thanks, message received.",

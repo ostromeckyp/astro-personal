@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ARTICLE } from "@/content/site/blog";
 import { cn } from "@/lib/cn";
 import type { TocItem } from "@/lib/posts";
 
@@ -30,7 +29,7 @@ function Links({ items, activeId, onNavigate }: { items: TocItem[]; activeId?: s
   );
 }
 
-export function TableOfContents({ items }: { items: TocItem[] }) {
+export function TableOfContents({ items, heading, label }: { items: TocItem[]; heading: string; label: string }) {
   const [activeId, setActiveId] = useState(items[0]?.id);
   const collapsed = useRef<HTMLDetailsElement>(null);
 
@@ -52,11 +51,11 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
   }, [items]);
 
   return (
-    <nav aria-label={ARTICLE.tocLabel}>
+    <nav aria-label={label}>
       {/* Phones: collapsed, so the post starts near the top. */}
       <details ref={collapsed} className="group rounded-input border border-ink-600 lg:hidden">
         <summary className="flex min-h-11 list-none items-center justify-between gap-4 px-4 font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase [&::-webkit-details-marker]:hidden">
-          {ARTICLE.toc}
+          {heading}
           <span aria-hidden="true" className="text-sm text-sakura-500 group-open:hidden">+</span>
           <span aria-hidden="true" className="hidden text-sm text-sakura-500 group-open:inline">−</span>
         </summary>
@@ -66,7 +65,7 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
       </details>
 
       <div className="hidden flex-col gap-3.5 lg:flex">
-        <span className="font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase">{ARTICLE.toc}</span>
+        <span className="font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase">{heading}</span>
         <Links items={items} activeId={activeId} />
       </div>
     </nav>

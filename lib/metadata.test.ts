@@ -2,6 +2,19 @@ import { describe, expect, it } from "vitest";
 import { pageMetadata } from "./metadata";
 
 describe("pageMetadata", () => {
+  it("links both languages from either one", () => {
+    const pl = pageMetadata({ lang: "pl", title: "T", description: "D", path: "/services" });
+    expect(pl.alternates?.canonical).toBe("/pl/services");
+    expect(pl.alternates?.languages).toEqual({ en: "/services", pl: "/pl/services", "x-default": "/services" });
+    expect(pl.openGraph).toMatchObject({ url: "/pl/services", locale: "pl_PL" });
+  });
+
+  it("points an English-only post at its English URL", () => {
+    const post = pageMetadata({ lang: "pl", title: "T", description: "D", path: "/blog/x", englishOnly: true });
+    expect(post.alternates?.canonical).toBe("/blog/x");
+    expect(post.alternates?.languages).toBeUndefined();
+  });
+
   const meta = pageMetadata({ title: "T", description: "D", path: "/services" });
 
   it("sets a canonical and a feed link", () => {

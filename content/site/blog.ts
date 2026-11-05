@@ -5,6 +5,8 @@ export const BLOG = {
   h1: "Notes from the work.",
   intro: "On AI in real engineering, Angular, and managing state without reaching for another library.",
   read: "Read",
+  latest: "latest",
+  readingTime: "about {n} min",
   filterLabel: "Filter posts by topic",
   viewLabel: "View",
   grid: "Grid",
@@ -20,6 +22,8 @@ export const BLOG = {
 
 export const ARTICLE = {
   back: "All posts",
+  readingTime: "about {n} min read",
+  onlyEnglish: "",
   author: "Paweł Ostromecki",
   role: "Senior software engineer, Wrocław",
   toc: "in this post",

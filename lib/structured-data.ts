@@ -1,4 +1,5 @@
-import { SERVICES } from "@/content/site/services";
+import { getDictionary } from "./dictionary";
+import { DEFAULT_LOCALE, localePath, type Locale } from "./i18n";
 import type { PostSummary } from "./posts";
 import { PERSON, SITE_NAME, SITE_URL } from "./site";
 
@@ -10,7 +11,8 @@ export function serializeJsonLd(data: object): string {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
-export function personSchema() {
+export function personSchema(lang: Locale = DEFAULT_LOCALE) {
+  const { META, SERVICES } = getDictionary(lang);
   return {
     "@context": SCHEMA,
     "@type": "Person",
@@ -18,7 +20,8 @@ export function personSchema() {
     name: PERSON.name,
     url: SITE_URL,
     image: `${SITE_URL}/images/portrait.jpg`,
-    jobTitle: PERSON.jobTitle,
+    jobTitle: lang === "pl" ? "Senior software engineer i konsultant" : PERSON.jobTitle,
+    description: META.home.description,
     email: `mailto:${PERSON.email}`,
     telephone: PERSON.telephone,
     address: { "@type": "PostalAddress", addressLocality: PERSON.city, addressCountry: PERSON.country },
@@ -26,7 +29,7 @@ export function personSchema() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Services",
-      url: `${SITE_URL}/services`,
+      url: `${SITE_URL}${localePath(lang, "/services")}`,
       itemListElement: SERVICES.items.map((s) => ({
         "@type": "Offer",
         itemOffered: { "@type": "Service", name: s.title, description: s.body, areaServed: "Worldwide" },
@@ -35,14 +38,14 @@ export function personSchema() {
   };
 }
 
-export function websiteSchema() {
+export function websiteSchema(lang: Locale = DEFAULT_LOCALE) {
   return {
     "@context": SCHEMA,
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     name: SITE_NAME,
     url: SITE_URL,
-    inLanguage: "en",
+    inLanguage: lang,
     publisher: { "@id": PERSON_ID },
   };
 }

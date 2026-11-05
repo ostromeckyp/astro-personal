@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import { LocaleLink as Link } from "@/components/ui/LocaleLink";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { NAV_CTA, NAV_LINKS } from "@/content/site/nav";
+import type { COMMON, NAV_CTA, NAV_LINKS } from "@/content/site/nav";
+import { LOCALE_COOKIE, localePath, stripLocale, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 import { isActive } from "@/lib/nav";
 
@@ -16,8 +17,39 @@ function Logo() {
   );
 }
 
-export function Nav() {
+function rememberLanguage(choice: Locale) {
+  document.cookie = `${LOCALE_COOKIE}=${choice}; path=/; max-age=31536000; samesite=lax`;
+}
+
+/** Plain links: a language change is a full page load, and the choice is saved so it sticks. */
+function LanguageSwitch({ lang, path, label }: { lang: Locale; path: string; label: string }) {
+  return (
+    <div role="group" aria-label={label} className="flex items-center gap-0.5 font-mono text-xs">
+      {(["pl", "en"] as const).map((choice, i) => (
+        <Fragment key={choice}>
+          {i > 0 && <span aria-hidden="true" className="text-ink-400">/</span>}
+          <a
+            href={localePath(choice, path)}
+            hrefLang={choice}
+            lang={choice}
+            aria-current={choice === lang ? "true" : undefined}
+            onClick={() => rememberLanguage(choice)}
+            className={cn(
+              "inline-flex h-8 min-w-8 items-center justify-center rounded-md px-2 uppercase transition-colors",
+              choice === lang ? "bg-ink-700 text-ink-0" : "text-ink-400 hover:text-ink-0",
+            )}
+          >
+            {choice}
+          </a>
+        </Fragment>
+      ))}
+    </div>
+  );
+}
+
+export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NAV_LINKS; cta: typeof NAV_CTA; copy: typeof COMMON }) {
   const pathname = usePathname() ?? "/";
+  const path = stripLocale(pathname);
   // The menu belongs to the page it was opened on, so navigating closes it.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
@@ -60,12 +92,12 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink-700 bg-ink-950">
-      <nav ref={barRef} aria-label="Primary" className="site-container flex items-center justify-between gap-8 py-[18px]">
+      <nav ref={barRef} aria-label={copy.primaryNav} className="site-container flex items-center justify-between gap-8 py-[18px]">
         <Logo />
 
         <div className="hidden gap-7 text-[15px] lg:flex">
-          {NAV_LINKS.map((l) => {
-            const active = isActive(pathname, l.href);
+          {links.map((l) => {
+            const active = isActive(path, l.href);
             return (
               <Link
                 key={l.href}
@@ -84,14 +116,17 @@ export function Nav() {
 
         <div className="flex items-center gap-3">
           <div className="hidden sm:block">
-            <Button href={NAV_CTA.href}>{NAV_CTA.label}</Button>
+            <LanguageSwitch lang={lang} path={path} label={copy.languageLabel} />
+          </div>
+          <div className="hidden sm:block">
+            <Button href={cta.href}>{cta.label}</Button>
           </div>
           <button
             ref={openRef}
             type="button"
             aria-controls="mobile-menu"
             aria-expanded={open}
-            aria-label="Open menu"
+            aria-label={copy.openMenu}
             onClick={() => setOpenOn(pathname)}
             className="flex size-12 items-center justify-center rounded-full border border-ink-600 text-ink-0 lg:hidden"
           >
@@ -106,7 +141,7 @@ export function Nav() {
         id="mobile-menu"
         role="dialog"
         aria-modal="true"
-        aria-label="Mobile navigation"
+        aria-label={copy.mobileNav}
         hidden={!open}
         className="fixed inset-0 z-50 overflow-y-auto bg-ink-950 lg:hidden"
       >
@@ -116,7 +151,7 @@ export function Nav() {
             <button
               ref={closeRef}
               type="button"
-              aria-label="Close menu"
+              aria-label={copy.closeMenu}
               onClick={close}
               className="flex size-12 items-center justify-center rounded-full border border-ink-600 text-ink-0"
             >
@@ -126,8 +161,8 @@ export function Nav() {
             </button>
           </div>
           <div className="mt-10 flex flex-col">
-            {NAV_LINKS.map((l) => {
-              const active = isActive(pathname, l.href);
+            {links.map((l) => {
+              const active = isActive(path, l.href);
               return (
                 <Link
                   key={l.href}
@@ -144,9 +179,12 @@ export function Nav() {
               );
             })}
           </div>
-          <Button href={NAV_CTA.href} size="lg" className="mt-10 w-full">
-            {NAV_CTA.label}
+          <Button href={cta.href} size="lg" className="mt-10 w-full">
+            {cta.label}
           </Button>
+          <div className="mt-8 flex justify-center">
+            <LanguageSwitch lang={lang} path={path} label={copy.languageLabel} />
+          </div>
         </div>
       </div>
     </header>

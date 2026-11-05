@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/Button";
-import { NEXT_STEP } from "@/content/site/nav";
+import type { NEXT_STEP as Copy } from "@/content/site/nav";
 
-export function NextStepCta() {
+export function NextStepCta({ copy: NEXT_STEP }: { copy: typeof Copy }) {
   return (
     <div className="reveal flex flex-wrap items-center justify-between gap-6 rounded-card border border-dashed border-ink-600 p-6 md:p-10">
       <div className="flex flex-col gap-2">

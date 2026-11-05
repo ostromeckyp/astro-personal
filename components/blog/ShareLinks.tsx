@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ARTICLE } from "@/content/site/blog";
+import type { ARTICLE as Copy } from "@/content/site/blog";
 
 const ROUND = "inline-flex size-11 items-center justify-center rounded-full border border-ink-600 text-ink-200 hover:border-ink-500";
 
-export function ShareLinks({ url, title }: { url: string; title: string }) {
+export function ShareLinks({ url, title, copy: ARTICLE }: { url: string; title: string; copy: typeof Copy }) {
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
   const encoded = encodeURIComponent(url);
 

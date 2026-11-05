@@ -5,7 +5,7 @@ export const NAV_LINKS = [
   { href: "/blog", label: "Blog" },
   { href: "/talks", label: "Talks" },
   { href: "/about", label: "About" },
-] as const;
+];
 
 export const NEXT_STEP = {
   label: "the next one could be yours",
@@ -13,7 +13,20 @@ export const NEXT_STEP = {
   cta: "Talk about your workflow",
 };
 
-export const NAV_CTA = { href: "/contact", label: "Book a call" } as const;
+export const NAV_CTA = { href: "/contact", label: "Book a call" };
+
+export const COMMON = {
+  skipToContent: "Skip to content",
+  openMenu: "Open menu",
+  closeMenu: "Close menu",
+  mobileNav: "Mobile navigation",
+  primaryNav: "Primary",
+  languageLabel: "Language",
+  notFoundTitle: "Page not found",
+  notFoundHeading: "Page not found.",
+  notFoundBody: "This page doesn't exist or has moved.",
+  notFoundCta: "Back to home",
+};
 
 export const FOOTER = {
   tag: "ai workflows · software engineering · production-ready",
@@ -26,4 +39,4 @@ export const FOOTER = {
     { href: "https://github.com/ostromeckyp", label: "GitHub" },
     { href: "https://x.com/ostromeckyp", label: "X" },
   ],
-} as const;
+};

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { LocaleLink as Link } from "@/components/ui/LocaleLink";
 import { ViewTransition } from "react";
 import { Tag } from "@/components/ui/Tag";
 import type { UseCase } from "@/content/site/use-cases";
@@ -21,7 +21,7 @@ function Cover({ useCase }: { useCase: UseCase }) {
   );
 }
 
-export function UseCaseCard({ useCase, variant = "home" }: { useCase: UseCase; variant?: "home" | "list" }) {
+export function UseCaseCard({ useCase, variant = "home", readLabel }: { useCase: UseCase; variant?: "home" | "list"; readLabel?: string }) {
   if (variant === "list") {
     return (
       <Link
@@ -43,7 +43,7 @@ export function UseCaseCard({ useCase, variant = "home" }: { useCase: UseCase; v
               <Tag key={t}>{t}</Tag>
             ))}
           </div>
-          <span className="self-start border-b-2 border-sakura-500 pb-[3px] text-[15px]">Read the use case</span>
+          <span className="self-start border-b-2 border-sakura-500 pb-[3px] text-[15px]">{readLabel}</span>
         </div>
       </Link>
     );

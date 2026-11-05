@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/resume", destination: "/about", permanent: true },
+      { source: "/pl/resume", destination: "/pl/about", permanent: true },
       { source: "/:path*", has: [{ type: "host", value: OLD_HOST }], destination: `${SITE_URL}/:path*`, permanent: true },
     ];
   },
