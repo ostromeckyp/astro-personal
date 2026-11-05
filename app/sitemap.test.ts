@@ -2,7 +2,7 @@ import { expect, it } from "vitest";
 import sitemap from "./sitemap";
 
 it("lists every route and no removed ones", () => {
-  const urls = sitemap().map((e) => e.url.replace("https://ostromecki.dev", "") || "/");
+  const urls = sitemap().map((e) => e.url.replace("https://www.ostromecki.dev", "") || "/");
   for (const route of [
     "/",
     "/services",

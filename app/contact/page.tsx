@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ContactForm } from "@/components/ContactForm";
 import { CONTACT } from "@/content/site/contact";
+import { NEW_TAB } from "@/lib/external-link";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -42,7 +43,7 @@ export default function ContactPage() {
           <Detail term={details.elsewhere}>
             <div className="flex flex-wrap gap-5">
               {CONTACT.socials.map((s) => (
-                <a key={s.href} href={s.href} className="hover:text-sakura-300">
+                <a key={s.href} href={s.href} {...NEW_TAB} className="hover:text-sakura-300">
                   {s.label}
                 </a>
               ))}

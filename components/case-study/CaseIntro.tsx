@@ -1,7 +1,9 @@
+import { ViewTransition } from "react";
 import { StoryList, type StoryItem } from "@/components/case-study/StoryList";
 import { Tag } from "@/components/ui/Tag";
 
 export function CaseIntro({
+  slug,
   index,
   label,
   title,
@@ -9,6 +11,7 @@ export function CaseIntro({
   stack,
   story,
 }: {
+  slug: string;
   index: string;
   label: string;
   title: string;
@@ -23,7 +26,9 @@ export function CaseIntro({
           <span className="font-mono text-[13px] text-sakura-500">{index}</span>
           <span className="font-mono text-xs font-medium tracking-[0.04em] text-ink-400 uppercase">{label}</span>
         </div>
-        <h1 className="text-[clamp(48px,5.6vw,80px)] leading-[0.95] font-semibold tracking-[-0.045em]">{title}</h1>
+        <ViewTransition name={`use-case-title-${slug}`}>
+          <h1 className="text-[clamp(48px,5.6vw,80px)] leading-[0.95] font-semibold tracking-[-0.045em]">{title}</h1>
+        </ViewTransition>
         <p className="max-w-[640px] text-xl leading-[1.55] text-ink-200">{lede}</p>
         <div className="flex flex-wrap gap-2">
           {stack.map((t) => (

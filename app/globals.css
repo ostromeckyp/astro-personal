@@ -64,13 +64,42 @@
     margin-inline: auto;
     padding-inline: 24px;
   }
-  /* Home hero. One glow per page lives here. */
+  /* Pink light that burns: a slow swell, plus a faster flicker on a second layer.
+     The two periods don't line up, so the pattern doesn't visibly repeat.
+     --burn-low and --burn-span set how dim it gets and how far it flares. */
+  .glow-burn {
+    animation: burn 7s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .glow-burn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    mix-blend-mode: inherit;
+    animation: flicker 2.9s ease-in-out infinite;
+  }
+
+  /* Home hero. */
   .hero-glow {
+    --burn-low: 0.12;
+    --burn-span: 0.5;
     transform: translate(-50%, -50%);
     background: radial-gradient(closest-side, rgba(250, 9, 128, 0.9), rgba(250, 9, 128, 0.35) 45%, rgba(250, 9, 128, 0) 100%);
     mix-blend-mode: screen;
-    pointer-events: none;
-    animation: burn 8s ease-in-out infinite;
+  }
+  .article-glow {
+    --burn-low: 0.5;
+    --burn-span: 0.5;
+    background: radial-gradient(closest-side, rgba(250, 9, 128, 0.3), rgba(250, 9, 128, 0) 100%);
+  }
+  .stage-glow {
+    --burn-low: 0.55;
+    --burn-span: 0.45;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(60% 70% at 68% 45%, rgba(250, 9, 128, 0.42), rgba(250, 9, 128, 0) 70%);
   }
   .hero-plate {
     animation: ember 8s ease-in-out infinite;
@@ -93,7 +122,7 @@
     border: 1px solid var(--color-ink-700);
     border-radius: 20px;
     padding: 12px;
-    background: radial-gradient(60% 70% at 68% 45%, rgba(250, 9, 128, 0.38), rgba(250, 9, 128, 0) 70%), #07040a;
+    background: #07040a;
   }
   .stage::before,
   .stage::after {
@@ -471,18 +500,42 @@
   }
 }
 
+/* View Transitions API: morph between a card and the page it opens. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+::view-transition-group(*) {
+  animation-duration: 320ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @keyframes burn {
-  0% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
-  28% { opacity: 0.34; transform: translate(-50%, -50%) scale(1.03); }
-  46% { opacity: 0.18; transform: translate(-50%, -50%) scale(1.01); }
-  64% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.04); }
-  82% { opacity: 0.22; transform: translate(-50%, -50%) scale(1.02); }
-  100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+  0%, 100% { opacity: calc(var(--burn-low) + var(--burn-span) * 0.1); scale: 1; }
+  18% { opacity: calc(var(--burn-low) + var(--burn-span) * 0.7); scale: 1.03; }
+  31% { opacity: calc(var(--burn-low) + var(--burn-span) * 0.3); scale: 1.01; }
+  47% { opacity: calc(var(--burn-low) + var(--burn-span) * 1); scale: 1.05; }
+  63% { opacity: calc(var(--burn-low) + var(--burn-span) * 0.45); scale: 1.02; }
+  82% { opacity: calc(var(--burn-low) + var(--burn-span) * 0.85); scale: 1.04; }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 0; }
+  12% { opacity: 0.5; }
+  20% { opacity: 0.15; }
+  34% { opacity: 0.7; }
+  43% { opacity: 0.25; }
+  58% { opacity: 0.6; }
+  71% { opacity: 0.1; }
+  86% { opacity: 0.45; }
 }
 @keyframes ember {
   0%, 100% { filter: brightness(1); }
-  30% { filter: brightness(1.06); }
-  65% { filter: brightness(1.1); }
+  18% { filter: brightness(1.1); }
+  31% { filter: brightness(1.03); }
+  47% { filter: brightness(1.2); }
+  63% { filter: brightness(1.06); }
+  82% { filter: brightness(1.14); }
 }
 @keyframes draw {
   from { transform: scaleX(0); }
@@ -494,14 +547,23 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-glow,
+  .glow-burn,
+  .glow-burn::after,
   .hero-plate,
   .hero-line,
   .hero-diag {
     animation: none !important;
   }
-  .hero-glow {
-    opacity: 0.2;
+  .glow-burn {
+    opacity: calc(var(--burn-low) + var(--burn-span) * 0.3);
+  }
+  .glow-burn::after {
+    display: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 200ms !important;
   }
 
   *,
