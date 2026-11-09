@@ -16,7 +16,10 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
         sizes="(max-width: 767px) 180vh, max(100vw, 1138px)"
         className="hero-plate object-cover object-[50%_40%]"
       />
-      <div aria-hidden="true" className="hero-glow glow-burn absolute top-[52%] left-1/2 h-[110%] w-[70%]" />
+      {/* Masked wrapper keeps the flash off the person; see .hero-glow-mask in globals.css. */}
+      <div aria-hidden="true" className="hero-glow-mask absolute inset-0">
+        <div className="hero-glow glow-burn absolute top-[52%] left-1/2 h-[110%] w-[70%]" />
+      </div>
       {/* Same box as the cropped image, so the lines stay on the same point of the face at any width. */}
       <div aria-hidden="true" className="absolute top-0 left-1/2 aspect-video h-full min-w-full -translate-x-1/2">
         <div className="hero-line absolute top-[38.8%] left-0 h-px w-full bg-[rgba(244,242,244,0.30)] [animation-delay:.2s]" />

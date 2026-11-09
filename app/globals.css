@@ -91,13 +91,28 @@
     animation: flicker 2.9s ease-in-out infinite;
   }
 
-  /* Home hero. */
+  /* Home hero. The pink flash sits behind the person: the layer is screened onto the plate
+     through a mask cut from the plate itself (opaque where its halo is, clear over the face,
+     hair and shirt). The mask is fitted exactly like the image (cover, 50% 40%), so it lines
+     up at any width. The blend and mask live on the static wrapper, so the swell's scale on
+     the inner layer can't drift the cutout off the face. */
+  .hero-glow-mask {
+    pointer-events: none;
+    mix-blend-mode: screen;
+    -webkit-mask-image: url("/images/hero-glow-mask.png");
+    mask-image: url("/images/hero-glow-mask.png");
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: 50% 40%;
+    mask-position: 50% 40%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
   .hero-glow {
     --burn-low: 0.12;
     --burn-span: 0.5;
     transform: translate(-50%, -50%);
     background: radial-gradient(closest-side, rgba(250, 9, 128, 0.9), rgba(250, 9, 128, 0.35) 45%, rgba(250, 9, 128, 0) 100%);
-    mix-blend-mode: screen;
   }
   .article-glow {
     --burn-low: 0.5;
