@@ -6,20 +6,14 @@ import sharp from "sharp";
 const INK = "#000002";
 const SAKURA = "#FA0980";
 
-// The aperture mark from the design system, on the site's ground.
-// Thick gaps and a large centre keep it readable at 16px.
-function apertureSvg(radius) {
-  const cx = 64;
-  const blades = Array.from({ length: 8 }, (_, i) => {
-    const a = ((i * 45 - 90) * Math.PI) / 180;
-    const b = (((i + 1) * 45 - 90) * Math.PI) / 180;
-    const point = (angle) => `${(cx + 46 * Math.cos(angle)).toFixed(2)} ${(cx + 46 * Math.sin(angle)).toFixed(2)}`;
-    return `<path d="M${cx} ${cx}L${point(a)}A46 46 0 0 1 ${point(b)}Z"/>`;
-  }).join("");
-  const gaps = [0, 45, 90, 135]
-    .map((deg) => `<line x1="${cx}" y1="10" x2="${cx}" y2="118" transform="rotate(${deg} ${cx} ${cx})"/>`)
-    .join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="${radius}" fill="${INK}"/><g fill="${SAKURA}">${blades}</g><g stroke="${INK}" stroke-width="6">${gaps}</g><circle cx="${cx}" cy="${cx}" r="14" fill="${INK}"/></svg>\n`;
+// The bracket-spark mark: code brackets around an AI spark.
+// Round caps and a large spark keep it readable at 16px.
+function markSvg(radius) {
+  const r = 24;
+  const k = r * 0.14;
+  const c = 64;
+  const spark = `M${c} ${c - r}Q${c + k} ${c - k} ${c + r} ${c}Q${c + k} ${c + k} ${c} ${c + r}Q${c - k} ${c + k} ${c - r} ${c}Q${c - k} ${c - k} ${c} ${c - r}Z`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="${radius}" fill="${INK}"/><g fill="none" stroke="${SAKURA}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><polyline points="38,40 18,64 38,88"/><polyline points="90,40 110,64 90,88"/></g><path fill="${SAKURA}" d="${spark}"/></svg>\n`;
 }
 
 const png = (svg, size) => sharp(Buffer.from(svg), { density: 1200 }).resize(size, size).png().toBuffer();
@@ -43,13 +37,17 @@ function toIco(images) {
   return Buffer.concat([header, ...images.map((image) => image.data)]);
 }
 
-const rounded = apertureSvg(28);
+const rounded = markSvg(28);
 // iOS applies its own mask and Android may too, so these stay square.
-const square = apertureSvg(0);
+const square = markSvg(0);
 
 fs.writeFileSync("app/icon.svg", rounded);
 fs.writeFileSync("app/apple-icon.png", await png(square, 180));
 fs.writeFileSync("public/icon-192.png", await png(square, 192));
 fs.writeFileSync("public/icon-512.png", await png(square, 512));
+// Square logo for profiles such as LinkedIn (recommended 400x400); not served by the site.
+fs.mkdirSync("brand", { recursive: true });
+fs.writeFileSync("brand/logo-400.png", await png(square, 400));
+fs.writeFileSync("brand/logo-1024.png", await png(square, 1024));
 const sizes = [16, 32, 48];
 fs.writeFileSync("app/favicon.ico", toIco(await Promise.all(sizes.map(async (size) => ({ size, data: await png(rounded, size) })))));
