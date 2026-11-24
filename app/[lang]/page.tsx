@@ -3,6 +3,7 @@ import Image from "next/image";
 import { LocaleLink as Link } from "@/components/ui/LocaleLink";
 import { ViewTransition } from "react";
 import { Hero } from "@/components/home/Hero";
+import { HowSteps } from "@/components/home/HowSteps";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { TextLink } from "@/components/ui/TextLink";
@@ -52,17 +53,11 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
           </div>
         </section>
 
-        <section className="flex flex-col gap-10 pb-32">
+        <section id="how-i-work" className="flex scroll-mt-24 flex-col gap-10 pb-32">
           <SectionHeading index="04" title={HOME.how.heading} />
-          <ol className="grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] border-t border-ink-600">
-            {HOME.how.steps.map((s) => (
-              <li key={s.n} className="reveal flex flex-col gap-2.5 pt-7 pr-6 pb-2">
-                <span className="font-mono text-xs text-sakura-500">{s.n}</span>
-                <span className="text-xl font-medium tracking-[-0.015em]">{s.t}</span>
-                <span className="text-[15px] leading-[1.55] text-ink-400">{s.d}</span>
-              </li>
-            ))}
-          </ol>
+          <div className="reveal">
+            <HowSteps steps={HOME.how.steps} />
+          </div>
         </section>
 
         <section className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-center gap-12 pb-32">

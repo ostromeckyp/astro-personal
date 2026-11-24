@@ -39,10 +39,34 @@ export const HOME = {
   how: {
     heading: "How I work",
     steps: [
-      { n: "01", t: "Find the real case", d: "Start from a process and a number, not from a model." },
-      { n: "02", t: "Prove it on your data", d: "A small working slice in weeks, judged by the people who will use it." },
-      { n: "03", t: "Harden for production", d: "Guardrails, human approval, monitoring and tests before it scales." },
-      { n: "04", t: "Hand over", d: "Documented and owned by your team." },
+      {
+        n: "01",
+        tab: "Problem",
+        t: "We start from your problem",
+        d: "We start from the process that's giving you trouble, and the number you want to move.",
+        rule: "Only what you need: no native app when a PWA will do, no platform when a workflow will do. You don't pay for extras.",
+      },
+      {
+        n: "02",
+        tab: "Data",
+        t: "We prove it on your data",
+        d: "Within weeks you get a working slice and try it with the people who will use it.",
+        rule: "AI proposes, I approve: AI speeds up the work, and I check every change before it reaches you.",
+      },
+      {
+        n: "03",
+        tab: "Production",
+        t: "We ship to production",
+        d: "Tests, guardrails and monitoring before it reaches everyone.",
+        rule: "The rules that matter live in code and tests, not in prompts. That's what keeps it all in check.",
+      },
+      {
+        n: "04",
+        tab: "Handover",
+        t: "I hand it all to you",
+        d: "Code, docs and know-how go to you. I stay around, but you don't need me for it to run.",
+        rule: "Metrics, monitoring and logs show whether it does its job. You know from data, not assumptions.",
+      },
     ],
   },
   about: {

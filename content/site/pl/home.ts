@@ -41,10 +41,34 @@ export const HOME: typeof EN = {
   how: {
     heading: "Jak pracuję",
     steps: [
-      { n: "01", t: "Znajdujemy prawdziwy przypadek", d: "Zaczynamy od procesu i liczby, nie od modelu." },
-      { n: "02", t: "Sprawdzamy na Twoich danych", d: "Mały działający wycinek w kilka tygodni, oceniany przez ludzi, którzy będą z niego korzystać." },
-      { n: "03", t: "Przygotowujemy na produkcję", d: "Zabezpieczenia, zatwierdzanie przez człowieka, monitoring i testy, zanim rozwiązanie trafi do wszystkich." },
-      { n: "04", t: "Przekazujemy zespołowi", d: "Udokumentowane i w rękach Twojego zespołu." },
+      {
+        n: "01",
+        tab: "Problem",
+        t: "Zaczynamy od Twojego problemu",
+        d: "Zaczynamy od procesu, z którym masz problem, i od liczby, którą chcesz poprawić.",
+        rule: "Tylko to, czego potrzebujesz: bez aplikacji natywnej, gdy wystarczy PWA, bez platformy, gdy wystarczy workflow. Nie płacisz za nadmiar.",
+      },
+      {
+        n: "02",
+        tab: "Dane",
+        t: "Sprawdzamy na Twoich danych",
+        d: "W kilka tygodni dostajesz działający wycinek i testujesz go z ludźmi, którzy będą z niego korzystać.",
+        rule: "AI proponuje, ja zatwierdzam: AI przyspiesza pracę, a każdą zmianę sprawdzam, zanim do Ciebie trafi.",
+      },
+      {
+        n: "03",
+        tab: "Produkcja",
+        t: "Wdrażamy na produkcję",
+        d: "Testy, zabezpieczenia i monitoring, zanim rozwiązanie trafi do wszystkich.",
+        rule: "Reguły, które mają znaczenie, żyją w kodzie i testach, nie w promptach. To one trzymają całość w ryzach.",
+      },
+      {
+        n: "04",
+        tab: "Przekazanie",
+        t: "Przekazuję Ci całość",
+        d: "Kod, dokumentacja i wiedza trafiają do Ciebie. Jestem pod ręką, ale nie jestem niezbędny.",
+        rule: "Metryki, monitoring i logi pokazują, czy rozwiązanie robi swoje. Wiesz to z danych, nie z założeń.",
+      },
     ],
   },
   about: {
