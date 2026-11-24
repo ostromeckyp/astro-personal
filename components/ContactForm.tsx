@@ -10,12 +10,12 @@ import { cn } from "@/lib/cn";
 import { CONTACT_TOPICS, type ContactInput, createContactSchema } from "@/lib/contact-schema";
 
 const FIELD =
-  "rounded-input border border-ink-600 bg-ink-950 text-base text-ink-0 outline-none placeholder:text-ink-400 focus:border-sakura-500 focus:shadow-[0_0_0_4px_rgba(250,9,128,0.18)] aria-invalid:border-sakura-300";
+  "rounded-input border border-ink-600 bg-ink-950 text-base text-ink-0 outline-none placeholder:text-ink-400 focus:border-sakura-500 focus:shadow-[0_0_0_4px_rgba(204,255,0,0.18)] aria-invalid:border-danger-500 aria-invalid:focus:shadow-[0_0_0_4px_rgba(255,77,94,0.18)]";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} role="alert" className="text-[13px] text-sakura-300">
+    <p id={id} role="alert" className="text-[13px] text-danger-300">
       {message}
     </p>
   );
@@ -148,7 +148,7 @@ export function ContactForm({ copy, success }: { copy: typeof CONTACT.form; succ
       </div>
 
       {mutation.isError && (
-        <p role="alert" className="text-sm text-sakura-300">
+        <p role="alert" className="text-sm text-danger-300">
           {mutation.error instanceof Error ? mutation.error.message : copy.errorFallback}
         </p>
       )}
