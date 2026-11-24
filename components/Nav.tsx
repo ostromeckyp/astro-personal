@@ -9,9 +9,9 @@ import { LOCALE_COOKIE, localePath, stripLocale, type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/cn";
 import { isActive, menuClosesOnClick } from "@/lib/nav";
 
-function Logo() {
+function Logo({ onClick }: { onClick?: () => void }) {
   return (
-    <Link href="/" className="tap text-lg font-semibold tracking-[-0.02em] text-ink-0">
+    <Link href="/" onClick={onClick} className="tap text-lg font-semibold tracking-[-0.02em] text-ink-0">
       ostromecki<span className="text-sakura-500">.</span>dev
     </Link>
   );
@@ -174,7 +174,11 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
       >
         <div className="site-container flex min-h-full flex-col py-[18px]">
           <div className="flex items-center justify-between">
-            <Logo />
+            <Logo
+              onClick={() => {
+                if (menuClosesOnClick(path, "/")) close();
+              }}
+            />
             <button
               ref={closeRef}
               type="button"
