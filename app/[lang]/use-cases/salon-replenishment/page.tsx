@@ -41,7 +41,7 @@ export default async function SalonCasePage({ params }: { params: Promise<{ lang
       />
       <div aria-hidden="true" className="absolute top-20 left-[-200px] h-px w-[2000px] origin-top-left rotate-9 bg-ink-0/8" />
       <div className="site-container flex flex-col gap-24 pt-20 pb-24 md:pt-24">
-        <CaseIntro slug="salon-replenishment" index="01" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />
+        <CaseIntro back={USE_CASES_PAGE.back} slug="salon-replenishment" index="01" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />
 
         <figure className="relative flex flex-col gap-5">
           <ViewTransition name="use-case-image-salon-replenishment">

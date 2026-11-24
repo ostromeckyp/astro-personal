@@ -19,6 +19,7 @@ export const USE_CASES_PAGE = {
   h1: "AI at work, not in a demo.",
   intro: "Real systems with real users. Each one shows the business problem, where the AI sits in the workflow, and what keeps it in check.",
   read: "Read the use case",
+  back: "All use cases",
 };
 
 export const USE_CASES: UseCase[] = [

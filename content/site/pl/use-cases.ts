@@ -5,6 +5,7 @@ export const USE_CASES_PAGE: typeof P = {
   h1: "AI w pracy, nie na demo.",
   intro: "Prawdziwe systemy z prawdziwymi użytkownikami. Każdy pokazuje problem biznesowy, miejsce AI w procesie i to, co trzyma je w ryzach.",
   read: "Zobacz wdrożenie",
+  back: "Wszystkie wdrożenia",
 };
 
 export const USE_CASES: UseCase[] = [

@@ -40,7 +40,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
       <div aria-hidden="true" className="absolute top-16 left-[-40px] h-px w-[1700px] origin-top-left rotate-15 bg-ink-0/8" />
       <div aria-hidden="true" className="absolute top-40 left-[-40px] h-px w-[1700px] origin-top-left rotate-15 bg-ink-0/6" />
       <div className="site-container flex flex-col gap-24 pt-20 pb-24 md:pt-24">
-        <CaseIntro slug="no-code-forms" index="02" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />
+        <CaseIntro back={USE_CASES_PAGE.back} slug="no-code-forms" index="02" label={C.label} title={C.title} lede={C.lede} stack={C.stack} story={C.story} />
 
         <aside
           aria-label={disclosure.ariaLabel}
