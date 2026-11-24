@@ -4,7 +4,7 @@ import fs from "node:fs";
 import sharp from "sharp";
 
 const INK = "#000002";
-const SAKURA = "#FA0980";
+const ACCENT = "#CCFF00";
 
 // The bracket-spark mark: code brackets around an AI spark.
 // Round caps and a large spark keep it readable at 16px.
@@ -13,7 +13,7 @@ function markSvg(radius) {
   const k = r * 0.14;
   const c = 64;
   const spark = `M${c} ${c - r}Q${c + k} ${c - k} ${c + r} ${c}Q${c + k} ${c + k} ${c} ${c + r}Q${c - k} ${c + k} ${c - r} ${c}Q${c - k} ${c - k} ${c} ${c - r}Z`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="${radius}" fill="${INK}"/><g fill="none" stroke="${SAKURA}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><polyline points="38,40 18,64 38,88"/><polyline points="90,40 110,64 90,88"/></g><path fill="${SAKURA}" d="${spark}"/></svg>\n`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="${radius}" fill="${INK}"/><g fill="none" stroke="${ACCENT}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><polyline points="38,40 18,64 38,88"/><polyline points="90,40 110,64 90,88"/></g><path fill="${ACCENT}" d="${spark}"/></svg>\n`;
 }
 
 const png = (svg, size) => sharp(Buffer.from(svg), { density: 1200 }).resize(size, size).png().toBuffer();
