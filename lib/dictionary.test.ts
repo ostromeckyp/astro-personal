@@ -52,6 +52,15 @@ describe("dictionaries", () => {
     expect(getDictionary("en").HOME.hero.h1).toBe("Software for\nreal business.");
   });
 
+  it("list services as one set with compact cards", () => {
+    const { SERVICES } = getDictionary("en");
+    expect("groups" in SERVICES).toBe(false);
+    for (const s of SERVICES.items) {
+      expect("get" in s || "fit" in s || "group" in s, s.n).toBe(false);
+    }
+    expect(SERVICES.items.map((s) => s.n)).toEqual(["01", "02", "03", "04", "05", "06", "07"]);
+  });
+
   it("translate visible copy rather than repeating English", () => {
     const { HOME: a } = getDictionary("en");
     const { HOME: b } = getDictionary("pl");

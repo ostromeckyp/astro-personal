@@ -38,7 +38,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
           <SectionHeading index="02" title={HOME.services.heading} action={<TextLink href="/services">{HOME.services.all}</TextLink>} />
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {HOME.services.items.map((s) => (
-              <ServiceCard key={s.n} {...s} href={s.href ?? `/services#service-${s.n}`} />
+              <ServiceCard key={s.n} {...s} href={`/services#service-${s.n}`} />
             ))}
           </div>
         </section>

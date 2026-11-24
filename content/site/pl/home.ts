@@ -34,7 +34,6 @@ export const HOME: typeof EN = {
         meta: "oprogramowanie",
         title: "Aplikacje, strony i opieka",
         body: "Aplikacje, strony, audyty i opieka. Strony od 1 900 zł, aplikacje od 9 000 zł netto.",
-        href: "/services#software",
       },
     ],
   },

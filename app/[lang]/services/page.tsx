@@ -26,67 +26,37 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
       <div aria-hidden="true" className="absolute top-10 left-[-10%] h-px w-[130%] origin-top-left rotate-15 bg-ink-0/8" />
       <PageHeader label={SERVICES.label} title={SERVICES.h1} intro={SERVICES.intro} className="pb-16" />
 
-      {SERVICES.groups.map((group) => (
-        <section key={group.id} id={group.id} className="flex scroll-mt-24 flex-col gap-8 pb-20">
-          <div className="reveal flex flex-col gap-3">
-            <span className="font-mono text-[13px] text-sakura-500">{group.label}</span>
-            <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{group.heading}</h2>
-          </div>
-          <div className="reveal">
-            <Carousel label={group.heading} prevLabel={SERVICES.prev} nextLabel={SERVICES.next}>
-              {SERVICES.items
-                .filter((s) => s.group === group.id)
-                .map((s) => (
-                  <li key={s.n} className="flex w-[min(400px,82vw)] shrink-0 snap-start">
-                    <article
-                      id={`service-${s.n}`}
-                      className={cn(
-                        "flex w-full scroll-mt-24 flex-col gap-5 rounded-card border bg-ink-900 p-7 md:p-8",
-                        s.featured ? "border-sakura-500" : "border-ink-700",
-                      )}
-                    >
-                      <div className="flex items-start justify-between">
-                        <span className="text-[56px] leading-[0.8] font-light tracking-[-0.06em]">{s.n}</span>
-                        <span className={cn(META, s.featured ? "text-sakura-500" : "text-ink-400")}>{s.meta}</span>
-                      </div>
-                      <h3 className="text-[26px] leading-[1.15] font-semibold tracking-[-0.025em]">{s.title}</h3>
-                      <p className="text-[15px] leading-[1.6] text-ink-400">{s.body}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {s.tags.map((t) => (
-                          <Tag key={t}>{t}</Tag>
-                        ))}
-                      </div>
-                      <details className="group mt-auto border-t border-ink-700 pt-4">
-                        <summary className={cn(META, "flex cursor-pointer list-none items-center justify-between gap-4 text-ink-400 [&::-webkit-details-marker]:hidden")}>
-                          {SERVICES.getLabel}
-                          <span aria-hidden="true" className="text-sakura-500 group-open:rotate-45 motion-safe:transition-transform">
-                            +
-                          </span>
-                        </summary>
-                        <ul className="flex flex-col gap-2.5 pt-4">
-                          {s.get.map((g) => (
-                            <li key={g} className="flex gap-3 text-[14px] leading-[1.5] text-ink-200">
-                              <span aria-hidden="true" className="mt-2.5 h-0.5 w-3 shrink-0 bg-sakura-500" />
-                              {g}
-                            </li>
-                          ))}
-                        </ul>
-                        <p className="pt-4 text-[14px] leading-[1.6] text-ink-400">
-                          <span className={cn(META, "mr-2 text-ink-200")}>{SERVICES.fitLabel}:</span>
-                          {s.fit}
-                        </p>
-                      </details>
-                      <p className="flex items-baseline justify-between gap-4 border-t border-ink-700 pt-4">
-                        <span className={cn(META, "text-ink-400")}>{SERVICES.priceLabel}</span>
-                        <span className="text-lg font-semibold tracking-[-0.015em]">{s.price}</span>
-                      </p>
-                    </article>
-                  </li>
-                ))}
-            </Carousel>
-          </div>
-        </section>
-      ))}
+      <section className="reveal flex flex-col gap-8 pb-20">
+        <Carousel label={SERVICES.label} prevLabel={SERVICES.prev} nextLabel={SERVICES.next}>
+          {SERVICES.items.map((s) => (
+            <li key={s.n} className="flex w-[min(400px,82vw)] shrink-0 snap-start">
+              <article
+                id={`service-${s.n}`}
+                className={cn(
+                  "flex w-full scroll-mt-24 flex-col gap-5 rounded-card border bg-ink-900 p-7 md:p-8",
+                  s.featured ? "border-sakura-500" : "border-ink-700",
+                )}
+              >
+                <div className="flex items-start justify-between">
+                  <span className="text-[56px] leading-[0.8] font-light tracking-[-0.06em]">{s.n}</span>
+                  <span className={cn(META, s.featured ? "text-sakura-500" : "text-ink-400")}>{s.meta}</span>
+                </div>
+                <h2 className="text-[26px] leading-[1.15] font-semibold tracking-[-0.025em]">{s.title}</h2>
+                <p className="text-[15px] leading-[1.6] text-ink-400">{s.body}</p>
+                <div className="flex flex-wrap gap-2">
+                  {s.tags.map((t) => (
+                    <Tag key={t}>{t}</Tag>
+                  ))}
+                </div>
+                <p className="mt-auto flex items-baseline justify-between gap-4 border-t border-ink-700 pt-4">
+                  <span className={cn(META, "text-ink-400")}>{SERVICES.priceLabel}</span>
+                  <span className="text-lg font-semibold tracking-[-0.015em]">{s.price}</span>
+                </p>
+              </article>
+            </li>
+          ))}
+        </Carousel>
+      </section>
 
       <section className="flex flex-col gap-10 pt-8 pb-32">
         <div className="reveal flex max-w-[640px] flex-col gap-4">

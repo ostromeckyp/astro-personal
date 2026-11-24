@@ -32,7 +32,6 @@ export const HOME = {
         meta: "software",
         title: "Apps, websites and care",
         body: "Web and mobile apps, websites, audits and care. Websites from $500, apps from $2,500.",
-        href: "/services#software",
       },
     ],
   },
