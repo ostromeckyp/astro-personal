@@ -3,7 +3,6 @@ import type { COMMON as C, FOOTER as F, NAV_CTA as CTA, NAV_LINKS as L } from ".
 export const NAV_LINKS: typeof L = [
   { href: "/services", label: "Usługi" },
   { href: "/use-cases", label: "Wdrożenia" },
-  { href: "/approach", label: "Jak pracuję" },
   { href: "/blog", label: "Blog" },
   { href: "/talks", label: "Wystąpienia" },
   { href: "/about", label: "O mnie" },

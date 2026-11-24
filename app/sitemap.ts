@@ -9,7 +9,6 @@ const ROUTES: { path: string; changeFrequency: "monthly" | "weekly" | "yearly"; 
   { path: "/use-cases", changeFrequency: "monthly", priority: 0.9 },
   { path: "/use-cases/salon-replenishment", changeFrequency: "monthly", priority: 0.8 },
   { path: "/use-cases/no-code-forms", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/approach", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
   { path: "/talks", changeFrequency: "monthly", priority: 0.7 },
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },

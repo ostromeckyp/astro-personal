@@ -41,7 +41,6 @@ export const HOME: typeof EN = {
   cases: { heading: "Wdrożenia", all: "Wszystkie wdrożenia" },
   how: {
     heading: "Jak pracuję",
-    all: "Cały proces",
     steps: [
       { n: "01", t: "Znajdujemy prawdziwy przypadek", d: "Zaczynamy od procesu i liczby, nie od modelu." },
       { n: "02", t: "Sprawdzamy na Twoich danych", d: "Mały działający wycinek w kilka tygodni, oceniany przez ludzi, którzy będą z niego korzystać." },

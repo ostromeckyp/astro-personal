@@ -21,10 +21,6 @@ export const META: typeof EN = {
     title: "Formularze no-code dla branży regulowanej",
     description: "Należąca do klienta platforma do budowy formularzy compliance. Mój wkład jako kontraktora i serwer MCP, dzięki któremu agent AI tworzy szkice.",
   },
-  approach: {
-    title: "Od przypadku biznesowego AI do produkcji",
-    description: "Cztery etapy. Każdy kończy się czymś, co możesz zobaczyć i ocenić. Możesz zatrzymać się po dowolnym z nich i zachować to, co powstało.",
-  },
   blog: {
     title: "Blog o inżynierii AI i Angularze",
     description: "O AI w prawdziwej inżynierii, Angularze i zarządzaniu stanem bez zbędnych bibliotek. Wpisy są po angielsku.",

@@ -1,5 +1,4 @@
 import { ABOUT } from "@/content/site/about";
-import { APPROACH } from "@/content/site/approach";
 import { ARTICLE, BLOG } from "@/content/site/blog";
 import { CONTACT } from "@/content/site/contact";
 import { FORMS_CASE } from "@/content/site/forms-case";
@@ -7,7 +6,6 @@ import { HOME } from "@/content/site/home";
 import { META } from "@/content/site/meta";
 import { COMMON, FOOTER, NAV_CTA, NAV_LINKS } from "@/content/site/nav";
 import { ABOUT as ABOUT_PL } from "@/content/site/pl/about";
-import { APPROACH as APPROACH_PL } from "@/content/site/pl/approach";
 import { ARTICLE as ARTICLE_PL, BLOG as BLOG_PL, POST_COPY } from "@/content/site/pl/blog";
 import { CONTACT as CONTACT_PL } from "@/content/site/pl/contact";
 import { FORMS_CASE as FORMS_CASE_PL } from "@/content/site/pl/forms-case";
@@ -25,11 +23,10 @@ import { USE_CASES, USE_CASES_PAGE } from "@/content/site/use-cases";
 import type { Locale } from "./i18n";
 import type { PostSummary } from "./posts";
 
-const en = { ABOUT, APPROACH, ARTICLE, BLOG, COMMON, CONTACT, FOOTER, FORMS_CASE, HOME, META, NAV_CTA, NAV_LINKS, SALON_CASE, SERVICES, TALKS, USE_CASES, USE_CASES_PAGE };
+const en = { ABOUT, ARTICLE, BLOG, COMMON, CONTACT, FOOTER, FORMS_CASE, HOME, META, NAV_CTA, NAV_LINKS, SALON_CASE, SERVICES, TALKS, USE_CASES, USE_CASES_PAGE };
 
 const pl: typeof en = {
   ABOUT: ABOUT_PL,
-  APPROACH: APPROACH_PL,
   ARTICLE: ARTICLE_PL,
   BLOG: BLOG_PL,
   COMMON: COMMON_PL,

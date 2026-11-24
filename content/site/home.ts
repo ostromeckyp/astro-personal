@@ -39,7 +39,6 @@ export const HOME = {
   cases: { heading: "Use cases", all: "All use cases" },
   how: {
     heading: "How I work",
-    all: "The full approach",
     steps: [
       { n: "01", t: "Find the real case", d: "Start from a process and a number, not from a model." },
       { n: "02", t: "Prove it on your data", d: "A small working slice in weeks, judged by the people who will use it." },

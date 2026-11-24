@@ -9,7 +9,6 @@ it("lists every route and no removed ones", () => {
     "/use-cases",
     "/use-cases/salon-replenishment",
     "/use-cases/no-code-forms",
-    "/approach",
     "/blog",
     "/talks",
     "/about",
@@ -19,6 +18,7 @@ it("lists every route and no removed ones", () => {
     expect(urls).toContain(route);
   }
   expect(urls).not.toContain("/resume");
+  expect(urls).not.toContain("/approach");
   expect(urls).toContain("/pl");
   expect(urls).toContain("/pl/services");
   expect(urls).not.toContain("/pl/blog/code-became-cheap");

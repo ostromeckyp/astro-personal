@@ -19,10 +19,6 @@ export const META = {
     title: "No-code forms for a regulated industry",
     description: "A client-owned drag-and-drop platform for compliance forms. My part as a contractor, and an MCP server that lets an AI agent draft forms.",
   },
-  approach: {
-    title: "From AI business case to production",
-    description: "Four stages. Each one ends in something you can see and judge, and you can stop after any of them and keep what was built.",
-  },
   blog: {
     title: "Blog on AI engineering and Angular",
     description: "On AI in real engineering, Angular, and managing state without reaching for another library.",

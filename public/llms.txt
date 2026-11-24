@@ -22,7 +22,6 @@ Ways to start with AI: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks). The first
 ## Pages
 
 - [Home](https://www.ostromecki.dev/)
-- [Approach](https://www.ostromecki.dev/approach): from business case to production, in four stages.
 - [About](https://www.ostromecki.dev/about): how he works with clients, in short.
 - [Talks](https://www.ostromecki.dev/talks): talks and community work.
 - [Blog](https://www.ostromecki.dev/blog): notes on AI in real engineering, Angular and state management.

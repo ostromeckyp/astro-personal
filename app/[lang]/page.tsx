@@ -53,7 +53,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
         </section>
 
         <section className="flex flex-col gap-10 pb-32">
-          <SectionHeading index="04" title={HOME.how.heading} action={<TextLink href="/approach">{HOME.how.all}</TextLink>} />
+          <SectionHeading index="04" title={HOME.how.heading} />
           <ol className="grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] border-t border-ink-600">
             {HOME.how.steps.map((s) => (
               <li key={s.n} className="reveal flex flex-col gap-2.5 pt-7 pr-6 pb-2">
