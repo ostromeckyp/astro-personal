@@ -104,12 +104,8 @@
     z-index: 0;
     background: radial-gradient(60% 70% at 68% 45%, rgba(204, 255, 0, 0.42), rgba(204, 255, 0, 0) 70%);
   }
-  .hero-line {
-    transform-origin: 0 0;
-    animation: draw 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
   .hero-diag {
-    transform: rotate(15deg);
+    transform: rotate(-6deg);
     transform-origin: 0 0;
     animation: drawr 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
@@ -132,7 +128,7 @@
     width: 140%;
     height: 1px;
     background: rgba(254, 254, 254, 0.1);
-    transform: rotate(15deg);
+    transform: rotate(-6deg);
     transform-origin: 0 0;
     pointer-events: none;
   }
@@ -602,19 +598,14 @@
   71% { opacity: 0.1; }
   86% { opacity: 0.45; }
 }
-@keyframes draw {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
 @keyframes drawr {
-  from { transform: rotate(15deg) scaleX(0); }
-  to { transform: rotate(15deg) scaleX(1); }
+  from { transform: rotate(-6deg) scaleX(0); }
+  to { transform: rotate(-6deg) scaleX(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .glow-burn,
   .glow-burn::after,
-  .hero-line,
   .hero-diag {
     animation: none !important;
   }

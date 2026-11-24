@@ -4,15 +4,10 @@ import type { HOME } from "@/content/site/home";
 
 export function Hero({ hero }: { hero: typeof HOME.hero }) {
   return (
-    <section className="relative h-[calc(100svh-85px)] min-h-[480px] w-full overflow-hidden bg-[#080309] md:aspect-video md:h-auto md:max-h-[920px] md:min-h-[640px]">
-      <div aria-hidden="true" className="article-glow glow-burn absolute top-[-30%] right-[-10%] h-[160%] w-[70%]" />
-      {/* 16:9 box centred on the hero, so the lines keep their angles at any width. */}
-      <div aria-hidden="true" className="absolute top-0 left-1/2 aspect-video h-full min-w-full -translate-x-1/2">
-        <div className="hero-line absolute top-[38.8%] left-0 h-px w-full bg-[rgba(244,242,244,0.30)] [animation-delay:.2s]" />
-        <div className="hero-line absolute top-[48.7%] left-0 h-px w-full bg-[rgba(244,242,244,0.22)] [animation-delay:.35s]" />
-        <div className="hero-diag absolute top-[9.7%] left-[-3%] h-px w-[130%] bg-[rgba(244,242,244,0.22)] [animation-delay:.5s]" />
-        <div className="hero-diag absolute top-[24%] left-[-3%] h-px w-[130%] bg-[rgba(244,242,244,0.16)] [animation-delay:.65s]" />
-      </div>
+    <section className="relative h-[calc(100svh-85px)] min-h-[480px] w-full overflow-x-clip md:aspect-video md:h-auto md:max-h-[920px] md:min-h-[640px]">
+      {/* Spills past the bottom edge onto the next section; screen blending keeps it reading as light. */}
+      <div aria-hidden="true" className="article-glow glow-burn absolute top-[-30%] right-[-10%] h-[160%] w-[70%] mix-blend-screen" />
+      <div aria-hidden="true" className="hero-diag absolute top-[30%] left-[-5%] h-px w-[130%] bg-ink-0/8" />
 
       <div className="absolute top-[11%] left-[9%] hidden flex-col gap-3.5 text-[13px] leading-[1.22] text-[#e9e6ea] lg:flex">
         {hero.groups.map((g) => (
