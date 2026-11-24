@@ -2,11 +2,13 @@ export const SERVICES = {
   label: "services",
   h1: "AI, and the software around it.",
   intro:
-    "I help companies put AI to work in their processes, and I build the software around it: web and mobile apps, websites, audits and ongoing care. From there I design, build and hand over.",
+    "AI in your processes, and the apps, websites and care around it.",
   getLabel: "what you get",
   priceLabel: "price",
   priceNote: "Prices are a starting point, net of VAT. You get the final price in a written quote after a free 30-minute call.",
   fitLabel: "a good fit if",
+  prev: "Previous services",
+  next: "Next services",
   groups: [
     { id: "ai", label: "ai", heading: "AI in your processes" },
     { id: "software", label: "software", heading: "Apps, websites and care" },
@@ -18,7 +20,7 @@ export const SERVICES = {
       group: "ai",
       meta: "workflows",
       title: "AI workflows",
-      body: "Take a manual, repetitive process such as ordering, ticket triage, document checks or data entry. I design an AI workflow around it and plug it into the tools your team already uses.",
+      body: "A manual, repetitive process turned into an AI workflow, plugged into the tools your team already uses.",
       get: [
         "A map of the process with the steps worth automating",
         "A workflow design with clear points where a person decides",
@@ -35,7 +37,7 @@ export const SERVICES = {
       meta: "most common",
       featured: true,
       title: "AI in real business cases",
-      body: "Separate the use cases that pay off from the ones that only demo well. We test on your data, measure against today's process, and turn the winner into a product people use.",
+      body: "We test AI ideas on your data and turn the one that pays off into a product people use.",
       get: [
         "Short discovery: where AI actually saves time or money",
         "A proof of concept on your real data",
@@ -51,7 +53,7 @@ export const SERVICES = {
       group: "software",
       meta: "web",
       title: "Web applications",
-      body: "Client portals, admin panels, booking and order systems, and internal tools that replace spreadsheets. Built around how your team works, in the browser on any device.",
+      body: "Client portals, admin panels, booking systems and internal tools that replace spreadsheets.",
       get: [
         "Scope and screens agreed before any code",
         "A working app delivered in stages you can click through",
@@ -67,7 +69,7 @@ export const SERVICES = {
       group: "software",
       meta: "mobile",
       title: "Mobile apps",
-      body: "Apps for iOS and Android built from one codebase, with push notifications, the camera and offline use where you need them. If a web app on the phone is enough, I will say so and save you the cost.",
+      body: "iOS and Android from one codebase, or an honest “a web app is enough.”",
       get: [
         "An honest call: native app or a web app on the phone",
         "One app for iOS and Android",
@@ -83,7 +85,7 @@ export const SERVICES = {
       group: "software",
       meta: "websites",
       title: "Websites",
-      body: "Company websites and landing pages that tell a visitor in seconds what you do, for whom, and how to get in touch. Fast on a phone and ready for Google and AI search.",
+      body: "Fast websites that say in seconds what you do and turn visits into inquiries.",
       get: [
         "A design made for your business, not a template",
         "Copy and structure that lead to an enquiry",
@@ -99,7 +101,7 @@ export const SERVICES = {
       group: "software",
       meta: "audit",
       title: "Application audit",
-      body: "An independent look at an existing app: code, architecture, security and performance. You get a clear report of what is risky, what is slowing you down, and what to fix first.",
+      body: "Code, architecture, security and performance reviewed, with a clear list of what to fix first.",
       get: [
         "A review of code, architecture, security and performance",
         "A written report in plain language",
@@ -115,7 +117,7 @@ export const SERVICES = {
       group: "software",
       meta: "care",
       title: "Maintenance and development",
-      body: "Ongoing care for an app or website after launch: fixes, updates, monitoring and new features, from someone who knows the code. A few days a month of senior engineering, without hiring.",
+      body: "Fixes, updates, monitoring and new features after launch, without hiring.",
       get: [
         "Fixes and security updates",
         "Monitoring, so problems are caught before your clients see them",

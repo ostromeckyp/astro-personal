@@ -7,7 +7,7 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
   return (
     <section className="relative h-[calc(100svh-85px)] min-h-[480px] w-full overflow-hidden bg-[#080309] md:aspect-video md:h-auto md:max-h-[920px] md:min-h-[640px]">
       <Image
-        src="/images/hero-key-visual-4k.jpg"
+        src="/images/hero-flame-test.jpg"
         alt={hero.alt}
         fill
         priority

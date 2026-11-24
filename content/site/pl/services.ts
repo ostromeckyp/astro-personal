@@ -4,11 +4,13 @@ export const SERVICES: typeof EN = {
   label: "usługi",
   h1: "AI i oprogramowanie wokół niego.",
   intro:
-    "Pomagam firmom wprowadzić AI do codziennych procesów i buduję oprogramowanie wokół niego: aplikacje webowe i mobilne, strony, audyty i stałą opiekę. Projektuję, buduję i przekazuję.",
+    "AI w Twoich procesach oraz aplikacje, strony i opieka wokół niego.",
   getLabel: "co dostajesz",
   priceLabel: "cena",
   priceNote: "Ceny orientacyjne netto (plus 23% VAT). Ostateczną cenę podaję w wycenie na piśmie po bezpłatnej 30-minutowej rozmowie.",
   fitLabel: "pasuje, jeśli",
+  prev: "Poprzednie usługi",
+  next: "Następne usługi",
   groups: [
     { id: "ai", label: "ai", heading: "AI w Twoich procesach" },
     { id: "software", label: "oprogramowanie", heading: "Aplikacje, strony i opieka" },
@@ -20,7 +22,7 @@ export const SERVICES: typeof EN = {
       group: "ai",
       meta: "workflowy",
       title: "Workflowy AI",
-      body: "Weźmy ręczny, powtarzalny proces: zamówienia, obsługę zgłoszeń, sprawdzanie dokumentów, wprowadzanie danych. Projektuję wokół niego workflow z AI i podłączam go do narzędzi, z których zespół już korzysta.",
+      body: "Ręczny, powtarzalny proces zamieniony w workflow z AI, podłączony do narzędzi, których zespół już używa.",
       get: [
         "Mapa procesu z krokami, które warto zautomatyzować",
         "Projekt workflow z jasnymi punktami, w których decyduje człowiek",
@@ -37,7 +39,7 @@ export const SERVICES: typeof EN = {
       meta: "najczęściej",
       featured: true,
       title: "AI w realnych przypadkach biznesowych",
-      body: "Oddzielamy przypadki, które się opłacają, od tych, które tylko dobrze wyglądają na demo. Testujemy na Twoich danych, mierzymy względem dzisiejszego procesu i zamieniamy zwycięzcę w produkt, z którego ludzie korzystają.",
+      body: "Testujemy pomysły na AI na Twoich danych, a ten, który się opłaca, zamieniamy w produkt.",
       get: [
         "Krótkie rozpoznanie: gdzie AI naprawdę oszczędza czas lub pieniądze",
         "Prototyp na Twoich prawdziwych danych",
@@ -53,7 +55,7 @@ export const SERVICES: typeof EN = {
       group: "software",
       meta: "web",
       title: "Aplikacje webowe",
-      body: "Panele klienta i administracyjne, systemy rezerwacji i zleceń, narzędzia wewnętrzne zamiast arkuszy. Dopasowane do tego, jak pracuje Twój zespół, działają w przeglądarce na każdym urządzeniu.",
+      body: "Panele klienta, systemy rezerwacji i narzędzia wewnętrzne zamiast arkuszy.",
       get: [
         "Zakres i ekrany ustalone, zanim powstanie kod",
         "Działająca aplikacja oddawana etapami, które możesz przeklikać",
@@ -69,7 +71,7 @@ export const SERVICES: typeof EN = {
       group: "software",
       meta: "mobile",
       title: "Aplikacje mobilne",
-      body: "Aplikacje na iOS i Androida z jednego kodu, z powiadomieniami, aparatem i pracą offline tam, gdzie są potrzebne. Jeśli wystarczy aplikacja webowa na telefonie, powiem to wprost i oszczędzę Ci kosztów.",
+      body: "iOS i Android z jednego kodu albo uczciwe „wystarczy aplikacja webowa”.",
       get: [
         "Uczciwa rekomendacja: aplikacja natywna czy webowa na telefonie",
         "Jedna aplikacja na iOS i Androida",
@@ -85,7 +87,7 @@ export const SERVICES: typeof EN = {
       group: "software",
       meta: "strony",
       title: "Strony internetowe",
-      body: "Strony firmowe i landing page, które w kilka sekund mówią odwiedzającemu, co robisz, dla kogo i jak się z Tobą skontaktować. Szybkie na telefonie i przygotowane pod Google i wyszukiwarki AI.",
+      body: "Szybkie strony, które w kilka sekund mówią, co robisz, i zamieniają odwiedziny w zapytania.",
       get: [
         "Projekt dla Twojej firmy, nie szablon",
         "Teksty i układ, które prowadzą do zapytania",
@@ -101,7 +103,7 @@ export const SERVICES: typeof EN = {
       group: "software",
       meta: "audyt",
       title: "Audyt aplikacji",
-      body: "Niezależne spojrzenie na istniejącą aplikację: kod, architektura, bezpieczeństwo i wydajność. Dostajesz jasny raport: co jest ryzykowne, co Cię spowalnia i co naprawić najpierw.",
+      body: "Przegląd kodu, architektury, bezpieczeństwa i wydajności z listą, co naprawić najpierw.",
       get: [
         "Przegląd kodu, architektury, bezpieczeństwa i wydajności",
         "Raport na piśmie, zrozumiałym językiem",
@@ -117,7 +119,7 @@ export const SERVICES: typeof EN = {
       group: "software",
       meta: "opieka",
       title: "Utrzymanie i rozwój",
-      body: "Stała opieka nad aplikacją lub stroną po starcie: poprawki, aktualizacje, monitoring i nowe funkcje, od kogoś, kto zna kod. Kilka dni seniorskiej pracy w miesiącu, bez zatrudniania.",
+      body: "Poprawki, aktualizacje, monitoring i nowe funkcje po starcie, bez zatrudniania.",
       get: [
         "Poprawki i aktualizacje bezpieczeństwa",
         "Monitoring, żeby problemy wychwycić, zanim zobaczą je klienci",
