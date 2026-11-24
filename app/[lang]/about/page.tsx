@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { NextStepCta } from "@/components/ui/NextStepCta";
 import { NEW_TAB } from "@/lib/external-link";
 import { pageMetadata } from "@/lib/metadata";
 import { getDictionary } from "@/lib/dictionary";
@@ -17,7 +16,7 @@ const CARD = "reveal flex flex-col gap-[18px] rounded-card border border-ink-700
 
 export default async function AboutPage({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
-  const { ABOUT, NEXT_STEP } = getDictionary(lang);
+  const { ABOUT } = getDictionary(lang);
   const { facts } = ABOUT;
   return (
     <div className="site-container">
@@ -55,7 +54,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: Lo
         </div>
       </section>
 
-      <section className="flex flex-col gap-8 pb-28">
+      <section className="flex flex-col gap-8 pb-32">
         <span className="font-mono text-[13px] text-sakura-500">{facts.label}</span>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6">
           {facts.items.map((f) => (
@@ -66,10 +65,6 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: Lo
           ))}
         </div>
       </section>
-
-      <div className="pb-32">
-        <NextStepCta copy={NEXT_STEP} />
-      </div>
     </div>
   );
 }

@@ -7,12 +7,6 @@ export const NAV_LINKS = [
   { href: "/about", label: "About" },
 ];
 
-export const NEXT_STEP = {
-  label: "the next one could be yours",
-  heading: "Have a process, an app or a website in mind?",
-  cta: "Book a free consultation",
-};
-
 export const NAV_CTA = { href: "/contact", label: "Free consultation" };
 
 export const COMMON = {

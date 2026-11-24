@@ -5,7 +5,7 @@ import { CONTACT } from "@/content/site/contact";
 import { FORMS_CASE } from "@/content/site/forms-case";
 import { HOME } from "@/content/site/home";
 import { META } from "@/content/site/meta";
-import { COMMON, FOOTER, NAV_CTA, NAV_LINKS, NEXT_STEP } from "@/content/site/nav";
+import { COMMON, FOOTER, NAV_CTA, NAV_LINKS } from "@/content/site/nav";
 import { ABOUT as ABOUT_PL } from "@/content/site/pl/about";
 import { APPROACH as APPROACH_PL } from "@/content/site/pl/approach";
 import { ARTICLE as ARTICLE_PL, BLOG as BLOG_PL, POST_COPY } from "@/content/site/pl/blog";
@@ -13,7 +13,7 @@ import { CONTACT as CONTACT_PL } from "@/content/site/pl/contact";
 import { FORMS_CASE as FORMS_CASE_PL } from "@/content/site/pl/forms-case";
 import { HOME as HOME_PL } from "@/content/site/pl/home";
 import { META as META_PL } from "@/content/site/pl/meta";
-import { COMMON as COMMON_PL, FOOTER as FOOTER_PL, NAV_CTA as NAV_CTA_PL, NAV_LINKS as NAV_LINKS_PL, NEXT_STEP as NEXT_STEP_PL } from "@/content/site/pl/nav";
+import { COMMON as COMMON_PL, FOOTER as FOOTER_PL, NAV_CTA as NAV_CTA_PL, NAV_LINKS as NAV_LINKS_PL } from "@/content/site/pl/nav";
 import { SALON_CASE as SALON_CASE_PL } from "@/content/site/pl/salon-case";
 import { SERVICES as SERVICES_PL } from "@/content/site/pl/services";
 import { TALKS as TALKS_PL } from "@/content/site/pl/talks";
@@ -25,7 +25,7 @@ import { USE_CASES, USE_CASES_PAGE } from "@/content/site/use-cases";
 import type { Locale } from "./i18n";
 import type { PostSummary } from "./posts";
 
-const en = { ABOUT, APPROACH, ARTICLE, BLOG, COMMON, CONTACT, FOOTER, FORMS_CASE, HOME, META, NAV_CTA, NAV_LINKS, NEXT_STEP, SALON_CASE, SERVICES, TALKS, USE_CASES, USE_CASES_PAGE };
+const en = { ABOUT, APPROACH, ARTICLE, BLOG, COMMON, CONTACT, FOOTER, FORMS_CASE, HOME, META, NAV_CTA, NAV_LINKS, SALON_CASE, SERVICES, TALKS, USE_CASES, USE_CASES_PAGE };
 
 const pl: typeof en = {
   ABOUT: ABOUT_PL,
@@ -40,7 +40,6 @@ const pl: typeof en = {
   META: META_PL,
   NAV_CTA: NAV_CTA_PL,
   NAV_LINKS: NAV_LINKS_PL,
-  NEXT_STEP: NEXT_STEP_PL,
   SALON_CASE: SALON_CASE_PL,
   SERVICES: SERVICES_PL,
   TALKS: TALKS_PL,

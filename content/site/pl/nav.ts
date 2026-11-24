@@ -1,4 +1,4 @@
-import type { COMMON as C, FOOTER as F, NAV_CTA as CTA, NAV_LINKS as L, NEXT_STEP as N } from "../nav";
+import type { COMMON as C, FOOTER as F, NAV_CTA as CTA, NAV_LINKS as L } from "../nav";
 
 export const NAV_LINKS: typeof L = [
   { href: "/services", label: "Usługi" },
@@ -8,12 +8,6 @@ export const NAV_LINKS: typeof L = [
   { href: "/talks", label: "Wystąpienia" },
   { href: "/about", label: "O mnie" },
 ];
-
-export const NEXT_STEP: typeof N = {
-  label: "następne może być Twoje",
-  heading: "Masz na myśli proces, aplikację albo stronę?",
-  cta: "Umów bezpłatną konsultację",
-};
 
 export const NAV_CTA: typeof CTA = { href: "/contact", label: "Bezpłatna rozmowa" };
 

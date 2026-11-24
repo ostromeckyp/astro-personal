@@ -42,6 +42,11 @@ describe("dictionaries", () => {
     }
   });
 
+  it("drop the next-step tile, the footer already asks", () => {
+    expect("NEXT_STEP" in getDictionary("en")).toBe(false);
+    expect("NEXT_STEP" in getDictionary("pl")).toBe(false);
+  });
+
   it("translate visible copy rather than repeating English", () => {
     const { HOME: a } = getDictionary("en");
     const { HOME: b } = getDictionary("pl");

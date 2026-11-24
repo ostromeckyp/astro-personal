@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { NextStepCta } from "@/components/ui/NextStepCta";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { pageMetadata } from "@/lib/metadata";
 import { getDictionary } from "@/lib/dictionary";
@@ -13,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
 
 export default async function ApproachPage({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
-  const { APPROACH, NEXT_STEP } = getDictionary(lang);
+  const { APPROACH } = getDictionary(lang);
   return (
     <div className="site-container">
       <PageHeader label={APPROACH.label} title={APPROACH.h1} intro={APPROACH.intro} className="pb-24" />
@@ -52,10 +51,6 @@ export default async function ApproachPage({ params }: { params: Promise<{ lang:
           ))}
         </div>
       </section>
-
-      <div className="pb-32">
-        <NextStepCta copy={NEXT_STEP} />
-      </div>
     </div>
   );
 }

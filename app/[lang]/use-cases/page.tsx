@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { NextStepCta } from "@/components/ui/NextStepCta";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { UseCaseCard } from "@/components/ui/UseCaseCard";
 import { pageMetadata } from "@/lib/metadata";
@@ -14,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
 
 export default async function UseCasesPage({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
-  const { NEXT_STEP, USE_CASES, USE_CASES_PAGE } = getDictionary(lang);
+  const { USE_CASES, USE_CASES_PAGE } = getDictionary(lang);
   return (
     <div className="site-container">
       <PageHeader label={USE_CASES_PAGE.label} title={USE_CASES_PAGE.h1} intro={USE_CASES_PAGE.intro} />
@@ -22,7 +21,6 @@ export default async function UseCasesPage({ params }: { params: Promise<{ lang:
         {USE_CASES.map((c) => (
           <UseCaseCard key={c.slug} useCase={c} variant="list" readLabel={USE_CASES_PAGE.read} />
         ))}
-        <NextStepCta copy={NEXT_STEP} />
       </section>
     </div>
   );

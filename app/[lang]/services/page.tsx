@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Carousel } from "@/components/ui/Carousel";
-import { NextStepCta } from "@/components/ui/NextStepCta";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Tag } from "@/components/ui/Tag";
 import { cn } from "@/lib/cn";
@@ -20,7 +19,7 @@ const META = "font-mono text-[11px] tracking-[0.04em] uppercase";
 
 export default async function ServicesPage({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
-  const { NEXT_STEP, SERVICES } = getDictionary(lang);
+  const { SERVICES } = getDictionary(lang);
   return (
     <div className="site-container relative overflow-x-clip">
       <JsonLd data={faqSchema(SERVICES.faq.items)} />
@@ -110,7 +109,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
         <p className="reveal max-w-[640px] text-[15px] leading-[1.6] text-ink-400">{SERVICES.priceNote}</p>
       </section>
 
-      <section className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-12 pb-20">
+      <section className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-12 pb-32">
         <div className="reveal flex flex-col gap-4">
           <span className="font-mono text-[13px] text-sakura-500">{SERVICES.faq.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{SERVICES.faq.heading}</h2>
@@ -132,10 +131,6 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
           ))}
         </div>
       </section>
-
-      <div className="pb-32">
-        <NextStepCta copy={NEXT_STEP} />
-      </div>
     </div>
   );
 }
