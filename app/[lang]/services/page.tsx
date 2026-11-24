@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Carousel } from "@/components/ui/Carousel";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Tag } from "@/components/ui/Tag";
+import { TechLogos } from "@/components/ui/TechLogos";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/JsonLd";
@@ -97,6 +98,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
                 </span>
               </summary>
               <p className="pb-[22px] text-[15px] leading-[1.6] text-ink-400">{f.a}</p>
+              {f.logos && <TechLogos items={f.logos} />}
             </details>
           ))}
         </div>

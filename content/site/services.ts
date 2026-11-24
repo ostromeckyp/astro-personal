@@ -1,3 +1,7 @@
+import type { Tech } from "@/components/ui/TechLogos";
+
+type FaqItem = { q: string; a: string; logos?: Tech[] };
+
 export const SERVICES = {
   label: "services",
   h1: "Software for your business. AI where it pays off.",
@@ -86,8 +90,9 @@ export const SERVICES = {
     items: [
       { q: "Do you work remotely?", a: "Yes. I am based in Wrocław, Poland, and work remotely with teams worldwide. On-site workshops are possible." },
       {
-        q: "Which AI models and tools do you use?",
-        a: "Whatever fits the case and your constraints: hosted models, open models or a mix. The workflow design matters more than the model name.",
+        q: "What do you build with?",
+        a: "Proven, popular tools, so any good team can take the project over: Google Cloud, Firebase, Python, TypeScript, Angular, React and NestJS.",
+        logos: ["googlecloud", "firebase", "python", "typescript", "angular", "react", "nestjs"],
       },
       {
         q: "How much does it cost?",
@@ -97,15 +102,11 @@ export const SERVICES = {
         q: "How does payment work?",
         a: "A deposit to start and the rest after you accept the work. You get a VAT invoice.",
       },
-      {
-        q: "Which technologies do you use?",
-        a: "Proven, widely used ones, so any good team can take over: TypeScript, Angular or React on the frontend, Node.js and NestJS on the backend, and Ionic with Capacitor for mobile. I pick what fits the project, not the other way round.",
-      },
       { q: "Who owns the result?", a: "You do. Code, documentation and designs go to your team." },
       {
         q: "How do you keep AI features safe?",
-        a: "A person approves where it matters, the rules live in code rather than only in prompts, and everything is monitored and tested on your real data before it scales.",
+        a: "I build on the OWASP Top 10 for LLM Applications: protection against prompt injection, data leaks and agents with too much power. An agent gets only the permissions it needs, and actions with real consequences wait for a person to approve them. On Firebase and Google Cloud I use the platform's own security: security rules, App Check, IAM and Secret Manager.",
       },
-    ],
+    ] as FaqItem[],
   },
 };

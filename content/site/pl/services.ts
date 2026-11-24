@@ -88,8 +88,9 @@ export const SERVICES: typeof EN = {
     items: [
       { q: "Pracujesz zdalnie?", a: "Tak. Mieszkam we Wrocławiu i pracuję zdalnie z zespołami z całego świata. Warsztaty na miejscu są możliwe." },
       {
-        q: "Jakich modeli i narzędzi AI używasz?",
-        a: "Takich, które pasują do przypadku i Twoich ograniczeń: modele hostowane, otwarte albo mieszanka. Projekt workflow znaczy więcej niż nazwa modelu.",
+        q: "Z czego korzystasz?",
+        a: "Ze sprawdzonych, popularnych narzędzi, żeby każdy dobry zespół mógł przejąć projekt: Google Cloud, Firebase, Python, TypeScript, Angular, React i NestJS.",
+        logos: ["googlecloud", "firebase", "python", "typescript", "angular", "react", "nestjs"],
       },
       {
         q: "Ile to kosztuje?",
@@ -99,14 +100,10 @@ export const SERVICES: typeof EN = {
         q: "Jak wygląda płatność?",
         a: "Zaliczka na start, reszta po odbiorze. Wystawiam fakturę VAT.",
       },
-      {
-        q: "Jakich technologii używasz?",
-        a: "Sprawdzonych i popularnych, żeby każdy dobry zespół mógł przejąć projekt: TypeScript, Angular lub React na frontendzie, Node.js i NestJS na backendzie, Ionic z Capacitorem w aplikacjach mobilnych. Dobieram technologię do projektu, nie odwrotnie.",
-      },
       { q: "Kto jest właścicielem wyniku?", a: "Ty. Kod, dokumentacja i projekty trafiają do Twojego zespołu." },
       {
         q: "Jak dbasz o bezpieczeństwo funkcji AI?",
-        a: "Tam, gdzie to ważne, decyduje człowiek, reguły są w kodzie, a nie tylko w promptach, a całość jest monitorowana i testowana na Twoich danych, zanim trafi do wszystkich.",
+        a: "Opieram się na OWASP Top 10 for LLM Applications: zabezpieczam przed prompt injection, wyciekiem danych i nadmiernymi uprawnieniami agentów. Agent dostaje tylko te uprawnienia, których potrzebuje, a działania z realnymi skutkami czekają na zatwierdzenie przez człowieka. Na Firebase i Google Cloud korzystam z mechanizmów bezpieczeństwa platformy: reguł bezpieczeństwa, App Check, IAM i Secret Managera.",
       },
     ],
   },

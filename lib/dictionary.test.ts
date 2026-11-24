@@ -61,6 +61,17 @@ describe("dictionaries", () => {
     expect(SERVICES.items.map((s) => s.n)).toEqual(["01", "02", "03", "04", "05", "06", "07"]);
   });
 
+  it("names the stack and the security standard", () => {
+    for (const lang of ["en", "pl"] as const) {
+      const faq = getDictionary(lang).SERVICES.faq.items;
+      const stack = faq.find((f) => f.logos);
+      expect(stack?.logos).toEqual(["googlecloud", "firebase", "python", "typescript", "angular", "react", "nestjs"]);
+      for (const name of ["Google Cloud", "Firebase", "Python", "TypeScript", "Angular", "React", "NestJS"]) expect(stack?.a).toContain(name);
+      expect(faq.some((f) => f.a.includes("OWASP Top 10 for LLM Applications") && f.a.includes("App Check"))).toBe(true);
+      expect(faq.filter((f) => /Ionic|Capacitor/.test(f.a))).toEqual([]);
+    }
+  });
+
   it("translate visible copy rather than repeating English", () => {
     const { HOME: a } = getDictionary("en");
     const { HOME: b } = getDictionary("pl");
