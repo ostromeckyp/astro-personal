@@ -2,12 +2,12 @@
 
 import { LocaleLink as Link } from "@/components/ui/LocaleLink";
 import { usePathname } from "next/navigation";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/Button";
 import type { COMMON, NAV_CTA, NAV_LINKS } from "@/content/site/nav";
 import { LOCALE_COOKIE, localePath, stripLocale, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
-import { isActive } from "@/lib/nav";
+import { isActive, menuClosesOnClick } from "@/lib/nav";
 
 function Logo() {
   return (
@@ -47,19 +47,45 @@ function LanguageSwitch({ lang, path, label }: { lang: Locale; path: string; lab
   );
 }
 
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+const MENU_FADE_MS = 200;
+
+function subscribeReducedMotion(onChange: () => void) {
+  const mq = window.matchMedia(REDUCED_MOTION);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
 export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NAV_LINKS; cta: typeof NAV_CTA; copy: typeof COMMON }) {
   const pathname = usePathname() ?? "/";
   const path = stripLocale(pathname);
-  // The menu belongs to the page it was opened on, so navigating closes it.
+  // The menu belongs to the page it was opened on. Following a link keeps it up until the next
+  // page has rendered, then it fades out over that page, so the old page never flashes in between.
   const [openOn, setOpenOn] = useState<string | null>(null);
-  const open = openOn === pathname;
-  const close = () => setOpenOn(null);
+  const [closing, setClosing] = useState(false);
+  const reducedMotion = useSyncExternalStore(subscribeReducedMotion, () => window.matchMedia(REDUCED_MOTION).matches, () => false);
+  const shown = openOn !== null;
+  const leaving = shown && (closing || openOn !== pathname);
+  const open = shown && !leaving;
+  const close = () => setClosing(true);
   const barRef = useRef<HTMLElement>(null);
   const openRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!open) return;
+    if (!leaving) return;
+    const done = setTimeout(
+      () => {
+        setOpenOn(null);
+        setClosing(false);
+      },
+      reducedMotion ? 0 : MENU_FADE_MS,
+    );
+    return () => clearTimeout(done);
+  }, [leaving, reducedMotion]);
+
+  useEffect(() => {
+    if (!shown) return;
     // Everything behind the menu leaves the tab order, and focus moves into it.
     const behind = [
       document.querySelector('a[href="#main-content"]'),
@@ -72,7 +98,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenOn(null);
+      if (e.key === "Escape") setClosing(true);
     };
     window.addEventListener("keydown", onKey);
     // The menu is hidden from lg up, for example after rotating a tablet, so it must not stay open unseen.
@@ -88,7 +114,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
       window.removeEventListener("keydown", onKey);
       opener?.focus();
     };
-  }, [open]);
+  }, [shown]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink-700 bg-ink-950">
@@ -142,7 +168,8 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
         role="dialog"
         aria-modal="true"
         aria-label={copy.mobileNav}
-        hidden={!open}
+        hidden={!shown}
+        data-closing={leaving || undefined}
         className="fixed inset-0 z-50 overflow-y-auto bg-ink-950 lg:hidden"
       >
         <div className="site-container flex min-h-full flex-col py-[18px]">
@@ -155,7 +182,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
               onClick={close}
               className="flex size-12 items-center justify-center rounded-full border border-ink-600 text-ink-0"
             >
-              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="menu-x">
                 <path d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -167,7 +194,9 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
                 <Link
                   key={l.href}
                   href={l.href}
-                  onClick={close}
+                  onClick={() => {
+                    if (menuClosesOnClick(path, l.href)) close();
+                  }}
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "border-b border-ink-700 py-4 text-[28px] leading-tight font-semibold tracking-[-0.025em]",
@@ -179,9 +208,17 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
               );
             })}
           </div>
-          <Button href={cta.href} size="lg" className="mt-10 w-full">
-            {cta.label}
-          </Button>
+          {/* Button forwards no click handler to its link, so the click is caught as it bubbles. */}
+          <div
+            className="mt-10"
+            onClick={() => {
+              if (menuClosesOnClick(path, cta.href)) close();
+            }}
+          >
+            <Button href={cta.href} size="lg" className="w-full">
+              {cta.label}
+            </Button>
+          </div>
           <div className="mt-8 flex justify-center">
             <LanguageSwitch lang={lang} path={path} label={copy.languageLabel} />
           </div>

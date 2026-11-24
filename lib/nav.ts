@@ -9,3 +9,8 @@ export function isActive(pathname: string, href: string): boolean {
   if (target === "/") return current === "/";
   return current === target || current.startsWith(`${target}/`);
 }
+
+/** True when a menu link points at the page already shown, so no navigation will close the menu for us. */
+export function menuClosesOnClick(pathname: string, href: string): boolean {
+  return normalize(pathname) === normalize(href);
+}
