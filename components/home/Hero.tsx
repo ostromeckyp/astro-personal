@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { LocaleLink as Link } from "@/components/ui/LocaleLink";
 import { Button } from "@/components/ui/Button";
 import type { HOME } from "@/content/site/home";
@@ -6,21 +5,8 @@ import type { HOME } from "@/content/site/home";
 export function Hero({ hero }: { hero: typeof HOME.hero }) {
   return (
     <section className="relative h-[calc(100svh-85px)] min-h-[480px] w-full overflow-hidden bg-[#080309] md:aspect-video md:h-auto md:max-h-[920px] md:min-h-[640px]">
-      <Image
-        src="/images/hero-flame-test.jpg"
-        alt={hero.alt}
-        fill
-        priority
-        // The image covers a box taller than 16:9 on phones and tablets, so it renders wider than
-        // the screen. With a plain 100vw the browser picks a file far too small and stretches it.
-        sizes="(max-width: 767px) 180vh, max(100vw, 1138px)"
-        className="hero-plate object-cover object-[50%_40%]"
-      />
-      {/* Masked wrapper keeps the flash off the person; see .hero-glow-mask in globals.css. */}
-      <div aria-hidden="true" className="hero-glow-mask absolute inset-0">
-        <div className="hero-glow glow-burn absolute top-[52%] left-1/2 h-[110%] w-[70%]" />
-      </div>
-      {/* Same box as the cropped image, so the lines stay on the same point of the face at any width. */}
+      <div aria-hidden="true" className="article-glow glow-burn absolute top-[-30%] right-[-10%] h-[160%] w-[70%]" />
+      {/* 16:9 box centred on the hero, so the lines keep their angles at any width. */}
       <div aria-hidden="true" className="absolute top-0 left-1/2 aspect-video h-full min-w-full -translate-x-1/2">
         <div className="hero-line absolute top-[38.8%] left-0 h-px w-full bg-[rgba(244,242,244,0.30)] [animation-delay:.2s]" />
         <div className="hero-line absolute top-[48.7%] left-0 h-px w-full bg-[rgba(244,242,244,0.22)] [animation-delay:.35s]" />
@@ -35,13 +21,6 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
           </p>
         ))}
       </div>
-
-      <span
-        aria-hidden="true"
-        className="absolute top-[5%] right-[5%] text-[clamp(80px,10vw,160px)] leading-[0.82] font-light tracking-[-0.06em]"
-      >
-        01
-      </span>
 
       <div className="rise-in absolute bottom-[8%] left-[5.5%] flex max-w-[560px] flex-col gap-6 pr-6">
         <h1 className="text-[clamp(44px,5vw,76px)] leading-[0.96] font-medium tracking-[-0.04em] whitespace-pre-line">{hero.h1}</h1>

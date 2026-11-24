@@ -75,7 +75,7 @@
     margin-inline: auto;
     padding-inline: 24px;
   }
-  /* Pink light that burns: a slow swell, plus a faster flicker on a second layer.
+  /* Light that burns: a slow swell, plus a faster flicker on a second layer.
      The two periods don't line up, so the pattern doesn't visibly repeat.
      --burn-low and --burn-span set how dim it gets and how far it flares. */
   .glow-burn {
@@ -91,29 +91,6 @@
     animation: flicker 2.9s ease-in-out infinite;
   }
 
-  /* Home hero. The pink flash sits behind the person: the layer is screened onto the plate
-     through a mask cut from the plate itself (opaque where its halo is, clear over the face,
-     hair and shirt). The mask is fitted exactly like the image (cover, 50% 40%), so it lines
-     up at any width. The blend and mask live on the static wrapper, so the swell's scale on
-     the inner layer can't drift the cutout off the face. */
-  .hero-glow-mask {
-    pointer-events: none;
-    mix-blend-mode: screen;
-    -webkit-mask-image: url("/images/hero-glow-mask.png");
-    mask-image: url("/images/hero-glow-mask.png");
-    -webkit-mask-size: cover;
-    mask-size: cover;
-    -webkit-mask-position: 50% 40%;
-    mask-position: 50% 40%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-  }
-  .hero-glow {
-    --burn-low: 0.12;
-    --burn-span: 0.5;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(closest-side, rgba(204, 255, 0, 0.9), rgba(204, 255, 0, 0.35) 45%, rgba(204, 255, 0, 0) 100%);
-  }
   .article-glow {
     --burn-low: 0.5;
     --burn-span: 0.5;
@@ -126,9 +103,6 @@
     inset: 0;
     z-index: 0;
     background: radial-gradient(60% 70% at 68% 45%, rgba(204, 255, 0, 0.42), rgba(204, 255, 0, 0) 70%);
-  }
-  .hero-plate {
-    animation: ember 8s ease-in-out infinite;
   }
   .hero-line {
     transform-origin: 0 0;
@@ -628,14 +602,6 @@
   71% { opacity: 0.1; }
   86% { opacity: 0.45; }
 }
-@keyframes ember {
-  0%, 100% { filter: brightness(1); }
-  18% { filter: brightness(1.1); }
-  31% { filter: brightness(1.03); }
-  47% { filter: brightness(1.2); }
-  63% { filter: brightness(1.06); }
-  82% { filter: brightness(1.14); }
-}
 @keyframes draw {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
@@ -648,7 +614,6 @@
 @media (prefers-reduced-motion: reduce) {
   .glow-burn,
   .glow-burn::after,
-  .hero-plate,
   .hero-line,
   .hero-diag {
     animation: none !important;

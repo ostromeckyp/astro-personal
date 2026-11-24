@@ -1,6 +1,5 @@
 export const HOME = {
   hero: {
-    alt: "Paweł Ostromecki, front-facing, lit by a narrow band of light across the eyes against a pink glow",
     groups: ["ai workflows\nfor real\nbusiness cases", "software that\nkeeps working\nafter the demo", "safe to run\nin production"],
     h1: "Real AI for\nreal business.",
     cta: "Free 30-min consultation",

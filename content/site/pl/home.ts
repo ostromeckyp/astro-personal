@@ -2,7 +2,6 @@ import type { HOME as EN } from "../home";
 
 export const HOME: typeof EN = {
   hero: {
-    alt: "Paweł Ostromecki na wprost, z wąskim pasmem światła na oczach i różową poświatą za głową",
     groups: ["workflowy AI\ndla realnych\nprocesów", "oprogramowanie,\nktóre działa\npo demo", "bezpieczne\nna produkcji"],
     h1: "Prawdziwe AI\ndla prawdziwego biznesu.",
     cta: "Bezpłatna konsultacja (30 min)",
