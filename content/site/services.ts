@@ -1,8 +1,8 @@
 export const SERVICES = {
   label: "services",
-  h1: "AI, and the software around it.",
+  h1: "Software for your business. AI where it pays off.",
   intro:
-    "AI in your processes, and the apps, websites and care around it.",
+    "Web and mobile apps, websites, AI workflows, audits and care after launch.",
   getLabel: "what you get",
   priceLabel: "price",
   priceNote: "Prices are a starting point, net of VAT. You get the final price in a written quote after a free 30-minute call.",

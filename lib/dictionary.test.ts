@@ -47,6 +47,11 @@ describe("dictionaries", () => {
     expect("NEXT_STEP" in getDictionary("pl")).toBe(false);
   });
 
+  it("lead with software, not only AI", () => {
+    expect(getDictionary("pl").HOME.hero.h1).toBe("Oprogramowanie\ndla prawdziwego biznesu.");
+    expect(getDictionary("en").HOME.hero.h1).toBe("Software for\nreal business.");
+  });
+
   it("translate visible copy rather than repeating English", () => {
     const { HOME: a } = getDictionary("en");
     const { HOME: b } = getDictionary("pl");

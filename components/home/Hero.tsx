@@ -20,7 +20,7 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
         </div>
 
         <div className="rise-in relative flex max-w-[560px] flex-col gap-6 pt-20 pb-16 md:absolute md:bottom-[8%] md:left-6 md:p-0 md:pr-6">
-          <h1 className="text-[clamp(44px,5vw,76px)] leading-[0.96] font-medium tracking-[-0.04em] whitespace-pre-line">{hero.h1}</h1>
+          <h1 className="text-[clamp(36px,11vw,44px)] md:text-[clamp(44px,5vw,76px)] leading-[0.96] font-medium tracking-[-0.04em] whitespace-pre-line">{hero.h1}</h1>
           <div className="flex flex-wrap items-center gap-4">
             <Button href="/contact" size="lg">
               {hero.cta}

@@ -1,11 +1,11 @@
 export const META = {
   home: {
-    title: "Paweł Ostromecki | AI workflows, apps and websites",
-    description: "I bring AI into real business processes and build the software around it: web and mobile apps, websites, audits and care after launch.",
+    title: "Paweł Ostromecki | Apps, websites and AI workflows",
+    description: "I build web and mobile apps, websites and AI workflows for companies, plus audits and care after launch.",
   },
   services: {
-    title: "AI workflows, apps, websites and audits",
-    description: "AI in your processes, web and mobile apps, websites, application audits and maintenance. Free 30-minute consultation to start.",
+    title: "Apps, websites, AI workflows and audits",
+    description: "Web and mobile apps, websites, AI workflows, audits and maintenance. Start with a free 30-minute consultation.",
   },
   useCases: {
     title: "AI use cases running in production",

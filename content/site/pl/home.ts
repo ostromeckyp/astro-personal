@@ -2,14 +2,14 @@ import type { HOME as EN } from "../home";
 
 export const HOME: typeof EN = {
   hero: {
-    groups: ["workflowy AI\ndla realnych\nprocesów", "oprogramowanie,\nktóre działa\npo demo", "bezpieczne\nna produkcji"],
-    h1: "Prawdziwe AI\ndla prawdziwego biznesu.",
+    groups: ["aplikacje\ni strony\nna miarę", "workflowy AI\ndla realnych\nprocesów", "bezpieczne\nna produkcji"],
+    h1: "Oprogramowanie\ndla prawdziwego biznesu.",
     cta: "Bezpłatna konsultacja (30 min)",
     ctaNote: "Bez zobowiązań · odpowiadam w 1 dzień roboczy",
     cta2: "Zobacz wdrożenia",
-    captions: ["workflowy AI", "inżynieria oprogramowania", "gotowe na produkcję"],
+    captions: ["aplikacje i strony", "workflowy AI", "gotowe na produkcję"],
   },
-  intro: "Wprowadzam AI do procesów, które Twój zespół wykonuje na co dzień, i buduję je tak, żeby działało na produkcji.",
+  intro: "Buduję aplikacje, strony i workflowy AI dla firm i dbam o to, żeby działały na produkcji.",
   introBody:
     "Od ośmiu lat buduję systemy, na których polegają firmy z finansów, motoryzacji, regtechu i e-commerce.",
   services: {

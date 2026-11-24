@@ -2,9 +2,9 @@ import type { SERVICES as EN } from "../services";
 
 export const SERVICES: typeof EN = {
   label: "usługi",
-  h1: "AI i oprogramowanie wokół niego.",
+  h1: "Oprogramowanie dla Twojej firmy. Z AI tam, gdzie się opłaca.",
   intro:
-    "AI w Twoich procesach oraz aplikacje, strony i opieka wokół niego.",
+    "Aplikacje webowe i mobilne, strony, workflowy AI, audyty i opieka po starcie.",
   getLabel: "co dostajesz",
   priceLabel: "cena",
   priceNote: "Ceny orientacyjne netto (plus 23% VAT). Ostateczną cenę podaję w wycenie na piśmie po bezpłatnej 30-minutowej rozmowie.",

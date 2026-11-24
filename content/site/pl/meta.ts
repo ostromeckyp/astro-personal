@@ -2,12 +2,12 @@ import type { META as EN } from "../meta";
 
 export const META: typeof EN = {
   home: {
-    title: "Paweł Ostromecki | Workflowy AI, aplikacje i strony",
-    description: "Wprowadzam AI do procesów w firmie i buduję oprogramowanie wokół niego: aplikacje webowe i mobilne, strony, audyty i opiekę po wdrożeniu.",
+    title: "Paweł Ostromecki | Aplikacje, strony i workflowy AI",
+    description: "Buduję aplikacje webowe i mobilne, strony internetowe i workflowy AI dla firm. Do tego audyty i opieka po wdrożeniu.",
   },
   services: {
-    title: "Workflowy AI, aplikacje, strony i audyty",
-    description: "AI w procesach firmy, aplikacje webowe i mobilne, strony internetowe, audyty i utrzymanie. Na start bezpłatna 30-minutowa konsultacja.",
+    title: "Aplikacje, strony, workflowy AI i audyty",
+    description: "Aplikacje webowe i mobilne, strony internetowe, workflowy AI, audyty i utrzymanie. Na start bezpłatna 30-minutowa konsultacja.",
   },
   useCases: {
     title: "Wdrożenia AI działające na produkcji",

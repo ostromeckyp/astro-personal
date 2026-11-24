@@ -3,7 +3,7 @@ export const SITE_URL = "https://www.ostromecki.dev";
 export const SITE_NAME = "Paweł Ostromecki";
 export const SITE_DEFAULT_TITLE = "Paweł Ostromecki | AI workflows and production software";
 export const SITE_DESCRIPTION =
-  "Senior software engineer and consultant. I bring AI into real business processes and build it to run safely in production.";
+  "Senior software engineer and consultant. I build apps, websites and AI workflows for companies, and run them safely in production.";
 
 /** Old Vercel address that still serves the site and shows up in search. */
 export const OLD_HOST = "portfolio-two-bay-60.vercel.app";

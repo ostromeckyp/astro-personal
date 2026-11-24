@@ -1,13 +1,13 @@
 export const HOME = {
   hero: {
-    groups: ["ai workflows\nfor real\nbusiness cases", "software that\nkeeps working\nafter the demo", "safe to run\nin production"],
-    h1: "Real AI for\nreal business.",
+    groups: ["apps and\nwebsites\nbuilt to fit", "ai workflows\nfor real\nprocesses", "safe to run\nin production"],
+    h1: "Software for\nreal business.",
     cta: "Free 30-min consultation",
     ctaNote: "No commitment · reply within 1 business day",
     cta2: "See use cases",
-    captions: ["ai workflows", "software engineering", "production-ready"],
+    captions: ["apps & websites", "ai workflows", "production-ready"],
   },
-  intro: "I put AI into the processes your team runs every day, and I build it so it keeps working in production.",
+  intro: "I build apps, websites and AI workflows for companies, and I make sure they keep working in production.",
   introBody:
     "Eight years building systems companies rely on, in finance, automotive, regtech and e-commerce.",
   services: {
