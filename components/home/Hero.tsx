@@ -6,7 +6,7 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
   return (
     <section className="relative h-[calc(100svh-85px)] min-h-[480px] w-full overflow-x-clip md:aspect-video md:h-auto md:max-h-[920px] md:min-h-[640px]">
       {/* Spills past the bottom edge onto the next section; screen blending keeps it reading as light. */}
-      <div aria-hidden="true" className="article-glow glow-burn absolute top-[-30%] right-[-10%] h-[160%] w-[70%] mix-blend-screen" />
+      <div aria-hidden="true" className="article-glow glow-burn absolute top-[-30%] right-0 h-[160%] w-full mix-blend-screen md:right-[-10%] md:w-[70%]" />
       <div aria-hidden="true" className="hero-diag absolute top-[30%] left-[-5%] h-px w-[130%] bg-ink-0/8" />
 
       <div className="absolute top-[11%] left-[9%] hidden flex-col gap-3.5 text-[13px] leading-[1.22] text-[#e9e6ea] lg:flex">
