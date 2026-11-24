@@ -34,7 +34,7 @@ export function BrowserWindow({
         <i />
         <span>{title}</span>
       </div>
-      <Image src={src} alt={alt} width={1440} height={837} priority={priority} sizes={sizes} />
+      <Image src={src} alt={alt} width={1440} height={837} priority={priority} sizes={sizes} quality={90} />
     </div>
   );
 }

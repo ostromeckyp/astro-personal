@@ -13,6 +13,7 @@ function Cover({ useCase }: { useCase: UseCase }) {
           alt={useCase.alt}
           fill
           sizes="(min-width: 768px) 600px, 100vw"
+          quality={90}
           style={{ objectPosition: useCase.imagePosition }}
           className="object-cover transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)] motion-safe:group-hover:scale-[1.03]"
         />

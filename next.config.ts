@@ -3,6 +3,8 @@ import { OLD_HOST, SITE_URL } from "./lib/site";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Use-case images are UI screenshots: higher quality keeps small text sharp, AVIF keeps the files small.
+  images: { formats: ["image/avif", "image/webp"], qualities: [75, 90, 100] },
   async redirects() {
     return [
       { source: "/resume", destination: "/about", permanent: true },

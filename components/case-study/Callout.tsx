@@ -31,6 +31,7 @@ export function Callout({
           width={WINDOW_IMAGE.width}
           height={WINDOW_IMAGE.height}
           sizes={`(min-width: 768px) ${Math.round(scale * 40)}vw, ${Math.round(scale * 90)}vw`}
+          quality={100}
           style={{ width, left, top }}
         />
       </div>

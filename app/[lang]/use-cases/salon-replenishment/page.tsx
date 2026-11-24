@@ -112,6 +112,7 @@ export default async function SalonCasePage({ params }: { params: Promise<{ lang
                       width={390}
                       height={p.height}
                       sizes="(min-width: 768px) 320px, 240px"
+                      quality={90}
                       style={{ "--offset": p.offset } as CSSProperties}
                     />
                     <div aria-hidden="true" className="phone-notch" />
