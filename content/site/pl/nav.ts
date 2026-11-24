@@ -11,11 +11,11 @@ export const NAV_LINKS: typeof L = [
 
 export const NEXT_STEP: typeof N = {
   label: "następne może być Twoje",
-  heading: "Masz na myśli jakiś proces?",
-  cta: "Porozmawiajmy o Twoim procesie",
+  heading: "Masz na myśli proces, aplikację albo stronę?",
+  cta: "Umów bezpłatną konsultację",
 };
 
-export const NAV_CTA: typeof CTA = { href: "/contact", label: "Umów rozmowę" };
+export const NAV_CTA: typeof CTA = { href: "/contact", label: "Bezpłatna rozmowa" };
 
 export const COMMON: typeof C = {
   skipToContent: "Przejdź do treści",
@@ -31,9 +31,9 @@ export const COMMON: typeof C = {
 };
 
 export const FOOTER: typeof F = {
-  tag: "workflowy AI · inżynieria oprogramowania · gotowe na produkcję",
-  head: "Masz proces, który AI mogłoby zdjąć z głowy Twojemu zespołowi?",
-  cta: "Umów konsultację",
+  tag: "workflowy AI · aplikacje i strony · audyty i opieka",
+  head: "Porozmawiajmy o tym, czego Twoja firma potrzebuje dalej.",
+  cta: "Bezpłatna konsultacja (30 min)",
   where: "Paweł Ostromecki · Wrocław · zdalnie, na całym świecie",
   email: "contact@ostromecki.dev",
   socials: [

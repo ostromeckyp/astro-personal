@@ -1,11 +1,11 @@
 export const META = {
   home: {
-    title: "Paweł Ostromecki | AI workflows and production software",
-    description: "Senior software engineer and consultant. I bring AI into real business processes and build it to run safely in production.",
+    title: "Paweł Ostromecki | AI workflows, apps and websites",
+    description: "I bring AI into real business processes and build the software around it: web and mobile apps, websites, audits and care after launch.",
   },
   services: {
-    title: "AI consultant and engineer for business workflows",
-    description: "Where AI would actually save your team time or money, and what it takes to run safely. I design, build and hand over.",
+    title: "AI workflows, apps, websites and audits",
+    description: "AI in your processes, web and mobile apps, websites, application audits and maintenance. Free 30-minute consultation to start.",
   },
   useCases: {
     title: "AI use cases running in production",
@@ -32,11 +32,11 @@ export const META = {
     description: "I lead the Angular Wrocław community and speak at meetups and conferences. The same format works as a workshop for your team.",
   },
   about: {
-    title: "About: senior software engineer and consultant",
-    description: "Senior software engineer from Wrocław working where software engineering meets AI: agents, LLM workflows and MCP. Leads Angular Wrocław.",
+    title: "About Paweł Ostromecki",
+    description: "You work with me directly, from the first call to care after launch. Eight years of systems companies rely on. I lead Angular Wrocław.",
   },
   contact: {
-    title: "Book an AI workflow consultation",
-    description: "Tell me about the process you would like to improve. I reply with next steps or a time for a short call.",
+    title: "Book a free 30-minute consultation",
+    description: "Tell me what you need. The first 30-minute call is free and without commitment, and I reply within 1 business day.",
   },
 };

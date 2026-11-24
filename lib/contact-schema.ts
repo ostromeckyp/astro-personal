@@ -3,7 +3,11 @@ import { z } from "zod";
 export const CONTACT_TOPICS = [
   { value: "workflow", label: "AI workflow" },
   { value: "case", label: "AI business case" },
-  { value: "eng", label: "Engineering" },
+  { value: "web", label: "Web app" },
+  { value: "mobile", label: "Mobile app" },
+  { value: "website", label: "Website" },
+  { value: "audit", label: "Application audit" },
+  { value: "care", label: "Maintenance and development" },
   { value: "talk", label: "Talk / workshop" },
 ] as const;
 
@@ -20,7 +24,7 @@ const EN_ERRORS: ContactErrors = {
 
 export const createContactSchema = (errors: ContactErrors) =>
   z.object({
-    topic: z.enum(["workflow", "case", "eng", "talk"], { message: "Please choose a topic" }),
+    topic: z.enum(["workflow", "case", "web", "mobile", "website", "audit", "care", "talk"], { message: "Please choose a topic" }),
     name: z.string().trim().min(1, errors.name).max(100, errors.nameLong),
     email: z.string().trim().email(errors.email).max(200),
     company: z.string().trim().max(200, errors.company).optional(),

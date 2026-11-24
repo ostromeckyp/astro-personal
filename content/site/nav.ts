@@ -9,11 +9,11 @@ export const NAV_LINKS = [
 
 export const NEXT_STEP = {
   label: "the next one could be yours",
-  heading: "Have a process in mind?",
-  cta: "Talk about your workflow",
+  heading: "Have a process, an app or a website in mind?",
+  cta: "Book a free consultation",
 };
 
-export const NAV_CTA = { href: "/contact", label: "Book a call" };
+export const NAV_CTA = { href: "/contact", label: "Free consultation" };
 
 export const COMMON = {
   skipToContent: "Skip to content",
@@ -29,9 +29,9 @@ export const COMMON = {
 };
 
 export const FOOTER = {
-  tag: "ai workflows · software engineering · production-ready",
-  head: "Is there a process AI could take off your team's plate?",
-  cta: "Book a consultation",
+  tag: "ai workflows · apps & websites · audits & care",
+  head: "Let's talk about what your business needs next.",
+  cta: "Free 30-min consultation",
   where: "Paweł Ostromecki · Wrocław, Poland · remote, worldwide",
   email: "contact@ostromecki.dev",
   socials: [

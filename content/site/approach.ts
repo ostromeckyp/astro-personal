@@ -7,7 +7,7 @@ export const APPROACH = {
     {
       n: "01",
       t: "Find the real case",
-      d: "We start from a process your team runs today and a number that matters: hours, errors, lead time. If AI will not move that number, I say so early.",
+      d: "We start from a process your team runs today and a number that matters: hours, errors, lead time. If AI will not move that number, I say so early. This first conversation is free and without commitment.",
       out: "A short list of use cases ranked by value and risk, with a recommendation.",
     },
     {

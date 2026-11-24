@@ -53,6 +53,7 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
             {hero.cta2}
           </Link>
         </div>
+        <p className="-mt-2 text-sm text-ink-200">{hero.ctaNote}</p>
       </div>
 
       <div className="absolute right-[5%] bottom-[9%] hidden flex-wrap gap-10 text-[13px] text-[#e9e6ea] xl:flex">

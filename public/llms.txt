@@ -1,14 +1,18 @@
 # Paweł Ostromecki
 
-> Senior software engineer and consultant from Wrocław, Poland, working remotely worldwide. He brings AI into real business processes and builds it to run safely in production. He leads the Angular Wrocław community.
+> Senior software engineer and consultant from Wrocław, Poland, working remotely worldwide. He brings AI into real business processes and builds the software around it: web and mobile apps, websites, audits and maintenance. He leads the Angular Wrocław community.
 
 ## Services
 
 - [AI workflows](https://www.ostromecki.dev/services): take a manual, repetitive process such as ordering, ticket triage, document checks or data entry, design an LLM or agent workflow around it, and plug it into the tools a team already uses.
 - [AI in real business cases](https://www.ostromecki.dev/services): separate the use cases that pay off from the ones that only demo well, test on real data, and turn the winner into a product people use.
-- [Safe, production-ready software](https://www.ostromecki.dev/services): AI features and the software around them, secure, observable, tested and maintainable by the team. Frontend architecture with Angular, Nx and microfrontends is a core strength.
+- [Web applications](https://www.ostromecki.dev/services): client portals, admin panels, booking and order systems, and internal tools that replace spreadsheets.
+- [Mobile apps](https://www.ostromecki.dev/services): iOS and Android apps from one codebase, or a web app on the phone when that is enough.
+- [Websites](https://www.ostromecki.dev/services): company websites and landing pages, fast on a phone and ready for Google and AI search.
+- [Application audit](https://www.ostromecki.dev/services): an independent review of code, architecture, security and performance, with fixes ranked by impact.
+- [Maintenance and development](https://www.ostromecki.dev/services): fixes, updates, monitoring and new features after launch.
 
-Ways to work together: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks), Fractional engineering (ongoing).
+Ways to start with AI: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks). The first 30-minute consultation is free and without commitment.
 
 ## Use cases
 
@@ -19,7 +23,7 @@ Ways to work together: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks), Fractiona
 
 - [Home](https://www.ostromecki.dev/)
 - [Approach](https://www.ostromecki.dev/approach): from business case to production, in four stages.
-- [About](https://www.ostromecki.dev/about): experience, education and stack.
+- [About](https://www.ostromecki.dev/about): how he works with clients, in short.
 - [Talks](https://www.ostromecki.dev/talks): talks and community work.
 - [Blog](https://www.ostromecki.dev/blog): notes on AI in real engineering, Angular and state management.
 - [Contact](https://www.ostromecki.dev/contact)

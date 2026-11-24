@@ -2,12 +2,12 @@ import type { META as EN } from "../meta";
 
 export const META: typeof EN = {
   home: {
-    title: "Paweł Ostromecki | Workflowy AI i oprogramowanie produkcyjne",
-    description: "Senior software engineer i konsultant. Wprowadzam AI do realnych procesów biznesowych i buduję je tak, żeby bezpiecznie działało na produkcji.",
+    title: "Paweł Ostromecki | Workflowy AI, aplikacje i strony",
+    description: "Wprowadzam AI do procesów w firmie i buduję oprogramowanie wokół niego: aplikacje webowe i mobilne, strony, audyty i opiekę po wdrożeniu.",
   },
   services: {
-    title: "Konsultant i inżynier AI dla procesów w firmie",
-    description: "Gdzie AI naprawdę oszczędzi Twojemu zespołowi czas lub pieniądze i co trzeba zrobić, żeby działało bezpiecznie. Projektuję, buduję i przekazuję.",
+    title: "Workflowy AI, aplikacje, strony i audyty",
+    description: "AI w procesach firmy, aplikacje webowe i mobilne, strony internetowe, audyty i utrzymanie. Na start bezpłatna 30-minutowa konsultacja.",
   },
   useCases: {
     title: "Wdrożenia AI działające na produkcji",
@@ -34,11 +34,11 @@ export const META: typeof EN = {
     description: "Prowadzę społeczność Angular Wrocław i występuję na meetupach i konferencjach. Ten sam format działa jako warsztat w Twoim zespole.",
   },
   about: {
-    title: "O mnie: senior software engineer i konsultant",
-    description: "Senior software engineer z Wrocławia pracujący na styku inżynierii oprogramowania i AI: agenci, workflowy LLM i MCP. Prowadzi Angular Wrocław.",
+    title: "O mnie: Paweł Ostromecki",
+    description: "Pracujesz bezpośrednio ze mną, od pierwszej rozmowy po opiekę po starcie. Osiem lat budowania systemów dla firm. Prowadzę Angular Wrocław.",
   },
   contact: {
-    title: "Umów konsultację o workflowach AI",
-    description: "Opowiedz mi o procesie, który chcesz usprawnić. Odpowiadam z kolejnymi krokami lub terminem krótkiej rozmowy.",
+    title: "Umów bezpłatną 30-minutową konsultację",
+    description: "Napisz, czego potrzebujesz. Pierwsza 30-minutowa rozmowa jest bezpłatna i bez zobowiązań, a odpowiadam w 1 dzień roboczy.",
   },
 };

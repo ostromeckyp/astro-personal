@@ -32,6 +32,20 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
         <span className="font-mono text-[13px] text-sakura-500">{CONTACT.label}</span>
         <h1 className="text-[clamp(48px,6vw,80px)] leading-[0.95] font-semibold tracking-[-0.045em]">{CONTACT.h1}</h1>
         <p className="text-lg leading-[1.6] text-ink-400">{CONTACT.intro}</p>
+        <div className="flex flex-col gap-3">
+          <span className="font-mono text-[13px] text-sakura-500">{CONTACT.steps.label}</span>
+          <ol className="flex flex-col border-t border-ink-600">
+            {CONTACT.steps.items.map((s) => (
+              <li key={s.n} className="grid grid-cols-[40px_minmax(0,1fr)] gap-x-3 border-b border-ink-700 py-4">
+                <span className="pt-1 font-mono text-xs text-sakura-500">{s.n}</span>
+                <div className="flex flex-col gap-1">
+                  <span className="text-[17px] font-medium tracking-[-0.01em]">{s.t}</span>
+                  <span className="text-[15px] leading-[1.55] text-ink-400">{s.d}</span>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
       <div className="rounded-card border border-ink-700 bg-ink-900 p-6 md:row-span-2 md:p-10">
         <Providers>

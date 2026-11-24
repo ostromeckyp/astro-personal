@@ -5,7 +5,6 @@ import { ViewTransition } from "react";
 import { Hero } from "@/components/home/Hero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
-import { Tag } from "@/components/ui/Tag";
 import { TextLink } from "@/components/ui/TextLink";
 import { UseCaseCard } from "@/components/ui/UseCaseCard";
 import { formatPostDate } from "@/lib/format-date";
@@ -32,21 +31,14 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
       <div className="site-container">
         <section className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-end gap-12 pt-20 pb-24 md:pt-32">
           <h2 className="reveal text-[clamp(36px,4vw,56px)] leading-[1.02] font-semibold tracking-[-0.04em]">{HOME.intro}</h2>
-          <div className="reveal flex flex-col gap-5">
-            <p className="text-lg leading-[1.6] text-ink-400">{HOME.introBody}</p>
-            <div className="flex flex-wrap gap-2">
-              {HOME.stack.map((s) => (
-                <Tag key={s}>{s}</Tag>
-              ))}
-            </div>
-          </div>
+          <p className="reveal text-lg leading-[1.6] text-ink-400">{HOME.introBody}</p>
         </section>
 
         <section className="flex flex-col gap-10 pt-8 pb-32">
           <SectionHeading index="02" title={HOME.services.heading} action={<TextLink href="/services">{HOME.services.all}</TextLink>} />
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {HOME.services.items.map((s) => (
-              <ServiceCard key={s.n} {...s} href={`/services#service-${s.n}`} />
+              <ServiceCard key={s.n} {...s} href={s.href ?? `/services#service-${s.n}`} />
             ))}
           </div>
         </section>

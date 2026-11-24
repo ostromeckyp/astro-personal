@@ -9,7 +9,7 @@ export const APPROACH: typeof EN = {
     {
       n: "01",
       t: "Znajdujemy prawdziwy przypadek",
-      d: "Zaczynamy od procesu, który Twój zespół wykonuje dziś, i od liczby, która ma znaczenie: godzin, błędów, czasu realizacji. Jeśli AI nie ruszy tej liczby, mówię to wcześnie.",
+      d: "Zaczynamy od procesu, który Twój zespół wykonuje dziś, i od liczby, która ma znaczenie: godzin, błędów, czasu realizacji. Jeśli AI nie ruszy tej liczby, mówię to wcześnie. Ta pierwsza rozmowa jest bezpłatna i bez zobowiązań.",
       out: "Krótka lista przypadków uszeregowana według wartości i ryzyka, z rekomendacją.",
     },
     {
