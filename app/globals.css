@@ -683,7 +683,7 @@ html:not([data-splash]) .splash {
     animation: splash-lid 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
   .splash-glow {
-    animation: fade-in 360ms ease-out 260ms both;
+    animation: fade-in 360ms cubic-bezier(0.2, 0.7, 0.2, 1) 260ms both;
   }
   .splash-bracket {
     animation: splash-draw 520ms cubic-bezier(0.2, 0.7, 0.2, 1) 600ms both;
@@ -701,7 +701,7 @@ html:not([data-splash]) .splash {
     animation: rise-in 400ms cubic-bezier(0.2, 0.7, 0.2, 1) 1400ms both;
   }
   .splash-skip {
-    animation: fade-in 280ms ease-out 200ms both;
+    animation: fade-in 280ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms both;
   }
 }
 
@@ -796,6 +796,13 @@ html:not([data-splash]) .splash {
     transform: none;
   }
 }
+/* Splash exit: a hole opening from the centre. polygon(evenodd): first the viewport rectangle as the
+   outer ring (starting and ending at top centre, so the seam to the hole is a zero-width line), then a
+   circle of N=36 vertices in 10-degree steps, starting at the top, centred at 50% 50%. Each vertex is
+   (50% + R*cos(a), 50% + R*sin(a)) with R going from 0 to 75vmax, which covers the viewport corners
+   (they are at most ~0.71vmax away). Evenodd makes the circle a hole in the rectangle. Why a polygon:
+   clip-path path() takes px only, so it can't follow the viewport, and mask isn't on the list of
+   properties we animate. Both keyframes need the same vertex count to interpolate. */
 @keyframes circle-open {
   from {
     clip-path: polygon(
