@@ -6,6 +6,7 @@ import { HOME } from "@/content/site/home";
 import { ABOUT as ABOUT_PL } from "@/content/site/pl/about";
 import { HOME as HOME_PL } from "@/content/site/pl/home";
 import { SERVICES } from "@/content/site/services";
+import { getAllPosts } from "./posts";
 import { PERSON, SITE_URL } from "./site";
 
 const text = fs.readFileSync("public/llms.txt", "utf8");
@@ -33,4 +34,14 @@ it("names the same focus industries as the home and about pages, in both languag
   const pages = [HOME.introBody, HOME_PL.introBody, ABOUT.facts.items[1].v, ABOUT_PL.facts.items[1].v, text];
   for (const page of pages) for (const industry of industries) expect(page.toLowerCase()).toContain(industry);
   for (const page of pages) expect(page).not.toMatch(/automotive|motoryzac|logistic|logisty|travel|turysty|energ/i);
+});
+
+it("quotes the same starting prices as the services FAQ, in both currencies", () => {
+  const faq = SERVICES.faq.items.find((i) => i.q === "How much does it cost?")!.a;
+  for (const price of faq.match(/\$\d+(,\d{3})*/g)!) expect(text).toContain(price);
+  for (const price of ["1,900 PLN", "9,000 PLN", "99 PLN"]) expect(text).toContain(price);
+});
+
+it("lists every blog post", () => {
+  for (const post of getAllPosts()) expect(text).toContain(`${SITE_URL}/blog/${post.slug})`);
 });

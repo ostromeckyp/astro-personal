@@ -14,10 +14,46 @@
 
 Ways to start with AI: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks). The first 30-minute consultation is free and without commitment.
 
+## Prices
+
+Starting points, net of VAT. The final price depends on scope and is given in a written quote after a free 30-minute call.
+
+- Websites: from $500 (Polish clients: from 1,900 PLN)
+- Web and mobile apps: from $2,500 (Polish clients: from 9,000 PLN)
+- Maintenance and development: from $29 a month (Polish clients: from 99 PLN a month)
+- AI workflows, AI projects and audits: quoted individually
+
+## How it works
+
+- A free 30-minute call, without commitment; he replies within 1 business day.
+- A written quote with scope, price and timeline.
+- Work in stages the client can see and judge along the way.
+- A deposit to start and the rest after the client accepts the work; a VAT invoice.
+- Code, documentation and designs belong to the client.
+
+## Who it is for
+
+Companies that want to automate a real process with AI, or need an app, website, audit or maintenance. His industry focus is fintech, regtech and e-commerce. He is based in Wrocław, Poland, and works remotely with teams worldwide; on-site workshops are possible.
+
+## Technologies
+
+Google Cloud, Firebase, Python, TypeScript, Angular, React and NestJS. AI features are built on the OWASP Top 10 for LLM Applications.
+
 ## Use cases
 
 - [Agentic replenishment for a salon network](https://www.ostromecki.dev/use-cases/salon-replenishment): salons order stock from HQ in plain language, and an AI agent turns the request into a checked proposal.
 - [No-code forms for a regulated industry](https://www.ostromecki.dev/use-cases/no-code-forms): a client-owned drag-and-drop platform for compliance forms, worked on as an external contractor.
+
+## Community
+
+He leads Angular Wrocław, a community of regular meetups for local Angular and frontend developers, with talks, workshops and mentoring. He speaks at meetups and conferences and runs workshops on AI workflows for engineering and business teams.
+
+## Blog posts
+
+- [Code Became Cheap. Did Developer Knowledge Become Cheap Too?](https://www.ostromecki.dev/blog/code-became-cheap): AI made much of what a developer learns cheap, but cheaper code is not a cheaper good decision.
+- [Mastering Angular's Host Property](https://www.ostromecki.dev/blog/mastering-angular-host-property): how the host property replaces @HostListener and @HostBinding, works with signals, and how to migrate.
+- [You (don't) need another State Management Library](https://www.ostromecki.dev/blog/you-dont-need-another-state-management-library): signals and a few RxJS operators give the Redux benefits without another dependency.
+- [You don't need another state management library, vol. 2](https://www.ostromecki.dev/blog/you-dont-need-another-state-management-library2): the same Flux-like pattern with connect from ngxtension, without manual subscriptions.
 
 ## Pages
 
