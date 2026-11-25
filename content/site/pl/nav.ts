@@ -24,6 +24,8 @@ export const COMMON: typeof C = {
   notFoundHeading: "Nie znaleziono strony.",
   notFoundBody: "Ta strona nie istnieje albo została przeniesiona.",
   notFoundCta: "Wróć na stronę główną",
+  skipSplash: "Pomiń",
+  splashLabel: "Powitanie",
 };
 
 export const FOOTER: typeof F = {

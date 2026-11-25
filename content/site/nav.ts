@@ -22,6 +22,8 @@ export const COMMON = {
   notFoundHeading: "Page not found.",
   notFoundBody: "This page doesn't exist or has moved.",
   notFoundCta: "Back to home",
+  skipSplash: "Skip",
+  splashLabel: "Welcome",
 };
 
 export const FOOTER = {

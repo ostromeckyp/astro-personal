@@ -9,6 +9,7 @@ import { isLocale, LOCALES, type Locale } from "@/lib/i18n";
 import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_NAME, SITE_URL } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Splash } from "@/components/Splash";
 import { personSchema, websiteSchema } from "@/lib/structured-data";
 import { SPLASH_SCRIPT } from "@/lib/splash";
 import { THEME_SCRIPT } from "@/lib/theme";
@@ -66,6 +67,7 @@ export default async function RootLayout({ children, params }: { children: React
             <script dangerouslySetInnerHTML={{__html: SPLASH_SCRIPT}}/>
         </head>
         <body className="flex min-h-screen flex-col">
+        <Splash skip={COMMON.skipSplash} label={COMMON.splashLabel}/>
         <JsonLd data={personSchema(lang)}/>
         <JsonLd data={websiteSchema(lang)}/>
         <a
