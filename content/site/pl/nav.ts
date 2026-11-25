@@ -50,8 +50,8 @@ export const FAB: typeof FB = {
   email: "Wyślij wiadomość",
   form: "Formularz kontaktowy",
   profiles: [
-    { href: "https://github.com/ostromeckyp", label: "GitHub" },
-    { href: INSTAGRAM_URL, label: "Instagram" },
-    { href: "https://www.linkedin.com/in/ostromeckyp/", label: "LinkedIn" },
+    { id: "github", href: "https://github.com/ostromeckyp", label: "GitHub" },
+    { id: "instagram", href: INSTAGRAM_URL, label: "Instagram" },
+    { id: "linkedin", href: "https://www.linkedin.com/in/ostromeckyp/", label: "LinkedIn" },
   ],
 };

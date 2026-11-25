@@ -48,8 +48,8 @@ export const FAB = {
   email: "Send an email",
   form: "Contact form",
   profiles: [
-    { href: "https://github.com/ostromeckyp", label: "GitHub" },
-    { href: INSTAGRAM_URL, label: "Instagram" },
-    { href: "https://www.linkedin.com/in/ostromeckyp/", label: "LinkedIn" },
+    { id: "github" as const, href: "https://github.com/ostromeckyp", label: "GitHub" },
+    { id: "instagram" as const, href: INSTAGRAM_URL, label: "Instagram" },
+    { id: "linkedin" as const, href: "https://www.linkedin.com/in/ostromeckyp/", label: "LinkedIn" },
   ],
 };
