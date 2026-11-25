@@ -5,13 +5,13 @@ export const FORMS_CASE: typeof EN = {
   ...EN,
   label: "Wdrożenie · regtech · praca dla klienta",
   title: "Formularze no-code dla branży regulowanej.",
-  lede: "Platforma typu przeciągnij i upuść, w której analitycy budują formularze compliance, czyli rejestracje, zgłoszenia i wieloetapowe wnioski, i łączą je z prawdziwymi API bez pisania kodu. Pracuję przy niej jako zewnętrzny inżynier kontraktowy, współtworzę projekt produktu i architekturę, a teraz pomagam zespołowi klienta wprowadzić do tego samego procesu agenta AI.",
+  lede: "Platforma typu przeciągnij i upuść, w której analitycy budują formularze compliance, czyli rejestracje, zgłoszenia i wieloetapowe wnioski, i łączą je z prawdziwymi API bez pisania kodu. Pracuję przy niej jako zewnętrzny inżynier na kontrakcie, współtworzę projekt produktu i architekturę, a teraz pomagam zespołowi klienta wprowadzić do tego samego procesu agenta AI.",
   stack: ["Angular", "Przeciągnij i upuść", "Powiązania OpenAPI", "Silnik reguł", "MCP", "Agent AI"],
   story: [
     { k: "problem", t: "Każdy formularz był zadaniem dla dewelopera", d: "Formularze regulacyjne często się zmieniają i mają dziesiątki pól z logiką warunkową. Ręczne kodowanie każdego się nie skaluje." },
     { k: "produkt", t: "Projektant, nie edytor kodu", d: "Przeciągasz komponenty na płótno, konfigurujesz je w jednym oknie ustawień, oglądasz podgląd, zapisujesz i publikujesz." },
     { k: "połączenia", t: "Powiązane z prawdziwymi API", d: "Pola łączą się z kontraktami OpenAPI zarejestrowanymi w projekcie, więc każdy formularz wysyła i pobiera dane z prawdziwego endpointu." },
-    { k: "mój wkład", t: "Współtwórca jako kontraktor", d: "Współtworzyłem UX projektanta, model ustawień elementów, warunki i powiązania, formularze wieloetapowe, integrację z aplikacją nadrzędną i wbudowany przewodnik, pracując w zespole klienta." },
+    { k: "mój wkład", t: "Współtwórca jako kontraktor", d: "W zespole klienta współtworzyłem UX projektanta, model ustawień elementów, warunki i powiązania, formularze wieloetapowe, integrację z aplikacją nadrzędną i wbudowany przewodnik." },
   ],
   disclosure: {
     ariaLabel: "Informacja o własności",

@@ -100,7 +100,7 @@ export const SERVICES: typeof EN = {
         q: "Jak wygląda płatność?",
         a: "Zaliczka na start, reszta po odbiorze. Wystawiam fakturę VAT.",
       },
-      { q: "Kto jest właścicielem wyniku?", a: "Ty. Kod, dokumentacja i projekty trafiają do Twojego zespołu." },
+      { q: "Do kogo należy efekt pracy?", a: "Do Ciebie. Kod, dokumentacja i projekty trafiają do Twojego zespołu." },
       {
         q: "Jak dbasz o bezpieczeństwo funkcji AI?",
         a: "Opieram się na OWASP Top 10 for LLM Applications: zabezpieczam przed prompt injection, wyciekiem danych i nadmiernymi uprawnieniami agentów. Agent dostaje tylko te uprawnienia, których potrzebuje, a działania z realnymi skutkami czekają na zatwierdzenie przez człowieka. Na Firebase i Google Cloud korzystam z mechanizmów bezpieczeństwa platformy: reguł bezpieczeństwa, App Check, IAM i Secret Managera.",

@@ -3,7 +3,7 @@ import type { Topic } from "@/lib/post-list";
 export const BLOG = {
   label: "blog",
   h1: "Notes from the work.",
-  intro: "On AI in real engineering, Angular, and managing state without reaching for another library.",
+  intro: "On AI in day-to-day engineering, Angular, and managing state without reaching for another library.",
   read: "Read",
   latest: "latest",
   readingTime: "about {n} min",
@@ -34,7 +34,7 @@ export const ARTICLE = {
   copied: "Copied",
   copyFailed: "Couldn't copy",
   authorAlt: "Portrait of Paweł Ostromecki",
-  bio: "Senior software engineer and consultant. I bring AI into real business processes and build it to run safely in production. I lead Angular Wrocław.",
+  bio: "Senior software engineer and consultant. I bring AI into everyday business processes and build it to run safely in production. I lead Angular Wrocław.",
   cta: "Let's talk",
   more: "More from the blog",
   all: "All posts",

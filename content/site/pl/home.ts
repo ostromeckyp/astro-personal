@@ -45,7 +45,7 @@ export const HOME: typeof EN = {
         n: "01",
         tab: "Problem",
         t: "Zaczynamy od Twojego problemu",
-        d: "Zaczynamy od audytu: poznaję Twój biznes i procesy, wybieramy proces, z którym masz problem, i szukamy najlepszego sposobu, żeby go rozwiązać.",
+        d: "Zaczynamy od audytu: poznaję Twój biznes i procesy, wybieramy proces, z którym masz problem, i ustalamy, jak go naprawić.",
         points: ["Tylko to, czego potrzebujesz: bez aplikacji natywnej, gdy wystarczy PWA, bez platformy, gdy wystarczy workflow. Nie płacisz za nadmiar."],
       },
       {
@@ -65,7 +65,7 @@ export const HOME: typeof EN = {
         d: "Testy, zabezpieczenia i monitoring, zanim rozwiązanie trafi do wszystkich.",
         points: [
           "Korzystam z ustandaryzowanych narzędzi i opieram się na sprawdzonej platformie, więc jakość i bezpieczeństwo nie zależą od kodu pisanego od zera.",
-          "Reguły żyją w kodzie i testach, nie w promptach. Deterministyczny kod i proces wydawniczy zapewniają stabilność rozwiązania.",
+          "Reguły są w kodzie i testach, nie w promptach. Dzięki deterministycznemu kodowi i procesowi wydań rozwiązanie działa stabilnie.",
         ],
       },
       {
@@ -73,7 +73,7 @@ export const HOME: typeof EN = {
         tab: "Przekazanie",
         t: "Przekazuję Ci całość",
         d: "Kod, dokumentacja i wiedza trafiają do Ciebie. Jestem pod ręką, ale nie jestem niezbędny.",
-        points: ["Metryki, monitoring i logi pokazują, czy rozwiązanie robi swoje. Wiesz to z danych, nie z założeń."],
+        points: ["Metryki, monitoring i logi pokazują, czy rozwiązanie robi swoje."],
       },
     ],
   },

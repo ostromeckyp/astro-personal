@@ -6,13 +6,13 @@ const img = (name: string) => `/images/use-cases/${name}`;
 export const FORMS_CASE = {
   label: "Use case · regtech · client work",
   title: "No-code forms for a regulated industry.",
-  lede: "A drag-and-drop platform where analysts build compliance forms — registrations, filings, multi-step applications — and wire them to real APIs without writing code. I work on it as an external contract engineer, contributing to its product design and architecture, and I'm now helping the client's team bring an AI agent into the same workflow.",
+  lede: "A drag-and-drop platform where analysts build compliance forms (registrations, filings, multi-step applications) and wire them to real APIs without writing code. I work on it as an external contract engineer, contributing to its product design and architecture, and I'm now helping the client's team bring an AI agent into the same workflow.",
   stack: ["Angular", "Drag & drop", "OpenAPI bindings", "Rules engine", "MCP", "AI agent"],
   story: [
     { k: "problem", t: "Every form was a dev ticket", d: "Regulatory forms change often and run to dozens of fields with conditional logic. Hand-coding each one doesn't scale." },
     { k: "product", t: "A designer, not a code editor", d: "Drag components onto a canvas, configure them in one settings dialog, preview, save and publish." },
     { k: "wiring", t: "Bound to real APIs", d: "Fields bind to OpenAPI contracts registered in the project, so every form submits to and loads from a real endpoint." },
-    { k: "my part", t: "Contributor, as a contractor", d: "Contributed to the designer UX, the element-settings model, conditions and bindings, step forms, host integration and the in-app guide, working within the client's team." },
+    { k: "my part", t: "Contributor, as a contractor", d: "Within the client's team, I contributed to the designer UX, the element-settings model, conditions and bindings, step forms, host integration and the in-app guide." },
   ] satisfies StoryItem[],
   disclosure: {
     ariaLabel: "Ownership disclosure",
@@ -69,7 +69,7 @@ export const FORMS_CASE = {
   },
   mcp: {
     label: "current engagement · MCP server",
-    heading: "Hiring AI into the form workflow.",
+    heading: "An AI agent in the form workflow.",
     body: "With the client's team, I'm building an MCP server that exposes the platform to an AI agent as tools. The agent drafts a form from a JSON Schema or a regulation's requirements, the designer validates it like any human-built form, and a person reviews and publishes. The agent speeds up the first 80% and never skips the checks.",
     notes: ["same validation, same review, same publish step", "the agent proposes, people approve"],
     flow: [

@@ -4,11 +4,11 @@ export const TALKS: typeof EN = {
   label: "wystąpienia i społeczność",
   h1: "Na scenie i w społeczności.",
   intro:
-    "Prowadzę społeczność Angular Wrocław, występuję na meetupach i konferencjach i jeżdżę tam, gdzie spotyka się środowisko frontendowe. Ten sam format działa w Twoim zespole.",
+    "Prowadzę społeczność Angular Wrocław, występuję na meetupach i konferencjach i jeżdżę tam, gdzie spotyka się środowisko frontendowe. Te same tematy mogę poprowadzić jako warsztat dla Twojego zespołu.",
   community: {
     label: "lider społeczności",
     name: "Angular Wrocław",
-    body: "Regularne meetupy dla wrocławskiej społeczności Angulara i frontendu: prelekcje, warsztaty i mentoring dla programistów, którzy chcą się rozwijać. Pełna sala, dobre pytania i rozmowy do późna.",
+    body: "Regularne meetupy dla wrocławskiej społeczności Angulara i frontendu: prelekcje, warsztaty i mentoring dla programistów, którzy chcą się rozwijać. Sala zwykle jest pełna, a rozmowy ciągną się do późna.",
     image: "/images/talks/community-crowd.jpg",
     alt: "Selfie z pełnej sali na meetupie Angular Wrocław",
     caption: "Meetup Angular Wrocław.",

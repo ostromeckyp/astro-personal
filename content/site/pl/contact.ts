@@ -34,7 +34,7 @@ export const CONTACT: typeof EN = {
     optional: "(opcjonalnie)",
     companyPlaceholder: "Nazwa firmy",
     message: "czego potrzebujesz",
-    messagePlaceholder: "Co chcesz zbudować lub usprawnić i jak wyglądałoby lepiej?",
+    messagePlaceholder: "Co chcesz zbudować albo usprawnić? Po czym poznasz, że jest lepiej?",
     privacy: "Twoja wiadomość trafia do mojej skrzynki i służy tylko do odpowiedzi.",
     send: "Wyślij wiadomość",
     sending: "Wysyłanie…",

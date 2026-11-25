@@ -30,7 +30,7 @@ export const COMMON: typeof C = {
 
 export const FOOTER: typeof F = {
   tag: "aplikacje i strony · workflowy AI · audyty i opieka",
-  head: "Porozmawiajmy o tym, czego Twoja firma potrzebuje dalej.",
+  head: "Porozmawiajmy o tym, czego teraz potrzebuje Twoja firma.",
   cta: "Bezpłatna konsultacja (30 min)",
   where: "Paweł Ostromecki · Wrocław · zdalnie, na całym świecie",
   email: "contact@ostromecki.dev",

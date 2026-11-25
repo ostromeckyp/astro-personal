@@ -43,7 +43,7 @@ export const HOME = {
         n: "01",
         tab: "Problem",
         t: "We start from your problem",
-        d: "We start with an audit: I learn your business and processes, we pick the process that's giving you trouble and find the best way to solve it.",
+        d: "We start with an audit: I learn your business and processes, we pick the process that's giving you trouble and work out how to fix it.",
         points: ["Only what you need: no native app when a PWA will do, no platform when a workflow will do. You don't pay for extras."],
       },
       {
@@ -71,7 +71,7 @@ export const HOME = {
         tab: "Handover",
         t: "I hand it all to you",
         d: "Code, docs and know-how go to you. I stay around, but you don't need me for it to run.",
-        points: ["Metrics, monitoring and logs show whether it does its job. You know from data, not assumptions."],
+        points: ["Metrics, monitoring and logs show whether it does its job."],
       },
     ],
   },

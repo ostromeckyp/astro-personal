@@ -17,7 +17,7 @@ export type UseCase = {
 export const USE_CASES_PAGE = {
   label: "use cases",
   h1: "AI in production, not in a demo.",
-  intro: "Real systems with real users. Each one shows the business problem, where the AI sits in the workflow, and what keeps it in check.",
+  intro: "Systems that people use at work. Each one shows the business problem, where the AI sits in the workflow, and what keeps it in check.",
   read: "Read the use case",
   back: "All use cases",
 };

@@ -11,7 +11,7 @@ export const META: typeof EN = {
   },
   useCases: {
     title: "Wdrożenia AI działające na produkcji",
-    description: "Prawdziwe systemy z prawdziwymi użytkownikami. Każdy pokazuje problem biznesowy, miejsce AI w procesie i to, co trzyma je w ryzach.",
+    description: "Systemy, z których ludzie korzystają w pracy. Każdy pokazuje problem biznesowy, miejsce AI w procesie i to, co trzyma je w ryzach.",
   },
   salon: {
     title: "Agent AI do zamawiania towaru w salonach",
@@ -23,11 +23,11 @@ export const META: typeof EN = {
   },
   blog: {
     title: "Blog o inżynierii AI i Angularze",
-    description: "O AI w prawdziwej inżynierii, Angularze i zarządzaniu stanem bez zbędnych bibliotek. Wpisy są po angielsku.",
+    description: "O AI w codziennej pracy inżyniera, Angularze i zarządzaniu stanem bez zbędnych bibliotek. Wpisy są po angielsku.",
   },
   talks: {
     title: "Wystąpienia i społeczność Angular Wrocław",
-    description: "Prowadzę społeczność Angular Wrocław i występuję na meetupach i konferencjach. Ten sam format działa jako warsztat w Twoim zespole.",
+    description: "Prowadzę społeczność Angular Wrocław i występuję na meetupach i konferencjach. Te same tematy mogę poprowadzić jako warsztat dla Twojego zespołu.",
   },
   about: {
     title: "O mnie: Paweł Ostromecki",

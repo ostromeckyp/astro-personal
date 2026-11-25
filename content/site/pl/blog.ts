@@ -3,7 +3,7 @@ import type { ARTICLE as A, BLOG as B } from "../blog";
 export const BLOG: typeof B = {
   label: "blog",
   h1: "Notatki z pracy.",
-  intro: "O AI w prawdziwej inżynierii, Angularze i zarządzaniu stanem bez zbędnych bibliotek. Wpisy są po angielsku.",
+  intro: "O AI w codziennej pracy inżyniera, Angularze i zarządzaniu stanem bez zbędnych bibliotek. Wpisy są po angielsku.",
   read: "Czytaj",
   latest: "najnowszy",
   readingTime: "ok. {n} min",
@@ -34,7 +34,7 @@ export const ARTICLE: typeof A = {
   copied: "Skopiowano",
   copyFailed: "Nie udało się skopiować",
   authorAlt: "Portret Pawła Ostromeckiego",
-  bio: "Senior software engineer i konsultant. Wprowadzam AI do realnych procesów biznesowych i buduję je tak, żeby działało na produkcji. Prowadzę Angular Wrocław.",
+  bio: "Senior software engineer i konsultant. Wprowadzam AI do codziennych procesów w firmach i buduję je tak, żeby działało na produkcji. Prowadzę Angular Wrocław.",
   cta: "Porozmawiajmy",
   more: "Więcej z bloga",
   all: "Wszystkie wpisy",

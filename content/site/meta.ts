@@ -9,7 +9,7 @@ export const META = {
   },
   useCases: {
     title: "AI use cases running in production",
-    description: "Real systems with real users. Each one shows the business problem, where the AI sits in the workflow, and what keeps it in check.",
+    description: "Systems that people use at work. Each one shows the business problem, where the AI sits in the workflow, and what keeps it in check.",
   },
   salon: {
     title: "AI agent for salon stock ordering",
@@ -21,15 +21,15 @@ export const META = {
   },
   blog: {
     title: "Blog on AI engineering and Angular",
-    description: "On AI in real engineering, Angular, and managing state without reaching for another library.",
+    description: "On AI in day-to-day engineering, Angular, and managing state without reaching for another library.",
   },
   talks: {
     title: "Talks and the Angular Wrocław community",
-    description: "I lead the Angular Wrocław community and speak at meetups and conferences. The same format works as a workshop for your team.",
+    description: "I lead the Angular Wrocław community and speak at meetups and conferences. I can run the same topics as a workshop for your team.",
   },
   about: {
     title: "About Paweł Ostromecki",
-    description: "You work with me directly, from the first call to care after launch. Eight years of systems companies rely on. I lead Angular Wrocław.",
+    description: "You work with me directly, from the first call to care after launch. Eight years building systems companies rely on. I lead Angular Wrocław.",
   },
   contact: {
     title: "Book a free 30-minute consultation",

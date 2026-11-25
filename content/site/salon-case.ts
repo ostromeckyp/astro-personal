@@ -6,13 +6,13 @@ const img = (name: string) => `/images/use-cases/${name}`;
 export const SALON_CASE = {
   label: "Use case · beauty & barber retail",
   title: "Agentic replenishment for a salon network.",
-  lede: "Custom software where salons order stock from HQ in plain language. An AI agent turns the request into a checked proposal — people stay in control of every unit that moves.",
+  lede: "Custom software where salons order stock from HQ in plain language. An AI agent turns the request into a checked proposal, and people stay in control of every unit that moves.",
   stack: ["AI agent", "LLM", "RAG", "Firebase", "Human-in-the-loop"],
   story: [
-    { k: "problem", t: "Ordering by phone and chat", d: "Salons restock from HQ through messages and spreadsheets — easy to double-order, hard to track what arrived." },
+    { k: "problem", t: "Ordering by phone and chat", d: "Salons restock from HQ through messages and spreadsheets: easy to double-order, hard to track what arrived." },
     { k: "agent", t: "Say it, get a proposal", d: "Staff type or dictate what they need; the agent maps it to products, checks HQ stock and builds the request." },
     { k: "guardrails", t: "Checked before it's sent", d: "Duplicates of active requests are blocked, quantities stay editable, and no stock moves until HQ dispatches and the salon confirms receipt." },
-    { k: "tracking", t: "From request to receipt", d: "Every request has a status — dispatched, received, rejected or delivered with an issue — with damaged units kept out of saleable stock." },
+    { k: "tracking", t: "From request to receipt", d: "Every request has a status (dispatched, received, rejected or delivered with an issue), and damaged units stay out of saleable stock." },
   ] satisfies StoryItem[],
   hero: {
     kicker: "01 · agentic replenishment",
@@ -48,7 +48,7 @@ export const SALON_CASE = {
       cropPosition: { right: "4%", bottom: "6%", width: "50%" },
       alt: "Assistant refusing a proposal because the products already have active requests",
       t: "The agent says no",
-      d: "“Restock everything that's low” — the agent sees those items already have active requests and links to them instead of double-ordering.",
+      d: "“Restock everything that's low”: the agent sees those items already have active requests and links to them instead of double-ordering.",
     },
     {
       n: "fig. 04",
@@ -69,14 +69,14 @@ export const SALON_CASE = {
       crop: { backgroundSize: "218.18% auto", backgroundPosition: "33.59% 75.15%", aspectRatio: "660/165" },
       cropPosition: { right: "4%", bottom: "6%", width: "62%" },
       alt: "Request detail showing ordered, dispatched and good units with one damaged item",
-      t: "Problems handled, not hidden",
+      t: "When a delivery goes wrong",
       d: "Ordered vs dispatched vs good units per product; damaged items go back to HQ, live stock stays correct.",
     },
   ] satisfies Shot[],
   procedures: {
     n: "fig. 06",
     heading: "Answers with receipts.",
-    body: "A procedures assistant answers staff questions — “we received a damaged product, what now?” — step by step, with every step linked to its source document, version and page. Guidance only: it can't change stock, file claims or grant replacements.",
+    body: "A procedures assistant answers staff questions such as “we received a damaged product, what now?” step by step, with every step linked to its source document, version and page. Guidance only: it can't change stock, file claims or grant replacements.",
     note: "safe by design, not by prompt",
     url: "barberhq · procedures · assistant",
     src: img("salon-procedures.jpg"),
@@ -86,7 +86,7 @@ export const SALON_CASE = {
   pwa: {
     n: "fig. 07–09 · salon perspective",
     heading: "Phone-first for the people on the floor. No app store.",
-    body: "Salon staff work from their phones, so the salon side is a PWA installed from a link. The one native-feeling capability they asked for — push notifications when an order is approved, dispatched or has an issue — ships through web push. No camera, no offline sync, no native SDKs: nothing was built that the business didn't need.",
+    body: "Salon staff work from their phones, so the salon side is a PWA installed from a link. The one native feature they asked for, push notifications when an order is approved, dispatched or has an issue, ships through web push. The business didn't need a camera, offline sync or native SDKs, so the app doesn't have them.",
     builtLabel: "built",
     built: "One responsive codebase · installable PWA · web push for status updates · same auth and rules as desktop",
     skippedLabel: "skipped on purpose",
@@ -112,7 +112,7 @@ export const SALON_CASE = {
         tilt: "",
         alt: "Phone: list of requests with dispatched, rejected, received statuses",
         t: "Order status on the go",
-        d: "Every request and its state, filterable — plus a push when it changes.",
+        d: "Every request and its state, filterable, plus a push when it changes.",
       },
       {
         n: "fig. 09",
@@ -120,7 +120,7 @@ export const SALON_CASE = {
         height: 2003,
         offset: -980 / 319,
         tilt: "phone-right",
-        alt: "Phone: request status history — submitted, approved, dispatched, inspected",
+        alt: "Phone: request status history (submitted, approved, dispatched, inspected)",
         t: "Receipt and issues",
         d: "Confirm delivery, report damaged units, see the full status history.",
       },
@@ -128,7 +128,7 @@ export const SALON_CASE = {
     push: {
       app: "BarberHQ",
       when: "now",
-      text: "Request 88eddc78 dispatched — 6 pcs on the way to Legnicka. Confirm receipt when it arrives.",
+      text: "Request 88eddc78 dispatched: 6 pcs on the way to Legnicka. Confirm receipt when it arrives.",
       caption: "Web push notification, as the salon sees it. Status changes come from HQ actions on the desktop side; the salon never has to poll.",
     },
   },

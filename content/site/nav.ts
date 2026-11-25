@@ -28,7 +28,7 @@ export const COMMON = {
 
 export const FOOTER = {
   tag: "apps & websites · ai workflows · audits & care",
-  head: "Let's talk about what your business needs next.",
+  head: "Let's talk about what your business needs now.",
   cta: "Free 30-min consultation",
   where: "Paweł Ostromecki · Wrocław, Poland · remote, worldwide",
   email: "contact@ostromecki.dev",

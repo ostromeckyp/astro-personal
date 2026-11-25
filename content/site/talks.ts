@@ -2,11 +2,11 @@ export const TALKS = {
   label: "talks and community",
   h1: "On stage and in the community.",
   intro:
-    "I lead the Angular Wrocław community, speak at meetups and conferences, and show up wherever the frontend crowd gets together. The same format works for your team.",
+    "I lead the Angular Wrocław community, speak at meetups and conferences, and show up wherever the frontend crowd gets together. I can run the same topics as a workshop for your team.",
   community: {
     label: "community lead",
     name: "Angular Wrocław",
-    body: "Regular meetups for the local Angular and frontend community, with talks, workshops and mentoring for developers who want to level up. Full rooms, good questions, and conversations that run late.",
+    body: "Regular meetups for the local Angular and frontend community, with talks, workshops and mentoring for developers who want to level up. The room is usually full and the conversations run late.",
     image: "/images/talks/community-crowd.jpg",
     alt: "Selfie with a full room at an Angular Wrocław meetup",
     caption: "Angular Wrocław meetup.",
