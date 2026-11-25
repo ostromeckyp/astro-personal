@@ -52,7 +52,7 @@ function LanguageSwitch({ lang, path, label }: { lang: Locale; path: string; lab
 }
 
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
-const MENU_FADE_MS = 200;
+const MENU_CLOSE_MS = 280;
 
 function subscribeReducedMotion(onChange: () => void) {
   const mq = window.matchMedia(REDUCED_MOTION);
@@ -64,7 +64,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
   const pathname = usePathname() ?? "/";
   const path = stripLocale(pathname);
   // The menu belongs to the page it was opened on. Following a link keeps it up until the next
-  // page has rendered, then it fades out over that page, so the old page never flashes in between.
+  // page has rendered, then it rolls up over that page, so the old page never flashes in between.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const [closing, setClosing] = useState(false);
   const reducedMotion = useSyncExternalStore(subscribeReducedMotion, () => window.matchMedia(REDUCED_MOTION).matches, () => false);
@@ -83,7 +83,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
         setOpenOn(null);
         setClosing(false);
       },
-      reducedMotion ? 0 : MENU_FADE_MS,
+      reducedMotion ? 0 : MENU_CLOSE_MS,
     );
     return () => clearTimeout(done);
   }, [leaving, reducedMotion]);

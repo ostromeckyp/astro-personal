@@ -663,14 +663,14 @@ html:not([data-splash]) .splash {
     animation: how-panel-in 320ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
   #mobile-menu:not([hidden]) {
-    animation: fade-in 200ms ease-out both;
+    animation: menu-down 360ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
   #mobile-menu:not([hidden]) a {
     animation: rise-in 360ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
-  /* Fades out over the next page; MENU_FADE_MS in components/Nav.tsx matches this duration. */
+  /* Rolls up over the next page; MENU_CLOSE_MS in components/Nav.tsx must match this duration. */
   #mobile-menu[data-closing] {
-    animation: fade-out 200ms ease-in both;
+    animation: menu-up 280ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }
   #mobile-menu:not([hidden]) .menu-x {
     animation: menu-x 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -748,9 +748,20 @@ html:not([data-splash]) .splash {
     transform: translateY(8px);
   }
 }
-@keyframes fade-out {
+@keyframes menu-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
   to {
-    opacity: 0;
+    clip-path: inset(0);
+  }
+}
+@keyframes menu-up {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
   }
 }
 @keyframes menu-x {
