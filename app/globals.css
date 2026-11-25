@@ -648,6 +648,26 @@ html:not([data-splash]) .splash {
   }
 }
 
+/* Mobile quick contact (components/ContactFab.tsx). The star turns into a cross while the panel is open;
+   off screen the button is invisible, so it is also out of the tab order. */
+.fab-x {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+#contact-fab[data-open] .fab-star {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+#contact-fab[data-open] .fab-x {
+  opacity: 1;
+  transform: none;
+}
+#contact-fab[data-hidden] {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(calc(100% + 2rem));
+}
+
 /* Subtle motion. Nothing here hides content from a browser that lacks these features, or from crawlers. */
 @media (prefers-reduced-motion: no-preference) {
   .rise-in {
@@ -674,6 +694,33 @@ html:not([data-splash]) .splash {
   }
   #mobile-menu:not([hidden]) .menu-x {
     animation: menu-x 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  /* The quick-contact button slides away while hidden; visibility flips only after the slide. */
+  #contact-fab {
+    transition:
+      transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      opacity 300ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      visibility 0s;
+  }
+  #contact-fab[data-hidden] {
+    transition:
+      transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0s 300ms;
+  }
+  .fab-star,
+  .fab-x {
+    transition:
+      transform 280ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      opacity 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  /* The panel unrolls upward from the button, the mirror of the menu blind. PANEL_CLOSE_MS in
+     components/ContactFab.tsx must match the fab-down duration. */
+  #contact-fab-panel:not([hidden]) {
+    animation: fab-up 300ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  #contact-fab-panel[data-closing] {
+    animation: fab-down 300ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }
   /* FAQ and contents lists open smoothly where supported, and instantly elsewhere. */
   :root {
@@ -762,6 +809,22 @@ html:not([data-splash]) .splash {
   }
   to {
     clip-path: inset(0 0 100% 0);
+  }
+}
+@keyframes fab-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes fab-down {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(100% 0 0 0);
   }
 }
 @keyframes menu-x {

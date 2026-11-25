@@ -96,6 +96,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
       barRef.current,
       document.querySelector("main"),
       document.querySelector("footer"),
+      document.getElementById("contact-fab"),
     ];
     const opener = openRef.current;
     behind.forEach((el) => el?.toggleAttribute("inert", true));

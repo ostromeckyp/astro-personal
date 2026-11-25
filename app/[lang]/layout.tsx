@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { ContactFab } from "@/components/ContactFab";
 import { getDictionary } from "@/lib/dictionary";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n";
 import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -57,7 +58,7 @@ export default async function RootLayout({ children, params }: { children: React
     const { lang: rawLang } = await params;
     if (!isLocale(rawLang)) notFound();
     const lang: Locale = rawLang;
-    const { COMMON, FOOTER, NAV_CTA, NAV_LINKS } = getDictionary(lang);
+    const { COMMON, FAB, FOOTER, NAV_CTA, NAV_LINKS } = getDictionary(lang);
     return (
         <html lang={lang} data-scroll-behavior="smooth" className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
         <head>
@@ -81,6 +82,8 @@ export default async function RootLayout({ children, params }: { children: React
             {children}
         </main>
         <Footer copy={FOOTER}/>
+        {/* A direct child of body in the server markup, so the splash and the mobile menu can make it inert. */}
+        <ContactFab copy={FAB}/>
         <ScrollReveal/>
         </body>
         </html>

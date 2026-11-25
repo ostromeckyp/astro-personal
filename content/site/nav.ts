@@ -39,3 +39,17 @@ export const FOOTER = {
     { href: "https://x.com/ostromeckyp", label: "X" },
   ],
 };
+
+export const FAB = {
+  open: "Open quick contact",
+  close: "Close quick contact",
+  panel: "Quick contact",
+  call: "Call",
+  email: "Send an email",
+  form: "Contact form",
+  profiles: [
+    { href: "https://github.com/ostromeckyp", label: "GitHub" },
+    { href: INSTAGRAM_URL, label: "Instagram" },
+    { href: "https://www.linkedin.com/in/ostromeckyp/", label: "LinkedIn" },
+  ],
+};

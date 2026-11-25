@@ -1,5 +1,5 @@
 import { INSTAGRAM_URL } from "@/lib/site";
-import type { COMMON as C, FOOTER as F, NAV_CTA as CTA, NAV_LINKS as L } from "../nav";
+import type { COMMON as C, FAB as FB, FOOTER as F, NAV_CTA as CTA, NAV_LINKS as L } from "../nav";
 
 export const NAV_LINKS: typeof L = [
   { href: "/services", label: "Usługi" },
@@ -39,5 +39,19 @@ export const FOOTER: typeof F = {
     { href: "https://github.com/ostromeckyp", label: "GitHub" },
     { href: INSTAGRAM_URL, label: "Instagram" },
     { href: "https://x.com/ostromeckyp", label: "X" },
+  ],
+};
+
+export const FAB: typeof FB = {
+  open: "Otwórz szybki kontakt",
+  close: "Zamknij szybki kontakt",
+  panel: "Szybki kontakt",
+  call: "Zadzwoń",
+  email: "Wyślij wiadomość",
+  form: "Formularz kontaktowy",
+  profiles: [
+    { href: "https://github.com/ostromeckyp", label: "GitHub" },
+    { href: INSTAGRAM_URL, label: "Instagram" },
+    { href: "https://www.linkedin.com/in/ostromeckyp/", label: "LinkedIn" },
   ],
 };
