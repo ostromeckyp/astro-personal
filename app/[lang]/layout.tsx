@@ -10,6 +10,7 @@ import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_NAME, SITE_URL } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { personSchema, websiteSchema } from "@/lib/structured-data";
+import { SPLASH_SCRIPT } from "@/lib/splash";
 import { THEME_SCRIPT } from "@/lib/theme";
 
 const geist = Geist({
@@ -61,6 +62,8 @@ export default async function RootLayout({ children, params }: { children: React
         <head>
             {/* Sets data-theme before first paint, so the page never flashes the other theme. */}
             <script dangerouslySetInnerHTML={{__html: THEME_SCRIPT}}/>
+            {/* First visit only: sets data-splash before first paint so the splash overlay can cover the page. */}
+            <script dangerouslySetInnerHTML={{__html: SPLASH_SCRIPT}}/>
         </head>
         <body className="flex min-h-screen flex-col">
         <JsonLd data={personSchema(lang)}/>
