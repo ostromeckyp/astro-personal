@@ -16,3 +16,8 @@ export function resolveTheme(stored: string | null, systemLight: boolean): Theme
  * Same rule as resolveTheme, inlined because it can't import anything.
  */
 export const THEME_SCRIPT = `(function(){var s=null;try{s=localStorage.getItem(${JSON.stringify(THEME_KEY)})}catch(e){}document.documentElement.dataset.theme=s==="light"||s==="dark"?s:matchMedia(${JSON.stringify(LIGHT_QUERY)}).matches?"light":"dark"})()`;
+
+/** Distance from (x, y) to the farthest corner of a width x height viewport. */
+export function revealRadius(x: number, y: number, width: number, height: number): number {
+  return Math.hypot(Math.max(x, width - x), Math.max(y, height - y));
+}

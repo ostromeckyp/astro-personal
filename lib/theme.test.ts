@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { resolveTheme, THEME_KEY, THEME_SCRIPT } from "./theme";
+import { resolveTheme, revealRadius, THEME_KEY, THEME_SCRIPT } from "./theme";
 
 describe("resolveTheme", () => {
   it("keeps a saved choice over the system", () => {
@@ -37,5 +37,13 @@ describe("THEME_SCRIPT", () => {
 
   it("falls back to the system when storage is blocked", () => {
     expect(runScript({ systemLight: true, storageThrows: true })).toBe("light");
+  });
+});
+
+describe("revealRadius", () => {
+  it("reaches the farthest corner", () => {
+    expect(revealRadius(0, 0, 300, 400)).toBe(500);
+    expect(revealRadius(300, 0, 300, 400)).toBe(500);
+    expect(revealRadius(150, 200, 300, 400)).toBe(250);
   });
 });

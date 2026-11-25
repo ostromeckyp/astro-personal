@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useSyncExternalStore } from "react";
-import { LIGHT_QUERY, THEME_KEY, type Theme } from "@/lib/theme";
+import { LIGHT_QUERY, THEME_KEY, revealRadius, type Theme } from "@/lib/theme";
+
+/** Incremented per reveal so only the latest one's cleanup removes the class. */
+let revealCount = 0;
 
 function subscribeTheme(onChange: () => void) {
   const mo = new MutationObserver(onChange);
@@ -36,9 +39,27 @@ export function ThemeToggle({ toLight, toDark }: { toLight: string; toDark: stri
     return () => mq.removeEventListener("change", follow);
   }, []);
 
-  const flip = () => {
+  const flip = (event: React.MouseEvent<HTMLButtonElement>) => {
     const next: Theme = currentTheme() === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = next;
+    const root = document.documentElement;
+    const apply = () => {
+      root.dataset.theme = next;
+    };
+    if ("startViewTransition" in document && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      root.style.setProperty("--reveal-x", `${x}px`);
+      root.style.setProperty("--reveal-y", `${y}px`);
+      root.style.setProperty("--reveal-r", `${revealRadius(x, y, window.innerWidth, window.innerHeight)}px`);
+      root.classList.add("theme-reveal");
+      const id = ++revealCount;
+      document.startViewTransition(apply).finished.finally(() => {
+        if (id === revealCount) root.classList.remove("theme-reveal");
+      });
+    } else {
+      apply();
+    }
     try {
       localStorage.setItem(THEME_KEY, next);
     } catch {
