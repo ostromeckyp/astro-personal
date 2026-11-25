@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 import { Providers } from "@/app/providers";
 import { ContactForm } from "@/components/ContactForm";
 import { NEW_TAB } from "@/lib/external-link";
+import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
+import { sectionBreadcrumbs } from "@/lib/structured-data";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 
@@ -28,6 +30,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
   const { details } = CONTACT;
   return (
     <div className="site-container grid grid-cols-1 items-start gap-x-14 gap-y-10 pt-20 pb-32 md:grid-cols-2 md:grid-rows-[auto_1fr] md:gap-y-7 md:pt-28">
+      <JsonLd data={sectionBreadcrumbs(lang, "/contact")} />
       <div className="flex flex-col gap-7">
         <span className="font-mono text-[13px] text-accent">{CONTACT.label}</span>
         <h1 className="text-[clamp(48px,6vw,80px)] leading-[0.95] font-semibold tracking-[-0.045em]">{CONTACT.h1}</h1>

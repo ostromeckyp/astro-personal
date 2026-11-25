@@ -21,5 +21,9 @@ export const PERSON = {
   telephone: "+48661546446",
   city: "Wrocław",
   country: "PL",
+  /** Stack from the services FAQ, plus the AI topics the services and FAQ cover. */
+  knowsAbout: ["AI workflows", "LLM application security (OWASP Top 10 for LLM Applications)", "Google Cloud", "Firebase", "Python", "TypeScript", "Angular", "React", "NestJS"],
+  /** As the about page says: Polish and English. */
+  languages: ["pl", "en"],
   sameAs: ["https://www.linkedin.com/in/ostromeckyp/", "https://github.com/ostromeckyp", INSTAGRAM_URL, "https://x.com/ostromeckyp"],
 };

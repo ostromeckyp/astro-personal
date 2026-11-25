@@ -24,6 +24,8 @@ export const COMMON = {
   notFoundCta: "Back to home",
   skipSplash: "Skip",
   splashLabel: "Welcome",
+  breadcrumbHome: "Home",
+  breadcrumbContact: "Contact",
 };
 
 export const FOOTER = {

@@ -26,6 +26,8 @@ export const COMMON: typeof C = {
   notFoundCta: "Wróć na stronę główną",
   skipSplash: "Pomiń",
   splashLabel: "Powitanie",
+  breadcrumbHome: "Strona główna",
+  breadcrumbContact: "Kontakt",
 };
 
 export const FOOTER: typeof F = {

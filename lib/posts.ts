@@ -23,6 +23,8 @@ export interface PostSummary {
   title: string;
   excerpt: string;
   date: string;
+  /** Optional `updated` frontmatter (`YYYY-MM-DD`): when the post last changed in substance. */
+  updated?: string;
   image: string;
   imageAlt: string;
   imagePosition?: string;
@@ -143,6 +145,8 @@ function readPostFiles() {
         title: data.title,
         excerpt: data.excerpt,
         date: data.date,
+        // Validated like `date`, so an unquoted or mistyped value fails the build.
+        ...(data.updated !== undefined && parsePostDate(String(data.updated)) && { updated: String(data.updated) }),
         image: data.image,
         imageAlt: data.imageAlt,
         imagePosition: data.imagePosition,

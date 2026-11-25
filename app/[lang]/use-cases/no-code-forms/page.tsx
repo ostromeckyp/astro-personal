@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import { getDictionary } from "@/lib/dictionary";
-import { localePath, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -32,9 +32,9 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
   return (
     <div className="relative overflow-x-clip">
       <JsonLd
-        data={breadcrumbSchema([
-          { name: USE_CASES_PAGE.label, path: localePath(lang, "/use-cases") },
-          { name: C.title.replace(/\.$/, ""), path: localePath(lang, "/use-cases/no-code-forms") },
+        data={breadcrumbSchema(lang, [
+          { name: USE_CASES_PAGE.label, path: "/use-cases" },
+          { name: C.title.replace(/\.$/, ""), path: "/use-cases/no-code-forms" },
         ])}
       />
       <div aria-hidden="true" className="absolute top-16 left-[-40px] h-px w-[1700px] origin-top-left rotate-15 bg-ink-0/8" />

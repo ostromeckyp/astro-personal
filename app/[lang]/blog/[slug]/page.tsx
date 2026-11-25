@@ -60,9 +60,9 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
     <>
       <JsonLd data={blogPostingSchema(post)} />
       <JsonLd
-        data={breadcrumbSchema([
-          { name: "Blog", path: localePath(lang, "/blog") },
-          { name: post.title, path: localePath(lang, `/blog/${post.slug}`) },
+        data={breadcrumbSchema(lang, [
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
         ])}
       />
       <header className="relative overflow-hidden">

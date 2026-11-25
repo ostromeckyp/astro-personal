@@ -3,7 +3,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
+import { sectionBreadcrumbs } from "@/lib/structured-data";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 
@@ -21,6 +23,7 @@ export default async function TalksPage({ params }: { params: Promise<{ lang: Lo
   const { community, list, gallery, team } = TALKS;
   return (
     <div className="site-container">
+      <JsonLd data={sectionBreadcrumbs(lang, "/talks")} />
       <PageHeader label={TALKS.label} title={TALKS.h1} intro={TALKS.intro} />
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-stretch gap-6 pb-28">

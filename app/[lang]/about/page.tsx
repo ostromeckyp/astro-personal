@@ -3,7 +3,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { TextLink } from "@/components/ui/TextLink";
 import { NEW_TAB } from "@/lib/external-link";
+import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
+import { sectionBreadcrumbs } from "@/lib/structured-data";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 
@@ -23,6 +25,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: Lo
   const { facts } = ABOUT;
   return (
     <div className="site-container">
+      <JsonLd data={sectionBreadcrumbs(lang, "/about")} />
       <section className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-start gap-14 pt-20 pb-28 md:pt-28">
         <div className="relative aspect-[4/5] overflow-hidden rounded-card bg-ink-900">
           <Image

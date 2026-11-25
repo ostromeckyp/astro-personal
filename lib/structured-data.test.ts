@@ -3,7 +3,7 @@ import { SERVICES } from "@/content/site/services";
 import { getDictionary } from "./dictionary";
 import type { PostSummary } from "./posts";
 import { PERSON, SITE_URL } from "./site";
-import { blogPostingSchema, breadcrumbSchema, faqSchema, personSchema, serializeJsonLd, websiteSchema } from "./structured-data";
+import { blogPostingSchema, breadcrumbSchema, faqSchema, personSchema, sectionBreadcrumbs, serializeJsonLd, websiteSchema } from "./structured-data";
 
 const post = {
   slug: "x",
@@ -26,6 +26,13 @@ describe("personSchema", () => {
 
   it("links every social profile", () => {
     expect(person.sameAs).toEqual(PERSON.sameAs);
+  });
+
+  it("names the stack from the FAQ, the languages and the community", () => {
+    const stack = SERVICES.faq.items.find((f) => f.logos)!.a;
+    for (const tech of person.knowsAbout.slice(2)) expect(stack).toContain(tech);
+    expect(person.knowsLanguage).toEqual(["pl", "en"]);
+    expect(person.memberOf).toEqual({ "@type": "Organization", name: "Angular Wrocław" });
   });
 
   it("lists Instagram among the person's profiles", () => {
@@ -90,11 +97,35 @@ describe("blogPostingSchema", () => {
     expect(posting.datePublished).toBe("2026-08-08");
     expect(posting.author.url).toBe(`${SITE_URL}/about`);
   });
+
+  it("dates the last change, falling back to publication, and credits the publisher", () => {
+    expect(posting.dateModified).toBe("2026-08-08");
+    expect(blogPostingSchema({ ...post, updated: "2026-09-01" }).dateModified).toBe("2026-09-01");
+    expect(posting.publisher).toEqual({ "@id": `${SITE_URL}/#person` });
+  });
 });
 
 describe("breadcrumbSchema", () => {
-  it("numbers items from one, with absolute URLs", () => {
-    const crumbs = breadcrumbSchema([{ name: "Blog", path: "/blog" }, { name: "Title", path: "/blog/x" }]);
-    expect(crumbs.itemListElement[1]).toEqual({ "@type": "ListItem", position: 2, name: "Title", item: `${SITE_URL}/blog/x` });
+  it("starts at the home page and numbers items from one, with absolute URLs", () => {
+    const crumbs = breadcrumbSchema("en", [{ name: "Blog", path: "/blog" }, { name: "Title", path: "/blog/x" }]);
+    expect(crumbs.itemListElement[0]).toEqual({ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL });
+    expect(crumbs.itemListElement[2]).toEqual({ "@type": "ListItem", position: 3, name: "Title", item: `${SITE_URL}/blog/x` });
+  });
+
+  it("uses Polish URLs and names in Polish", () => {
+    const crumbs = breadcrumbSchema("pl", [{ name: "Blog", path: "/blog" }]);
+    expect(crumbs.itemListElement.map((i) => i.item)).toEqual([`${SITE_URL}/pl`, `${SITE_URL}/pl/blog`]);
+    expect(crumbs.itemListElement[0].name).toBe("Strona główna");
+  });
+});
+
+describe("sectionBreadcrumbs", () => {
+  it("names top-level pages as the navigation does", () => {
+    expect(sectionBreadcrumbs("pl", "/about").itemListElement[1]).toMatchObject({ name: "O mnie", item: `${SITE_URL}/pl/about` });
+    expect(sectionBreadcrumbs("en", "/contact").itemListElement[1]).toMatchObject({ name: "Contact", item: `${SITE_URL}/contact` });
+  });
+
+  it("fails loudly for a page without a name", () => {
+    expect(() => sectionBreadcrumbs("en", "/nope")).toThrow();
   });
 });

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { UseCaseCard } from "@/components/ui/UseCaseCard";
+import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
+import { sectionBreadcrumbs } from "@/lib/structured-data";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 
@@ -16,6 +18,7 @@ export default async function UseCasesPage({ params }: { params: Promise<{ lang:
   const { USE_CASES, USE_CASES_PAGE } = getDictionary(lang);
   return (
     <div className="site-container">
+      <JsonLd data={sectionBreadcrumbs(lang, "/use-cases")} />
       <PageHeader label={USE_CASES_PAGE.label} title={USE_CASES_PAGE.h1} intro={USE_CASES_PAGE.intro} />
       <section className="flex flex-col gap-24 pb-32">
         {USE_CASES.map((c) => (

@@ -6,7 +6,7 @@ import { TechLogos } from "@/components/ui/TechLogos";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/JsonLd";
-import { faqSchema } from "@/lib/structured-data";
+import { faqSchema, sectionBreadcrumbs } from "@/lib/structured-data";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 
@@ -24,6 +24,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
   return (
     <div className="site-container relative overflow-x-clip">
       <JsonLd data={faqSchema(SERVICES.faq.items)} />
+      <JsonLd data={sectionBreadcrumbs(lang, "/services")} />
       <div aria-hidden="true" className="absolute top-10 left-[-10%] h-px w-[130%] origin-top-left rotate-15 bg-ink-0/8" />
       <PageHeader label={SERVICES.label} title={SERVICES.h1} intro={SERVICES.intro} className="pb-16" />
 
