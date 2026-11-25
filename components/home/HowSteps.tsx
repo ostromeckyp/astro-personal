@@ -91,7 +91,7 @@ export function HowSteps({ steps }: { steps: Step[] }) {
                 COLUMN[i],
               )}
             >
-              <span className="font-mono text-xs text-sakura-500">{s.n}</span>
+              <span className="font-mono text-xs text-accent">{s.n}</span>
               <span className={cn("text-xl font-medium tracking-[-0.015em] transition-colors", open ? "text-ink-0" : "text-ink-400 hover:text-ink-0")}>
                 {s.tab}
               </span>
@@ -99,7 +99,7 @@ export function HowSteps({ steps }: { steps: Step[] }) {
                 {open && (
                   <span
                     key={active}
-                    className={cn("block h-full origin-left bg-sakura-500", auto && "how-progress")}
+                    className={cn("block h-full origin-left bg-accent-line", auto && "how-progress")}
                     style={auto ? { animationDuration: `${STEP_MS}ms`, animationPlayState: running ? "running" : "paused" } : undefined}
                     onAnimationEnd={() => setActive((a) => nextStep(a, steps.length))}
                   />
@@ -119,10 +119,14 @@ export function HowSteps({ steps }: { steps: Step[] }) {
             >
               <h3 className="text-[clamp(26px,3vw,36px)] leading-[1.1] font-semibold tracking-[-0.03em]">{s.t}</h3>
               <p className="text-[17px] leading-[1.6] text-ink-400">{s.d}</p>
-              <p className="flex items-start gap-3 text-[15px] leading-[1.55] text-ink-200">
-                <span aria-hidden="true" className="mt-[11px] h-0.5 w-6 shrink-0 bg-sakura-500" />
-                {s.rule}
-              </p>
+              <ul className="flex flex-col gap-2.5">
+                {s.points.map((p) => (
+                  <li key={p} className="flex items-start gap-3 text-[15px] leading-[1.55] text-ink-200">
+                    <span aria-hidden="true" className="mt-[11px] h-0.5 w-6 shrink-0 bg-accent-line" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
             </div>
           </Fragment>
         );
