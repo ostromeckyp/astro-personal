@@ -25,6 +25,7 @@ export const COMMON = {
   skipSplash: "Skip",
   splashLabel: "Welcome",
   breadcrumbHome: "Home",
+  ogImageAlt: "Paweł Ostromecki, lit by a band of light against a pink glow. Real AI for real business.",
   breadcrumbContact: "Contact",
 };
 

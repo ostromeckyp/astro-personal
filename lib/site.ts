@@ -9,7 +9,8 @@ export const SITE_DESCRIPTION =
 export const OLD_HOST = "portfolio-two-bay-60.vercel.app";
 
 export const OG_DEFAULT = "/images/og-default.jpg";
-export const OG_DEFAULT_ALT = "Paweł Ostromecki, lit by a band of light against a pink glow. Real AI for real business.";
+/** X (Twitter) handle, as in `PERSON.sameAs`. */
+export const X_HANDLE = "@ostromeckyp";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/ostromecki.dev/";
 

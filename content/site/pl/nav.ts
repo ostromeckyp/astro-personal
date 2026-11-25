@@ -27,6 +27,7 @@ export const COMMON: typeof C = {
   skipSplash: "Pomiń",
   splashLabel: "Powitanie",
   breadcrumbHome: "Strona główna",
+  ogImageAlt: "Paweł Ostromecki w smudze światła na tle różowej poświaty. Napis: Real AI for real business.",
   breadcrumbContact: "Kontakt",
 };
 

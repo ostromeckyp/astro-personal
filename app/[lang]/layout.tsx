@@ -7,7 +7,8 @@ import { Footer } from "@/components/Footer";
 import { ContactFab } from "@/components/ContactFab";
 import { getDictionary } from "@/lib/dictionary";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n";
-import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_NAME, SITE_URL } from "@/lib/site";
+import { OG_DEFAULT, SITE_NAME, SITE_URL } from "@/lib/site";
+import { TWITTER } from "@/lib/metadata";
 import { JsonLd } from "@/components/JsonLd";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Splash } from "@/components/Splash";
@@ -38,7 +39,7 @@ export const dynamicParams = false;
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
-    const { META } = getDictionary(isLocale(lang) ? lang : "en");
+    const { COMMON, META } = getDictionary(isLocale(lang) ? lang : "en");
     return {
         title: {
             default: META.home.title,
@@ -49,11 +50,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         openGraph: {
             siteName: SITE_NAME,
             type: "website",
-            images: [{ url: OG_DEFAULT, alt: OG_DEFAULT_ALT }],
+            images: [{ url: OG_DEFAULT, alt: COMMON.ogImageAlt }],
         },
-        twitter: {
-            card: "summary_large_image",
-        },
+        twitter: TWITTER,
     };
 }
 

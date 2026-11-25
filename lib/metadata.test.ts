@@ -26,7 +26,7 @@ describe("pageMetadata", () => {
   });
 
   it("restates the whole Open Graph object, since a child replaces the parent's", () => {
-    expect(meta.openGraph).toMatchObject({ siteName: "Paweł Ostromecki", type: "website", url: "/services", title: "T", description: "D" });
+    expect(meta.openGraph).toMatchObject({ siteName: "Paweł Ostromecki", type: "website", url: "/services", title: "T | Paweł Ostromecki", description: "D" });
     expect(JSON.stringify(meta.openGraph)).toContain("/images/og-default.jpg");
   });
 
@@ -39,6 +39,18 @@ describe("pageMetadata", () => {
     const home = pageMetadata({ title: { absolute: "Home" }, description: "D", path: "/" });
     expect(home.title).toEqual({ absolute: "Home" });
     expect(home.openGraph).toMatchObject({ title: "Home" });
+  });
+});
+
+describe("share cards", () => {
+  it("describe the default image in the page's language", () => {
+    const alt = (lang: "en" | "pl") => JSON.stringify(pageMetadata({ lang, title: "T", description: "D", path: "/" }).openGraph);
+    expect(alt("en")).toContain("lit by a band of light");
+    expect(alt("pl")).toContain("w smudze światła");
+  });
+
+  it("name the X account and keep the large card, with the same title as Open Graph", () => {
+    expect(pageMetadata({ title: "T", description: "D", path: "/services" }).twitter).toMatchObject({ card: "summary_large_image", site: "@ostromeckyp", creator: "@ostromeckyp", title: "T | Paweł Ostromecki" });
   });
 });
 

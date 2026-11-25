@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DEFAULT_LOCALE, localePath, type Locale } from "./i18n";
-import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_NAME } from "./site";
+import { getDictionary } from "./dictionary";
+import { OG_DEFAULT, SITE_NAME, X_HANDLE } from "./site";
 
 type PageMetadata = {
   lang?: Locale;
@@ -22,9 +23,13 @@ export function postTitle(title: string): string | { absolute: string } {
   return `${title} | ${SITE_NAME}`.length <= TITLE_BUDGET ? title : { absolute: title };
 }
 
+/** Share card defaults. Next replaces a parent's `twitter` wholesale too, so routes restate it. */
+export const TWITTER = { card: "summary_large_image", site: X_HANDLE, creator: X_HANDLE } as const;
+
 /** Next replaces a parent's `openGraph` wholesale, so every route states the full object. */
 export function pageMetadata({ lang = DEFAULT_LOCALE, title, description, path, image, imageAlt, article, englishOnly }: PageMetadata): Metadata {
   const url = localePath(lang, path);
+  const shareTitle = typeof title === "string" ? `${title} | ${SITE_NAME}` : title.absolute;
   return {
     title,
     description,
@@ -37,10 +42,12 @@ export function pageMetadata({ lang = DEFAULT_LOCALE, title, description, path, 
       siteName: SITE_NAME,
       url,
       locale: lang === "pl" ? "pl_PL" : "en_US",
-      title: typeof title === "string" ? title : title.absolute,
+      // Share cards show no tab title, so a subpage's card names the site like its <title> does.
+      title: shareTitle,
       description,
-      images: [{ url: image ?? OG_DEFAULT, alt: imageAlt ?? (image ? "" : OG_DEFAULT_ALT) }],
+      images: [{ url: image ?? OG_DEFAULT, alt: imageAlt ?? (image ? "" : getDictionary(lang).COMMON.ogImageAlt) }],
       ...(article ? { type: "article", publishedTime: article.publishedTime } : { type: "website" }),
     },
+    twitter: { ...TWITTER, title: shareTitle, description },
   };
 }
