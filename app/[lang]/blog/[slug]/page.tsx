@@ -12,7 +12,7 @@ import { TextLink } from "@/components/ui/TextLink";
 import { formatPostDate } from "@/lib/format-date";
 import { getDictionary, localizePost, postCategoryLabel } from "@/lib/dictionary";
 import { localePath, type Locale } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/metadata";
+import { pageMetadata, postTitle } from "@/lib/metadata";
 import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/posts";
 import { SITE_URL } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const post = localizePost(found, lang);
   return pageMetadata({
     lang,
-    title: post.title,
+    title: postTitle(post.title),
     description: post.excerpt,
     path: `/blog/${post.slug}`,
     image: post.image,

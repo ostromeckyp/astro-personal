@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { pageMetadata } from "./metadata";
+import { getAllPosts } from "./posts";
+import { META } from "@/content/site/meta";
+import { META as META_PL } from "@/content/site/pl/meta";
+import { pageMetadata, postTitle, TITLE_BUDGET } from "./metadata";
 
 describe("pageMetadata", () => {
   it("links both languages from either one", () => {
@@ -37,4 +40,25 @@ describe("pageMetadata", () => {
     expect(home.title).toEqual({ absolute: "Home" });
     expect(home.openGraph).toMatchObject({ title: "Home" });
   });
+});
+
+describe("postTitle", () => {
+  it("adds the site name only when the whole title fits", () => {
+    expect(postTitle("Short post")).toBe("Short post");
+    const long = "Code Became Cheap. Did Developer Knowledge Become Cheap Too?";
+    expect(postTitle(long)).toEqual({ absolute: long });
+  });
+
+  it("keeps every published post's title within the budget once the suffix is decided", () => {
+    for (const post of getAllPosts()) {
+      const t = postTitle(post.title);
+      const full = typeof t === "string" ? `${t} | Paweł Ostromecki` : t.absolute;
+      expect(full.length <= TITLE_BUDGET || full === post.title, post.slug).toBe(true);
+    }
+  });
+});
+
+it("doesn't repeat the name the title template adds on the about page", () => {
+  expect(META.about.title).not.toContain("Paweł Ostromecki");
+  expect(META_PL.about.title).not.toContain("Paweł Ostromecki");
 });

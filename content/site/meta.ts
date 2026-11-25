@@ -28,7 +28,7 @@ export const META = {
     description: "I lead the Angular Wrocław community and speak at meetups and conferences. I can run the same topics as a workshop for your team.",
   },
   about: {
-    title: "About Paweł Ostromecki",
+    title: "About me",
     description: "You work with me directly, from the first call to care after launch. Eight years building systems companies rely on. I lead Angular Wrocław.",
   },
   contact: {

@@ -14,6 +14,14 @@ type PageMetadata = {
   englishOnly?: boolean;
 };
 
+/** Google cuts titles at about 60 characters. */
+export const TITLE_BUDGET = 60;
+
+/** A post title with the site name appended only when both fit; otherwise the title alone, so its end isn't cut. */
+export function postTitle(title: string): string | { absolute: string } {
+  return `${title} | ${SITE_NAME}`.length <= TITLE_BUDGET ? title : { absolute: title };
+}
+
 /** Next replaces a parent's `openGraph` wholesale, so every route states the full object. */
 export function pageMetadata({ lang = DEFAULT_LOCALE, title, description, path, image, imageAlt, article, englishOnly }: PageMetadata): Metadata {
   const url = localePath(lang, path);

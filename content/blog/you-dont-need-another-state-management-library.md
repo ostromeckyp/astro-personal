@@ -1,5 +1,5 @@
 ---
-title: "You (don’t) need another State Management Library"
+title: "You (don’t) need another state management library"
 excerpt: "My first post. Signals and a few RxJS operators give you the Redux benefits without another dependency, shown with a small weather app."
 date: "2024-07-17"
 image: "/images/blog/state-management.jpg"

@@ -1,5 +1,5 @@
 ---
-title: "You don't need another state management library - vol.2"
+title: "You (don’t) need another state management library, vol. 2"
 excerpt: "The same Flux-like pattern as part one, now with connect from ngxtension: no manual subscriptions, and one error handler instead of hundreds of failure actions."
 date: "2026-03-12"
 image: "/images/blog/state-management-vol-2.jpg"

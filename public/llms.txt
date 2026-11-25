@@ -52,8 +52,8 @@ He leads Angular Wrocław, a community of regular meetups for local Angular and 
 
 - [Code Became Cheap. Did Developer Knowledge Become Cheap Too?](https://www.ostromecki.dev/blog/code-became-cheap): AI made much of what a developer learns cheap, but cheaper code is not a cheaper good decision.
 - [Mastering Angular's Host Property](https://www.ostromecki.dev/blog/mastering-angular-host-property): how the host property replaces @HostListener and @HostBinding, works with signals, and how to migrate.
-- [You (don't) need another State Management Library](https://www.ostromecki.dev/blog/you-dont-need-another-state-management-library): signals and a few RxJS operators give the Redux benefits without another dependency.
-- [You don't need another state management library, vol. 2](https://www.ostromecki.dev/blog/you-dont-need-another-state-management-library2): the same Flux-like pattern with connect from ngxtension, without manual subscriptions.
+- [You (don't) need another state management library](https://www.ostromecki.dev/blog/you-dont-need-another-state-management-library): signals and a few RxJS operators give the Redux benefits without another dependency.
+- [You (don't) need another state management library, vol. 2](https://www.ostromecki.dev/blog/you-dont-need-another-state-management-library2): the same Flux-like pattern with connect from ngxtension, without manual subscriptions.
 
 ## Pages
 

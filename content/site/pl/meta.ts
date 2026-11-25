@@ -30,7 +30,7 @@ export const META: typeof EN = {
     description: "Prowadzę społeczność Angular Wrocław i występuję na meetupach i konferencjach. Te same tematy mogę poprowadzić jako warsztat dla Twojego zespołu.",
   },
   about: {
-    title: "O mnie: Paweł Ostromecki",
+    title: "O mnie",
     description: "Pracujesz bezpośrednio ze mną, od pierwszej rozmowy po opiekę po starcie. Osiem lat budowania systemów dla firm. Prowadzę Angular Wrocław.",
   },
   contact: {
