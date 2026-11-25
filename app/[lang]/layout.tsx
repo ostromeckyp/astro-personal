@@ -33,6 +33,9 @@ export function generateStaticParams() {
     return LOCALES.map((lang) => ({ lang }));
 }
 
+// Only en and pl exist. Anything else (e.g. /index.html, which the proxy skips) is a 404, not a render with an unknown language.
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const { META } = getDictionary(isLocale(lang) ? lang : "en");
