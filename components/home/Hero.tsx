@@ -11,7 +11,8 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
 
       {/* Copy shares the site container, so it lines up with the sections below. */}
       <div className="site-container relative md:absolute md:inset-x-0 md:inset-y-0">
-        <div className="absolute top-[11%] left-6 hidden flex-col gap-3.5 text-[13px] leading-[1.22] text-ink-200 lg:flex">
+        {/* Decorative tagline: hidden from assistive tech so the page's text starts at the h1. */}
+        <div aria-hidden="true" className="absolute top-[11%] left-6 hidden flex-col gap-3.5 text-[13px] leading-[1.22] text-ink-200 lg:flex">
           {hero.groups.map((g) => (
             <p key={g} className="whitespace-pre-line">
               {g}

@@ -9,7 +9,7 @@ export const HOME = {
   },
   intro: "I build apps, websites and AI workflows for companies, and I make sure they keep working in production.",
   introBody:
-    "Eight years building systems companies rely on, in fintech, regtech and e-commerce.",
+    "Eight years building systems companies rely on, in fintech, regtech and e-commerce. Based in Wrocław, Poland, working remotely with teams worldwide.",
   services: {
     heading: "What I do",
     all: "All services",

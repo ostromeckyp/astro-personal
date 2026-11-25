@@ -86,6 +86,10 @@ describe("dictionaries", () => {
     }
   });
 
+  it("say where I work in the home page lead, not only in the footer", () => {
+    for (const lang of ["en", "pl"] as const) expect(getDictionary(lang).HOME.introBody).toMatch(/Wrocław/);
+  });
+
   it("translate visible copy rather than repeating English", () => {
     const { HOME: a } = getDictionary("en");
     const { HOME: b } = getDictionary("pl");

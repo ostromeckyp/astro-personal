@@ -31,7 +31,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
       <Hero hero={HOME.hero} />
       <div className="site-container">
         <section className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-end gap-12 pt-20 pb-24 md:pt-32">
-          <h2 className="reveal text-[clamp(36px,4vw,56px)] leading-[1.02] font-semibold tracking-[-0.04em]">{HOME.intro}</h2>
+          {/* A lead, not a section heading: the h2s below name the page's sections. */}
+          <p className="reveal text-[clamp(36px,4vw,56px)] leading-[1.02] font-semibold tracking-[-0.04em]">{HOME.intro}</p>
           <p className="reveal text-lg leading-[1.6] text-ink-400">{HOME.introBody}</p>
         </section>
 
