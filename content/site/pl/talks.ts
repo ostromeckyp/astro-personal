@@ -49,7 +49,7 @@ export const TALKS: typeof EN = {
   },
   gallery: {
     label: "poza sceną",
-    heading: "W drodze",
+    heading: "Za kulisami",
     items: [
       {
         image: "/images/talks/gallery-full-room.jpg",

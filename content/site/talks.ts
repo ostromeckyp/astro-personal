@@ -47,7 +47,7 @@ export const TALKS = {
   },
   gallery: {
     label: "off stage",
-    heading: "Out and about",
+    heading: "Behind the scenes",
     items: [
       {
         image: "/images/talks/gallery-full-room.jpg",

@@ -11,6 +11,8 @@ export const OLD_HOST = "portfolio-two-bay-60.vercel.app";
 export const OG_DEFAULT = "/images/og-default.jpg";
 export const OG_DEFAULT_ALT = "Paweł Ostromecki, lit by a band of light against a pink glow. Real AI for real business.";
 
+export const INSTAGRAM_URL = "https://www.instagram.com/ostromecki.dev/";
+
 /** Identity facts, as stated on visible pages. Only add what the site itself says. */
 export const PERSON = {
   name: SITE_NAME,
@@ -19,5 +21,5 @@ export const PERSON = {
   telephone: "+48661546446",
   city: "Wrocław",
   country: "PL",
-  sameAs: ["https://www.linkedin.com/in/ostromeckyp/", "https://github.com/ostromeckyp", "https://x.com/ostromeckyp"],
+  sameAs: ["https://www.linkedin.com/in/ostromeckyp/", "https://github.com/ostromeckyp", INSTAGRAM_URL, "https://x.com/ostromeckyp"],
 };

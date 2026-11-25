@@ -5,12 +5,12 @@
 ## Services
 
 - [AI workflows](https://www.ostromecki.dev/services): take a manual, repetitive process such as ordering, ticket triage, document checks or data entry, design an LLM or agent workflow around it, and plug it into the tools a team already uses.
-- [AI in real business cases](https://www.ostromecki.dev/services): separate the use cases that pay off from the ones that only demo well, test on real data, and turn the winner into a product people use.
+- [AI in real business cases](https://www.ostromecki.dev/services): take a real process from a business and improve it with AI, from the first prototype to a working solution in production.
 - [Web applications](https://www.ostromecki.dev/services): client portals, admin panels, booking and order systems, and internal tools that replace spreadsheets.
-- [Mobile apps](https://www.ostromecki.dev/services): iOS and Android apps from one codebase, or a web app on the phone when that is enough.
-- [Websites](https://www.ostromecki.dev/services): company websites and landing pages, fast on a phone and ready for Google and AI search.
+- [Mobile apps](https://www.ostromecki.dev/services): iOS and Android apps, as part of a larger system or standalone, shipped to the App Store and Google Play.
+- [Websites](https://www.ostromecki.dev/services): company websites and landing pages, fast, and visible in search engines and to AI alike.
 - [Application audit](https://www.ostromecki.dev/services): an independent review of code, architecture, security and performance, with fixes ranked by impact.
-- [Maintenance and development](https://www.ostromecki.dev/services): fixes, updates, monitoring and new features after launch.
+- [Maintenance and development](https://www.ostromecki.dev/services): fixes, updates, monitoring and new features across the system's whole lifecycle.
 
 Ways to start with AI: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks). The first 30-minute consultation is free and without commitment.
 
@@ -34,4 +34,5 @@ Ways to start with AI: Discovery (1 to 2 weeks), Pilot (4 to 8 weeks). The first
 - Phone: +48 661 546 446
 - LinkedIn: https://www.linkedin.com/in/ostromeckyp/
 - GitHub: https://github.com/ostromeckyp
+- Instagram: https://www.instagram.com/ostromecki.dev/
 - X: https://x.com/ostromeckyp

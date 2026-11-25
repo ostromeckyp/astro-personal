@@ -27,6 +27,10 @@ describe("personSchema", () => {
     expect(person.sameAs).toEqual(PERSON.sameAs);
   });
 
+  it("lists Instagram among the person's profiles", () => {
+    expect(PERSON.sameAs).toContain("https://www.instagram.com/ostromecki.dev/");
+  });
+
   it("lists every service with its description", () => {
     const offered = person.hasOfferCatalog.itemListElement.map((o) => o.itemOffered);
     expect(offered.map((s) => s.name)).toEqual(SERVICES.items.map((s) => s.title));

@@ -24,7 +24,7 @@ export const HOME = {
         n: "02",
         meta: "most common",
         title: "AI in real business cases",
-        body: "Tested on your data, shipped only when it pays off.",
+        body: "We take a real process from your business and improve it with AI, from the first prototype to a working solution in production.",
         featured: true,
       },
       {

@@ -2,7 +2,7 @@ import { USE_CASES as EN, type USE_CASES_PAGE as P, type UseCase } from "../use-
 
 export const USE_CASES_PAGE: typeof P = {
   label: "wdrożenia",
-  h1: "AI w pracy, nie na demo.",
+  h1: "AI na produkcji, nie na demo.",
   intro: "Prawdziwe systemy z prawdziwymi użytkownikami. Każdy pokazuje problem biznesowy, miejsce AI w procesie i to, co trzyma je w ryzach.",
   read: "Zobacz wdrożenie",
   back: "Wszystkie wdrożenia",

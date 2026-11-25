@@ -1,3 +1,4 @@
+import { INSTAGRAM_URL } from "@/lib/site";
 export const NAV_LINKS = [
   { href: "/services", label: "Services" },
   { href: "/use-cases", label: "Use cases" },
@@ -32,6 +33,7 @@ export const FOOTER = {
   socials: [
     { href: "https://www.linkedin.com/in/ostromeckyp/", label: "LinkedIn" },
     { href: "https://github.com/ostromeckyp", label: "GitHub" },
+    { href: INSTAGRAM_URL, label: "Instagram" },
     { href: "https://x.com/ostromeckyp", label: "X" },
   ],
 };

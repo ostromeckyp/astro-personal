@@ -26,7 +26,7 @@ export const HOME: typeof EN = {
         n: "02",
         meta: "najczęściej",
         title: "AI w realnych przypadkach biznesowych",
-        body: "Sprawdzone na Twoich danych, wdrażane tylko wtedy, gdy się opłaca.",
+        body: "Bierzemy realny proces z Twojej firmy i usprawniamy go z pomocą AI, od pierwszego prototypu po działające rozwiązanie na produkcji.",
         featured: true,
       },
       {

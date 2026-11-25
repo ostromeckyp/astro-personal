@@ -1,3 +1,4 @@
+import { INSTAGRAM_URL } from "@/lib/site";
 export const CONTACT = {
   label: "contact",
   h1: "Let's talk about your project.",
@@ -19,6 +20,7 @@ export const CONTACT = {
   socials: [
     { href: "https://www.linkedin.com/in/ostromeckyp/", label: "LinkedIn" },
     { href: "https://github.com/ostromeckyp", label: "GitHub" },
+    { href: INSTAGRAM_URL, label: "Instagram" },
     { href: "https://x.com/ostromeckyp", label: "X" },
   ],
   form: {
