@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { TextLink } from "@/components/ui/TextLink";
 import { NEW_TAB } from "@/lib/external-link";
 import { pageMetadata } from "@/lib/metadata";
 import { getDictionary } from "@/lib/dictionary";
@@ -12,6 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return pageMetadata({ lang, ...META.about, path: "/about" });
 }
 
+const H2 = "text-[32px] leading-[1.1] font-semibold tracking-[-0.03em]";
+const P = "text-[17px] leading-[1.65] text-ink-400";
 const CARD = "reveal flex flex-col gap-[18px] rounded-card border border-ink-700 bg-ink-900 p-8";
 
 export default async function AboutPage({ params }: { params: Promise<{ lang: Locale }> }) {
@@ -36,13 +39,6 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: Lo
           <h1 className="text-[clamp(44px,5vw,72px)] leading-[0.98] font-semibold tracking-[-0.045em]">{ABOUT.h1}</h1>
           <p className="text-xl leading-[1.55] text-ink-200">{ABOUT.p1}</p>
           <p className="text-base leading-[1.65] text-ink-400">{ABOUT.p2}</p>
-          <p className="text-base leading-[1.65] text-ink-400">
-            {ABOUT.p3}{" "}
-            <a href={ABOUT.github.href} {...NEW_TAB} className="text-ink-0 underline decoration-accent-line underline-offset-[3px] hover:text-accent">
-              {ABOUT.github.label}
-            </a>
-            .
-          </p>
           <div className="flex flex-wrap items-center gap-4">
             <Button href="/contact" size="lg">
               {ABOUT.cta}
@@ -65,6 +61,34 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: Lo
           ))}
         </div>
       </section>
+
+      {/* Each section opens with a sentence that answers its heading, so it reads well when quoted on its own. */}
+      <div className="flex max-w-[760px] flex-col gap-16 pb-32">
+        {ABOUT.sections.map((section) => (
+          <section key={section.id} id={section.id} className="reveal flex scroll-mt-24 flex-col gap-5">
+            <h2 className={H2}>{section.heading}</h2>
+            {section.body.map((p) => (
+              <p key={p} className={P}>
+                {p}
+              </p>
+            ))}
+          </section>
+        ))}
+        <section id="community" className="reveal flex scroll-mt-24 flex-col gap-5">
+          <h2 className={H2}>{ABOUT.community.heading}</h2>
+          <p className={P}>
+            {ABOUT.p3}{" "}
+            <a href={ABOUT.github.href} {...NEW_TAB} className="text-ink-0 underline decoration-accent-line underline-offset-[3px] hover:text-accent">
+              {ABOUT.github.label}
+            </a>
+            .
+          </p>
+          <p className={P}>{ABOUT.community.talks}</p>
+          <div>
+            <TextLink href="/talks">{ABOUT.community.talksLink}</TextLink>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

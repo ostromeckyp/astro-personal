@@ -72,6 +72,20 @@ describe("dictionaries", () => {
     }
   });
 
+  it("give the about page headed sections that say who, what, where and with what", () => {
+    for (const lang of ["en", "pl"] as const) {
+      const { ABOUT, SERVICES } = getDictionary(lang);
+      expect(ABOUT.sections.map((s) => s.id)).toEqual(["what-i-do", "experience", "technologies"]);
+      for (const s of ABOUT.sections) expect(s.heading && s.body.length, s.id).toBeTruthy();
+      const text = ABOUT.sections.flatMap((s) => s.body).join(" ");
+      expect(text).toContain("Wrocław");
+      const stack = SERVICES.faq.items.find((f) => f.logos)!.a;
+      expect(ABOUT.sections[2].body[0]).toContain(stack.slice(stack.indexOf("Google Cloud")));
+      expect(text).not.toMatch(/Ionic|Capacitor/);
+      expect(ABOUT.community.heading).toBeTruthy();
+    }
+  });
+
   it("translate visible copy rather than repeating English", () => {
     const { HOME: a } = getDictionary("en");
     const { HOME: b } = getDictionary("pl");
