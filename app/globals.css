@@ -125,6 +125,8 @@ html:not([data-splash]) .splash {
 
   html {
     scroll-behavior: smooth;
+    /* Locking scroll (splash, mobile menu) must not change the layout width on classic scrollbars. */
+    scrollbar-gutter: stable;
     background-color: var(--color-ink-950);
   }
 

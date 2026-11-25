@@ -167,7 +167,7 @@ export function ContactFab({ copy }: { copy: typeof FAB }) {
         aria-labelledby="contact-fab-title"
         hidden={!shown}
         data-closing={closing || undefined}
-        className="absolute right-0 bottom-full mb-3 w-[min(18rem,calc(100vw-2rem))] rounded-card border border-ink-700 bg-ink-900 p-2 shadow-[0_12px_40px_rgb(0_0_2/0.35)]"
+        className="absolute right-0 bottom-full mb-3 max-h-[calc(100dvh-11.5rem)] w-[min(18rem,calc(100vw-2rem))] overflow-y-auto overscroll-contain rounded-card border border-ink-700 bg-ink-900 p-2 shadow-[0_12px_40px_rgb(0_0_2/0.35)]"
       >
         <p id="contact-fab-title" className="px-3 pt-2 pb-1 font-mono text-xs text-ink-400">
           {copy.panel}
