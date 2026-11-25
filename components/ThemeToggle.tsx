@@ -5,6 +5,8 @@ import { LIGHT_QUERY, THEME_KEY, revealRadius, type Theme } from "@/lib/theme";
 
 /** Incremented per reveal so only the latest one's cleanup removes the class. */
 let revealCount = 0;
+/** Theme a started reveal will apply; its update callback runs async, so a quick second click reads this. */
+let pendingTheme: Theme | null = null;
 
 function subscribeTheme(onChange: () => void) {
   const mo = new MutationObserver(onChange);
@@ -40,10 +42,11 @@ export function ThemeToggle({ toLight, toDark }: { toLight: string; toDark: stri
   }, []);
 
   const flip = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const next: Theme = currentTheme() === "light" ? "dark" : "light";
+    const next: Theme = (pendingTheme ?? currentTheme()) === "light" ? "dark" : "light";
     const root = document.documentElement;
     const apply = () => {
       root.dataset.theme = next;
+      if (pendingTheme === next) pendingTheme = null;
     };
     if ("startViewTransition" in document && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const rect = event.currentTarget.getBoundingClientRect();
@@ -54,9 +57,11 @@ export function ThemeToggle({ toLight, toDark }: { toLight: string; toDark: stri
       root.style.setProperty("--reveal-r", `${revealRadius(x, y, window.innerWidth, window.innerHeight)}px`);
       root.classList.add("theme-reveal");
       const id = ++revealCount;
-      document.startViewTransition(apply).finished.finally(() => {
+      pendingTheme = next;
+      const cleanup = () => {
         if (id === revealCount) root.classList.remove("theme-reveal");
-      });
+      };
+      document.startViewTransition(apply).finished.then(cleanup, cleanup);
     } else {
       apply();
     }
