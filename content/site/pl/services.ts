@@ -5,6 +5,8 @@ export const SERVICES: typeof EN = {
   h1: "Oprogramowanie dla Twojej firmy. Z AI tam, gdzie się opłaca.",
   intro:
     "Aplikacje webowe i mobilne, strony, workflowy AI, audyty i opieka po starcie.",
+  /** Currency of the numeric `priceFrom` below, for structured data. */
+  currency: "PLN",
   priceLabel: "cena",
   priceNote: "Ceny orientacyjne netto (plus 23% VAT). Ostateczną cenę podaję w wycenie na piśmie po bezpłatnej 30-minutowej rozmowie.",
   prev: "Poprzednie usługi",
@@ -29,6 +31,7 @@ export const SERVICES: typeof EN = {
     },
     {
       n: "03",
+      priceFrom: 9000,
       price: "Od 9 000 zł netto",
       meta: "web",
       title: "Aplikacje webowe",
@@ -37,6 +40,7 @@ export const SERVICES: typeof EN = {
     },
     {
       n: "04",
+      priceFrom: 9000,
       price: "Od 9 000 zł netto",
       meta: "mobile",
       title: "Aplikacje mobilne",
@@ -45,6 +49,7 @@ export const SERVICES: typeof EN = {
     },
     {
       n: "05",
+      priceFrom: 1900,
       price: "Od 1 900 zł netto",
       meta: "strony",
       title: "Strony internetowe",
@@ -61,6 +66,8 @@ export const SERVICES: typeof EN = {
     },
     {
       n: "07",
+      priceFrom: 99,
+      priceUnit: "MONTH",
       price: "Od 99 zł / mies. netto",
       meta: "opieka",
       title: "Utrzymanie i rozwój",

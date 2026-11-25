@@ -32,6 +32,16 @@ export function personSchema(lang: Locale = DEFAULT_LOCALE) {
       url: `${SITE_URL}${localePath(lang, "/services")}`,
       itemListElement: SERVICES.items.map((s) => ({
         "@type": "Offer",
+        // Only the visible "from" prices; individually quoted services get none.
+        ...("priceFrom" in s && {
+          priceSpecification: {
+            "@type": "priceUnit" in s ? "UnitPriceSpecification" : "PriceSpecification",
+            minPrice: s.priceFrom,
+            priceCurrency: SERVICES.currency,
+            valueAddedTaxIncluded: false,
+            ...("priceUnit" in s && { unitCode: s.priceUnit === "MONTH" ? "MON" : s.priceUnit, unitText: s.priceUnit }),
+          },
+        }),
         itemOffered: { "@type": "Service", name: s.title, description: s.body, areaServed: "Worldwide" },
       })),
     },

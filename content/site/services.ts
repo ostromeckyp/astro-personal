@@ -7,6 +7,8 @@ export const SERVICES = {
   h1: "Software for your business. AI where it pays off.",
   intro:
     "Web and mobile apps, websites, AI workflows, audits and care after launch.",
+  /** Currency of the numeric `priceFrom` below, for structured data. */
+  currency: "USD",
   priceLabel: "price",
   priceNote: "Prices are a starting point, net of VAT. You get the final price in a written quote after a free 30-minute call.",
   prev: "Previous services",
@@ -31,6 +33,7 @@ export const SERVICES = {
     },
     {
       n: "03",
+      priceFrom: 2500,
       price: "From $2,500",
       meta: "web",
       title: "Web applications",
@@ -39,6 +42,7 @@ export const SERVICES = {
     },
     {
       n: "04",
+      priceFrom: 2500,
       price: "From $2,500",
       meta: "mobile",
       title: "Mobile apps",
@@ -47,6 +51,7 @@ export const SERVICES = {
     },
     {
       n: "05",
+      priceFrom: 500,
       price: "From $500",
       meta: "websites",
       title: "Websites",
@@ -63,6 +68,8 @@ export const SERVICES = {
     },
     {
       n: "07",
+      priceFrom: 29,
+      priceUnit: "MONTH",
       price: "From $29 / month",
       meta: "care",
       title: "Maintenance and development",

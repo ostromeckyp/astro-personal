@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { SERVICES } from "@/content/site/services";
+import { getDictionary } from "./dictionary";
 import type { PostSummary } from "./posts";
 import { PERSON, SITE_URL } from "./site";
 import { blogPostingSchema, breadcrumbSchema, faqSchema, personSchema, serializeJsonLd, websiteSchema } from "./structured-data";
@@ -37,8 +38,29 @@ describe("personSchema", () => {
     expect(offered.every((s) => s.description.length > 0)).toBe(true);
   });
 
-  it("states no prices or ratings, which the site doesn't show", () => {
-    expect(JSON.stringify(person)).not.toMatch(/price|rating|award/i);
+  it("states no ratings or awards, which the site doesn't show", () => {
+    expect(JSON.stringify(person)).not.toMatch(/rating|award/i);
+  });
+
+  it("gives the visible starting prices, net of VAT, in each language's currency", () => {
+    const specs = (lang: "en" | "pl") =>
+      personSchema(lang).hasOfferCatalog.itemListElement.map((o) => ("priceSpecification" in o ? o.priceSpecification : undefined));
+    const en = specs("en");
+    expect(en.map((p) => p?.minPrice)).toEqual([undefined, undefined, 2500, 2500, 500, undefined, 29]);
+    expect(en[4]).toMatchObject({ "@type": "PriceSpecification", priceCurrency: "USD", valueAddedTaxIncluded: false });
+    expect(en[6]).toMatchObject({ "@type": "UnitPriceSpecification", unitCode: "MON", unitText: "MONTH" });
+    expect(specs("pl").map((p) => p?.minPrice)).toEqual([undefined, undefined, 9000, 9000, 1900, undefined, 99]);
+    expect(specs("pl")[4]?.priceCurrency).toBe("PLN");
+  });
+
+  it("matches each numeric price to the visible price text", () => {
+    for (const lang of ["en", "pl"] as const) {
+      const { SERVICES: items } = getDictionary(lang);
+      for (const s of items.items) {
+        if ("priceFrom" in s) expect(s.price.replace(/[\s,]/g, "")).toContain(String(s.priceFrom));
+        else expect(s.price).toMatch(/individual|indywidualna/i);
+      }
+    }
   });
 });
 
