@@ -16,7 +16,8 @@ function Logo({ onClick }: { onClick?: () => void }) {
     <Link href="/" onClick={onClick} className="tap block min-w-0 shrink">
       {/* White wordmark on dark, dark wordmark on light; CSS shows the one that matches the theme. */}
       <Image src="/images/logo-dark.png" alt="ostromecki.dev" width={1200} height={135} preload className="only-dark h-[18px] w-auto sm:h-[22px]" />
-      <Image src="/images/logo-light.png" alt="ostromecki.dev" width={1200} height={135} loading="eager" className="only-light h-[18px] w-auto sm:h-[22px]" />
+      {/* Not preloaded: dark is the default theme, and a lazy image hidden by the dark theme is never fetched. */}
+      <Image src="/images/logo-light.png" alt="ostromecki.dev" width={1200} height={135} className="only-light h-[18px] w-auto sm:h-[22px]" />
     </Link>
   );
 }
