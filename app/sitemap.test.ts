@@ -23,3 +23,17 @@ it("lists every route and no removed ones", () => {
   expect(urls).toContain("/pl/services");
   expect(urls).not.toContain("/pl/blog/code-became-cheap");
 });
+
+it("writes the root as the canonical does, without a trailing slash", () => {
+  expect(sitemap()[0].url).toBe("https://www.ostromecki.dev");
+});
+
+it("dates every entry and links x-default like the pages' hreflang", () => {
+  for (const entry of sitemap()) expect(entry.lastModified, entry.url).toBeInstanceOf(Date);
+  const services = sitemap().find((e) => e.url === "https://www.ostromecki.dev/services")!;
+  expect(services.alternates?.languages).toEqual({
+    en: "https://www.ostromecki.dev/services",
+    pl: "https://www.ostromecki.dev/pl/services",
+    "x-default": "https://www.ostromecki.dev/services",
+  });
+});
