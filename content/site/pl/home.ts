@@ -11,7 +11,7 @@ export const HOME: typeof EN = {
   },
   intro: "Buduję aplikacje, strony i workflowy AI dla firm i dbam o to, żeby działały na produkcji.",
   introBody:
-    "Od ośmiu lat buduję systemy, na których polegają firmy z finansów, motoryzacji, regtechu i e-commerce.",
+    "Od ośmiu lat buduję systemy, na których polegają firmy z fintechu, regtechu i e-commerce.",
   services: {
     heading: "Czym się zajmuję",
     all: "Wszystkie usługi",

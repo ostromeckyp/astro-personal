@@ -1,6 +1,6 @@
 # Paweł Ostromecki
 
-> Senior software engineer and consultant from Wrocław, Poland, working remotely worldwide. He builds software for companies: web and mobile apps, websites and AI workflows, plus audits and maintenance. He leads the Angular Wrocław community.
+> Senior software engineer and consultant from Wrocław, Poland, working remotely worldwide. He builds software for companies: web and mobile apps, websites and AI workflows, plus audits and maintenance. He focuses on fintech, regtech and e-commerce, and leads the Angular Wrocław community.
 
 ## Services
 

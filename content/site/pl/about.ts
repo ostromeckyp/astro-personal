@@ -14,7 +14,7 @@ export const ABOUT: typeof EN = {
     label: "w skrócie",
     items: [
       { v: "8 lat", t: "budowania systemów, na których firmy polegają na co dzień" },
-      { v: "6 branż", t: "finanse, motoryzacja, regtech, logistyka, turystyka i energetyka" },
+      { v: "Fintech, regtech, e-commerce", t: "branże, na których się skupiam" },
       { v: "Angular Wrocław", t: "prowadzę społeczność: meetupy, prelekcje i warsztaty" },
     ],
   },

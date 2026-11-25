@@ -12,7 +12,7 @@ export const ABOUT = {
     label: "in short",
     items: [
       { v: "8 years", t: "building systems companies rely on every day" },
-      { v: "6 industries", t: "finance, automotive, regtech, logistics, travel and energy" },
+      { v: "Fintech, regtech, e-commerce", t: "the industries I focus on" },
       { v: "Angular Wrocław", t: "community lead: meetups, talks and workshops" },
     ],
   },
