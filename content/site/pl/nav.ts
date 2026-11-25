@@ -17,6 +17,8 @@ export const COMMON: typeof C = {
   mobileNav: "Nawigacja mobilna",
   primaryNav: "Główna",
   languageLabel: "Język",
+  themeToLight: "Włącz jasny motyw",
+  themeToDark: "Włącz ciemny motyw",
   notFoundTitle: "Nie znaleziono strony",
   notFoundHeading: "Nie znaleziono strony.",
   notFoundBody: "Ta strona nie istnieje albo została przeniesiona.",

@@ -28,7 +28,7 @@ export function Button({
     "inline-flex items-center justify-center gap-2.5 rounded-full whitespace-nowrap transition-[background-color,border-color,scale] duration-200 motion-safe:active:scale-[0.98]",
     size === "md" ? "h-12 px-6 text-[15px]" : "h-[52px] px-7 text-base",
     variant === "primary"
-      ? "bg-sakura-500 font-semibold text-ink-950 hover:bg-sakura-300 disabled:opacity-60"
+      ? "bg-sakura-500 font-semibold text-on-accent hover:bg-sakura-300 disabled:opacity-60"
       : "border border-ink-500 font-medium text-ink-0 hover:border-ink-400",
     className,
   );

@@ -21,7 +21,7 @@ export function PageHeader({
       )}
     >
       <div className="flex flex-col gap-6">
-        <span className="font-mono text-[13px] text-sakura-500">{label}</span>
+        <span className="font-mono text-[13px] text-accent">{label}</span>
         <h1 className="text-[clamp(48px,6vw,88px)] leading-[0.95] font-semibold tracking-[-0.045em]">{title}</h1>
       </div>
       <p className="text-lg leading-[1.6] text-ink-400">{intro}</p>

@@ -11,7 +11,7 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
 
       {/* Copy shares the site container, so it lines up with the sections below. */}
       <div className="site-container relative md:absolute md:inset-x-0 md:inset-y-0">
-        <div className="absolute top-[11%] left-6 hidden flex-col gap-3.5 text-[13px] leading-[1.22] text-[#e9e6ea] lg:flex">
+        <div className="absolute top-[11%] left-6 hidden flex-col gap-3.5 text-[13px] leading-[1.22] text-ink-200 lg:flex">
           {hero.groups.map((g) => (
             <p key={g} className="whitespace-pre-line">
               {g}
@@ -25,14 +25,14 @@ export function Hero({ hero }: { hero: typeof HOME.hero }) {
             <Button href="/contact" size="lg">
               {hero.cta}
             </Button>
-            <Link href="/use-cases" className="tap border-b border-[rgba(244,242,244,0.6)] pb-[3px] text-base text-ink-100 hover:border-ink-0">
+            <Link href="/use-cases" className="tap border-b border-ink-100/60 pb-[3px] text-base text-ink-100 hover:border-ink-0">
               {hero.cta2}
             </Link>
           </div>
           <p className="-mt-2 text-sm text-ink-200">{hero.ctaNote}</p>
         </div>
 
-        <div className="absolute right-6 bottom-[9%] hidden flex-wrap gap-10 text-[13px] text-[#e9e6ea] xl:flex">
+        <div className="absolute right-6 bottom-[9%] hidden flex-wrap gap-10 text-[13px] text-ink-200 xl:flex">
           {hero.captions.map((c) => (
             <span key={c}>{c}</span>
           ))}

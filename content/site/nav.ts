@@ -15,6 +15,8 @@ export const COMMON = {
   mobileNav: "Mobile navigation",
   primaryNav: "Primary",
   languageLabel: "Language",
+  themeToLight: "Switch to light mode",
+  themeToDark: "Switch to dark mode",
   notFoundTitle: "Page not found",
   notFoundHeading: "Page not found.",
   notFoundBody: "This page doesn't exist or has moved.",

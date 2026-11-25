@@ -32,7 +32,7 @@ export function CaseIntro({
           {back}
         </Link>
         <div className="flex items-baseline gap-6">
-          <span className="font-mono text-[13px] text-sakura-500">{index}</span>
+          <span className="font-mono text-[13px] text-accent">{index}</span>
           <span className="font-mono text-xs font-medium tracking-[0.04em] text-ink-400 uppercase">{label}</span>
         </div>
         <ViewTransition name={`use-case-title-${slug}`}>

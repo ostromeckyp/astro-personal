@@ -82,7 +82,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
             {ARTICLE.back}
           </Link>
           <div className="flex flex-wrap items-center gap-3">
-            <Tag className="border-sakura-500 text-sakura-500">{postCategoryLabel(post, lang)}</Tag>
+            <Tag className="border-accent-line text-accent">{postCategoryLabel(post, lang)}</Tag>
             <span className="font-mono text-xs text-ink-400">
               {formatPostDate(post.date, "long", lang)} · {ARTICLE.readingTime.replace("{n}", String(post.readingMinutes))}
             </span>

@@ -71,7 +71,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
             />
           </div>
           <div className="reveal flex flex-col gap-6">
-            <span className="font-mono text-[13px] text-sakura-500">05 · {HOME.about.label}</span>
+            <span className="font-mono text-[13px] text-accent">05 · {HOME.about.label}</span>
             <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{HOME.about.heading}</h2>
             <p className="text-[17px] leading-[1.65] text-ink-400">{HOME.about.body}</p>
             <div className="flex flex-wrap gap-6">
@@ -87,10 +87,10 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
           <section className="pb-32">
             <Link
               href={`/blog/${latest.slug}`}
-              className="reveal grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-end gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 text-ink-0 transition-colors hover:border-sakura-500 md:p-12"
+              className="reveal grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-end gap-8 rounded-card border border-ink-600 bg-ink-900 p-6 text-ink-0 transition-colors hover:border-accent-line md:p-12"
             >
               <div className="flex flex-col gap-4">
-                <span className="font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase">
+                <span className="font-mono text-[11px] tracking-[0.04em] text-accent uppercase">
                   {HOME.post.label} · {latest.label}
                 </span>
                 <ViewTransition name={`post-title-${latest.slug}`}>
@@ -99,7 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
               </div>
               <div className="flex items-center justify-between gap-4 text-[15px] text-ink-400">
                 <span>{formatPostDate(latest.date, "long", lang)}</span>
-                <span className="border-b-2 border-sakura-500 pb-[3px] text-ink-0">{HOME.post.read}</span>
+                <span className="border-b-2 border-accent-line pb-[3px] text-ink-0">{HOME.post.read}</span>
               </div>
             </Link>
           </section>

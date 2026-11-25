@@ -12,7 +12,7 @@ function Links({ items, activeId, onNavigate }: { items: TocItem[]; activeId?: s
         return (
           <li
             key={item.id}
-            className={cn("-ml-px border-l-2 pl-4 text-sm leading-[1.4]", active ? "border-sakura-500" : "border-transparent")}
+            className={cn("-ml-px border-l-2 pl-4 text-sm leading-[1.4]", active ? "border-accent-line" : "border-transparent")}
           >
             <a
               href={`#${item.id}`}
@@ -56,8 +56,8 @@ export function TableOfContents({ items, heading, label }: { items: TocItem[]; h
       <details ref={collapsed} className="group rounded-input border border-ink-600 lg:hidden">
         <summary className="flex min-h-11 list-none items-center justify-between gap-4 px-4 font-mono text-[11px] tracking-[0.04em] text-ink-400 uppercase [&::-webkit-details-marker]:hidden">
           {heading}
-          <span aria-hidden="true" className="text-sm text-sakura-500 group-open:hidden">+</span>
-          <span aria-hidden="true" className="hidden text-sm text-sakura-500 group-open:inline">−</span>
+          <span aria-hidden="true" className="text-sm text-accent group-open:hidden">+</span>
+          <span aria-hidden="true" className="hidden text-sm text-accent group-open:inline">−</span>
         </summary>
         <div className="px-4 pb-4">
           <Links items={items} activeId={activeId} onNavigate={() => collapsed.current?.removeAttribute("open")} />

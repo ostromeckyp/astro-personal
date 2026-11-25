@@ -59,11 +59,11 @@ export function PostCard({
         </Morph>
         <div className="flex min-w-0 flex-col gap-2">
           <div className={META}>
-            <span className="text-sakura-500">{post.label}</span>
+            <span className="text-accent">{post.label}</span>
             <span>{date}</span>
           </div>
           <Morph name={`post-title-${post.slug}`} enabled={morph}>
-            <span className="text-2xl leading-[1.2] font-medium tracking-[-0.02em] text-ink-200 transition-colors group-hover:text-white">
+            <span className="text-2xl leading-[1.2] font-medium tracking-[-0.02em] text-ink-200 transition-colors group-hover:text-ink-0">
               {post.title}
             </span>
           </Morph>
@@ -81,12 +81,12 @@ export function PostCard({
       </Morph>
       <div className="flex flex-col gap-2.5">
         <div className={META}>
-          <span className="text-sakura-500">{post.label}</span>
+          <span className="text-accent">{post.label}</span>
           <span>{date}</span>
           <span>{read}</span>
         </div>
         <Morph name={`post-title-${post.slug}`} enabled={morph}>
-          <span className="text-[22px] leading-[1.2] font-semibold tracking-[-0.02em] text-ink-200 transition-colors group-hover:text-white">
+          <span className="text-[22px] leading-[1.2] font-semibold tracking-[-0.02em] text-ink-200 transition-colors group-hover:text-ink-0">
             {post.title}
           </span>
         </Morph>

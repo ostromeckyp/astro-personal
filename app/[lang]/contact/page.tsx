@@ -29,15 +29,15 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
   return (
     <div className="site-container grid grid-cols-1 items-start gap-x-14 gap-y-10 pt-20 pb-32 md:grid-cols-2 md:grid-rows-[auto_1fr] md:gap-y-7 md:pt-28">
       <div className="flex flex-col gap-7">
-        <span className="font-mono text-[13px] text-sakura-500">{CONTACT.label}</span>
+        <span className="font-mono text-[13px] text-accent">{CONTACT.label}</span>
         <h1 className="text-[clamp(48px,6vw,80px)] leading-[0.95] font-semibold tracking-[-0.045em]">{CONTACT.h1}</h1>
         <p className="text-lg leading-[1.6] text-ink-400">{CONTACT.intro}</p>
         <div className="flex flex-col gap-3">
-          <span className="font-mono text-[13px] text-sakura-500">{CONTACT.steps.label}</span>
+          <span className="font-mono text-[13px] text-accent">{CONTACT.steps.label}</span>
           <ol className="flex flex-col border-t border-ink-600">
             {CONTACT.steps.items.map((s) => (
               <li key={s.n} className="grid grid-cols-[40px_minmax(0,1fr)] gap-x-3 border-b border-ink-700 py-4">
-                <span className="pt-1 font-mono text-xs text-sakura-500">{s.n}</span>
+                <span className="pt-1 font-mono text-xs text-accent">{s.n}</span>
                 <div className="flex flex-col gap-1">
                   <span className="text-[17px] font-medium tracking-[-0.01em]">{s.t}</span>
                   <span className="text-[15px] leading-[1.55] text-ink-400">{s.d}</span>
@@ -54,12 +54,12 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
       </div>
       <dl className="reveal flex flex-col border-t border-ink-600">
         <Detail term={details.email}>
-          <a href={`mailto:${CONTACT.email}`} className="break-words hover:text-sakura-300">
+          <a href={`mailto:${CONTACT.email}`} className="break-words hover:text-accent">
             {CONTACT.email}
           </a>
         </Detail>
         <Detail term={details.phone}>
-          <a href={CONTACT.phoneHref} className="hover:text-sakura-300">
+          <a href={CONTACT.phoneHref} className="hover:text-accent">
             {CONTACT.phone}
           </a>
         </Detail>
@@ -69,7 +69,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
         <Detail term={details.elsewhere}>
           <div className="flex flex-wrap gap-5">
             {CONTACT.socials.map((s) => (
-              <a key={s.href} href={s.href} {...NEW_TAB} className="tap hover:text-sakura-300">
+              <a key={s.href} href={s.href} {...NEW_TAB} className="tap hover:text-accent">
                 {s.label}
               </a>
             ))}

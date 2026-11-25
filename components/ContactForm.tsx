@@ -10,7 +10,7 @@ import { cn } from "@/lib/cn";
 import { CONTACT_TOPICS, type ContactInput, createContactSchema } from "@/lib/contact-schema";
 
 const FIELD =
-  "rounded-input border border-ink-600 bg-ink-950 text-base text-ink-0 outline-none placeholder:text-ink-400 focus:border-sakura-500 focus:shadow-[0_0_0_4px_rgba(204,255,0,0.18)] aria-invalid:border-danger-500 aria-invalid:focus:shadow-[0_0_0_4px_rgba(255,77,94,0.18)]";
+  "rounded-input border border-ink-600 bg-ink-950 text-base text-ink-0 outline-none placeholder:text-ink-400 focus:border-accent-line focus:shadow-[0_0_0_4px_rgba(204,255,0,0.18)] aria-invalid:border-danger-500 aria-invalid:focus:shadow-[0_0_0_4px_rgba(255,77,94,0.18)]";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
@@ -38,7 +38,7 @@ export function ContactForm({ copy, success }: { copy: typeof CONTACT.form; succ
   if (mutation.isSuccess) {
     return (
       <div role="status" className="fade-in flex min-h-[480px] flex-col justify-center gap-4">
-        <span aria-hidden="true" className="h-0.5 w-10 bg-sakura-500" />
+        <span aria-hidden="true" className="h-0.5 w-10 bg-accent-line" />
         <span className="text-[32px] leading-[1.1] font-semibold tracking-[-0.03em]">{success.title}</span>
         <span className="text-base leading-[1.6] text-ink-400">{success.body}</span>
         <TextLink href="/use-cases" className="self-start">

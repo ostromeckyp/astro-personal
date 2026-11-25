@@ -54,7 +54,7 @@ export function Carousel({ children, label, prevLabel, nextLabel }: { children: 
             onClick={() => page(dir)}
             disabled={dir === -1 ? edges.start : edges.end}
             aria-label={dir === -1 ? prevLabel : nextLabel}
-            className="grid size-12 place-items-center rounded-full border border-ink-600 font-mono text-lg text-ink-0 transition-colors hover:border-sakura-500 disabled:pointer-events-none disabled:opacity-30"
+            className="grid size-12 place-items-center rounded-full border border-ink-600 font-mono text-lg text-ink-0 transition-colors hover:border-accent-line disabled:pointer-events-none disabled:opacity-30"
           >
             <span aria-hidden="true">{dir === -1 ? "←" : "→"}</span>
           </button>

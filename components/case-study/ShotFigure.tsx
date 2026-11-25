@@ -23,7 +23,7 @@ export function ShotFigure({ shot }: { shot: Shot }) {
         <Callout src={shot.src} {...shot.crop} style={shot.cropPosition} />
       </Stage>
       <figcaption className="reveal flex flex-col gap-1.5">
-        <span className="font-mono text-xs text-sakura-500">{shot.n}</span>
+        <span className="font-mono text-xs text-accent">{shot.n}</span>
         <span className="text-lg font-medium tracking-[-0.01em]">{shot.t}</span>
         <span className="text-[15px] leading-[1.55] text-ink-400">{shot.d}</span>
       </figcaption>

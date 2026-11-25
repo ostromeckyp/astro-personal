@@ -35,12 +35,12 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
                 id={`service-${s.n}`}
                 className={cn(
                   "flex w-full scroll-mt-24 flex-col gap-5 rounded-card border bg-ink-900 p-7 md:p-8",
-                  s.featured ? "border-sakura-500" : "border-ink-700",
+                  s.featured ? "border-accent-line" : "border-ink-700",
                 )}
               >
                 <div className="flex items-start justify-between">
                   <span className="text-[56px] leading-[0.8] font-light tracking-[-0.06em]">{s.n}</span>
-                  <span className={cn(META, s.featured ? "text-sakura-500" : "text-ink-400")}>{s.meta}</span>
+                  <span className={cn(META, s.featured ? "text-accent" : "text-ink-400")}>{s.meta}</span>
                 </div>
                 <h2 className="text-[26px] leading-[1.15] font-semibold tracking-[-0.025em]">{s.title}</h2>
                 <p className="text-[15px] leading-[1.6] text-ink-400">{s.body}</p>
@@ -61,16 +61,16 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
 
       <section className="flex flex-col gap-10 pt-8 pb-32">
         <div className="reveal flex max-w-[640px] flex-col gap-4">
-          <span className="font-mono text-[13px] text-sakura-500">{SERVICES.models.label}</span>
+          <span className="font-mono text-[13px] text-accent">{SERVICES.models.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{SERVICES.models.heading}</h2>
         </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {SERVICES.models.items.map((m) => (
             <div
               key={m.t}
-              className={cn("reveal flex flex-col gap-4 rounded-card border bg-ink-900 p-8", m.featured ? "border-sakura-500" : "border-ink-700")}
+              className={cn("reveal flex flex-col gap-4 rounded-card border bg-ink-900 p-8", m.featured ? "border-accent-line" : "border-ink-700")}
             >
-              <span className={cn(META, m.featured ? "text-sakura-500" : "text-ink-400")}>{m.len}</span>
+              <span className={cn(META, m.featured ? "text-accent" : "text-ink-400")}>{m.len}</span>
               <span className="text-2xl leading-[1.15] font-semibold tracking-[-0.02em]">{m.t}</span>
               <span className="text-[15px] leading-[1.6] text-ink-400">{m.d}</span>
               <span className="mt-auto pt-2 text-xl font-semibold tracking-[-0.015em]">{m.price}</span>
@@ -82,7 +82,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-12 pb-32">
         <div className="reveal flex flex-col gap-4">
-          <span className="font-mono text-[13px] text-sakura-500">{SERVICES.faq.label}</span>
+          <span className="font-mono text-[13px] text-accent">{SERVICES.faq.label}</span>
           <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{SERVICES.faq.heading}</h2>
         </div>
         <div className="flex flex-col border-t border-ink-600">
@@ -90,10 +90,10 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
             <details key={f.q} className="reveal group border-b border-ink-600">
               <summary className="flex list-none items-center justify-between gap-4 py-[22px] text-lg font-medium tracking-[-0.01em] [&::-webkit-details-marker]:hidden">
                 {f.q}
-                <span aria-hidden="true" className="shrink-0 font-mono text-sakura-500 group-open:hidden">
+                <span aria-hidden="true" className="shrink-0 font-mono text-accent group-open:hidden">
                   +
                 </span>
-                <span aria-hidden="true" className="hidden shrink-0 font-mono text-sakura-500 group-open:inline">
+                <span aria-hidden="true" className="hidden shrink-0 font-mono text-accent group-open:inline">
                   −
                 </span>
               </summary>

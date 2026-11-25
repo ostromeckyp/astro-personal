@@ -21,6 +21,14 @@
   --color-danger-500: #ff4d5e;
   --color-danger-300: #ff8a95;
 
+  /* Accent for text: lime on dark, a darker olive on light, where lime can't be read. */
+  --color-accent: #ccff00;
+  /* Text that sits on a lime fill stays dark in both themes. */
+  --color-on-accent: #000002;
+  --color-prose: #d6d6dc;
+  /* Accent for lines, underlines and markers: lime on dark, a mid olive on light (3.3:1, enough for non-text). */
+  --color-accent-line: #ccff00;
+
   --font-sans: var(--font-geist), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
@@ -31,10 +39,70 @@
   --container-site: 1248px;
 }
 
+/* Light theme: the same tokens, redefined. The <head> script sets data-theme before first paint. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-ink-950: #fefefe;
+  --color-ink-900: #f7f7f9;
+  --color-ink-800: #f0f0f3;
+  --color-ink-700: #e4e4e9;
+  --color-ink-600: #d3d3da;
+  --color-ink-500: #9a9aa6;
+  --color-ink-400: #5b5b66;
+  --color-ink-200: #1d1d24;
+  --color-ink-100: #131318;
+  --color-ink-0: #0a0a0f;
+  --color-accent: #5c7300;
+  --color-danger-500: #d0182b;
+  --color-danger-300: #b3121f;
+  --color-prose: #2b2b34;
+  --color-accent-line: #7a9900;
+}
+
+/* Screens (case-study stages, code blocks) keep the dark palette in both themes.
+   In the base layer so a utility class on the same element still wins. */
 @layer base {
+  .stay-dark,
+  .stage,
+  .article-prose pre {
+    color-scheme: dark;
+    --color-ink-950: #000002;
+    --color-ink-900: #0a0a0f;
+    --color-ink-800: #131318;
+    --color-ink-700: #1d1d24;
+    --color-ink-600: #2b2b34;
+    --color-ink-500: #5b5b66;
+    --color-ink-400: #9a9aa6;
+    --color-ink-200: #e4e4e8;
+    --color-ink-100: #f4f4f6;
+    --color-ink-0: #fefefe;
+    --color-accent: #ccff00;
+    --color-accent-line: #ccff00;
+    color: var(--color-ink-0);
+  }
+}
+
+/* Screen blending vanishes on a white page, so the light theme tints instead, and more softly. */
+:root[data-theme="light"] .article-glow {
+  --burn-low: 0.3;
+  --burn-span: 0.3;
+  mix-blend-mode: multiply;
+}
+
+/* Theme-specific twins (toggle icons, logo) are both rendered; the theme picks which one shows,
+   so server and client markup match. */
+:root[data-theme="light"] .only-dark,
+:root:not([data-theme="light"]) .only-light {
+  display: none;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
     background-color: var(--color-ink-950);
   }
 
@@ -54,7 +122,7 @@
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible {
-    outline: 2px solid var(--color-sakura-300);
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -241,7 +309,7 @@
     font-size: 12px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--color-sakura-500);
+    color: var(--color-accent);
   }
   .stage-h .t {
     font-size: clamp(26px, 3.6vw, 52px);
@@ -351,7 +419,7 @@
   .article-prose {
     font-size: 19px;
     line-height: 1.75;
-    color: #d6d6dc;
+    color: var(--color-prose);
     overflow-wrap: break-word;
   }
   .article-prose p,
@@ -395,7 +463,7 @@
     border-radius: 4px;
     background: var(--color-ink-800);
     border: 1px solid var(--color-ink-700);
-    color: var(--color-sakura-300);
+    color: var(--color-accent);
   }
   .article-prose ul {
     list-style: none;
@@ -412,7 +480,7 @@
     top: 0.8em;
     width: 14px;
     height: 2px;
-    background: var(--color-sakura-500);
+    background: var(--color-accent-line);
   }
   .article-prose ol {
     list-style: decimal;
@@ -422,23 +490,23 @@
     margin-bottom: 10px;
   }
   .article-prose ol li::marker {
-    color: var(--color-sakura-500);
+    color: var(--color-accent);
     font-family: var(--font-mono);
     font-size: 0.86em;
   }
   .article-prose a {
     color: var(--color-ink-0);
     text-decoration: underline;
-    text-decoration-color: var(--color-sakura-500);
+    text-decoration-color: var(--color-accent-line);
     text-underline-offset: 3px;
   }
   .article-prose a:hover {
-    color: var(--color-sakura-300);
+    color: var(--color-accent);
   }
   .article-prose blockquote {
     margin: 40px 0;
     padding: 4px 0 4px 28px;
-    border-left: 2px solid var(--color-sakura-500);
+    border-left: 2px solid var(--color-accent-line);
     font-size: 28px;
     line-height: 1.3;
     font-weight: 500;

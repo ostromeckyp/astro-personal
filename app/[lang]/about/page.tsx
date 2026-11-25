@@ -32,13 +32,13 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: Lo
           />
         </div>
         <div className="flex flex-col gap-7">
-          <span className="font-mono text-[13px] text-sakura-500">{ABOUT.label}</span>
+          <span className="font-mono text-[13px] text-accent">{ABOUT.label}</span>
           <h1 className="text-[clamp(44px,5vw,72px)] leading-[0.98] font-semibold tracking-[-0.045em]">{ABOUT.h1}</h1>
           <p className="text-xl leading-[1.55] text-ink-200">{ABOUT.p1}</p>
           <p className="text-base leading-[1.65] text-ink-400">{ABOUT.p2}</p>
           <p className="text-base leading-[1.65] text-ink-400">
             {ABOUT.p3}{" "}
-            <a href={ABOUT.github.href} {...NEW_TAB} className="text-ink-0 underline decoration-sakura-500 underline-offset-[3px] hover:text-sakura-300">
+            <a href={ABOUT.github.href} {...NEW_TAB} className="text-ink-0 underline decoration-accent-line underline-offset-[3px] hover:text-accent">
               {ABOUT.github.label}
             </a>
             .
@@ -55,7 +55,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: Lo
       </section>
 
       <section className="flex flex-col gap-8 pb-32">
-        <span className="font-mono text-[13px] text-sakura-500">{facts.label}</span>
+        <span className="font-mono text-[13px] text-accent">{facts.label}</span>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6">
           {facts.items.map((f) => (
             <div key={f.v} className={CARD}>

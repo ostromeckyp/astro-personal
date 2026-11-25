@@ -10,6 +10,7 @@ import { OG_DEFAULT, OG_DEFAULT_ALT, SITE_NAME, SITE_URL } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { personSchema, websiteSchema } from "@/lib/structured-data";
+import { THEME_SCRIPT } from "@/lib/theme";
 
 const geist = Geist({
     subsets: ["latin", "latin-ext"],
@@ -56,7 +57,11 @@ export default async function RootLayout({ children, params }: { children: React
     const lang: Locale = rawLang;
     const { COMMON, FOOTER, NAV_CTA, NAV_LINKS } = getDictionary(lang);
     return (
-        <html lang={lang} data-scroll-behavior="smooth" className={`${geist.variable} ${geistMono.variable}`}>
+        <html lang={lang} data-scroll-behavior="smooth" className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
+        <head>
+            {/* Sets data-theme before first paint, so the page never flashes the other theme. */}
+            <script dangerouslySetInnerHTML={{__html: THEME_SCRIPT}}/>
+        </head>
         <body className="flex min-h-screen flex-col">
         <JsonLd data={personSchema(lang)}/>
         <JsonLd data={websiteSchema(lang)}/>

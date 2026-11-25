@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { LocaleLink as Link } from "@/components/ui/LocaleLink";
 import { usePathname } from "next/navigation";
 import { Fragment, useEffect, useRef, useState, useSyncExternalStore } from "react";
@@ -7,12 +8,15 @@ import { Button } from "@/components/ui/Button";
 import type { COMMON, NAV_CTA, NAV_LINKS } from "@/content/site/nav";
 import { LOCALE_COOKIE, localePath, stripLocale, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { isActive, menuClosesOnClick } from "@/lib/nav";
 
 function Logo({ onClick }: { onClick?: () => void }) {
   return (
-    <Link href="/" onClick={onClick} className="tap text-lg font-semibold tracking-[-0.02em] text-ink-0">
-      ostromecki<span className="text-sakura-500">.</span>dev
+    <Link href="/" onClick={onClick} className="tap block min-w-0 shrink">
+      {/* White wordmark on dark, dark wordmark on light; CSS shows the one that matches the theme. */}
+      <Image src="/images/logo-dark.png" alt="ostromecki.dev" width={1200} height={135} preload className="only-dark h-[18px] w-auto sm:h-[22px]" />
+      <Image src="/images/logo-light.png" alt="ostromecki.dev" width={1200} height={135} loading="eager" className="only-light h-[18px] w-auto sm:h-[22px]" />
     </Link>
   );
 }
@@ -118,7 +122,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink-700 bg-ink-950">
-      <nav ref={barRef} aria-label={copy.primaryNav} className="site-container flex items-center justify-between gap-8 py-[18px]">
+      <nav ref={barRef} aria-label={copy.primaryNav} className="site-container flex items-center justify-between gap-4 py-[18px] sm:gap-8">
         <Logo />
 
         <div className="hidden gap-7 text-[15px] lg:flex">
@@ -131,7 +135,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "border-b-2 py-1.5 transition-colors",
-                  active ? "border-sakura-500 text-ink-0" : "border-transparent text-ink-400 hover:text-ink-0",
+                  active ? "border-accent-line text-ink-0" : "border-transparent text-ink-400 hover:text-ink-0",
                 )}
               >
                 {l.label}
@@ -141,6 +145,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
         </div>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle toLight={copy.themeToLight} toDark={copy.themeToDark} />
           <div className="hidden sm:block">
             <LanguageSwitch lang={lang} path={path} label={copy.languageLabel} />
           </div>
@@ -204,7 +209,7 @@ export function Nav({ lang, links, cta, copy }: { lang: Locale; links: typeof NA
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "border-b border-ink-700 py-4 text-[28px] leading-tight font-semibold tracking-[-0.025em]",
-                    active ? "text-sakura-500" : "text-ink-0",
+                    active ? "text-accent" : "text-ink-0",
                   )}
                 >
                   {l.label}

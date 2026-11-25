@@ -53,7 +53,7 @@ export default async function SalonCasePage({ params }: { params: Promise<{ lang
             </Stage>
           </ViewTransition>
           <figcaption className="reveal grid max-w-[900px] grid-cols-[64px_minmax(0,1fr)] gap-4 sm:grid-cols-[96px_minmax(0,1fr)]">
-            <span className="font-mono text-xs text-sakura-500">{hero.n}</span>
+            <span className="font-mono text-xs text-accent">{hero.n}</span>
             <span className="text-[15px] leading-[1.55] text-ink-400">
               <span className="text-ink-0">{hero.captionLead}</span> {hero.caption}
             </span>
@@ -68,11 +68,11 @@ export default async function SalonCasePage({ params }: { params: Promise<{ lang
 
         <figure className="grid grid-cols-1 items-start gap-x-6 gap-y-8 lg:grid-cols-12">
           <figcaption className="reveal flex flex-col gap-5 pt-2 lg:col-span-4">
-            <span className="font-mono text-xs text-sakura-500">{procedures.n}</span>
+            <span className="font-mono text-xs text-accent">{procedures.n}</span>
             <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{procedures.heading}</h2>
             <p className="text-base leading-[1.6] text-ink-400">{procedures.body}</p>
             <div className="flex items-center gap-3">
-              <span aria-hidden="true" className="h-0.5 w-8 bg-sakura-500" />
+              <span aria-hidden="true" className="h-0.5 w-8 bg-accent-line" />
               <span className="text-sm text-ink-200">{procedures.note}</span>
             </div>
           </figcaption>
@@ -85,13 +85,13 @@ export default async function SalonCasePage({ params }: { params: Promise<{ lang
         <section className="relative flex flex-col gap-10">
           <div className="grid grid-cols-1 items-start gap-x-6 gap-y-8 border-t border-ink-600 pt-12 lg:grid-cols-12">
             <div className="reveal flex flex-col gap-5 lg:col-span-7">
-              <span className="font-mono text-xs text-sakura-500">{pwa.n}</span>
+              <span className="font-mono text-xs text-accent">{pwa.n}</span>
               <h2 className="text-[clamp(36px,3.4vw,48px)] leading-[1.02] font-semibold tracking-[-0.04em]">{pwa.heading}</h2>
               <p className="max-w-[600px] text-base leading-[1.6] text-ink-400">{pwa.body}</p>
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-5 lg:pt-9">
               <div className="reveal flex flex-col gap-2 rounded-xl border border-ink-600 p-5">
-                <span className="font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase">{pwa.builtLabel}</span>
+                <span className="font-mono text-[11px] tracking-[0.04em] text-accent uppercase">{pwa.builtLabel}</span>
                 <span className="text-[15px] leading-[1.5] text-ink-200">{pwa.built}</span>
               </div>
               <div className="reveal flex flex-col gap-2 rounded-xl border border-ink-600 p-5">
@@ -126,7 +126,7 @@ export default async function SalonCasePage({ params }: { params: Promise<{ lang
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {pwa.phones.map((p) => (
               <div key={p.n} className="reveal flex flex-col gap-1.5">
-                <span className="font-mono text-xs text-sakura-500">{p.n}</span>
+                <span className="font-mono text-xs text-accent">{p.n}</span>
                 <span className="text-base font-medium tracking-[-0.01em]">{p.t}</span>
                 <span className="text-sm leading-[1.5] text-ink-400">{p.d}</span>
               </div>

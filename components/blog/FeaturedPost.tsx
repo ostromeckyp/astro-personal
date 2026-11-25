@@ -26,9 +26,9 @@ export function FeaturedPost({ post, copy, lang }: { post: PostSummary; copy: ty
       </ViewTransition>
       <div className="flex flex-col justify-between gap-8 p-6 md:p-10">
         <div className="flex flex-col gap-[18px]">
-          <span className="font-mono text-[11px] tracking-[0.04em] text-sakura-500 uppercase">{copy.latest} · {post.label}</span>
+          <span className="font-mono text-[11px] tracking-[0.04em] text-accent uppercase">{copy.latest} · {post.label}</span>
           <ViewTransition name={`post-title-${post.slug}`}>
-            <span className="text-[clamp(28px,2.8vw,40px)] leading-[1.06] font-semibold tracking-[-0.03em] group-hover:text-white">
+            <span className="text-[clamp(28px,2.8vw,40px)] leading-[1.06] font-semibold tracking-[-0.03em] group-hover:text-ink-0">
               {post.title}
             </span>
           </ViewTransition>
@@ -38,7 +38,7 @@ export function FeaturedPost({ post, copy, lang }: { post: PostSummary; copy: ty
           <span>
             {formatPostDate(post.date, "long", lang)} · {copy.readingTime.replace("{n}", String(post.readingMinutes))}
           </span>
-          <span className="border-b-2 border-sakura-500 pb-[3px] text-ink-0">{copy.read}</span>
+          <span className="border-b-2 border-accent-line pb-[3px] text-ink-0">{copy.read}</span>
         </div>
       </div>
     </Link>

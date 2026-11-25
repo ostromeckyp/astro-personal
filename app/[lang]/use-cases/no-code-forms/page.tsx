@@ -47,7 +47,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
           className="reveal relative grid grid-cols-1 gap-x-8 gap-y-4 rounded-xl border border-ink-600 bg-ink-900 px-6 py-7 md:grid-cols-[200px_minmax(0,1fr)] md:px-8"
         >
           <div className="flex flex-col gap-2">
-            <span className="font-mono text-[11px] font-medium tracking-[0.04em] text-sakura-500 uppercase">{disclosure.label}</span>
+            <span className="font-mono text-[11px] font-medium tracking-[0.04em] text-accent uppercase">{disclosure.label}</span>
             <span className="text-lg font-medium tracking-[-0.01em]">{disclosure.title}</span>
           </div>
           <div className="flex flex-col gap-2.5 text-[15px] leading-[1.6] text-ink-400">
@@ -68,7 +68,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
             </Stage>
           </ViewTransition>
           <figcaption className="reveal grid max-w-[900px] grid-cols-[64px_minmax(0,1fr)] gap-4 sm:grid-cols-[96px_minmax(0,1fr)]">
-            <span className="font-mono text-xs text-sakura-500">{hero.n}</span>
+            <span className="font-mono text-xs text-accent">{hero.n}</span>
             <span className="text-[15px] leading-[1.55] text-ink-400">
               <span className="text-ink-0">{hero.captionLead}</span> {hero.caption}
             </span>
@@ -83,7 +83,7 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
 
         <figure className="grid grid-cols-1 items-start gap-x-6 gap-y-8 lg:grid-cols-12">
           <figcaption className="reveal flex flex-col gap-5 pt-2 lg:col-span-4">
-            <span className="font-mono text-xs text-sakura-500">{docs.n}</span>
+            <span className="font-mono text-xs text-accent">{docs.n}</span>
             <h2 className="text-[40px] leading-[1.05] font-semibold tracking-[-0.035em]">{docs.heading}</h2>
             <p className="text-base leading-[1.6] text-ink-400">{docs.body}</p>
           </figcaption>
@@ -96,13 +96,13 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
         <section className="flex flex-col gap-10 border-t border-ink-600 pt-12">
           <div className="grid grid-cols-1 items-start gap-x-6 gap-y-6 lg:grid-cols-12">
             <div className="reveal flex flex-col gap-5 lg:col-span-7">
-              <span className="font-mono text-xs text-sakura-500">{mcp.label}</span>
+              <span className="font-mono text-xs text-accent">{mcp.label}</span>
               <h2 className="text-[clamp(36px,3.4vw,48px)] leading-[1.02] font-semibold tracking-[-0.04em]">{mcp.heading}</h2>
               <p className="max-w-[620px] text-base leading-[1.6] text-ink-400">{mcp.body}</p>
             </div>
             <div className="flex flex-col gap-3 lg:col-span-5 lg:pt-9">
               <div className="flex items-center gap-3">
-                <span aria-hidden="true" className="h-0.5 w-8 shrink-0 bg-sakura-500" />
+                <span aria-hidden="true" className="h-0.5 w-8 shrink-0 bg-accent-line" />
                 <span className="text-sm text-ink-200">{mcp.notes[0]}</span>
               </div>
               <div className="flex items-center gap-3">
@@ -117,11 +117,11 @@ export default async function FormsCasePage({ params }: { params: Promise<{ lang
                 key={s.n}
                 className={cn(
                   "reveal flex min-h-40 flex-col gap-2.5 rounded-xl border bg-ink-900 p-5",
-                  s.accent ? "border-sakura-500" : "border-ink-700",
+                  s.accent ? "border-accent-line" : "border-ink-700",
                 )}
               >
                 <div className="flex items-center justify-between">
-                  <span className={cn("font-mono text-[11px] tracking-[0.04em] uppercase", s.accent ? "text-sakura-500" : "text-ink-400")}>
+                  <span className={cn("font-mono text-[11px] tracking-[0.04em] uppercase", s.accent ? "text-accent" : "text-ink-400")}>
                     {s.who}
                   </span>
                   <span className="font-mono text-[11px] text-ink-400">{s.n}</span>
