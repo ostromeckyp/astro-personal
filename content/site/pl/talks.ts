@@ -19,8 +19,8 @@ export const TALKS: typeof EN = {
     items: [
       {
         image: "/images/talks/devfest.jpg",
-        position: "20% 50%",
-        alt: "Karta prelegenta GDG DevFest 2026 z portretem Pawła",
+        position: "50% 50%",
+        alt: "Panel Cloud na GDG DevFest Wrocław 2026: paneliści i moderator na scenie pod slajdem Meet the panel",
         kind: "panel",
         year: "2026",
         title: "Panel Cloud",

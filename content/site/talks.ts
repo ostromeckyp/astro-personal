@@ -17,8 +17,8 @@ export const TALKS = {
     items: [
       {
         image: "/images/talks/devfest.jpg",
-        position: "20% 50%",
-        alt: "GDG DevFest 2026 speaker card with Paweł's portrait",
+        position: "50% 50%",
+        alt: "Cloud panel at GDG DevFest Wrocław 2026: panelists and the moderator on stage under the Meet the panel slide",
         kind: "panel",
         year: "2026",
         title: "Cloud panel",
